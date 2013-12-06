@@ -1,0 +1,2 @@
+If you're reading this then you have way too much time on your hands.
+xxd -b binary.txt
