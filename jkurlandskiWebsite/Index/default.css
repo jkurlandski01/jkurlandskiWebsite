@@ -235,16 +235,18 @@ hr {
     	width:55%;
 		position:absolute; 
     	TOP:15px; 
-    	LEFT:550px;
-	}
+/*     	LEFT:550px; */
+    	RIGHT:3px;
+}
 
 	#header-image2 
 	{
     	width:55%;
 		position:absolute; 
 		TOP:72px; 
-    	LEFT:550px;
-	}
+/*     	LEFT:550px; */
+    	RIGHT:3px;
+}
 
 /*********************************************************************************/
 /* Logo                                                                          */
@@ -253,7 +255,7 @@ hr {
 	#logo 
 	{
 /* 	jerry	width: 500px; */
-		width: 1000px;
+		width: 900px;
 height: 100px;
 /* jerry		margin: 0 auto; */
 		margin: 0 auto auto 0;
@@ -306,6 +308,7 @@ height: 100px;
 /* 	jerry margin-bottom: 2em; */
 	margin-bottom: 1em;
 	background: #25292B;
+/* 	background: #E8E8E8 url(images/bg01.png) */
 	box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
 	height: 60px;
 /* jerry 	height: 100px; */
@@ -343,7 +346,12 @@ height: 100px;
 }
 
 #menu .current_page_item a {
-	background: #FFC31F;
+	background: #A00000;
+/* 	background: #CC9900; */
+/* 	background: #FF9933; */
+/* 	background: #CC9966; */
+/* 	background: #FFC31F; */
+/* background: #E8E8E8 url(images/bg01.png) */
 }
 
 /** PAGE */
@@ -518,7 +526,8 @@ height: 100px;
 
 	#portfolio-wrapper
 	{
-		background: #272925;
+/* 		background: #272925; */
+		background: #E8E8E8 url(images/bg01.png) repeat;
 		padding: 2em 0em 1em 0em;
 	}
 	
