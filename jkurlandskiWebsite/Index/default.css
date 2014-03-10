@@ -77,6 +77,20 @@ a img {
 			width: auto;
 		}
 
+.figcaption p { 
+	line-height: 1;
+}
+
+.floatedfigure {
+	float: right;
+}
+
+.floatedtable {
+	float: right;
+	# left margin: 55px;
+	padding: 10px;
+}
+
 hr {
 	display: none;
 }
@@ -375,6 +389,7 @@ height: 100px;
 #content h3
 {
 	padding: 3px 0px 3px 0px;
+	clear: both;
 }
 
 /* #content table */
@@ -411,7 +426,9 @@ height: 100px;
 	margin-left: 40px; 
 	margin-bottom: 20px;
 	line-height: 1
+	clear: both;
 }
+
 
 /*********************************************************************************/
 /* Sidebar                                                                       */
