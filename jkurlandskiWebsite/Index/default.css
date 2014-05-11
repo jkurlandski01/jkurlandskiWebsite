@@ -84,6 +84,30 @@ a img {
 	font-family: 'FontAwesome';
 }
 
+/* .floatedthumbnail { */
+/* 	float: left; */
+/* 	padding: 10px; */
+/* } */
+/* .thumbfigcaption p {  */
+/* 	# line-height: 1; */
+/* 	line-height: 5px; */
+/* 	font-size: 10pt; */
+/* 	font-family: 'FontAwesome'; */
+/* } */
+
+.floatedthumbnail{
+	float: left;
+	padding: 20px;
+/* 	display:table; */
+}
+.thumbfigcaption p {
+	display:table-caption;
+/*     caption-side:bottom; */
+	line-height: 15px;
+	font-size: 10pt;
+	font-family: 'FontAwesome';
+}
+
 .floatedfigure {
 	float: right;
 }
