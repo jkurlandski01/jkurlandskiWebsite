@@ -95,7 +95,15 @@ a img {
 /* 	font-family: 'FontAwesome'; */
 /* } */
 
-.floatedthumbnail{
+/* Follows a series of floating images, without floating up alongside of them. */
+.nonFloatingPar	p	{
+	clear: both;
+/* 	float: none;  */
+/* 	top margin: 120px; */
+/* 	bottom margin: 120px; */
+}
+
+.floatedthumbnail	{
 	float: left;
 	padding: 20px;
 /* 	display:table; */
