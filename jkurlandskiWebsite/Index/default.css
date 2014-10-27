@@ -78,7 +78,7 @@ a img {
 			width: auto;
 		}
 
-.figcaption p { 
+figcaption p { 
 	line-height: 1;
 	font-size: 10pt;
 	font-family: 'FontAwesome';
@@ -124,8 +124,14 @@ a img {
 	float: right;
 	# left margin: 55px;
 	padding: 10px;
+	cellpadding: 30px;
 	caption-side:bottom;
 #	text-align: center;	
+}
+
+td { 
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 hr {
