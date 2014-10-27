@@ -1,0 +1,5 @@
+Odd characters in html and ascii
+
+& =  &amp;
+< = &lt;
+> =  &gt;

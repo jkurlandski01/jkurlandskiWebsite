@@ -1,0 +1,18 @@
+http://stackoverflow.com/questions/17572679/java-is-there-any-googles-guava-interface-to-replace-mapstring-mapstring-s
+- java. is there any google's guava interface to replace Map<String, Map<String, String>>?
+
+https://code.google.com/p/guava-libraries/wiki/GuavaExplained
+- Guava explained
+	- There's a "table" section.
+
+http://docs.guava-libraries.googlecode.com/git/javadoc/com/google/common/collect/HashBasedTable.html
+- Java doc
+
+To do:
+- Separate page on initializing tools, e.g.:
+	- Map<Column, String> element = Maps.newHashMap(ImmutableMap.of(Column.TITLE, "Seven Samari", Column.DIRECTOR, "Akira Kurosawa", 
+    			Column.COUNTRY, "Japan"));
+    - List<String> retList = Lists.newArrayList();
+    - Useful espectially in method call expecting a list, and you just have one element for the list.
+- Incorporate other column data types; actually, make this a separate project
+- Get runtime performance of sorted table: I suspect it's O(n)
