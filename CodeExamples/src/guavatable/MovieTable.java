@@ -81,9 +81,6 @@ public class MovieTable {
     }
     
     public List<Map<Column, String>> getTableSortedByColumn(Column COLUMN_VAL)   {
-    	// JERRY: make this a sorted map
-    	List<Map<Column, String>> retList = Lists.newArrayList();
-
     	Set<Cell<String, Column, String>> cells = table.cellSet();
     	List<Cell<String, Column, String>> filteredList = Lists.newArrayList();
     	for(Cell<String, Column, String> cell : cells)  {
@@ -91,10 +88,11 @@ public class MovieTable {
     			filteredList.add(cell);
     		}
     	}
-
     	Collections.sort(filteredList, stringComparator);
+
+    	List<Map<Column, String>> retList = Lists.newArrayList();
+
     	for(Cell<String, Column, String> cell : filteredList)   {
-    		String str = cell.getValue();
     		Map<Column, String> row = table.row(cell.getRowKey());
 
     		retList.add(row);
