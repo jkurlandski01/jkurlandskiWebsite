@@ -163,9 +163,15 @@ public static Ordering&lt;Table.Cell&lt;String, String, String&gt;&gt; stringCom
     }
 };
 			</code></pre>
-			<p>Now filteredList contains all the data we want, sorted by Director. In other words, for this example it contains these elements in this order: [(Seven Samari,Director)=Akira Kurosawa, (Seven,Director)=Andy Sidaris, (Seventh Seal,Director)=Ingmar Bergman]. But its information isn't very readable. If we're willing to iterate through the data one more time--at a cost of O(nbrRows), we can make things a little easier for our user (or ourselves).</p>
+			<p>Now filteredList contains each table key paired with its corresponding director, sorted by Director. In other words, for this example it contains these elements in this order: [(Seven Samari,Director)=Akira Kurosawa, (Seven,Director)=Andy Sidaris, (Seventh Seal,Director)=Ingmar Bergman]. But we're missing the Country data. At the cost of iterating through each row one more time--that is, at a cost of O(nbrRows)--we can achieve our goal.</p>
 			<p>Here's the way to get the most readable output, as a list of strings.</p>
+			<p class="precaption">Listing 5: Letting Collections.sort() do the work</p>
+			<pre><code>
+			</code></pre>
 			<p>And the following listing produces output which would probably be more useful to a programmer, as a List&lt;Map&lt;String, String&gt;&gt;, where the map keys are the column names (i.e., "Title", "Director", and "Country").</p>
+			<p class="precaption">Listing 5: Letting Collections.sort() do the work</p>
+			<pre><code>
+			</code></pre>
 			
 			<br>
 			<p>Note that this structure is not synchronized. See the external links in the sidebar at right for more information.</p>
