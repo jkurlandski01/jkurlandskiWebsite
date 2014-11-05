@@ -1,0 +1,22 @@
+SVN
+svn checkout <URL>
+svn status --show-updates
+- What repository updates aren't local?
+
+$ svn rm --keep-local my_important_file
+This removes the file from version control without removing it from your filesystem.
+svn commit my_important_file -m "Removing .classpath from repository."
+
+Ignoring more than one item in a directory.
+export SVN_EDITOR=vim
+svn propedit svn:ignore .
+- This will bring up your text editor so you can enter a list of files or directories to ignore.
+Set new value for property 'svn:ignore' on '.'
+svn status
+ M      .
+svn commit . -m "Ignoring .classpath and bin."
+
+
+git
+
+Mac
