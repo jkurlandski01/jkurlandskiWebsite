@@ -2,6 +2,7 @@ SVN
 svn checkout <URL>
 svn status --show-updates
 - What repository updates aren't local?
+- I don’t think this is correct.
 
 $ svn rm --keep-local my_important_file
 This removes the file from version control without removing it from your filesystem.

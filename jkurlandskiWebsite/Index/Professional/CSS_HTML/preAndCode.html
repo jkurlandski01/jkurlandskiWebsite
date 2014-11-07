@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Close to the Machine</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="../../default.css" rel="stylesheet" type="text/css" media="all" />
+<link href="../../fonts.css" rel="stylesheet" type="text/css" media="all" />
+<!--[if IE 6]>
+<link href="default_ie6.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+</head>
+<body>
+<div id="wrapper">
+	<div id="header-wrapper">
+		<div id="menu" class="container">
+			<ul>
+				<li><a href="../index.html">Home</a></li>
+				<li><a href="../Guava/index.html">Guava</a></li>
+				<li><a href="../Java/index.html">Java</a></li>
+				<li><a href="../NLP_AI/index.html">NLP / AI</a></li>
+				<li class="current_page_item"><a href="../CSS_HTML/index.html">Int. CSS / HTML</a></li>
+				<li><a href="../WWW/index.html">WWW</a></li>
+				<li><a href="../Misc/index.html">Miscellaneous</a></li>
+			</ul>
+		</div>
+		<!-- end #menu -->
+		<div id="header" class="container">
+			<div id="logo">
+				<h1>Close to the</h1>
+				<h1>Machine</h1>
+				<br>
+				<p>Jerry Kurlandski</p>
+			</div>
+			<div id="header-image1"> <a href="#" class="image"><img src="images/bookshelfPanorama.jpg" alt="" /></a> </div>
+			<div id="header-image2"> <a href="#" class="image"><img src="images/bookshelfPanorama.jpg" alt="" /></a> </div>
+		</div>
+	</div>
+	<div id="page" class="container">
+		<div id="content">
+			<div class="title">
+				<h2>Using  &lt;pre&gt; and &lt;code&gt;</h2>
+				<h2>to display code</h2>
+			</div>
+			<p>JERRY: if you use the guy with the detailed example extensively, then reference him; add to sidebar</p>
+			<p>Sometimes website developers want to share a technique that they've discovered or found useful. Sometimes they simply want to set a few lines apart from the rest of the text on a web page. The &lt;pre&gt; and &lt;code&gt; tags are useful for this purpose.</p>
+			
+			<h3>Escaping Code</h3>
+			<p>It's a little tricky getting css and html to appear on a web page--the browser tries to render it the same way it renders the rest of your page. In other words, when you want to talk about the &lt;p&gt; tag, you have to tell the browser that it should not interpret the tag literally--that is, you want to "escape" the &lt; and &gt; symbols on either side of the "p". The special HTML characters have to be converted: the "&lt;" symbol must be replaced with "&amp;lt;" (think "less than"); the "&gt;" symbol with "&amp;gt;" (think "greater than"); and "&amp;" with "&amp;amp;". The conversion is unpleasant business.</p>
+			<p>Eclipse offers a command that will do this for you automatically.</p>
+			<p>JERRY: is it Eclipse or Aptana? Try on work computer.</p>
+			
+		<h3>Introducing the &lt;pre&gt; and &lt;code&gt; tags</h3>
+		<p>Use the &lt;pre&gt; tag to set your code off from the regular formatting of the page. Compare the next few lines of CSS with the text of this paragraph.</p>
+		<pre>
+someTag {
+    margin: 0px;
+    //3456789012
+}
+		</pre>
+		<p>Since &lt;pre&gt; is not defined in my stylesheet, each browser is free to render its own default version of this tag. Most browswers will assign a monospace type to text wrapped by this tag.</p>
+		<p>The next few lines are wrapped in the &lt;code&gt; tag.</p>
+		<code>
+someTag {
+    margin: 0px;
+    //3456789012
+}
+		</code>
+		<p>JERRY: what do pre and code usually do by default?</p>
+		<p>http://stackoverflow.com/questions/4611591/code-vs-pre-vs-samp-for-inline-and-block-code-snippets</p>
+		<p>You see that the &lt;code&gt; tag also assigns a monospace font, but it seems less useful, if only because browsers ignore the contents' newlines and collapses the whitespace. If whitespace is important in your display of code (and usually it is to the reader, if not the compiler), then you need &lt;pre&gt;. The &lt;code&gt; tag can be used for inline elements, like the following: <code>public static int HUNDRED = 100; </code></p>
+		<p>Some will say that you should present blocks of code with both &lt;pre&gt; and &lt;code&gt;. But I don't see the point of the code tag; it's just seems like extra work to me.</p>
+		
+		<h3>A few experiments</h3>
+		<p>Let's play around with these tags, setting the style sheet first and then inserting the corresponding HTML in the tag just defined.</p>
+		<pre class="simple">
+pre.simple
+{
+    font-family: "Courier New" Courier monospace;
+    background: #E8E8E8;
+    overflow: auto;
+    padding-top: 10px;
+    padding-left: 5px;
+    // a long commented out line that displays the scrolling feature if it is ever needed one two three four five six seven eight nine ten
+}
+		</pre>
+		<p>This is a pretty basic definition that probably suits most needs. First we define the typeface to be monospace, just in case the browser isn't that way inclined. Then we give the text a slight greyish background. Then we handle lines that are too long with scrolling. Finally we fix an issue that, without the padding, has the first line of text abut the top of the grey area, while leaving a line of empty space below the last line. And the padding-left setting gives the text a little bit of breathing room from the margin on that side.</p>
+		<p>On the HTML side, simply wrap your text with the following. (And don't forget to "escape" the angle brackets as described above.)</p>
+		<pre class="simple">
+&lt;pre class=&quot;simple&quot;&gt;
+...
+&lt;/pre&gt;
+		</pre>
+		<p>That's the last time I'll provide the HTML code. From now on it'll be just CSS--don't forget to modify the class value accordingly.</p>
+
+
+		</div>
+		<div id="sidebar">
+			<div class="internalLinkBox">
+				<div class="title">
+					<h2>Intermediate CSS / HTML Links</h2>
+				</div>
+				<ul class="style2">
+					<li><a href="floating.html">Floating Tables and Images</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="copyright" class="container">
+	<p>Copyright (c) 2013 jkurlandski.com. All rights reserved. | Original design by <a href="http://www.freecsstemplates.org/" rel="nofollow">FreeCSSTemplates.org</a>.</p>
+</div>
+</body>
+</html>

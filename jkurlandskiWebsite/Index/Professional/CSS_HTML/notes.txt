@@ -3,3 +3,13 @@ Odd characters in html and ascii
 & =  &amp;
 < = &lt;
 > =  &gt;
+
+Explain how to get Aptana plug-in.
+
+Aptana has a handy word-wrap option if you don't like scrolling to the right to read an entire line.
+- Preferences > Aptana Studio > Editors
+	- Check "Enable word wrap"
+- Open the file in the Aptaba editor by right-clicking on it in the Package Explorer and going to Open with > and selecting the option having the < > symbols. (Need screenshot)
+
+What the normal HTML editor has, which Aptana lacks, is the convenient Source > Toggle Comment menu option.
+
