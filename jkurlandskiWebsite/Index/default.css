@@ -108,6 +108,7 @@ figcaption p {
 	padding: 20px;
 /* 	display:table; */
 }
+
 .thumbfigcaption p {
 	display:table-caption;
 /*     caption-side:bottom; */
@@ -470,6 +471,21 @@ height: 100px;
 	margin-bottom: 20px;
 	line-height: 1
 	clear: both;
+}
+
+pre.simple
+{
+    font-family: "Courier New" Courier monospace;
+	font-size: 0.80em;
+    background: #E8E8E8;
+    overflow: auto;
+    padding-top: 10px;
+    padding-left: 5px;
+    // a long commented out line that displays the scrolling feature if it is ever needed one two three four five six seven eight nine ten
+	// margin-top: 20px;
+	// padding: none;
+	// margin: none;
+    // color: #055;
 }
 
 

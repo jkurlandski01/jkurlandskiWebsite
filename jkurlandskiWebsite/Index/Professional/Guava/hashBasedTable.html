@@ -43,6 +43,7 @@
 					<h2>Guava's HashBasedTable and In-Memory Table Structures</h2>
 				</div>
 			</div>
+			<p>JERRY: I lost the noTextTransform div that adjusts the title above.</p>
 			<p>More than once I've needed to work with a database table-like structure in memory--a container offering reasonably fast lookups on data having a "row and column" type of structure. Usually what I really want to do is optionally (and efficiently) sort on any of the columns.</p>
 			<div class="floatedtable">
 				<table border="1">
@@ -165,13 +166,34 @@ public static Ordering&lt;Table.Cell&lt;String, String, String&gt;&gt; stringCom
 			</code></pre>
 			<p>Now filteredList contains each table key paired with its corresponding director, sorted by Director. In other words, for this example it contains these elements in this order: [(Seven Samari,Director)=Akira Kurosawa, (Seven,Director)=Andy Sidaris, (Seventh Seal,Director)=Ingmar Bergman]. But we're missing the Country data. At the cost of iterating through each row one more time--that is, at a cost of O(nbrRows)--we can achieve our goal.</p>
 			<p>Here's the way to get the most readable output, as a list of strings.</p>
-			<p class="precaption">Listing 5: Letting Collections.sort() do the work</p>
+			<p class="precaption">Listing 7: Putting the sorted data into a string</p>
 			<pre><code>
+// Put the data into a string.
+// O(nbrRows)
+StringBuilder builder = new StringBuilder();
+for(Cell&lt;String, String, String&gt; cell : filteredList)   {
+	Map&lt;String, String&gt; row = table.row(cell.getRowKey());
+    builder.append(row.get(&quot;Title&quot;)).append(&quot;; &quot;)
+    	.append(row.get(&quot;Director&quot;)).append(&quot;; &quot;)
+    	.append(row.get(&quot;Country&quot;)).append(&quot;\n&quot;);
+    }
+System.out.println(builder.toString());
 			</code></pre>
+			<p>So the println() above writes out three lines, one for each movie. The first line reads: "Seven Samari; Akira Kurosawa; Japan"</p>
+			<p>JERRY: why are the titles so far from the code? I lost the precaption class</p>
+			<p>JERRY: didn't I have captions for the css floating page?</p>
 			<p>And the following listing produces output which would probably be more useful to a programmer, as a List&lt;Map&lt;String, String&gt;&gt;, where the map keys are the column names (i.e., "Title", "Director", and "Country").</p>
-			<p class="precaption">Listing 5: Letting Collections.sort() do the work</p>
+			<p class="precaption">Listing 8: Putting the sorted data into a map</p>
 			<pre><code>
+// Put the data into a List of Map&lt;String, String&gt; where key is column name.
+// O(nbrRows)
+List&lt;Map&lt;String, String&gt;&gt; sortedRowsList = Lists.newArrayList();
+for(Cell&lt;String, String, String&gt; cell : filteredList)   {
+	Map&lt;String, String&gt; row = table.row(cell.getRowKey());
+    sortedRowsList.add(row);
+}
 			</code></pre>
+			<p>The list produced by the snippet above contains three elements, one for each row of our table structure. The first row gives us the data on Kurosawa's "Seven Samari" in the form of a Map&lt;String, String&gt. Each row's map contains three keys: "Title", "Director" and "Country."</p>
 			
 			<br>
 			<p>Note that this structure is not synchronized. See the external links in the sidebar at right for more information.</p>
