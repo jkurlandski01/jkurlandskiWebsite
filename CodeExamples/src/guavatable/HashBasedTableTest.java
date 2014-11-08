@@ -73,12 +73,25 @@ public class HashBasedTableTest {
     	System.out.println(strBuilder.toString());
 
 
+    	// Put the data into a List of Map<String, String> where key is column name.
     	// O(nbrRows)
     	List<Map<String, String>> sortedRowsList = Lists.newArrayList();
     	for(Cell<String, String, String> cell : filteredList)   {
     		Map<String, String> row = table.row(cell.getRowKey());
     		sortedRowsList.add(row);
     	}
+    	
+    	// Put the data into a string.
+    	// O(nbrRows)
+    	StringBuilder builder = new StringBuilder();
+       	for(Cell<String, String, String> cell : filteredList)   {
+    		Map<String, String> row = table.row(cell.getRowKey());
+    		builder.append(row.get("Title")).append("; ")
+    				.append(row.get("Director")).append("; ")
+    				.append(row.get("Country")).append("\n");
+    	}
+		System.out.println(builder.toString());
+
     	
     	List<Map<String, String>> expectedList = Lists.newArrayList();
     	Map<String, String> element = Maps.newHashMap(ImmutableMap.of("Title", "Seven Samari", "Director", "Akira Kurosawa", 
