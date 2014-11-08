@@ -46,10 +46,19 @@
 			<p>JERRY: if you use the guy with the detailed example extensively, then reference him; add to sidebar</p>
 			<p>Sometimes website developers want to share a technique that they've discovered or found useful. Sometimes they simply want to set a few lines apart from the rest of the text on a web page. The &lt;pre&gt; and &lt;code&gt; tags are useful for this purpose.</p>
 			
-			<h3>Escaping Code</h3>
-			<p>It's a little tricky getting css and html to appear on a web page--the browser tries to render it the same way it renders the rest of your page. In other words, when you want to talk about the &lt;p&gt; tag, you have to tell the browser that it should not interpret the tag literally--that is, you want to "escape" the &lt; and &gt; symbols on either side of the "p". The special HTML characters have to be converted: the "&lt;" symbol must be replaced with "&amp;lt;" (think "less than"); the "&gt;" symbol with "&amp;gt;" (think "greater than"); and "&amp;" with "&amp;amp;". The conversion is unpleasant business.</p>
-			<p>Eclipse offers a command that will do this for you automatically.</p>
+			<h3>Converting, or "Escaping," special characters in HTML, Java, and other languages</h3>
+			<p>It's a little tricky getting HTML to appear on a web page--the browser tries to render it the same way it renders the rest of your page. For example, when you want to talk about the &lt;p&gt; tag, you can't type in the angle brackets on either side of the "p". If you used the angle brackets, browsers would try to interpret them literally.</p>
+			<p> To get around this, you have to replace the &lt; and &gt; symbols on either side of the "p". And in other cases you'll also have to replace the ampersand charcter. In other words:</p>
+			<ul class="style3">
+				<li>the "&lt;" symbol must be replaced with "&amp;lt;" (think "less than");</li>
+				<li>the "&gt;" symbol must be replaced with with "&amp;gt;" (think "greater than"); </li>
+				<li>the "&amp;" symbol (the apersand) must be replaced with "&amp;amp;".</li>
+			</ul>
+			<p>To make this perfectly clear, in order to display this on my screen--&lt;p&gt;--I must type in this: &amp;lt;p&amp;gt; And in order to display this on my screen--&amp;--I have to type in this: &amp;amp;</p>
+			<p>As you can imagine, this conversion is unpleasant business. Eclipse offers a command that will do this for you automatically.</p>
+			<p><pre></pre></p>
 			<p>JERRY: is it Eclipse or Aptana? Try on work computer.</p>
+			<p>It's not just  HTML that has to be transformed in this way. Java's types--as in List&lt;String&gt;--as well as the "&amp;" symbol in C and C++--will all have to be converted in this manner. So a tool that does this for you automatically is a very useful tool indeed.</p>
 			
 		<h3>Introducing the &lt;pre&gt; and &lt;code&gt; tags</h3>
 		<p>Use the &lt;pre&gt; tag to set your code off from the regular formatting of the page. Compare the next few lines of CSS with the text of this paragraph.</p>
@@ -59,18 +68,19 @@ someTag {
     //3456789012
 }
 		</pre>
-		<p>Since &lt;pre&gt; is not defined in my stylesheet, each browser is free to render its own default version of this tag. Most browswers will assign a monospace type to text wrapped by this tag.</p>
-		<p>The next few lines are wrapped in the &lt;code&gt; tag.</p>
+		<p>Each browser has its own default version of this tag. Since &lt;pre&gt; is not defined in my stylesheet, however you see the snippet of code above illustrates how your browser renders text by default. Most browswers will assign a monospace type to text wrapped by this tag.</p>
+		<p>The next snippet contains the same lines, but wrapped in the &lt;code&gt; tag instead.</p>
+		<p>JERRY: give titles to this and the above; not the below until the time is right</p>
 		<code>
 someTag {
     margin: 0px;
     //3456789012
 }
 		</code>
-		<p>JERRY: what do pre and code usually do by default?</p>
-		<p>http://stackoverflow.com/questions/4611591/code-vs-pre-vs-samp-for-inline-and-block-code-snippets</p>
-		<p>You see that the &lt;code&gt; tag also assigns a monospace font, but it seems less useful, if only because browsers ignore the contents' newlines and collapses the whitespace. If whitespace is important in your display of code (and usually it is to the reader, if not the compiler), then you need &lt;pre&gt;. The &lt;code&gt; tag can be used for inline elements, like the following: <code>public static int HUNDRED = 100; </code></p>
-		<p>Some will say that you should present blocks of code with both &lt;pre&gt; and &lt;code&gt;. But I don't see the point of the code tag; it's just seems like extra work to me.</p>
+		<p></p>
+		
+		<p>You see that the &lt;code&gt; tag also assigns a monospace font, but it seems less useful, if only because browsers typically ignore the contents' newlines and collapse the whitespace. If whitespace is important in your display of code (and usually it is to the reader, if not the compiler), then you need &lt;pre&gt;. The &lt;code&gt; tag can be used for inline elements, like the following: <code>public static int HUNDRED = 100; </code></p>
+		<p>Some will say that you should present blocks of code with both &lt;pre&gt; and &lt;code&gt;. But I don't see the point of the code tag; incuding it just seems like extra work to me.</p>
 		
 		<h3>A few experiments</h3>
 		<p>Let's play around with these tags, setting the style sheet first and then inserting the corresponding HTML in the tag just defined.</p>
