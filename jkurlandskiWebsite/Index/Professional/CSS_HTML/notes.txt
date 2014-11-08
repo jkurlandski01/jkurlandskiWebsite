@@ -13,3 +13,14 @@ Aptana has a handy word-wrap option if you don't like scrolling to the right to 
 
 What the normal HTML editor has, which Aptana lacks, is the convenient Source > Toggle Comment menu option.
 
+————
+
+New page: Debugging with w3schools.com
+
+This website is greater for learning about web programming, and even better for debugging and testing out your code. My favorite aspect of their website are the pages that let you insert your code onto a scrap sheet and see what it looks like. You’ll find it at http://www.w3schools.com/css/tryit.asp?filename=trycss_default or in the links at right.
+
+Here’s a screenshot of this tool just when it helped me realize I had a slight bug in my style sheet.
+
+w3schoolScreenshot.tiff
+
+You type or cut-and-paste your code in the left-hand panel. Then you click on the “See Result >>” button, and it is rendered in the right-hand panel.
