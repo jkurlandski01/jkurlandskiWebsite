@@ -61,6 +61,17 @@ public class HashBasedTableTest {
     	// Sort the filtered Director cells.
     	// O(nbrRows)
     	Collections.sort(filteredList, stringComparator);
+    	
+    	// For the fun of it, put it all into a big string and output the string.
+    	StringBuilder strBuilder = new StringBuilder();
+    	for(Cell<String, String, String> cell : filteredList) {
+    		Map<String, String> row = table.row(cell.getRowKey());
+    		strBuilder.append(row.get("Title")).append(", ");
+    		strBuilder.append(row.get("Director")).append(", ");
+    		strBuilder.append(row.get("Country")).append("\n");
+    	}
+    	System.out.println(strBuilder.toString());
+
 
     	// O(nbrRows)
     	List<Map<String, String>> sortedRowsList = Lists.newArrayList();
