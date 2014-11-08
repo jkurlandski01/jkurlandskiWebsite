@@ -17,7 +17,7 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
-public class deletableTest {
+public class SortHashKeysTest {
 
 	@Test
 	public void testTreeMap() {
