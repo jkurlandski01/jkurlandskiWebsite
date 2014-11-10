@@ -55,6 +55,7 @@
             <p class="precaption">Without wordwrap.</p>
             <img id="fileIMG" src="./unwrappedLines.jpg" />
             <br></br>
+            <p>Now compare the above, where the line ends at the phrase "a lot of," with the below, in which you can see the entire pareagraph.</p>
             <p class="precaption">With wordwrap.</p>
             <img id="fileIMG" src="./wrappedLines.jpg" />
             <br></br>
@@ -62,6 +63,9 @@
             <img id="fileIMG" src="./aptanaPreferences.jpg" />
             <br></br>
             <br></br>
+            <p><strong>Aptana automatically inserts matching &lt;p&gt; &lt;/p&gt; tags.</strong> Let's be honest: the characters &lt;/p&gt; form a very unpleasant sequence to type. So Aptana is being very helpful when it fills in the closing &lt;/p&gt; for you. The plug-in is supposed to fill in matching end tags generally, not just for the paragraph tag, but I have not yet been able to get that to work. Control of this option has been placed in the Content Assist box, reached via Preferences > Aptana Studio > Editors > HTML. The screenshot above can be used as a kind of roadmap on how to get there--look for the HTML node in the tree on the left.</p>
+            <p><strong>Aptana has a command that automatically converts angle brackets and ampersands to "HTML entities."</strong> Because angle brackets indicate a tag in HTML, if you want to display a bracket you have to tell the browser not to read the angle bracket as the start of a tag. You do this by replacing the characters with what are called <em>entities</em>. So, to display &lt;p&gt;, you must type in this: &amp;lt;p&amp;gt;  </p>
+            <p><strong>Aptana allows remote system synchronization.</strong></p>
             <h3>Installing Aptana</h3>
 			<p>You cannot use the Eclipse Marketplace to get the Aptana plug-in. You have to go to their website and jump through a few hoops But the features described above make it worth your while. Here, then, is how I managed to install it, after several fruitless attempts by other means. (Two things worth noting: (1) For some reason the download wouldn't work on the Mac version of Firefox--I had to use Safari. And (2), this is how I installed Aptana 3.6.0 onto the STS version of Eclipse in November of 2014--of course, anything could change at some point in the future.)</p>
 			<p>Go to http://www.aptana.com/products/studio3/download, or if that link is dead, search on "download Aptana studio eclipse". You're looking for a page that has the radio buttons and the download button like the image below. It's not immediately apparent, but the download page has two options--the Standalone Version (the default) or the Eclipse Plug-in Version. See the radio button the red arrow is pointing at. Make sure you select the plug-in version, then click the Download button.</p>
