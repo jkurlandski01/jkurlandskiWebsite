@@ -76,8 +76,8 @@
 			<h3>Simply sorting on the index</h3>
 			<p>JERRY: consider putting this section into a separate page</p>
 			<p>It's easy enough to implement the table itself, and to sort your results by the column being used as an index. Simply use a Map&lt;String, List&lt;String&gt;&gt;, where the key is title and the List&lt;String&gt; consists of the two remaining columns for each row, director and country. To sort by title you could: (1) use Java's TreeMap, or (2) get the key set and sort that. If your requirements are as simple as this, here is all you need to do.</p>
-			<p class="precaption">Listing 1: Using TreeMap to sort the index of an in-memory table</p>
-			<pre><code>
+			<p class="precaption">Listing 1: Using TreeMap to sort the index of an in-memory table</p>			<div>
+            <pre class="withCaption">
 TreeMap<String, Double> map1 = Maps.newTreeMap();
 map1.put("one", new Double(1.0));
 map1.put("two", new Double(2.0));
@@ -85,7 +85,7 @@ map1.put("three", new Double(3.0));
 		
 // Convert to list for convenience.
 List<String> keyList = Lists.newArrayList(map1.keySet());
-			</code></pre>
+			</pre>
 
 			<p>If you don't need a list of strings, simply iterate through the keys returned by keySet().</p>
 			<p>A caution about runtime. Don't be cavalier in your use of TreeMap. Its various operations--get, put, containsKey and remove--are O(log n), which is very good in the sorting sphere but not so good for hashmaps in general. In other words, if you don't need to sort, use the HashMap implementation, whose get and put operations are O(1).</p>

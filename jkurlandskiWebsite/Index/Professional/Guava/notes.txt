@@ -5,8 +5,17 @@ https://code.google.com/p/guava-libraries/wiki/GuavaExplained
 - Guava explained
 	- There's a "table" section.
 
+HashBasedTable Java doc
 http://docs.guava-libraries.googlecode.com/git/javadoc/com/google/common/collect/HashBasedTable.html
-- Java doc
+
+RowBasedTable Java doc
+http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/RowSortedTable.html
+
+TreeBasedTable Java doc
+http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/TreeBasedTable.html
+
+Explores Guava - Worth reading
+http://www.programering.com/a/MzNxUDMwATg.html
 
 To do:
 - Separate page on initializing tools, e.g.:
