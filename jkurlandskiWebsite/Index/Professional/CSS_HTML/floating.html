@@ -107,7 +107,8 @@
 			<br>
 			<h3>The code</h3>
 			<p>Here are the CSS definitions for the floating table as well as the figure caption that you see above.</p>
-			<pre>
+			<p class="precaption">Listing 1: CSS definition for floating table and its caption</p>
+            <pre class="withCaption">
 floatedtable {
 	float: right;
 	padding: 10px;
@@ -121,7 +122,8 @@ figcaption p {
 
 			</pre>
 			<p>Here's how you use these definitions in the html. The only tricky thing is that in the html the table comes <em>before</em> the text that you want to pair it with. What is <em>really</em> floating, then, is the text--not the table--in the sense that the text "floats" upward until it's level with the table.</p>
-			<pre>
+			<p class="precaption">Listing 2: Using the floating table styles in HTML</p>
+            <pre class="withCaption">
 &lt;div class=&quot;floatedtable&quot;&gt;
 	&lt;table border=&quot;1&quot;&gt;
 		&lt;tr&gt;
@@ -154,8 +156,9 @@ table is the same--only the styling is different. I&#x27;m adding another senten
 to make the paragraph a bit longer. And another here. And one more sentence for 
 good measure.&lt;/p&gt;
 			</pre>
-			<p>If your table has too many columns, or the contents of the columns are too long, you'll want to use a traditional table. An example is the very first table at the top of this page. The html for that looks like this.</p>
-			<pre>
+			<p>If your table has too many columns, or the contents of the columns are too long, you'll want to use a traditional table. An example is the very first table at the top of this page. The HTML for that looks like this.</p>
+			<p class="precaption">Listing 3: HTML for a traditional table</p>
+            <pre class="withCaption">
 &lt;div id=&quot;table&quot;&gt;
 	&lt;table border=&quot;1&quot;&gt;
 		&lt;tr&gt;
@@ -239,13 +242,15 @@ good measure.&lt;/p&gt;
 				<p>To get around this, you need to <em>clear</em> the floating style. A simple way to do this is to use a CSS style for the paragraph which you don't want to float.</p>
 			</div>
 			<p>Here's the very simple CSS definition:</p>
-			<pre>
+			<p class="precaption">Listing 4: CSS for a non=floating paragraph</p>
+            <pre class="withCaption">
 .nonFloatingPar	p	{
 	clear: both;
 }
 			</pre>
 			<p>And here's the HTML that makes use of the definition:</p>
-			<pre>
+			<p class="precaption">Listing 5: Using the non=floating paragraph style in HTML</p>
+            <pre class="withCaption">
 &lt;div class=&quot;nonFloatingPar&quot;&gt;
 	&lt;p&gtHere's some text I DON'T want to appear alongside the tables.&lt;/p&gt;
 &lt;/div&gt;
@@ -260,7 +265,8 @@ good measure.&lt;/p&gt;
 				</div>
 				<ul class="style2">
 					<li><a href="floating.html">Floating Tables and Images</a></li>
-				</ul>
+					<li><a href="preAndCode.html">Using  &lt;pre&gt; and &lt;code&gt; to display HTML and other code on a web page</a></li>
+					<li><a href="aptana.html">Useful tools in the Aptana Eclipse plug-in</a></li>				</ul>
 			</div>
 		</div>
 	</div>
