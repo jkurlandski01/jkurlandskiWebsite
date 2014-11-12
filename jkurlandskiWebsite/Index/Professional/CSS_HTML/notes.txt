@@ -13,6 +13,24 @@ Aptana has a handy word-wrap option if you don't like scrolling to the right to 
 
 What the normal HTML editor has, which Aptana lacks, is the convenient Source > Toggle Comment menu option.
 
+
+
+Using the Remote view
+
+View > Other > Studio > Remote
+
+Select
+	⁃	target_jkurlandski.com
+
+Whatever you do, make sure your FTP inserts into the jkurlandski.com directory, not above it.
+	⁃	See “Website Notes” document.
+
+Right-click > Transfer Files
+
+Blue arrows (Synchronize)
+
+
+
 ————
 
 New page: Debugging with w3schools.com
