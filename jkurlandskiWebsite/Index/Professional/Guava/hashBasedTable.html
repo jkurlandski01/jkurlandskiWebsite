@@ -43,8 +43,7 @@
 					<h2>Guava's HashBasedTable and In-Memory Table Structures</h2>
 				</div>
 			</div>
-			<p>JERRY: I lost the noTextTransform div that adjusts the title above.</p>
-			<p>More than once I've needed to work with a database table-like structure in memory--a container offering reasonably fast lookups on data having a "row and column" type of structure. Usually what I really want to do is optionally (and efficiently) sort on any of the columns.</p>
+			<p>More than a few times I've needed to work with a database table-like structure in memory--a container offering reasonably fast lookups on data having a "row and column" type of structure. Usually what I really want to do is optionally (and efficiently) sort on any of the columns.</p>
 			<div class="floatedtable">
 				<table border="1">
 					<tr>
@@ -74,7 +73,7 @@
 			</div>
 			<p>To make things more concrete, suppose we have an in-memory Movie table like the one at right. Let's say for the sake of argument that the title column is unique, so it can be used as an index into the entire row of values. What I need to do in code is implement this table so that the rows returned can optionally be sorted by title, director or country of origin. Right now they are not sorted at all.</p>
 			<h3>Simply sorting on the index</h3>
-			<p>JERRY: consider putting this section into a separate page</p>
+			<p>JERRY: consider putting this section into a separate page; redo the listing numbers</p>
 			<p>It's easy enough to implement the table itself, and to sort your results by the column being used as an index. Simply use a Map&lt;String, List&lt;String&gt;&gt;, where the key is title and the List&lt;String&gt; consists of the two remaining columns for each row, director and country. To sort by title you could: (1) use Java's TreeMap, or (2) get the key set and sort that. If your requirements are as simple as this, here is all you need to do.</p>
 			<p class="precaption">Listing 1: Using TreeMap to sort the index of an in-memory table</p>
             <pre class="withCaption">
@@ -103,7 +102,7 @@ List&lt;String&gt; keysList = Arrays.asList(keysArray);
 Collections.sort(keysList);
 			</pre>
 			<p>The second example above actually gives you two choices: if you're happy working with a string array, call Arrays.sort() on keysArray; otherwise, convert it to a List of strings and call Collections.sort().</p>
-			<p>If your key is a custom value class instead of String, Double, Integer and so on, don't forget to override the necessary methods for safe sorting and the insertion of your class objects into containers. For example, instead of sorting on movie title, maybe you have a Movie class that wraps the movie data into a single object. There are three methods you'll need to override: in the Object class, you'll want to override equals() and hashCode(); and you'll want to declare your class as implementing Comparable and override compareTo(). Chances are you should consider overriding Object.toString() as well. All of this is covered beautifully in Chapter 3 of Joshua Bloch's <em>Effective Java</em>.</p>
+			<p><strong>When your key is a custom class.</strong> If your key is a custom value class instead of String, Double, Integer and so on, don't forget to override the necessary methods for safe sorting and the insertion of your class objects into containers. For example, instead of sorting on movie title, maybe you have a Movie class that wraps the movie data into a single object. There are three methods you'll need to override: in the Object class, you'll want to override equals() and hashCode(); and you'll want to declare your class as implementing Comparable and override compareTo(). Chances are you should consider overriding Object.toString() as well. All of this is covered beautifully in Chapter 3 of Joshua Bloch's <em>Effective Java</em>.</p>
 			<p>Maybe all you need to do is sort on the index of your in-memory table. In that case, you have my permission to shut down your computer and call it a day. But if your requirements are a little more demanding--that is, if you need to be able to sort on the values in any column--then read on.</p>
 
 			<h3>Introducing Guava's HashBasedTable</h3>
@@ -111,16 +110,16 @@ Collections.sort(keysList);
 			<p>Let's get started by showing you how to create and initialize a HashBasedTable.</p>
 			<p class="precaption">Listing 3: Instantiating and initializing a HashBasedTable</p>
             <pre class="withCaption">
-Table<String, String, String> table = HashBasedTable.create();
-table.put("Seventh Seal", "Title", "Seventh Seal");
-table.put("Seventh Seal", "Director", "Ingmar Bergman");
-table.put("Seventh Seal", "Country", "Sweden");
-table.put("Seven Samari", "Title", "Seven Samari");
-table.put("Seven Samari", "Director", "Akira Kurosawa");
-table.put("Seven Samari", "Country", "Japan");
-table.put("Seven", "Title", "Seven");
-table.put("Seven", "Director", "Andy Sidaris");
-table.put("Seven", "Country", "United States");
+Table&lt;String, String, String&gt; table = HashBasedTable.create();
+table.put(&quot;Seventh Seal&quot;, &quot;Title&quot;, &quot;Seventh Seal&quot;);
+table.put(&quot;Seventh Seal&quot;, &quot;Director&quot;, &quot;Ingmar Bergman&quot;);
+table.put(&quot;Seventh Seal&quot;, &quot;Country&quot;, &quot;Sweden&quot;);
+table.put(&quot;Seven Samari&quot;, &quot;Title&quot;, &quot;Seven Samari&quot;);
+table.put(&quot;Seven Samari&quot;, &quot;Director&quot;, &quot;Akira Kurosawa&quot;);
+table.put(&quot;Seven Samari&quot;, &quot;Country&quot;, &quot;Japan&quot;);
+table.put(&quot;Seven&quot;, &quot;Title&quot;, &quot;Seven&quot;);
+table.put(&quot;Seven&quot;, &quot;Director&quot;, &quot;Andy Sidaris&quot;);
+table.put(&quot;Seven&quot;, &quot;Country&quot;, &quot;United States&quot;);
 			</pre>
 			<p>Initialization seems quite verbose: you feel as though you should be able to insert into the Table in the same way you insert into a database table--with a single SQL-like insert statement. But when you remember that we're dealing with, at bottom, a hash, it makes perfect sense. Later on we'll see how, with a little abstraction, we can make the HashBasedTable look more like the database table we want to emulate.</p>
 			<p>An attentive reader will also note that the second parameter of the put() method is dying for an enum. We'll see that, as well, a little later on.</p>
@@ -168,33 +167,49 @@ public static Ordering&lt;Table.Cell&lt;String, String, String&gt;&gt; stringCom
 			<p>Here's the way to get the most readable output, as a list of strings.</p>
 			<p class="precaption">Listing 7: Putting the sorted data into a string</p>
             <pre class="withCaption">
-// Put the data into a string.
+// Put the data into a list of strings.
 // O(nbrRows)
-StringBuilder builder = new StringBuilder();
+List&lt;String&gt; rowList = Lists.newArrayList();
 for(Cell&lt;String, String, String&gt; cell : filteredList)   {
-	Map&lt;String, String&gt; row = table.row(cell.getRowKey());
+    Map&lt;String, String&gt; row = table.row(cell.getRowKey());
+    StringBuilder builder = new StringBuilder();
     builder.append(row.get(&quot;Title&quot;)).append(&quot;; &quot;)
-    	.append(row.get(&quot;Director&quot;)).append(&quot;; &quot;)
-    	.append(row.get(&quot;Country&quot;)).append(&quot;\n&quot;);
-    }
-System.out.println(builder.toString());
+        .append(row.get(&quot;Director&quot;)).append(&quot;; &quot;)
+        .append(row.get(&quot;Country&quot;)).append(&quot;\n&quot;);
+    rowList.add(builder.toString());
+}
+System.out.println(rowList.toString());
+
+Output:
+[Seven Samari; Akira Kurosawa; Japan
+, Seven; Andy Sidaris; United States
+, Seventh Seal; Ingmar Bergman; Sweden
+]
 			</pre>
-			<p>So the println() above writes out three lines, one for each movie. The first line reads: "Seven Samari; Akira Kurosawa; Japan"</p>
+			<p>So the variable rowList above contains three elements, one for each movie. The first line reads: "Seven Samari; Akira Kurosawa; Japan".</p>
 			<p>And the following listing produces output which would probably be more useful to a programmer, as a List&lt;Map&lt;String, String&gt;&gt;, where the map keys are the column names (i.e., "Title", "Director", and "Country").</p>
 			<p class="precaption">Listing 8: Putting the sorted data into a map</p>
             <pre class="withCaption">
 // Put the data into a List of Map&lt;String, String&gt; where key is column name.
 // O(nbrRows)
-List&lt;Map&lt;String, String&gt;&gt; sortedRowsList = Lists.newArrayList();
+List&lt;Map&lt;String, String&gt;&gt; rowMapList = Lists.newArrayList();
 for(Cell&lt;String, String, String&gt; cell : filteredList)   {
-	Map&lt;String, String&gt; row = table.row(cell.getRowKey());
-    sortedRowsList.add(row);
+    Map&lt;String, String&gt; row = table.row(cell.getRowKey());
+    rowMapList.add(row);
 }
+System.out.println(rowMapList.toString());
+
+Output:
+[{Country=Japan, Title=Seven Samari, Director=Akira Kurosawa}, {Country=United States, Title=Seven, Director=Andy Sidaris}, {Country=Sweden, Title=Seventh Seal, Director=Ingmar Bergman}]
 			</pre>
 			<p>The list produced by the snippet above contains three elements, one for each row of our table structure. The first row gives us the data on Kurosawa's "Seven Samari" in the form of a Map&lt;String, String&gt. Each row's map contains three keys: "Title", "Director" and "Country."</p>
+			<p>This is all well and good, but it would be a pain to write specialized code every time you need a table structure that can be sorted by any column. Why not encaspulate and abstract this behavior into a useful class? That's what we'll do next.</p>
+			<p><a href="sortableTable.html">A Sortable Table Class</a></p>
+			<p>JERRY: Then a descriptive link to another page. New page summarizes where we are with link to previous. Then new page lists the ways in which the previous page's implementation is lacking: 1) needs to be encapsulated; 2) needs to be abstracted; 3) needs an enum instead of column name; 4) needs to deal with numeric sorting.</p>
 			
 			<br>
 			<p>Note that this structure is not synchronized. See the external links in the sidebar at right for more information.</p>
+			<p>JERRY: add links</p>
 		</div>
 		<div id="sidebar">
 			<div class="internalLinkBox">

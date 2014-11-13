@@ -62,37 +62,43 @@ public class HashBasedTableTest {
     	// O(nbrRows)
     	Collections.sort(filteredList, stringComparator);
     	
-    	// For the fun of it, put it all into a big string and output the string.
-    	StringBuilder strBuilder = new StringBuilder();
-    	for(Cell<String, String, String> cell : filteredList) {
-    		Map<String, String> row = table.row(cell.getRowKey());
-    		strBuilder.append(row.get("Title")).append(", ");
-    		strBuilder.append(row.get("Director")).append(", ");
-    		strBuilder.append(row.get("Country")).append("\n");
-    	}
-    	System.out.println(strBuilder.toString());
-
-
-    	// Put the data into a List of Map<String, String> where key is column name.
+    	// Put the data into a long string.
     	// O(nbrRows)
-    	List<Map<String, String>> sortedRowsList = Lists.newArrayList();
-    	for(Cell<String, String, String> cell : filteredList)   {
-    		Map<String, String> row = table.row(cell.getRowKey());
-    		sortedRowsList.add(row);
-    	}
-    	
-    	// Put the data into a string.
-    	// O(nbrRows)
-    	StringBuilder builder = new StringBuilder();
+    	StringBuilder longBuilder = new StringBuilder();
        	for(Cell<String, String, String> cell : filteredList)   {
     		Map<String, String> row = table.row(cell.getRowKey());
-    		builder.append(row.get("Title")).append("; ")
+    		longBuilder.append(row.get("Title")).append("; ")
     				.append(row.get("Director")).append("; ")
     				.append(row.get("Country")).append("\n");
     	}
-		System.out.println(builder.toString());
+		System.out.println("Writing out a long string.");
+		System.out.println(longBuilder.toString());
 
+    	// Put the data into a list of strings.
+    	// O(nbrRows)
+		List<String> rowList = Lists.newArrayList();
+       	for(Cell<String, String, String> cell : filteredList)   {
+    		Map<String, String> row = table.row(cell.getRowKey());
+        	StringBuilder builder = new StringBuilder();
+    		builder.append(row.get("Title")).append("; ")
+    				.append(row.get("Director")).append("; ")
+    				.append(row.get("Country")).append("\n");
+    		rowList.add(builder.toString());
+    	}
+		System.out.println("Writing out each row as a string.");
+		System.out.println(rowList.toString());
+
+    	// Put the data into a List of Map<String, String> where key is column name.
+    	// O(nbrRows)
+    	List<Map<String, String>> rowMapList = Lists.newArrayList();
+    	for(Cell<String, String, String> cell : filteredList)   {
+    		Map<String, String> row = table.row(cell.getRowKey());
+    		rowMapList.add(row);
+    	}
+		System.out.println("Writing out the list of maps.");
+		System.out.println(rowMapList.toString());
     	
+    	// Unit test assertions.
     	List<Map<String, String>> expectedList = Lists.newArrayList();
     	Map<String, String> element = Maps.newHashMap(ImmutableMap.of("Title", "Seven Samari", "Director", "Akira Kurosawa", 
     			"Country", "Japan"));
@@ -104,7 +110,7 @@ public class HashBasedTableTest {
     			"Country", "Sweden"));
     	expectedList.add(element);
     	
-    	assertEquals(expectedList, sortedRowsList);
+    	assertEquals(expectedList, rowMapList);
 	}
 
 //    @Test

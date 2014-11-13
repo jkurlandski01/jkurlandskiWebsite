@@ -230,6 +230,11 @@ hr {
 		margin-bottom: 0em;
 		text-transform: uppercase;
 	}
+	
+	.title .noTextTransform
+	{
+		text-transform: capitalize;
+	}
 
 	.title h2
 	{

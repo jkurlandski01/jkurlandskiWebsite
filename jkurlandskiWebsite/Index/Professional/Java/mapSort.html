@@ -39,14 +39,28 @@
 	<div id="page" class="container">
 		<div id="content">
 			<div class="title">
-				<h2>Sorting: map keys, Arrays.sort(), Collections.sort()</h2>
-				<h2>and TreeMap</h2>
+                <div class="noTextTransform">
+				    <h2>Sorting: map keys, Arrays.sort(), Collections.sort()</h2>
+				    <h2>and TreeMap</h2>
+				</div>
 			</div>
-			<p>This is not a tough Java problem, but sometimes I forget exactly how to use the sorting techniques outlined on this page. I put them here to serve as a quick reference for myself or others.</p>
+			<p>This is not a complicated Java code on this page, but sometimes I forget exactly how to use the sorting techniques outlined here. I wrote this page to serve as a quick reference for myself or others.</p>
+			<p>There are a couple of ways to sort on the keys of a map. You could: (1) use Java's TreeMap, or (2) get the key set and sort that. If your requirements are as simple as this, this page will help you out. If your requirements are more complicated, you might want to explore Guava's Table interface and its various implementations. I have a few pages dedicated to making use of Guave to implement a table data structure that can be sorted on any of its various columns. See the links at right.</p>
+			
+			<h3>Using TreeMap</h3>
+			<p>The listing below shows you how to use a TreeMap, which is a specialized Java map that returns the keys in sorted order.</p>
 			<p class="precaption">Listing 1: Using TreeMap to sort the index of an in-memory table</p>
             <pre class="withCaption">
-hi!
-			</pre>
+TreeMap&lt;String, Double&gt; map1 = new TreeMap&lt;String, Double&gt;();
+map1.put(&quot;one&quot;, new Double(1.0));
+map1.put(&quot;two&quot;, new Double(2.0));
+map1.put(&quot;three&quot;, new Double(3.0));
+        
+// Convert to list for convenience.
+List&lt;String&gt; keyList = Lists.newArrayList(map1.keySet());
+            </pre>
+            <p>Here I initialize the map in the traditional Java 1.6 way, but you if you have Guava you can do it more simply with <code>Maps.newTreeMap()</code>. Also, you can work with the map if you want, but sometimes you want those sorted rows as a List of strings. </p>
+            <p>JERRY: do it without Lists.newArraryList()</p>
 
 		</div>
 		<div id="sidebar">
