@@ -2,8 +2,6 @@ package deletable;
 
 import static org.junit.Assert.*;
 
-import guavatable.MovieTable.Column;
-
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -21,7 +19,8 @@ public class SortHashKeysTest {
 
 	@Test
 	public void testTreeMap() {
-		TreeMap<String, Double> map1 = Maps.newTreeMap();
+		//TreeMap<String, Double> map1 = Maps.newTreeMap();
+		TreeMap<String, Double> map1 = new TreeMap<String, Double>();
 		map1.put("one", new Double(1.0));
 		map1.put("two", new Double(2.0));
 		map1.put("three", new Double(3.0));
