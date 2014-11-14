@@ -87,8 +87,7 @@ List<String> keyList = Lists.newArrayList(map1.keySet());
 			</pre>
 
 			<p>If you don't need a list of strings, simply iterate through the keys returned by keySet().</p>
-			<p>A caution about runtime. Don't be cavalier in your use of TreeMap. Its various operations--get, put, containsKey and remove--are O(log n), which is very good in the sorting sphere but not so good for hashmaps in general. In other words, if you don't need to sort, use the HashMap implementation, whose get and put operations are O(1).</p>
-			<p>Notice that it took us four lines to initialize and load the map. Wouldn't it be nice if we could do it more succinctly? As far as I've been able to figure out, you can't with a TreeMap. But with other data structures the Guava libraries offer initializers that let you instantiate and initialize in a single line of code--see the next example below.</p>
+
 			<p class="precaption">Listing 2: Using Arrays.sort() or Collections.sort() to sort the index of an in-memory table</p>
             <pre class="withCaption">
 Map&lt;String, Double&gt; map2 = Maps.newHashMap(ImmutableMap.of(&quot;one&quot;, new Double(1), &quot;two&quot;, 
