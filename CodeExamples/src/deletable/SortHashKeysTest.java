@@ -2,6 +2,7 @@ package deletable;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -26,7 +27,8 @@ public class SortHashKeysTest {
 		map1.put("three", new Double(3.0));
 		
 		// Convert to list for convenience.
-		List<String> keyList = Lists.newArrayList(map1.keySet());
+		//List<String> keyList = Lists.newArrayList(map1.keySet());
+		List<String> keyList = new ArrayList<String>(map1.keySet());
 		
 		Double actual = map1.get(keyList.get(0));
 		assertEquals(1.0, actual, 0.0);
@@ -38,28 +40,56 @@ public class SortHashKeysTest {
 	}
 
 	@Test
-	public void testKeysetToArrayAndList() {
-		Map<String, Double> map1 = Maps.newTreeMap();
-		map1.put("one", new Double(1.0));
-		map1.put("two", new Double(2.0));
-		map1.put("three", new Double(3.0));
-		
-    	Map<String, Double> map2 = Maps.newHashMap(ImmutableMap.of("one", new Double(1), "two", 
-    			new Double(2), "three", new Double(3)));
+	public void testArraysSort() {
+    	Map<String, Double> map = Maps.newHashMap(ImmutableMap.of("one", new Double(1), "two", 
+    			new Double(2), "three", new Double(3), "four", new Double(4)));
     	
-    	Set<String> keys = map2.keySet();
+    	Set<String> keys = map.keySet();
 		String[] keysArray = keys.toArray((new String[keys.size()]));
 		Arrays.sort(keysArray);
-    	List<String> keysList = Arrays.asList(keysArray);
-		Collections.sort(keysList);
 
-		Double actual = map2.get(keysList.get(0));
-		assertEquals(1.0, actual, 0.0);
-		actual = map2.get(keysList.get(1));
-		assertEquals(3.0, actual, 0.0);
-		actual = map2.get(keysList.get(2));
-		assertEquals(2.0, actual, 0.0);
-		
+		System.out.println("Printing the sorted keys array.");
+		System.out.println(keysArray.toString());
+		System.out.println("Printing the sorted keys array after converting it to a list.");
+		List<String> keysList = Arrays.asList(keysArray);
+		System.out.println(keysList);
+		System.out.println("Printing the original map's keys.");
+		System.out.println(map.keySet());
+
+		// Test the sorted keys.
+		String actual = keysArray[0];
+		assertEquals("four", actual);
+		actual = keysArray[1];
+		assertEquals("one", actual);
+		actual = keysArray[2];
+		assertEquals("three", actual);
+		actual = keysArray[3];
+		assertEquals("two", actual);
 	}
 
+
+	@Test
+	public void testCollectionsSort() {
+    	Map<String, Double> map = Maps.newHashMap(ImmutableMap.of("one", new Double(1), "two", 
+    			new Double(2), "three", new Double(3), "four", new Double(3)));
+    	
+    	Set<String> keys = map.keySet();
+    	List<String> keyList = Lists.newArrayList(keys);
+		Collections.sort(keyList);
+
+		System.out.println("Printing the sorted key list.");
+		System.out.println(keyList.toString());
+		System.out.println("Printing the original map's keys.");
+		System.out.println(map.keySet());
+
+		// Test the sorted keys.
+		String actual = keyList.get(0);
+		assertEquals("four", actual);
+		actual = keyList.get(1);
+		assertEquals("one", actual);
+		actual = keyList.get(2);
+		assertEquals("three", actual);
+		actual = keyList.get(3);
+		assertEquals("two", actual);
+	}
 }
