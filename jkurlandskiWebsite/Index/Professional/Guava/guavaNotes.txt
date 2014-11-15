@@ -22,6 +22,23 @@ To do:
 	- Map<Column, String> element = Maps.newHashMap(ImmutableMap.of(Column.TITLE, "Seven Samari", Column.DIRECTOR, "Akira Kurosawa", 
     			Column.COUNTRY, "Japan"));
     - List<String> retList = Lists.newArrayList();
-    - Useful espectially in method call expecting a list, and you just have one element for the list.
+    - Useful especially in method call expecting a list, and you just have one element for the list.
 - Incorporate other column data types; actually, make this a separate project
 - Get runtime performance of sorted table: I suspect it's O(n)
+
+—————
+http://stackoverflow.com/questions/3770289/converting-array-of-primitives-to-array-of-containers-in-java
+But then I'd say that Arrays of wrapped primitives are not very useful, so you might want to have a look at Guava instead, which provides Lists of all numeric types, backed by primitive arrays:
+
+List<Integer> intList = Ints.asList(1,2,3,4,5);
+List<Long> longList   = Longs.asList(1L,2L,3L,4L,5L);
+// etc.
+The nice think about these array-backed collections is that
+
+they are live views (i.e. updates to the array change the list and vice-versa)
+the wrapper objects are only created when needed (e.g. when iterating the List)
+See:
+
+Lists.asList(int ...)
+Longs.asList(long ...)
+Guava Explained / Primitives
