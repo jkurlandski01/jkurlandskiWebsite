@@ -48,7 +48,7 @@ svn commit -m "...message here..."
 
 
 Rename a file
-Renaming through SVN is better than doing it through the operating system, because SVN will automatically do the Add/Delete, and maintain a history of the file.
+Renaming through SVN is better than doing it through the operating system, because SVN will automatically do the Add/Delete as well as maintain the history of the file. (That is, it will copy the history of the old file to the new file’s history.)
 svn move oldName newName
 
 History/Diffs
