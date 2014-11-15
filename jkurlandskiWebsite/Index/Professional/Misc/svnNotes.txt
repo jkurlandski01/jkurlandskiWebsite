@@ -47,7 +47,9 @@ Commit with a message
 svn commit -m "...message here..."
 
 
-git
+Rename a file
+Renaming through SVN is better than doing it through the operating system, because SVN will automatically do the Add/Delete, and maintain a history of the file.
+svn move oldName newName
 
-Mac
-
+History/Diffs
+http://svnbook.red-bean.com/en/1.6/svn.tour.history.html
