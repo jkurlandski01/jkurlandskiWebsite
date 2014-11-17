@@ -1,0 +1,30 @@
+Explain how to get Aptana plug-in.
+
+Aptana has a handy word-wrap option if you don't like scrolling to the right to read an entire line.
+- Preferences > Aptana Studio > Editors
+	- Check "Enable word wrap"
+- Open the file in the Aptaba editor by right-clicking on it in the Package Explorer and going to Open with > and selecting the option having the < > symbols. (Need screenshot)
+
+What the normal HTML editor has, which Aptana lacks, is the convenient Source > Toggle Comment menu option.
+
+
+
+Using the Remote view
+
+View > Other > Studio > Remote
+
+Select
+	⁃	target_jkurlandski.com
+
+Whatever you do, make sure your FTP inserts into the jkurlandski.com directory, not above it.
+	⁃	See “Website Notes” document.
+
+Right-click > Transfer Files
+
+Blue arrows (Synchronize)
+
+
+
+Set up
+
+http://stackoverflow.com/questions/6201939/how-connect-to-remote-host-from-aptana-studio-3
