@@ -1,6 +1,6 @@
 SVN
 svn checkout <URL>
-svn status --show-updates
+svn status --show-updates; svn status -u
 - What repository updates aren't local?
 - I don’t think this is correct.
 
@@ -25,6 +25,8 @@ SVN Cheat Sheet
 Check Status
 
 svn status
+
+svn diff <filepath>
 
 
 Add new files recursively
@@ -53,3 +55,7 @@ svn move oldName newName
 
 History/Diffs
 http://svnbook.red-bean.com/en/1.6/svn.tour.history.html
+
+
+Using with FileMerge
+http://www.defraine.net/~brunod/fmdiff/

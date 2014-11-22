@@ -106,9 +106,10 @@
 			<p>Here's a paragraph that is paired with what they call a floating table. The table is the same--only the styling is different. I'm adding another sentence here to make the paragraph a bit longer. And another here. And one more sentence for good measure.</p>
 			<br>
 			<h3>The code</h3>
-			<p>Here are the CSS definitions for the floating table as well as the figure caption that you see above.</p>
+			<p>Here are the CSS definitions for the floating table above as well as the caption that you see beneath it.</p>
 			<p class="precaption">Listing 1: CSS definition for floating table and its caption</p>
-            <pre class="withCaption">
+
+<pre class="preCodeWithCaption">
 floatedtable {
 	float: right;
 	padding: 10px;
@@ -119,11 +120,12 @@ figcaption p {
 	font-size: 10pt;
 	font-family: 'FontAwesome';
 }
+</pre>
 
-			</pre>
 			<p>Here's how you use these definitions in the html. The only tricky thing is that in the html the table comes <em>before</em> the text that you want to pair it with. What is <em>really</em> floating, then, is the text--not the table--in the sense that the text "floats" upward until it's level with the table.</p>
 			<p class="precaption">Listing 2: Using the floating table styles in HTML</p>
-            <pre class="withCaption">
+			
+<pre class="preCodeWithCaption">
 &lt;div class=&quot;floatedtable&quot;&gt;
 	&lt;table border=&quot;1&quot;&gt;
 		&lt;tr&gt;
@@ -155,10 +157,11 @@ figcaption p {
 table is the same--only the styling is different. I&#x27;m adding another sentence here 
 to make the paragraph a bit longer. And another here. And one more sentence for 
 good measure.&lt;/p&gt;
-			</pre>
+</pre>
+
 			<p>If your table has too many columns, or the contents of the columns are too long, you'll want to use a traditional table. An example is the very first table at the top of this page. The HTML for that looks like this.</p>
 			<p class="precaption">Listing 3: HTML for a traditional table</p>
-            <pre class="withCaption">
+<pre class="preCodeWithCaption">
 &lt;div id=&quot;table&quot;&gt;
 	&lt;table border=&quot;1&quot;&gt;
 		&lt;tr&gt;
@@ -186,7 +189,7 @@ good measure.&lt;/p&gt;
 &lt;div class=&quot;figcaption&quot;&gt;
 	&lt;p&gt;This table is styled normally.&lt;/p&gt;
 &lt;/div&gt;
-			</pre>
+</pre>
 			
 			<h3>But what if you DON't want to float?</h3>
 			<p>If you don't want text alongside your table, simply don't float the table--use the normal table html given above. But suppose you have two small tables, or two thumbnail images, and you want them to appear side-by-side? In this case you would float them both. The problem is that, if you float the two tables or images, then any text that follows them will be placed next to them.</p>
@@ -242,21 +245,26 @@ good measure.&lt;/p&gt;
 				<p>To get around this, you need to <em>clear</em> the floating style. A simple way to do this is to use a CSS style for the paragraph which you don't want to float.</p>
 			</div>
 			<p>Here's the very simple CSS definition:</p>
-			<p class="precaption">Listing 4: CSS for a non=floating paragraph</p>
-            <pre class="withCaption">
+			<p class="precaption">Listing 4: CSS for a non-floating paragraph</p>
+
+<pre class="preCodeWithCaption">
 .nonFloatingPar	p	{
 	clear: both;
 }
-			</pre>
+</pre>
+
 			<p>And here's the HTML that makes use of the definition:</p>
-			<p class="precaption">Listing 5: Using the non=floating paragraph style in HTML</p>
-            <pre class="withCaption">
+			<p class="precaption">Listing 5: Using the non-floating paragraph style in HTML</p>
+
+<pre class="preCodeWithCaption">
 &lt;div class=&quot;nonFloatingPar&quot;&gt;
 	&lt;p&gtHere's some text I DON'T want to appear alongside the tables.&lt;/p&gt;
 &lt;/div&gt;
-			</pre>
+</pre>
+
 			<h3>Displaying CSS and HTML code on a webpage</h3>
-			<p>By the way, it's tricky getting css and html to appear on a web page--the browser tries to render it the same way it renders the rest of your page. Css can be enclosed in &lt;code&gt; or &lt;pre&gt; tags. You're supposed to be able to do the same with html, but in my experience you need the special tags AND the html code itself has to be converted: the "&lt;" symbol must be replaced with "&amp;lt;" (think "less than"); the "&gt;" symbol with "&amp;gt;" (think "greater than"); and "&amp;" with "&amp;amp;". The conversion is unpleasant business. Eclipse offers a tool that will do this for you--see a separate page in this section of <strong>Close to the Machine</strong>.</p>
+			<p>JERRY: Need link to my page. Probably go into too much detail here.</p>
+			<p>By the way, it's tricky getting CSS and HTML to appear on a web page--the browser tries to render it the same way it renders the rest of your page. Css can be enclosed in &lt;code&gt; or &lt;pre&gt; tags. You're supposed to be able to do the same with html, but in my experience you need the special tags AND the html code itself has to be converted: the "&lt;" symbol must be replaced with "&amp;lt;" (think "less than"); the "&gt;" symbol with "&amp;gt;" (think "greater than"); and "&amp;" with "&amp;amp;". The conversion is unpleasant business. Eclipse offers a tool that will do this for you--see a separate page in this section of <strong>Close to the Machine</strong>.</p>
 		</div>
 		<div id="sidebar">
 			<div class="internalLinkBox">
