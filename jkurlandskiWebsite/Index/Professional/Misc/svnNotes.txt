@@ -21,6 +21,10 @@ svn cheat sheet
 
 SVN Cheat Sheet
 
+svn remove <filename>
+- Removes from your file system.
+- Don’t forget you have to commit the remove, as with add.
+
 
 Check Status
 
