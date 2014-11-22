@@ -4,7 +4,28 @@ Odd characters in html and ascii
 < = &lt;
 > =  &gt;
 
-————
+
+----------------------
+
+
+
+            <p>JERRY: There should be more space above the heading than below. Try adding this to .css</p>
+            <pre>
+#content p
+{
+    margin: 0px 0px 10px 0px;
+}            </pre>
+            <p>JERRY: look up entities and see how to use it; update pre and code page accordingly; I think the mention of this on each page refers the reader to the other page</p>
+            
+            
+            maybe
+            
+            
+            #content h3
+{
+	padding: 3px 0px 3px 0px;
+	clear: both;
+}
 
 New page: Debugging with w3schools.com
 
