@@ -1,0 +1,24 @@
+Working with mysql from the command line
+
+Suppose you repeatedly have to run a slightly different version of the same query. For example, suppose you have to run the following query multiple times, but with a different response_pool_id each time.
+
+SELECT * FROM response_pool_entry LEFT JOIN response_pool_entry_flavor ON response_pool_entry.response_pool_entry_id = response_pool_entry_flavor.response_pool_entry_id where response_pool_entry.response_pool_id = 14 UNION SELECT * FROM response_pool_entry RIGHT JOIN response_pool_entry_flavor ON response_pool_entry.response_pool_entry_id = response_pool_entry_flavor.response_pool_entry_id where response_pool_entry.response_pool_id = 14 order by response_template;
+
+Its a pain to backspace, or even ...
+
+If you're familiar with vi this might be easier for you.
+
+Use the Up arrow to scroll up to the query you want to edit.
+
+Append \e to the query. Hit Enter. This will open the query in vi.
+
+Use the :s command to do a global replace on the query. For example, to replace 14 with 16, type the following:
+
+:s/14/16/g
+
+Hit ZZ to save and exit.
+
+You'll be see the following as your prompt:
+    ->
+Type in semi-colon and hit Enter.
+
