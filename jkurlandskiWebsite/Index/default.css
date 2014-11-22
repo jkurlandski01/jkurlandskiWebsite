@@ -6,7 +6,6 @@ body {
 	margin: 0px;
 	padding: 0px;
 	background: #FFFFFF url(images/bg01.png) repeat;
-/* 	font-family: 'FontAwesome'; */
 	font-family: 'Source Sans Pro', sans-serif;
 	font-size: 12pt;
 	font-weight: 300;
@@ -84,34 +83,79 @@ figcaption p {
 	font-family: 'FontAwesome';
 }
 
-/* .floatedthumbnail { */
-/* 	float: left; */
-/* 	padding: 10px; */
+.indentedQuote { 
+	margin-left: 40px; 
+	line-height: 1
+}
+
+.indentedCitation { 
+	margin-left: 40px; 
+	margin-bottom: 20px;
+	line-height: 1
+	clear: both;
+}
+
+.precaption	{
+	line-height: 1;
+	font-size: 10pt;
+	font-family: 'FontAwesome';
+	font-weight: 600;
+	margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+
+/* pre */
+/* { */
+/*     font-family: "Courier New" Courier monospace; */
+/* 	font-size: 0.80em; */
+/*     background: #E8E8E8; */
+/*     overflow: auto; */
+/* //    padding-top: 10px; */
+/*     padding-left: 5px; */
+/*     // a long commented out line that displays the scrolling feature if it is ever needed one two three four five six seven eight nine ten */
+/* 	// margin-top: 20px; */
+/* 	// padding: none; */
+/* 	// margin: none; */
+/*     // color: #055; */
 /* } */
-/* .thumbfigcaption p {  */
-/* 	# line-height: 1; */
-/* 	line-height: 5px; */
-/* 	font-size: 10pt; */
-/* 	font-family: 'FontAwesome'; */
+
+	pre.preCode
+	{
+	    font-family: "Courier New" Courier monospace;
+		font-size: 0.80em;
+	    background: #E8E8E8;
+	    overflow: auto;
+	    padding: 10px;
+	 }
+	
+	pre.preCodeWithCaption
+	{
+		margin-top: 0px;
+	    font-family: "Courier New" Courier monospace;
+		font-size: 0.80em;
+	    background: #E8E8E8;
+	    overflow: auto;
+	    padding: 10px;
+	 }
+
+
+/* pre.withCaption */
+/* { */
+/*     margin-top: 0px; */
 /* } */
 
 /* Follows a series of floating images, without floating up alongside of them. */
 .nonFloatingPar	p	{
 	clear: both;
-/* 	float: none;  */
-/* 	top margin: 120px; */
-/* 	bottom margin: 120px; */
 }
 
 .floatedthumbnail	{
 	float: left;
 	padding: 20px;
-/* 	display:table; */
 }
 
 .thumbfigcaption p {
 	display:table-caption;
-/*     caption-side:bottom; */
 	line-height: 15px;
 	font-size: 10pt;
 	font-family: 'FontAwesome';
@@ -123,7 +167,7 @@ figcaption p {
 
 .floatedtable {
 	float: right;
-	# left margin: 55px;
+	// left margin: 55px;
 	padding: 10px;
 	cellpadding: 30px;
 	caption-side:bottom;
@@ -158,17 +202,14 @@ hr {
 		padding-top: 0;
 	}
 
-	/* jerry: */
 	ul.style3 li:first-child
 	{
 		border-top: 0;
 		padding-top: 0;
 	}
 
-	/* jerry: */
 	ul.style3 li
 	{
-/* 		border-top: solid 1px #E5E5E5; */
 		padding: 0.80em 0;
 	}
 	
@@ -288,7 +329,6 @@ hr {
 	#header 
 	{
 		position: relative;
-/* jerry		overflow: hidden; */
 		text-align: left;
 		
 	}
@@ -298,7 +338,6 @@ hr {
     	width:55%;
 		position:absolute; 
     	TOP:15px; 
-/*     	LEFT:550px; */
     	RIGHT:3px;
 }
 
@@ -307,7 +346,6 @@ hr {
     	width:55%;
 		position:absolute; 
 		TOP:72px; 
-/*     	LEFT:550px; */
     	RIGHT:3px;
 }
 
@@ -317,12 +355,9 @@ hr {
 
 	#logo 
 	{
-/* 	jerry	width: 500px; */
 		width: 900px;
-height: 100px;
-/* jerry		margin: 0 auto; */
+		height: 100px;
 		margin: 0 auto auto 0;
-/* jerry		text-transform: uppercase; */
 	}
 	
 	#logo h1
@@ -335,7 +370,6 @@ height: 100px;
 	{
 		letter-spacing: 0.10em;
 		color: #292A28;
-		/* jerry: */
 		line-height: 100%;
 		font-size: 1em;
 	}
@@ -368,13 +402,10 @@ height: 100px;
 
 #menu {
 	overflow: hidden;
-/* 	jerry margin-bottom: 2em; */
 	margin-bottom: 1em;
 	background: #25292B;
-/* 	background: #E8E8E8 url(images/bg01.png) */
 	box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
 	height: 60px;
-/* jerry 	height: 100px; */
 }
 
 #menu ul {
@@ -393,7 +424,6 @@ height: 100px;
 	display: block;
 	letter-spacing: 1px;
 	line-height: 70px;
-/* jerry	line-height: 100px; */
 	padding: 0 40px; 
 	text-decoration: none;
 	text-align: center;
@@ -410,11 +440,6 @@ height: 100px;
 
 #menu .current_page_item a {
 	background: #A00000;
-/* 	background: #CC9900; */
-/* 	background: #FF9933; */
-/* 	background: #CC9966; */
-/* 	background: #FFC31F; */
-/* background: #E8E8E8 url(images/bg01.png) */
 }
 
 /** PAGE */
@@ -431,7 +456,6 @@ height: 100px;
 #content
 {
 	float: left;
-/* 	jerry float: right; */
 	width: 790px;
 }
 
@@ -441,71 +465,6 @@ height: 100px;
 	clear: both;
 }
 
-/* #content table */
-/* { */
-/* 	padding: 0px 0px 0px 0px; */
-/* 	table-layout:fixed; */
-/* 	width:700px; */
-/* 	//width:50%; */
-/* 	overflow:hidden; */
-/* 	//border:1px solid #f00; */
-/* 	word-wrap:break-word; */
-/* } */
-/* #content table, th, td */
-/* { */
-/* 	border: 1px solid black; */
-/*   	//border: none; */
-/*   	padding: 0; */
-/* } */
-/* #content td */
-/* { */
-/* 	//border: 1px solid black; */
-/*   	border: none; */
-/*   	padding: 0; */
-/*   	margin-bottom: 0; */
-/* } */
-
-
-.indentedQuote { 
-	margin-left: 40px; 
-	line-height: 1
-}
-
-.indentedCitation { 
-	margin-left: 40px; 
-	margin-bottom: 20px;
-	line-height: 1
-	clear: both;
-}
-
-.precaption	{
-	line-height: 1;
-	font-size: 10pt;
-	font-family: 'FontAwesome';
-	font-weight: 600;
-	margin-bottom: 0px;
-    padding-bottom: 0px;
-}
-
-pre
-{
-    font-family: "Courier New" Courier monospace;
-	font-size: 0.80em;
-    background: #E8E8E8;
-    overflow: auto;
-    padding-top: 10px;
-    padding-left: 5px;
-    // a long commented out line that displays the scrolling feature if it is ever needed one two three four five six seven eight nine ten
-	// margin-top: 20px;
-	// padding: none;
-	// margin: none;
-    // color: #055;
-}
-
-pre.withCaption
-{
-    margin-top: 0px;
-}
 
 
 /*********************************************************************************/
