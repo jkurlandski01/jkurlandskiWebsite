@@ -73,36 +73,10 @@
 			</div>
 			<p>To make things more concrete, suppose we have an in-memory Movie table like the one at right. Let's say for the sake of argument that the title column is unique, so it can be used as an index into the entire row of values. What I need to do in code is implement this table so that the rows returned can optionally be sorted by title, director or country of origin. Right now they are not sorted at all.</p>
 			<h3>Simply sorting on the index</h3>
-			<p>JERRY: consider putting this section into a separate page; redo the listing numbers</p>
-			<p>It's easy enough to implement the table itself, and to sort your results by the column being used as an index. Simply use a Map&lt;String, List&lt;String&gt;&gt;, where the key is title and the List&lt;String&gt; consists of the two remaining columns for each row, director and country. To sort by title you could: (1) use Java's TreeMap, or (2) get the key set and sort that. If your requirements are as simple as this, here is all you need to do.</p>
-			<p class="precaption">Listing 1: Using TreeMap to sort the index of an in-memory table</p>
-            <pre class="withCaption">
-TreeMap<String, Double> map1 = Maps.newTreeMap();
-map1.put("one", new Double(1.0));
-map1.put("two", new Double(2.0));
-map1.put("three", new Double(3.0));
-		
-// Convert to list for convenience.
-List<String> keyList = Lists.newArrayList(map1.keySet());
-			</pre>
+			<p>JERRY: redo the listing numbers below after removing snippets; use preCodeWithOptions</p>
+			<p>In just about any programming language, it's easy to implement a table-like structure with a map. For the table given above, you would simply use a Map&lt;String, List&lt;String&gt;&gt;, where the key is title and the List&lt;String&gt; consists of the two remaining columns for each row, director and country. And it's not much harder to allow some sorting by column values--if all you need to sort on is the column represented by the key of the map. To sort by title you could: (1) use Java's TreeMap, or (2) get the key set and sort that. See the link to the right for details.</p>
 
-			<p>If you don't need a list of strings, simply iterate through the keys returned by keySet().</p>
-
-			<p class="precaption">Listing 2: Using Arrays.sort() or Collections.sort() to sort the index of an in-memory table</p>
-            <pre class="withCaption">
-Map&lt;String, Double&gt; map2 = Maps.newHashMap(ImmutableMap.of(&quot;one&quot;, new Double(1), &quot;two&quot;, 
-    		new Double(2), &quot;three&quot;, new Double(3)));
-Set&lt;String&gt; keys = map2.keySet();
-String[] keysArray = keys.toArray((new String[keys.size()]));
- 
-// Don't use both sorts. Use either Arrays.sort() or Collections.sort().
-Arrays.sort(keysArray);
-List&lt;String&gt; keysList = Arrays.asList(keysArray);
-Collections.sort(keysList);
-			</pre>
-			<p>The second example above actually gives you two choices: if you're happy working with a string array, call Arrays.sort() on keysArray; otherwise, convert it to a List of strings and call Collections.sort().</p>
-			<p><strong>When your key is a custom class.</strong> If your key is a custom value class instead of String, Double, Integer and so on, don't forget to override the necessary methods for safe sorting and the insertion of your class objects into containers. For example, instead of sorting on movie title, maybe you have a Movie class that wraps the movie data into a single object. There are three methods you'll need to override: in the Object class, you'll want to override equals() and hashCode(); and you'll want to declare your class as implementing Comparable and override compareTo(). Chances are you should consider overriding Object.toString() as well. All of this is covered beautifully in Chapter 3 of Joshua Bloch's <em>Effective Java</em>.</p>
-			<p>Maybe all you need to do is sort on the index of your in-memory table. In that case, you have my permission to shut down your computer and call it a day. But if your requirements are a little more demanding--that is, if you need to be able to sort on the values in any column--then read on.</p>
+			<p>Maybe all you need to do is sort on the key of your in-memory table. But if your requirements are a little more demanding--that is, if you need to be able to sort on the values in any column--then read on.</p>
 
 			<h3>Introducing Guava's HashBasedTable</h3>
 			<p>In the Guava libraries, HashBasedTable implements the Table interface. There are other implementations worth exploring, but the HashBasedTable implementation helps satisfy the sorting requirement outlined at the top of this page, so that is what we focus on here.</p>
