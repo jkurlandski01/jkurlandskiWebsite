@@ -1,0 +1,217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Close to the Machine</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="../../default.css" rel="stylesheet" type="text/css" media="all" />
+<link href="../../fonts.css" rel="stylesheet" type="text/css" media="all" />
+<!--[if IE 6]>
+<link href="default_ie6.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+</head>
+<body>
+<div id="wrapper">
+	<div id="header-wrapper">
+		<div id="menu" class="container">
+			<ul>
+				<li><a href="../index.html">Home</a></li>
+				<li><a href="../Guava/index.html">Guava</a></li>
+				<li><a href="../Java/index.html">Java</a></li>
+				<li><a href="../NLP_AI/index.html">NLP / AI</a></li>
+				<li class="current_page_item"><a href="../CSS_HTML/index.html">Int. CSS / HTML</a></li>
+				<li><a href="../WWW/index.html">WWW</a></li>
+				<li><a href="../Misc/index.html">Miscellaneous</a></li>
+			</ul>
+		</div>
+		<!-- end #menu -->
+		<div id="header" class="container">
+			<div id="logo">
+				<h1>Close to the</h1>
+				<h1>Machine</h1>
+				<br>
+				<p>Jerry Kurlandski</p>
+			</div>
+            <div id="header-image1"> <a href="#" class="image"><img src="../../images/bookshelfPanorama.jpg" alt="" /></a> </div>
+            <div id="header-image2"> <a href="#" class="image"><img src="../../images/bookshelfPanorama.jpg" alt="" /></a> </div>
+		</div>
+	</div>
+	<div id="page" class="container">
+		<div id="content">
+			<div class="title">
+				<h2>HTML Entities and Reserved Characters</h2>
+			</div>
+			<p>This page discusses <em>HTML entities</em>, which are special codes that tell browsers how to display characters that you can't ordinarily type, for example the &cent; sign. Entities are also useful for <em>reserved characters</em> such as the angle brackets and the ampersand.</p>
+			<h3>HTML reserved characters</h3>
+            <p>It's a little tricky getting HTML to appear on a web page--the browser tries to render it the same way it renders the rest of your page. For example, when you want to talk about the &lt;p&gt; tag, you can't type in the angle brackets on either side of the "p". If you used the angle brackets, browsers would try to interpret them literally.</p>
+            <p> To get around this, you have to replace reserved characters like the &lt; and &gt; symbols, as well as the ampersand character, with what are called <em>HTML character entities</em>. In other words:</p>
+            <ul class="style3">
+                <li>the "&lt;" symbol must be replaced with "&amp;lt;" (think "less than");</li>
+                <li>the "&gt;" symbol must be replaced with "&amp;gt;" (think "greater than"); </li>
+                <li>the "&amp;" symbol (the ampersand) must be replaced with "&amp;amp;".</li>
+            </ul>
+            <p>To make this perfectly clear, in order to display this on my screen--&lt;p&gt;--I must type in this: &amp;lt;p&amp;gt; And in order to display this on my screen--&amp;--I have to type in this: &amp;amp;</p>
+            <p>As you can imagine, this conversion is unpleasant business. Aptana, a plug-in for the Eclipse IDE, offers a command that will do this for you automatically. See my page on Aptana and its tools.</p>
+            <p>It's not just  HTML that has to be transformed in this way. Java's generic types--as in <code>List&lt;String&gt;</code>--as well as the "&amp;" symbol in C and C++--will all have to be converted in this manner. So a tool that does this for you automatically is a very useful tool indeed.</p>	
+
+            <h3>HTML entities</h3>
+            <p>The cent sign, &cent;, is just one example of a plethora of special characters that are not on the average computer keyboard, but which you might well want to put on your web page. For each entity, there are two representations, whose syntax is either <code>&entity_name;</code> or <code>&#entity_number;</code>, respectively. You see how the entities for the angle brackets and the ampersand given in the section above fall into the first pattern.</p>
+            <p>Supposedly, there is better support for the entity number patterns than for the entity name patterns. But for the special characters that I use on my own pages, I have never found that I needed the numbers in order for them to display properly in the most popular browsers.</p>
+            <p>The lists below are meant to serve as a one-stop place where I can find the HTML entities for the special characters that I use the most. Hopefully other people will find these lists equally useful.</p>
+            <p>JERRY: tables need more room at top/bottom to see some of the diacritics</p>
+            <p>http://character-code.com/french-html-codes.php</p>
+            
+                        <div id="table">
+                <table border="1">
+                    <tr>
+                    <th>Character</th>
+                    <th>Description</th>
+                    <th>Entity Name</th>
+                    </tr>
+                    <tr>
+                    <td>&ccedil;</td>
+                    <td>lowercase c-cedilla</td>
+                    <td>&amp;ccedil;</td>
+                    </tr>
+                    <tr>
+                    <td>&agrave;</td>
+                    <td>lowercase a-grave</td>
+                    <td>&amp;agrave;</td>
+                    </tr>
+                    <tr>
+                    <td>&acirc;</td>
+                    <td>lowercase a-circumflex</td>
+                    <td>&amp;acirc;</td>
+                    </tr>
+                    <tr>
+                    <td>&egrave;</td>
+                    <td>lowercase e-grave</td>
+                    <td>&amp;egrave;</td>
+                    </tr>
+                    <tr>
+                    <td>&cent;</td>
+                    <td>cent sign</td>
+                    <td>&amp;cent;</td>
+                    </tr>
+                    <tr>
+                    <td>&nbsp;</td>
+                    <td>non-breaking space</td>
+                    <td>&amp;nbsp;</td>
+                    </tr>
+                </table> 
+            </div>
+            <div class="figcaption">
+                <p><strong>HTML Entities for Common French Diacritics</strong></p>
+            </div>
+
+                        <div id="table">
+                <table border="1">
+                    <tr>
+                    <th>Character</th>
+                    <th>Description</th>
+                    <th>Entity Name</th>
+                    </tr>
+                    <tr>
+                    <td>&Ccedil;</td>
+                    <td>uppercase c-cedilla</td>
+                    <td>&amp;Ccedil;</td>
+                    </tr>
+                    <tr>
+                    <td>&Agrave;</td>
+                    <td>uppercase a-grave</td>
+                    <td>&amp;Agrave;</td>
+                    </tr>
+                    <tr>
+                    <td>&Acirc;</td>
+                    <td>uppercase a-circumflex</td>
+                    <td>&amp;Acirc;</td>
+                    </tr>
+                    <tr>
+                    <td>&pound;</td>
+                    <td>British pound</td>
+                    <td>&amp;pound;</td>
+                    </tr>
+                    <tr>
+                    <td>&cent;</td>
+                    <td>cent sign</td>
+                    <td>&amp;cent;</td>
+                    </tr>
+                    <tr>
+                    <td>&nbsp;</td>
+                    <td>non-breaking space</td>
+                    <td>&amp;nbsp;</td>
+                    </tr>
+                </table> 
+            </div>
+            <div class="figcaption">
+                <p><strong>HTML Entities for Less-common French Diacritics</strong></p>
+            </div>
+
+            <div id="table">
+                <table border="1">
+                    <tr>
+                    <th>Character</th>
+                    <th>Description</th>
+                    <th>Entity Name</th>
+                    </tr>
+                    <tr>
+                    <td>&lt;</td>
+                    <td>less than; left angle bracket</td>
+                    <td>&amp;lt;</td>
+                    </tr>
+                    <tr>
+                    <td>&gt;</td>
+                    <td>greater than; right angle bracket</td>
+                    <td>&amp;gt;</td>
+                    </tr>
+                    <tr>
+                    <td>&amp;</td>
+                    <td>ampersand</td>
+                    <td>&amp;amp;</td>
+                    </tr>
+                    <tr>
+                    <td>&pound;</td>
+                    <td>British pound</td>
+                    <td>&amp;pound;</td>
+                    </tr>
+                    <tr>
+                    <td>&cent;</td>
+                    <td>cent sign</td>
+                    <td>&amp;cent;</td>
+                    </tr>
+                    <tr>
+                    <td>&nbsp;</td>
+                    <td>non-breaking space</td>
+                    <td>&amp;nbsp;</td>
+                    </tr>
+                </table> 
+            </div>
+            <div class="figcaption">
+                <p><strong>HTML Entities for Miscellaneous Characters</strong></p>
+            </div>
+                
+                <p>A quick note: non-breaking spaces are useful when you DON'T want the browser to collapse multiple spaces. By "collapsing multiple spaces," I'm referring to the fact that, normally, browsers will turn five spaces into a single space. Use a non-breaking space character instead of the ordinary space character when you want five space to be rendered as, literally, five spaces.</p>
+                
+
+	</div>
+		<div id="sidebar">
+			<div class="internalLinkBox">
+				<div class="title">
+					<h2>Intermediate CSS / HTML Links</h2>
+				</div>
+				<ul class="style2">
+                    <li><a href="floating.html">Floating Tables and Images</a></li>
+                    <li><a href="preAndCode.html">Using  &lt;pre&gt; and &lt;code&gt; to Display Code</a></li>
+                    <li><a href="htmlEntities.html">HTML Entities and Reserved Characters</a></li>
+                    <li><a href="aptana.html">Useful tools in the Aptana Eclipse Plug-in</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="copyright" class="container">
+	<p>Copyright (c) 2013 jkurlandski.com. All rights reserved. | Original design by <a href="http://www.freecsstemplates.org/" rel="nofollow">FreeCSSTemplates.org</a>.</p>
+</div>
+</body>
+</html>
