@@ -47,18 +47,15 @@
 			<p>JERRY: perhaps add a new section at bottom "additional reading and issues"; if you use the guy with the detailed example extensively, then reference him; add to sidebar</p>
 			<p>Sometimes website developers want to share a technique that they've discovered or found useful. Sometimes they simply want to set a few lines apart from the rest of the text on a web page. The &lt;pre&gt; and &lt;code&gt; tags are useful for this purpose.</p>
 			
-			<h3>Converting, or "Escaping," special characters in HTML, Java, and other languages</h3>
-			<p>JERRY: Use the term entities, but maybe not in the title</p>
-			<p>It's a little tricky getting HTML to appear on a web page--the browser tries to render it the same way it renders the rest of your page. For example, when you want to talk about the &lt;p&gt; tag, you can't type in the angle brackets on either side of the "p". If you used the angle brackets, browsers would try to interpret them literally.</p>
-			<p> To get around this, you have to replace the &lt; and &gt; symbols on either side of the "p". And in other cases you'll also have to replace the ampersand charcter. In other words:</p>
-			<ul class="style3">
-				<li>the "&lt;" symbol must be replaced with "&amp;lt;" (think "less than");</li>
-				<li>the "&gt;" symbol must be replaced with "&amp;gt;" (think "greater than"); </li>
-				<li>the "&amp;" symbol (the ampersand) must be replaced with "&amp;amp;".</li>
-			</ul>
-			<p>To make this perfectly clear, in order to display this on my screen--&lt;p&gt;--I must type in this: &amp;lt;p&amp;gt; And in order to display this on my screen--&amp;--I have to type in this: &amp;amp;</p>
-			<p>As you can imagine, this conversion is unpleasant business. Aptana, a plug-in for the Eclipse IDE, offers a command that will do this for you automatically. See my page on Aptana and its tools.</p>
-			<p>It's not just  HTML that has to be transformed in this way. Java's types--as in List&lt;String&gt;--as well as the "&amp;" symbol in C and C++--will all have to be converted in this manner. So a tool that does this for you automatically is a very useful tool indeed.</p>
+			<h3>Converting reserved HTML characters</h3>
+			<p>JERRY: I need a separate page with the basics; just a quick run-through here and a reference to that page</p>
+			<p>When trying to display HTML and other programming code on a web page, one of the first obstacles that has to be overcome is the fact that certain characters, particularly angle brackets, are <em>reserved</em>. This means that browsers interpret these characters different from other characters, and will <strong>not</strong> display them on the web page. To get these characters to display correctly, you have to type into your HTML not the character itself, but its <em>entity equivalent</em>.</p>
+			<p>I explain this in greater detail on a separate page in this section of <strong>Close to the Machine</strong>. See the link at right. For the purposes of this page, what you need to do to display HTML on your web page is the following:</p>
+            <ul class="style3">
+                <li>replace the "&lt;" symbol with "&amp;lt;" (think "less than");</li>
+                <li>replace the "&gt;" symbol with "&amp;gt;" (think "greater than"); </li>
+                <li>replace the "&amp;" symbol (the ampersand) with "&amp;amp;".</li>
+            </ul>
 			
 		<h3>Introducing the &lt;pre&gt; and &lt;code&gt; tags</h3>
 		<p>Use the &lt;pre&gt; tag to set your code off from the regular formatting of the page. Compare the next few lines of CSS with the text of this paragraph.</p>
@@ -71,8 +68,8 @@ someTag {
 }
 </pre>
 
-		<p>Each browser has its own default version of this tag. Since &lt;pre&gt; is not defined in my stylesheet, the snippet of code above illustrates how your browser renders text by default. Most browswers will assign a monospace type to text wrapped by this tag.</p>
-		<p>The next snippet contains the same lines, but wrapped in the &lt;code&gt; tag instead.</p>
+		<p>Each browser has its own default version of this tag. Since &lt;pre&gt; is not defined in my CSS stylesheet, the snippet of code above illustrates how your browser's default setting for rendering text surrounded by the pre tag. Most browswers will assign a monospace type to text wrapped by this tag.</p>
+		<p>The next snippet contains the exactly the same text, but wrapped in the &lt;code&gt; tag instead.</p>
         
         <p class="precaption">Listing 2: Your browser's default settings for &lt;code&gt;.</p>
         <br>
@@ -85,12 +82,12 @@ someTag {
 		</p>
 		
 		<p>You see that the &lt;code&gt; tag also assigns a monospace font, but it seems less useful, if only because browsers typically ignore the contents' newlines and collapse the whitespace. If whitespace is important in your display of code (and usually it is to the reader, if not the compiler), then you need &lt;pre&gt;. The &lt;code&gt; tag can be used for inline elements, like the following: <code>public static int HUNDRED = 100; </code></p>
-		<p>Some will say that you should present blocks of code with both &lt;pre&gt; and &lt;code&gt;. But I don't see the point of the code tag; incuding it just seems like extra work to me.</p>
+		<p>Some will say that you should present blocks of code with both &lt;pre&gt; and &lt;code&gt;. But I don't see the point of the code tag for blocks of text; incuding it just seems like extra work to me.</p>
 		
 		<h3>A pretty good pre tag styling</h3>
 		<p>After some experimenting I finally found a style for &lt;pre&gt; that suits my needs. My first decision was whether to define the pre tag's styling, or to create my own class. Had I decided on the former, then all usages of the tag would have been determined by that style, making it impossible for me to use the default stylings. In other words, Listing 1 on this page would have been styled in exactly the same wasy as Listing 3. I decided I did not want that. So I created a new class, calling it "preCode," because its general behavior is like that of &lt;pre&gt;, and because its primary usage is to display code like HTML.</p>
 
-<p class="precaption">Listing 3: A worthy styling for displaying code with &lt;pre&gt;.</p>
+<p class="precaption">Listing 3: A pretty good styling for displaying code with &lt;pre&gt;.</p>
 <pre class="preCode">
 pre.preCode
 {
@@ -173,8 +170,10 @@ pre.preCodeWithCaption
 				</div>
 				<ul class="style2">
                     <li><a href="floating.html">Floating Tables and Images</a></li>
-                    <li><a href="preAndCode.html">Using  &lt;pre&gt; and &lt;code&gt; to display HTML and other code on a web page</a></li>
-                    <li><a href="aptana.html">Useful tools in the Aptana Eclipse plug-in</a></li>				</ul>
+                    <li><a href="preAndCode.html">Using  &lt;pre&gt; and &lt;code&gt; to Display Code</a></li>
+                    <li><a href="htmlEntities.html">HTML Entities and Reserved Characters</a></li>
+                    <li><a href="aptana.html">Useful tools in the Aptana Eclipse Plug-in</a></li>
+                </ul>
 			</div>
 		</div>
 	</div>
