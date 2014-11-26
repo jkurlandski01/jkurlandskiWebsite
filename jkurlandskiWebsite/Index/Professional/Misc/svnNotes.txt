@@ -18,7 +18,7 @@ svn commit . -m "Ignoring .classpath and bin."
 
 Ã svn remove <filename>
 - Removes from your file system.
-- Donâ€™t forget you have to commit the remove, as with add.
+- Don't forget you have to commit the remove, as with add.
 
 
 Check Status
@@ -45,9 +45,11 @@ for i in  $(svn status | grep \! | awk '{print $2}'); do svn delete $i; done
 svn commit -m "...message here..."
 
 
-Rename a file
+Ã Rename a file
 Renaming through SVN is better than doing it through the operating system, because SVN will automatically do the Add/Delete as well as maintain the history of the file. (That is, it will copy the history of the old file to the new fileâ€™s history.)
 svn move oldName newName
+
+
 
 History/Diffs
 http://svnbook.red-bean.com/en/1.6/svn.tour.history.html
@@ -55,3 +57,123 @@ http://svnbook.red-bean.com/en/1.6/svn.tour.history.html
 
 Using with FileMerge
 http://www.defraine.net/~brunod/fmdiff/
+
+
+
+- - - - - - - -
+
+
+~/Documents/workspace_website/jkurlandski$ svn status -u
+D               74   RemoteSystemsTempFiles/.project
+D     C         74   RemoteSystemsTempFiles
+      >   local unversioned, incoming add upon update
+Status against revision:     74
+Summary of conflicts:
+  Tree conflicts: 1
+
+~/Documents/workspace_website/jkurlandski$ svn update
+Updating '.':
+At revision 74.
+
+~/Documents/workspace_website/jkurlandski$ svn status
+D     C RemoteSystemsTempFiles
+      >   local unversioned, incoming add upon update
+D       RemoteSystemsTempFiles/.project
+Summary of conflicts:
+  Tree conflicts: 1
+
+~/Documents/workspace_website/jkurlandski$ svn status
+D     C RemoteSystemsTempFiles
+      >   local unversioned, incoming add upon update
+D       RemoteSystemsTempFiles/.project
+M       jkurlandskiWebsite/Index/Professional/Misc/svnCheatSheet.html
+M       jkurlandskiWebsite/Index/Professional/Misc/svnNotes.txt
+Summary of conflicts:
+  Tree conflicts: 1
+
+~/Documents/workspace_website/jkurlandski$ svn status
+D     C RemoteSystemsTempFiles
+      >   local unversioned, incoming add upon update
+D       RemoteSystemsTempFiles/.project
+M       jkurlandskiWebsite/Index/Professional/Misc/svnCheatSheet.html
+M       jkurlandskiWebsite/Index/Professional/Misc/svnNotes.txt
+Summary of conflicts:
+  Tree conflicts: 1
+
+~/Documents/workspace_website/jkurlandski$ ls
+CodeExamples		RemoteSystemsTempFiles	Servers			branches		jkurlandskiWebsite	tags			trunk
+
+~/Documents/workspace_website/jkurlandski$ svn commit -m "SVN notes." jkurlandskiWebsite/Index/Professional/Misc
+Sending        jkurlandskiWebsite/Index/Professional/Misc/svnCheatSheet.html
+Sending        jkurlandskiWebsite/Index/Professional/Misc/svnNotes.txt
+Transmitting file data ..
+Committed revision 75.
+
+~/Documents/workspace_website/jkurlandski$ svn status
+D     C RemoteSystemsTempFiles
+      >   local unversioned, incoming add upon update
+D       RemoteSystemsTempFiles/.project
+Summary of conflicts:
+  Tree conflicts: 1
+
+~/Documents/workspace_website/jkurlandski$ svn propedit svn:ignore .
+svn: E205007: None of the environment variables SVN_EDITOR, VISUAL or EDITOR are set, and no 'editor-cmd' run-time configuration option was found
+~/Documents/workspace_website/jkurlandski$ cd RemoteSystemsTempFiles/
+~/Documents/workspace_website/jkurlandski/RemoteSystemsTempFiles$ svn propedit svn:ignore .
+svn: E205007: None of the environment variables SVN_EDITOR, VISUAL or EDITOR are set, and no 'editor-cmd' run-time configuration option was found
+~/Documents/workspace_website/jkurlandski/RemoteSystemsTempFiles$ cd ..
+~/Documents/workspace_website/jkurlandski$ export SVN_EDITOR=vim
+~/Documents/workspace_website/jkurlandski$ svn propedit svn:ignore .
+No changes to property 'svn:ignore' on '.'
+~/Documents/workspace_website/jkurlandski$ cd RemoteSystemsTempFiles/
+~/Documents/workspace_website/jkurlandski/RemoteSystemsTempFiles$ ls
+~/Documents/workspace_website/jkurlandski/RemoteSystemsTempFiles$ cd ..
+~/Documents/workspace_website/jkurlandski$ ls
+CodeExamples		RemoteSystemsTempFiles	Servers			branches		jkurlandskiWebsite	tags			trunk
+~/Documents/workspace_website/jkurlandski$ svn status
+D     C RemoteSystemsTempFiles
+      >   local unversioned, incoming add upon update
+D       RemoteSystemsTempFiles/.project
+Summary of conflicts:
+  Tree conflicts: 1
+~/Documents/workspace_website/jkurlandski$ svn resolved .
+~/Documents/workspace_website/jkurlandski$ svn status
+D     C RemoteSystemsTempFiles
+      >   local unversioned, incoming add upon update
+D       RemoteSystemsTempFiles/.project
+Summary of conflicts:
+  Tree conflicts: 1
+~/Documents/workspace_website/jkurlandski$ svn commit "RemoteSystemsTempFiles/.project should not be in repository."
+svn: E200009: Commit failed (details follow):
+svn: E200009: '/Users/geraldkurlandski/Documents/workspace_website/jkurlandski/RemoteSystemsTempFiles/.project should not be in repository.' is not under version control
+~/Documents/workspace_website/jkurlandski$ svn commit . "RemoteSystemsTempFiles/.project should not be in repository."
+svn: E155015: Commit failed (details follow):
+svn: E155015: Aborting commit: '/Users/geraldkurlandski/Documents/workspace_website/jkurlandski/RemoteSystemsTempFiles' remains in conflict
+~/Documents/workspace_website/jkurlandski$ svn resolved
+svn: E205001: Try 'svn help' for more info
+svn: E205001: Not enough arguments provided
+~/Documents/workspace_website/jkurlandski$ ls
+CodeExamples		RemoteSystemsTempFiles	Servers			branches		jkurlandskiWebsite	tags			trunk
+~/Documents/workspace_website/jkurlandski$ svn resolved RemoteSystemsTempFiles/.project
+~/Documents/workspace_website/jkurlandski$ svn status
+D     C RemoteSystemsTempFiles
+      >   local unversioned, incoming add upon update
+D       RemoteSystemsTempFiles/.project
+Summary of conflicts:
+  Tree conflicts: 1
+~/Documents/workspace_website/jkurlandski$ svn commit . "RemoteSystemsTempFiles/.project should not be in repository."
+svn: E155015: Commit failed (details follow):
+svn: E155015: Aborting commit: '/Users/geraldkurlandski/Documents/workspace_website/jkurlandski/RemoteSystemsTempFiles' remains in conflict
+~/Documents/workspace_website/jkurlandski$ svn resolved RemoteSystemsTempFiles
+Resolved conflicted state of 'RemoteSystemsTempFiles'
+~/Documents/workspace_website/jkurlandski$ svn commit . "RemoteSystemsTempFiles/.project should not be in repository."
+svn: E200009: Commit failed (details follow):
+svn: E200009: '/Users/geraldkurlandski/Documents/workspace_website/jkurlandski/RemoteSystemsTempFiles/.project should not be in repository.' is not under version control
+~/Documents/workspace_website/jkurlandski$ svn commit RemoteSystemsTempFiles "RemoteSystemsTempFiles/.project should not be in repository."
+svn: E200009: Commit failed (details follow):
+svn: E200009: '/Users/geraldkurlandski/Documents/workspace_website/jkurlandski/RemoteSystemsTempFiles/.project should not be in repository.' is not under version control
+~/Documents/workspace_website/jkurlandski$ svn commit -m "RemoteSystemsTempFiles/.project should not be in repository."
+Deleting       RemoteSystemsTempFiles
+
+Committed revision 76.
+~/Documents/workspace_website/jkurlandski$ 
