@@ -55,15 +55,15 @@
             <h4>Aptana wraps lines.</h4>
             <p>This is perhaps the biggest Aptana pay-off, especially if you're doing a lot of your work on a laptop. The Elipse HTML editor does NOT wrap lines, so, once you start a &lt;p&gt;, it will go on forever on the same line, and you'll have to use the scroll bar to see anything on the far right-hand side. Here is what part of the first draft of the very paragraph you're reading looked like without line-wrapping.</p>
             <p class="precaption">Screenshot 1: Without wordwrap.</p>
-            <img id="fileIMG" src="./unwrappedLines.jpg" width="800" height="60"/>
+            <img id="fileIMG" src="./image/unwrappedLines.jpg" width="800" height="60"/>
             <br></br>
             <p>Now compare the above, where the line is cut off, with the below, in which you can see the entire paragraph.</p>
             <p class="precaption">Screenshot 2: With wordwrap.</p>
-            <img id="fileIMG" src="./wrappedLines.jpg" width="800" height="70"/>
+            <img id="fileIMG" src="./image/wrappedLines.jpg" width="800" height="70"/>
             <br></br>
             <p>To turn on line wrapping, go to Preferences > Aptana Studio > Editors, and check the "Enable word wrap" box. See the <strong>bottom</strong> red arrow in the screenshot below.</p>
             <p class="precaption">Screenshot 3: Aptana preferences page</p>
-            <img id="fileIMG" src="./aptanaPreferences.jpg" />
+            <img id="fileIMG" src="./image/aptanaPreferences.jpg" />
             <br></br>
             <br></br>
             <h4>Aptana automatically inserts matching &lt;/p&gt; tags.</h4>
@@ -75,32 +75,32 @@
             <p>But if you're not comfortable with using a respository like Subversion--or if your website is in an early stage and you're just not there yet--a second option is to use a tool like Aptana's. In Eclipse, this functionality is put into a view. Go to Window > Show View > Remote Systems. If the "Remote" option isn't visible, go to Window > Show View > Other > Studio > Remote.</p>
             <p>Here is what you'll need before you can set up a connection to your website: (1) an FTP address at your host provider where your files reside; your user ID for FTP at your host provider; your password.</p>
             <p>Here is how you set up a new connection. In the Remote System Details window, right click on Local and select New Connection. You will probably see several panels, but the one you're looking for is a tab, usually at the bottom, that looks like this.</p>
-            <img id="fileIMG" src="./aptanaRemoteTab1.jpg" />
+            <img id="fileIMG" src="./image/aptanaRemoteTab1.jpg" />
             <p>Click on the globe at the top right to create an FTP site. The dialog box in the screenshot below appears. Fill it in. The Site Name box can be any name for this connection to your website, for example mySiteAtDreamHost if your host is DreamHost. The Server field will be the FTP site which is your target. After filling in your user name and password, you might want to check the Save box at right if you don't want to have to type in your password every time you connect. And, finally, the RemotePath field gives you the chance to connect to some subdirectory on the FTP location. Test your configuration by clicking on the Test button. You might have to create a few connections until you've got everything set up correctly.</p>
-            <img id="fileIMG" src="./aptanaNewConnection.jpg" />
+            <img id="fileIMG" src="./image/aptanaNewConnection.jpg" />
             <p>On the Remote tab you'll now see a remote connection. Click on the arrow to open it; if you've filled everything in correctly you should be able to view everything on your target site.</p>
             <p>The Aptana Synchronize application now knows where the remote connection is. What it doesn't yet know is where in your filesystem on your computer sit the files that correspond to the files on your website.</p>
             <p>Let's set that up now. Right-click on the connection icon and select Transfer Files.</p>
             <p>You’ll see two panels, as in the screenshot below. The one on the left represents your file system; the one on the right may take several seconds to update, but eventually it will display the files on your FTP target.</p>
             <p>Chances are, the panel on the left is pointing to some generic location on your computer. See below.</p>
-            <img id="fileIMG" src="./aptanaRemoteSetupTwoPanels.jpg" width="800" height="200"/>
+            <img id="fileIMG" src="./image/aptanaRemoteSetupTwoPanels.jpg" width="800" height="200"/>
             <p>To tell the sychronization tool where in your file system it should be synching from, click on the Edit button. There are a number of options in this dialog box (see below), but we're going to keep things simple. Click on the Project radio button. This tells the set up wizard that the current Eclipse project is where you want it to look. If there are multiple directories in the workspace, you may have to use the up-and-down arrows at the right of the path to select the right one. After you've done this hit Apply and OK.</p>
-            <img id="fileIMG" src="./aptanaRemoteSetupEditScreen.jpg"/>
+            <img id="fileIMG" src="./image/aptanaRemoteSetupEditScreen.jpg"/>
             <p>I've always found Aptana's Remote Synchronization app to be a little annoying at this point. You might say "buggy," even. What is probably going to happen to you is a series of trial and error, until finally you get the thing configured right. The paragraph below describes what may or may not be your experience during the trial-and-error period. The screenshot below that describes what "configured right" looks like. Good luck.</p>
             <p>You'll find yourself back at the original configuration window. Save your configuration by clicking on the Save As button. Give it any name you want, but "Default" works, too. What may happen is a new tab will open with Default as its title. Clicking on the Edit button may show two connections with the same name, and a complaint that the configuration of one has errors. Try strategies such as the following: renaming one of the connections with a duplicate name; deleting one of the connections by clicking on the red X; refreshing the connection by clicking on the two yellow arrows pointing in opposite directions. At the end of it will hopefully be two panels which resemble the screenshot below. Note: I've also found that sometimes to see the changes you've made, you have to close the Default tab, go down to the Remote tab in the window below, right-click and select Transfer Files.</p>
-            <img id="fileIMG" src="./aptanaSetupCorrect.jpg" width="800" height="200"/>
+            <img id="fileIMG" src="./image/aptanaSetupCorrect.jpg" width="800" height="200"/>
             <p><strong>The most important thing is that the left and right panels be looking at the same "level" in their respective file systems.</strong> In the screenshot above, the two file systems--local on the left, remote on the right--are looking at the same level. Once you've managed this, you're ready to synchronize. Although, maybe not: one time I had trouble synchronizing immediately after setting up the connection. The Eclipse windows were suffering from refresh issues. But after I closed and reponend Eclipse everything was fine.</p>
             <p>JERRY: point to useful online video</p>
             <p>JERRY: Need to fill in the below.</p>
             <p>Here is how you synchronize. Let's assume that you are starting from Eclipse's Java view. Go to View  > Other > Studio > Remote. The Remote tab may now appear in a location that you've never seen it in--maybe on the left if you're used to seeing it on the bottom. They're just trying to blow your mind. Don't let them. In the Remote tab, wherever it might be, select your website connection. Right-click and go to Transfer Files. What should now appear are the two panels you see in Figure x. In between the left and right panels are a vertical series of buttons. Click on the blue one--whose tip reads "Synchronizes all the files between the two end points." </p>
             <p>A new dialog box pops up, looking like the screenshot below.</p>
-            <img id="fileIMG" src="./aptanaSynchronizeWindow.jpg"/>
+            <img id="fileIMG" src="./image/aptanaSynchronizeWindow.jpg"/>
             <p>It's very important that you check the values of the right-most column. If a file is marked as "create it" and you haven't changed it, or only modified it, since your last synchronization--then surely there is something wrong with your configuration. The local and the remote file systems are probably not "at the same level," as described above. Click on the cancel button and try setting up again. If you proceed with the synchronization, files will be put in the wrong location, and your website will probably become unusabale. (I know, I've done this.)</p>
             <p>Once you've checked that the files are correctly marked as "create it," "update it," and so on--and once you've clicked the middle "Skip" checkbox for any files which should not be transfered--you're ready. Click on the blue Synchronize button, and let Aptana do its work.</p>
             <h3>Installing Aptana</h3>
 			<p>You cannot use the Eclipse Marketplace to get the Aptana plug-in. You have to go to their website and jump through a few hoops But the features described above make it worth your while. Here, then, is how I managed to install it, after several fruitless attempts by other means. (Two things worth noting: (1) For some reason the download wouldn't work on the Mac version of Firefox--I had to use Safari. And (2), this is how I installed Aptana 3.6.0 onto the STS version of Eclipse in November of 2014--of course, anything could change at some point in the future.)</p>
 			<p>Go to http://www.aptana.com/products/studio3/download, or if that link is dead, search on "download Aptana studio eclipse". You're looking for a page that has the radio buttons and the download button like the image below. It's not immediately apparent, but the download page has two options--the Standalone Version (the default) or the Eclipse Plug-in Version. See the radio button the red arrow is pointing at. Make sure you select the plug-in version, then click the Download button.</p>
-            <img id="fileIMG" src="./aptanaFirstInstallPage.jpg" />
+            <img id="fileIMG" src="./image/aptanaFirstInstallPage.jpg" />
             <p>The above steps bring you to a new page. The instructions will tell you to copy a URL to your clipboard and install from Eclipse. I found the remainder of the install process pretty easy.</p>
             <p><strong>PyDev issue.</strong> If you have the PyDev plug-in for Eclipse, the installation process will remove it after notifying you that it is going to do so. The is because the latest (3.6) version of Aptana comes with its own version of PyDev. I have not (yet) played around with Aptana's version of PyDev.</p>
             <p><strong>Java code issue.</strong> I have two projects in my Eclipse workspace--one in Java, and one in HTML. After installing the Aptana plug-in, my Java project would no longer build. The install completely wiped out the Java Build Path in the project’s Properties. I had to check the Java 7 box and reconfigure the project with all my .jar files.</p>
