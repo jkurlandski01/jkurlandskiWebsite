@@ -61,10 +61,10 @@
             <p>Commits not only commit your modifications to the repository, but also commit the addition or removal of files to the repository; in other words, an "svn add" and "svn remove" must be followed by a commit..</p>
             
             <li><strong><code>$ svn commit -m "your message"</code></strong></li>
-            <p><em>Recursively commit your local changes to the repository.   svn commit jkurlandskiWebsite/Index/Professional/CSS_HTML -m "CSS work, including move of images."</em></p>
+            <p><em>Recursively commit your local changes to the repository. The message becomes part of the change history.</em></p>
 
-            <li><strong><code>$ svn commit &lt;filename&gt; -m "your message"</code></strong></li>
-            <p><em>JERRY: check the syntax</em></p>
+            <li><strong><code>$ svn commit -m "your message" &lt;filename&gt;</code></strong></li>
+            <p><em>Commits changes at the given location and, recursively, below that to the repository, with a message.</em></p>
 
             <h3>SVN Add</h3>
             <p>This set of commands adds a file to the repository. Note that these changes must all be followed by a commit.</p>
@@ -79,10 +79,19 @@
             <p><em>Recursively add all files to the repository, whether their directories are versioned or unversioned.</em></p>
 
             <li><strong><code>$for i in  $(svn status | grep \? | awk '{print $2}'); do svn add $i; done</code></strong></li>
-            <p><em>JERRY: How different from above? Recursively add all files to the repository, whether their directories are versioned or unversioned.</em></p>
+            <p><em>JERRY: How different from above? Unix command to recursively add all files to the repository, whether their directories are versioned or unversioned. The command works by adding all files whose status is "!".</em></p>
+
+            <h3>SVN Move</h3>
+            <p>This set of commands moves or renames a file or directory. Moving or renaming a file through SVN is better than simply doing it through your operating system, because the file's change history will be maintained. (That is, it will copy the history of the old file to the new file's history.) Note that these changes must all be followed by a commit.</p>
+            <li><strong><code>$ svn move oldName newName</strong></li>
+            <p><em>Rename a file/directory.</em></p>
+
+            <li><strong><code>$ svn move oldPath/file newPath/file</strong></li>
+            <p><em>Rename a file/directory.</em></p>
 
             <h3>SVN Remove</h3>
             <p>This set of commands removes a file from the repository. Note that these changes must all be followed by a commit.</p>
+            <p>JERRY: I think the command is delete, not remove or rm</p>
             
             <li><strong><code>$ svn rm &lt;filename&gt;</code></strong></li>
             <p><em>Remove the file/directory from both your filesystem and the repository.</em></p>
@@ -91,6 +100,9 @@
             <p><em>Remove the file/directory from the repository, but not locally. This will generally be an important file or directory, e.g. .classpath. Ordinarily you will also want to <code>ignore</code> this file as well.</em></p>
             <p>JERRY: correct line spacing in the above</p>
             
+            <li><strong><code>for i in  $(svn status | grep \! | awk '{print $2}'); do svn delete $i; done</code></strong></li>
+            <p><em>JERRY: Unix command to recursively delete all files from the repository, whether their directories are versioned or unversioned. The command works by deleting all files whose status is "?".</em></p>
+
             <h3>Less often used replies</h3>
             <p>These commands are useful, but tend not to be used as often as the ones above.</p>
             

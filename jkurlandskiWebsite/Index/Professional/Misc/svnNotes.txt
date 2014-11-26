@@ -37,13 +37,11 @@ Add new files recursively
 for i in  $(svn status | grep \? | awk '{print $2}'); do svn add $i; done
 
 
-Delete all files marked as !
-
+Ã Delete all files marked as !
 for i in  $(svn status | grep \! | awk '{print $2}'); do svn delete $i; done
 
 
-Commit with a message
-
+Ã Commit with a message
 svn commit -m "...message here..."
 
 
