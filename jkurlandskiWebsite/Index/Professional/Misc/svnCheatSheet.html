@@ -42,7 +42,7 @@
 			<div class="title">
 				<h2>SVN Cheat Sheet</h2>
 			</div>
-            <p>JERRY: Red bar at top needs to point to this page's subtopic</p>
+            <p>JERRY: Red bar at top needs to point to this page's subtopic </p>
             
             <p>I love Eclipse. I love its layout, its functionality, and the general utility it receives from its many plug-ins. But the SVN plugins for Eclipse, over the years, have let me down too many times. They're a pain when it comes to ignoring files once they've been added to the repository; they tend to lose the file history when you rename a file; and they're just buggy enough to, every once in while, cause me to lose a lot of work.</p>
             <p>So I've moved to the command line for most of my SVN work. I still like the Eclipse plug-ins for viewing diffs, for the similar task of resolving conflicts, and for going through a file's version history. This plug-in functionality is useful and very reliable. But I don't use Eclipse for the tasks like the following: committing, updating, adding and deleting files, renaming files and moving files. Also the tedious but necessary task of ignoring files and folders--that is, telling the SVN repository not to consider them--is best done at the command line.</p>
@@ -67,43 +67,53 @@
             <p><em>Commits changes at the given location and, recursively, below that to the repository, with a message.</em></p>
 
             <h3>SVN Add</h3>
-            <p>This set of commands adds a file to the repository. Note that these changes must all be followed by a commit.</p>
+            <p>This set of commands adds files and directories to the repository. They deal only with items whose status is marked by a question mark ("?"). Note that these changes must all be followed by a commit.</p>
             
             <li><strong><code>$ svn add &lt;filename&gt;</code></strong></li>
             <p><em>Add the file to the repository. If &lt;filename&gt; is a directory, all unversioned subfolders and files will also be added.</em></p>
 
             <li><strong><code>$ svn add * </code></strong></li>
-            <p><em>Recursively add all files/folders to the repository. This command skips over versioned directories, i.e. it will not add unversioned files in a versioned directory.</em></p>
+            <p><em>Recursively add all files/folders to the repository. This command skips over versioned directories, i.e. it will not add unversioned files in a versioned directory (or even a non-versioned directory in a versioned directory). Note that this command will also add files/folders in the current directory which are in your ignore list!</em></p>
 
             <li><strong><code>$ svn add * --force</code></strong></li>
-            <p><em>Recursively add all files to the repository, whether their directories are versioned or unversioned.</em></p>
+            <p><em>Recursively add all files to the repository, whether their directories are versioned or unversioned. Note that this command will also add files/folders in the current directory which are in your ignore list! (See the Unix command below if this is a problem.)</em></p>
 
-            <li><strong><code>$for i in  $(svn status | grep \? | awk '{print $2}'); do svn add $i; done</code></strong></li>
-            <p><em>JERRY: How different from above? Unix command to recursively add all files to the repository, whether their directories are versioned or unversioned. The command works by adding all files whose status is "!".</em></p>
+            <li><strong><code>$ for i in  $(svn status | grep \? | awk '{print $2}'); do svn add $i; done</code></strong></li>
+            <p><em>Unix command to recursively add all files to the repository, whether their directories are versioned or unversioned. The command works by adding all files whose status is "?", so it works in tandem with your ignored files, as these do not appear in the status command.</em></p>
 
             <h3>SVN Move</h3>
             <p>This set of commands moves or renames a file or directory. Moving or renaming a file through SVN is better than simply doing it through your operating system, because the file's change history will be maintained. (That is, it will copy the history of the old file to the new file's history.) Note that these changes must all be followed by a commit.</p>
-            <li><strong><code>$ svn move oldName newName</strong></li>
+            <li><strong><code>$ svn move &lt;oldName&gt; &lt;newName&gt;</code></strong></li>
             <p><em>Rename a file/directory.</em></p>
 
-            <li><strong><code>$ svn move oldPath/file newPath/file</strong></li>
+            <li><strong><code>$ svn move &lt;oldPath/file&gt; &lt;newPath/file&gt;</code></strong></li>
             <p><em>Rename a file/directory.</em></p>
 
-            <h3>SVN Remove</h3>
-            <p>This set of commands removes a file from the repository. Note that these changes must all be followed by a commit.</p>
-            <p>JERRY: I think the command is delete, not remove or rm</p>
+            <h3>SVN Remove/Delete</h3>
+            <p>This set of commands removes a specific file or directory from the repository. Note that these changes must all be followed by a commit.</p>
+            <p>JERRY: remove/rm/delete/del all seem to be identical; verify this, and note it</p>
             
             <li><strong><code>$ svn rm &lt;filename&gt;</code></strong></li>
             <p><em>Remove the file/directory from both your filesystem and the repository.</em></p>
 
             <li><strong><code>$ svn rm --keep-local &lt;filename&gt;</code></strong></li>
-            <p><em>Remove the file/directory from the repository, but not locally. This will generally be an important file or directory, e.g. .classpath. Ordinarily you will also want to <code>ignore</code> this file as well.</em></p>
+            <p><em>Remove the file/directory from the repository, but not locally. This will generally be an important file or directory, e.g. .classpath. Ordinarily you will also want to <code>ignore</code> this file as well--see below.</em></p>
             <p>JERRY: correct line spacing in the above</p>
             
-            <li><strong><code>for i in  $(svn status | grep \! | awk '{print $2}'); do svn delete $i; done</code></strong></li>
-            <p><em>JERRY: Unix command to recursively delete all files from the repository, whether their directories are versioned or unversioned. The command works by deleting all files whose status is "?".</em></p>
+            <li><strong><code>$ for i in  $(svn status | grep \! | awk '{print $2}'); do svn delete $i; done</code></strong></li>
+            <p><em>Unix command to recursively delete all missing files from the repository, whether their directories are versioned or unversioned. The command works by deleting all files whose status is "!". Since, unlike <code>add</code>, there is no recursive version of <code>delete</code>, this command can sometimes be very useful--for example, if you've deleted many files in several directories via your operating system.</em></p>
 
-            <h3>Less often used replies</h3>
+            <h3>SVN Ignore</h3>
+            <p>JERRY: explain; often find yourself unintentionally putting items into your repository</p>
+            <p>JERRY: need to replace file/folder with item, when appropriate</p>
+            
+            <li><strong><code>export SVN_EDITOR=vim</code></strong></li>
+            <p><em>Sets your property editor to vim; useful if the command below fails because you have no property editor. Note that vi and vim are powerful but not user friendly.</em></p>
+
+            <li><strong><code>svn propedit svn:ignore .</code></strong></li>
+            <p><em>This will bring up your text editor so you can enter a list of files or directories to ignore. Applicable only to those files and folders in the current directory.</em></p>
+
+            <h3>Less often used SVN commands</h3>
             <p>These commands are useful, but tend not to be used as often as the ones above.</p>
             
             <li><strong><code>$ svn checkout &lt;URL&gt;</code></strong></li>
@@ -113,7 +123,7 @@
             <p><em>Does a Unix-style diff of the file and the base revision.</em></p>
 
 
-            <p>JERRY: Fix sidebar</p>
+            <p>JERRY: add/delete items to sidebar</p>
 		</div>
 		<div id="sidebar">
 			<div class="internalLinkBox">
