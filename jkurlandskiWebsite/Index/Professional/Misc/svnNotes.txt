@@ -1,10 +1,9 @@
 SVN
-svn checkout <URL>
-svn status --show-updates; svn status -u
+Ã svn checkout <URL>
+Ã svn status --show-updates; svn status -u
 - What repository updates aren't local?
-- I donâ€™t think this is correct.
 
-$ svn rm --keep-local my_important_file
+Ã $ svn rm --keep-local my_important_file
 This removes the file from version control without removing it from your filesystem.
 svn commit my_important_file -m "Removing .classpath from repository."
 
@@ -17,29 +16,24 @@ svn status
  M      .
 svn commit . -m "Ignoring .classpath and bin."
 
-svn cheat sheet
-
-SVN Cheat Sheet
-
-svn remove <filename>
+Ã svn remove <filename>
 - Removes from your file system.
 - Donâ€™t forget you have to commit the remove, as with add.
 
 
 Check Status
 
-svn status
+Ã svn status
 
-svn diff <filepath>
+Ã svn diff <filepath>
 
 
 Add new files recursively
 
-svn add * --force
+Ã svn add * --force
 
 
-Add all files marked as ?
-
+Ã Add all files marked as ?
 for i in  $(svn status | grep \? | awk '{print $2}'); do svn add $i; done
 
 
