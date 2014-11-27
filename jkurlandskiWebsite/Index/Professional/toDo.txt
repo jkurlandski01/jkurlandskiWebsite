@@ -1,0 +1,14 @@
+hashBasedTable
+- not using the correct style for code snippets
+
+htmlEntities
+- not complete
+
+svnCheatSheet
+- not complete
+
+svnExamples
+- only just started
+
+compare work and home computer
+- Why <p> completion works on work computer, but not at home. (Update Aptana page.)
