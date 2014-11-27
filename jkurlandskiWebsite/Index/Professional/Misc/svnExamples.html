@@ -1,0 +1,297 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Close to the Machine</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="../../default.css" rel="stylesheet" type="text/css" media="all" />
+<link href="../../fonts.css" rel="stylesheet" type="text/css" media="all" />
+<!--[if IE 6]>
+<link href="default_ie6.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+</head>
+<body>
+<div id="wrapper">
+	<div id="header-wrapper">
+		<div id="menu" class="container">
+			<ul>
+				<li><a href="../index.html">Home</a></li>
+				<li><a href="../Guava/index.html">Guava</a></li>
+				<li><a href="../Java/index.html">Java</a></li>
+				<li><a href="../NLP_AI/index.html">NLP / AI</a></li>
+				<li class="current_page_item"><a href="../CSS_HTML/index.html">Int. CSS / HTML</a></li>
+				<li><a href="../WWW/index.html">WWW</a></li>
+				<li><a href="../Misc/index.html">Miscellaneous</a></li>
+			</ul>
+		</div>
+		<!-- end #menu -->
+		<div id="header" class="container">
+			<div id="logo">
+				<h1>Close to the</h1>
+				<h1>Machine</h1>
+				<br>
+				<p>Jerry Kurlandski</p>
+			</div>
+            <div id="header-image1"> <a href="#" class="image"><img src="../../images/bookshelfPanorama.jpg" alt="" /></a> </div>
+            <div id="header-image2"> <a href="#" class="image"><img src="../../images/bookshelfPanorama.jpg" alt="" /></a> </div>
+		</div>
+	</div>
+	<div id="page" class="container">
+		<div id="content">
+			<div class="title">
+				<h2>SVN Examples/Tasks</h2>
+			</div>
+            <p>JERRY: Red bar at top needs to point to this page's subtopic</p>
+            <p>This page shows you how to link individual SVN commands together in order to accomplish a particular <em>task</em>.</p>
+            <p>The command line can be a little intimidating at first, but I find it becomes less so when you see the commands not in isolation but as part of a series of steps with a single aim in mind. It's kind of like the way individual words don't make sense until strung together into a coherent sentence.</p>
+            
+<p class="precaption">Listing X: Moving many files to a subdirectory</p>
+<pre class="preCodeWithCaption">
+(Created the directory.)
+Jerrys-MacBook-Pro:CSS_HTML jkurlandski$ svn status
+?       image
+Jerrys-MacBook-Pro:CSS_HTML jkurlandski$ svn add image
+A         image
+Jerrys-MacBook-Pro:CSS_HTML jkurlandski$ svn move *.jpg image
+A         image/aptanaFirstInstallPage.jpg
+D         aptanaFirstInstallPage.jpg
+A         image/aptanaNewConnection.jpg
+D         aptanaNewConnection.jpg
+A         image/aptanaPreferences.jpg
+D         aptanaPreferences.jpg
+A         image/aptanaRemoteSetupEditScreen.jpg
+D         aptanaRemoteSetupEditScreen.jpg
+A         image/aptanaRemoteSetupTwoPanels.jpg
+D         aptanaRemoteSetupTwoPanels.jpg
+A         image/aptanaRemoteTab1.jpg
+D         aptanaRemoteTab1.jpg
+A         image/aptanaSetupCorrect.jpg
+D         aptanaSetupCorrect.jpg
+A         image/aptanaSynchronizeWindow.jpg
+D         aptanaSynchronizeWindow.jpg
+A         image/autoCloseMatchingCharacters.jpg
+D         autoCloseMatchingCharacters.jpg
+A         image/unwrappedLines.jpg
+D         unwrappedLines.jpg
+A         image/wrappedLines.jpg
+D         wrappedLines.jpg
+Jerrys-MacBook-Pro:CSS_HTML jkurlandski$ svn status
+D       aptanaFirstInstallPage.jpg
+D       aptanaNewConnection.jpg
+D       aptanaPreferences.jpg
+D       aptanaRemoteSetupEditScreen.jpg
+D       aptanaRemoteSetupTwoPanels.jpg
+D       aptanaRemoteTab1.jpg
+D       aptanaSetupCorrect.jpg
+D       aptanaSynchronizeWindow.jpg
+D       autoCloseMatchingCharacters.jpg
+A       image
+A  +    image/aptanaFirstInstallPage.jpg
+A  +    image/aptanaNewConnection.jpg
+A  +    image/aptanaPreferences.jpg
+A  +    image/aptanaRemoteSetupEditScreen.jpg
+A  +    image/aptanaRemoteSetupTwoPanels.jpg
+A  +    image/aptanaRemoteTab1.jpg
+A  +    image/aptanaSetupCorrect.jpg
+A  +    image/aptanaSynchronizeWindow.jpg
+A  +    image/autoCloseMatchingCharacters.jpg
+A  +    image/unwrappedLines.jpg
+A  +    image/wrappedLines.jpg
+D       unwrappedLines.jpg
+D       wrappedLines.jpg
+</pre>
+            
+<p class="precaption">Listing X: Committing changes</p>
+<pre class="preCodeWithCaption">
+Jerrys-MacBook-Pro:CSS_HTML jkurlandski$ svn status -u
+Check what has changed in the repository since your last update: explain *, M, +
+D               69   aptanaPreferences.jpg
+D               69   aptanaSynchronizeWindow.jpg
+D               69   aptanaRemoteTab1.jpg
+M               70   aptana.html
+        *       69   index.html
+D               69   wrappedLines.jpg
+D               69   aptanaRemoteSetupTwoPanels.jpg
+D               69   aptanaNewConnection.jpg
+D               69   aptanaFirstInstallPage.jpg
+D               69   unwrappedLines.jpg
+A  +             -   image/aptanaFirstInstallPage.jpg
+A  +             -   image/aptanaNewConnection.jpg
+A  +             -   image/aptanaPreferences.jpg
+A  +             -   image/aptanaRemoteSetupEditScreen.jpg
+A  +             -   image/aptanaRemoteSetupTwoPanels.jpg
+A  +             -   image/aptanaRemoteTab1.jpg
+A  +             -   image/aptanaSetupCorrect.jpg
+A  +             -   image/aptanaSynchronizeWindow.jpg
+A  +             -   image/autoCloseMatchingCharacters.jpg
+A  +             -   image/unwrappedLines.jpg
+A  +             -   image/wrappedLines.jpg
+A                -   image
+D               69   aptanaSetupCorrect.jpg
+D               69   aptanaRemoteSetupEditScreen.jpg
+D               69   autoCloseMatchingCharacters.jpg
+Status against revision:     72
+Jerrys-MacBook-Pro:CSS_HTML jkurlandski$ svn update
+Get the latest version of a file from the repository.
+Updating '.':
+U    index.html
+
+
+( I cd'd the pwd.)
+
+Jerrys-MacBook-Pro:jkurlandski jkurlandski$ svn commit jkurlandskiWebsite/Index/Professional/CSS_HTML -m "CSS work, including move of images."
+Sending        jkurlandskiWebsite/Index/Professional/CSS_HTML/aptana.html
+Deleting       jkurlandskiWebsite/Index/Professional/CSS_HTML/aptanaFirstInstallPage.jpg
+Deleting       jkurlandskiWebsite/Index/Professional/CSS_HTML/aptanaNewConnection.jpg
+Deleting       jkurlandskiWebsite/Index/Professional/CSS_HTML/aptanaPreferences.jpg
+Deleting       jkurlandskiWebsite/Index/Professional/CSS_HTML/aptanaRemoteSetupEditScreen.jpg
+Deleting       jkurlandskiWebsite/Index/Professional/CSS_HTML/aptanaRemoteSetupTwoPanels.jpg
+Deleting       jkurlandskiWebsite/Index/Professional/CSS_HTML/aptanaRemoteTab1.jpg
+Deleting       jkurlandskiWebsite/Index/Professional/CSS_HTML/aptanaSetupCorrect.jpg
+Deleting       jkurlandskiWebsite/Index/Professional/CSS_HTML/aptanaSynchronizeWindow.jpg
+Deleting       jkurlandskiWebsite/Index/Professional/CSS_HTML/autoCloseMatchingCharacters.jpg
+Adding         jkurlandskiWebsite/Index/Professional/CSS_HTML/image
+Adding  (bin)  jkurlandskiWebsite/Index/Professional/CSS_HTML/image/aptanaFirstInstallPage.jpg
+Adding  (bin)  jkurlandskiWebsite/Index/Professional/CSS_HTML/image/aptanaNewConnection.jpg
+Adding  (bin)  jkurlandskiWebsite/Index/Professional/CSS_HTML/image/aptanaPreferences.jpg
+Adding  (bin)  jkurlandskiWebsite/Index/Professional/CSS_HTML/image/aptanaRemoteSetupEditScreen.jpg
+Adding  (bin)  jkurlandskiWebsite/Index/Professional/CSS_HTML/image/aptanaRemoteSetupTwoPanels.jpg
+Adding  (bin)  jkurlandskiWebsite/Index/Professional/CSS_HTML/image/aptanaRemoteTab1.jpg
+Adding  (bin)  jkurlandskiWebsite/Index/Professional/CSS_HTML/image/aptanaSetupCorrect.jpg
+Adding  (bin)  jkurlandskiWebsite/Index/Professional/CSS_HTML/image/aptanaSynchronizeWindow.jpg
+Adding  (bin)  jkurlandskiWebsite/Index/Professional/CSS_HTML/image/autoCloseMatchingCharacters.jpg
+Adding  (bin)  jkurlandskiWebsite/Index/Professional/CSS_HTML/image/unwrappedLines.jpg
+Adding  (bin)  jkurlandskiWebsite/Index/Professional/CSS_HTML/image/wrappedLines.jpg
+Deleting       jkurlandskiWebsite/Index/Professional/CSS_HTML/unwrappedLines.jpg
+Deleting       jkurlandskiWebsite/Index/Professional/CSS_HTML/wrappedLines.jpg
+Transmitting file data .
+Committed revision 73.
+</pre>
+
+            
+<p class="precaption">Listing X: Accidentally adding directories, and reverting the mistake</p>
+<pre class="preCodeWithCaption">
+Jerrys-MacBook-Pro:jkurlandski jkurlandski$ svn status
+?       jkurlandskiWebsite/Index/Professional/Misc/svnExamples.html
+?       jkurlandskiWebsite/Index/Professional/toDo.txt
+
+Jerrys-MacBook-Pro:jkurlandski jkurlandski$ svn commit -m "New svnExamples page."
+Jerrys-MacBook-Pro:jkurlandski jkurlandski$ svn status
+?       jkurlandskiWebsite/Index/Professional/Misc/svnExamples.html
+?       jkurlandskiWebsite/Index/Professional/toDo.txt
+
+(Commit failed because I still haven't added the new files to the repository.)
+
+Jerrys-MacBook-Pro:jkurlandski jkurlandski$ svn add *
+svn: warning: W150002: '/Users/jkurlandski/Documents/Programming/WebDevelopment/Code/jkurlandski/CodeExamples' is already under version control
+A         RemoteSystemsTempFiles
+A         RemoteSystemsTempFiles/.project
+svn: warning: W150002: '/Users/jkurlandski/Documents/Programming/WebDevelopment/Code/jkurlandski/branches' is already under version control
+svn: E200009: Could not add all targets because some targets are already versioned
+svn: E200009: Illegal target for the requested operation
+
+(The intention is to add the new files--but as you'll see, the approach taken is a mistake.)
+
+Jerrys-MacBook-Pro:jkurlandski jkurlandski$ svn status
+A       RemoteSystemsTempFiles
+A       RemoteSystemsTempFiles/.project
+?       jkurlandskiWebsite/Index/Professional/Misc/svnExamples.html
+?       jkurlandskiWebsite/Index/Professional/toDo.txt
+
+
+(We see the command added ignored directories, and failed to add new files in versioned directories.)
+
+(Let's revert the add.)
+
+Jerrys-MacBook-Pro:jkurlandski jkurlandski$ svn revert RemoteSystemsTempFiles
+svn: E155038: Try 'svn revert --depth infinity' instead?
+svn: E155038: Can't revert '/Users/jkurlandski/Documents/Programming/WebDevelopment/Code/jkurlandski/RemoteSystemsTempFiles' without reverting children
+
+(Must first revert the child, then the parent.)
+
+Jerrys-MacBook-Pro:jkurlandski jkurlandski$ svn revert RemoteSystemsTempFiles/.project
+Reverted 'RemoteSystemsTempFiles/.project'
+Jerrys-MacBook-Pro:jkurlandski jkurlandski$ svn revert RemoteSystemsTempFiles
+Reverted 'RemoteSystemsTempFiles'
+Jerrys-MacBook-Pro:jkurlandski jkurlandski$ svn status
+?       jkurlandskiWebsite/Index/Professional/Misc/svnExamples.html
+?       jkurlandskiWebsite/Index/Professional/toDo.txt
+
+(Reversion successful, but we still haven't added the new files. We could do each one separately, e.g. with "svn add jkurlandskiWebsite/Index/Professional/toDo.txt"; we could do both together with "svn add * --force," but this would again add the ignored files we've just reverted; instead we'll do them both with a Unix shell command.)
+
+Jerrys-MacBook-Pro:jkurlandski jkurlandski$ for i in $(svn status | grep \? | awk '{print $2}'); do svn add $i; done
+A         jkurlandskiWebsite/Index/Professional/Misc/svnExamples.html
+A         jkurlandskiWebsite/Index/Professional/toDo.txt
+
+(Check status.)
+
+Jerrys-MacBook-Pro:jkurlandski jkurlandski$ svn status
+A       jkurlandskiWebsite/Index/Professional/Misc/svnExamples.html
+A       jkurlandskiWebsite/Index/Professional/toDo.txt
+
+
+</pre>
+            
+<p class="precaption">Listing X: Updating your project to the latest version in the repository; with local changes untouched</p>
+<pre class="preCodeWithCaption">
+Jerrys-MacBook-Pro:jkurlandski jkurlandski$ svn status
+?       jkurlandskiWebsite/Index/Professional/Misc/svnExamples.html
+?       jkurlandskiWebsite/Index/Professional/toDo.txt
+Jerrys-MacBook-Pro:jkurlandski jkurlandski$ svn status -u
+        *       74   jkurlandskiWebsite/Index/Professional/Misc/svnCheatSheet.html
+?                    jkurlandskiWebsite/Index/Professional/Misc/svnExamples.html
+        *       74   jkurlandskiWebsite/Index/Professional/Misc/svnNotes.txt
+?                    jkurlandskiWebsite/Index/Professional/toDo.txt
+        *       74   RemoteSystemsTempFiles
+Status against revision:     77
+Jerrys-MacBook-Pro:jkurlandski jkurlandski$ svn update
+Updating '.':
+U    jkurlandskiWebsite/Index/Professional/Misc/svnCheatSheet.html
+U    jkurlandskiWebsite/Index/Professional/Misc/svnNotes.txt
+D    RemoteSystemsTempFiles
+Updated to revision 77.
+Jerrys-MacBook-Pro:jkurlandski jkurlandski$ svn status -u
+?                    jkurlandskiWebsite/Index/Professional/Misc/svnExamples.html
+?                    jkurlandskiWebsite/Index/Professional/toDo.txt
+Status against revision:     77
+
+</pre>
+            
+<p class="precaption">Listing X: </p>
+<pre class="preCodeWithCaption">
+
+</pre>
+            
+<p class="precaption">Listing X: </p>
+<pre class="preCodeWithCaption">
+
+</pre>
+            
+<p class="precaption">Listing X: </p>
+<pre class="preCodeWithCaption">
+
+</pre>
+            
+            <p>JERRY: Fix sidebar</p>
+		</div>
+		<div id="sidebar">
+			<div class="internalLinkBox">
+				<div class="title">
+					<h2>Intermediate CSS / HTML Links</h2>
+				</div>
+				<ul class="style2">
+                    <li><a href="floating.html">Floating Tables and Images</a></li>
+                    <li><a href="preAndCode.html">Using  &lt;pre&gt; and &lt;code&gt; to Display Code</a></li>
+                    <li><a href="htmlEntities.html">HTML Entities and Reserved Characters</a></li>
+                    <li><a href="aptana.html">Useful tools in the Aptana Eclipse Plug-in</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="copyright" class="container">
+	<p>Copyright (c) 2013 jkurlandski.com. All rights reserved. | Original design by <a href="http://www.freecsstemplates.org/" rel="nofollow">FreeCSSTemplates.org</a>.</p>
+</div>
+</body>
+</html>
