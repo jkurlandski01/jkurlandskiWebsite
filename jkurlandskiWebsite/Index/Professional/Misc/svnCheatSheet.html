@@ -43,7 +43,10 @@
 				<h2>SVN Cheat Sheet</h2>
 			</div>
             <p>JERRY: Red bar at top needs to point to this page's subtopic </p>
+
+            <p>JERRY: add/delete items to sidebar</p>
             
+            <p>JERRY: correct line spacing in the multi-line descriptions</p>
             <p>I love Eclipse. I love its layout, its functionality, and the general utility it receives from its many plug-ins. But the SVN plugins for Eclipse, over the years, have let me down too many times. They're a pain when it comes to ignoring files once they've been added to the repository; they tend to lose the file history when you rename a file; and they're just buggy enough to, every once in while, cause me to lose a lot of work.</p>
             <p>So I've moved to the command line for most of my SVN work. I still like the Eclipse plug-ins for viewing diffs, for the similar task of resolving conflicts, and for going through a file's version history. This plug-in functionality is useful and very reliable. But I don't use Eclipse for the tasks like the following: committing, updating, adding and deleting files, renaming files and moving files. Also the tedious but necessary task of ignoring files and folders--that is, telling the SVN repository not to consider them--is best done at the command line.</p>
             <p>Here's a quick guide--for my own use as much as anyone else's--of the commands I most often use and what they do.</p>
@@ -51,6 +54,50 @@
             <h3>SVN Status</h3>
             <p>This set of commands compares your changes to other versions of the code base.</p>
             
+            <div class="floatedtable">
+                        <table border="1">
+                            <tr>
+                                <th>Symbol</th>
+                                <th>Meaning</th>
+                            </tr>
+                            <tr>
+                                <td>(empty string)</td>
+                                <td>No modifications</td>
+                            </tr>
+                            <tr>
+                                <td>M</td>
+                                <td>Modified item</td>
+                            </tr>
+                            <tr>
+                                <td>?</td>
+                                <td>New item not in repository</td>
+                            </tr>
+                            <tr>
+                                <td>! (excl. pt.)</td>
+                                <td>Repository item missing</td>
+                            </tr>
+                            <tr>
+                                <td>A</td>
+                                <td>Added item</td>
+                            </tr>
+                            <tr>
+                                <td>D</td>
+                                <td>Deleted item</td>
+                            </tr>
+                            <tr>
+                                <td>I (capital "i")</td>
+                                <td>Ignored item</td>
+                            </tr>
+                            <tr>
+                                <td>C</td>
+                                <td>Item in conflict with repository change</td>
+                            </tr>
+                        </table>
+                        </div>
+            <div class="figcaption">
+                <p>A floating table</p>
+            </div>
+
             <li><strong><code>$ svn status</code></strong></li>
             <p><em>Compare local version to the base revision.</em></p>
 
@@ -79,7 +126,7 @@
             <p><em>Recursively add all files to the repository, whether their directories are versioned or unversioned. Note that this command will also add files/folders in the current directory which are in your ignore list! (See the Unix command below if this is a problem.)</em></p>
 
             <li><strong><code>$ for i in  $(svn status | grep \? | awk '{print $2}'); do svn add $i; done</code></strong></li>
-            <p><em>Unix command to recursively add all files to the repository, whether their directories are versioned or unversioned. The command works by adding all files whose status is "?", so it works in tandem with your ignored files, as these do not appear in the status command.</em></p>
+            <p><em>Unix command to recursively add all files to the repository, whether their directories are versioned or unversioned. The command works by adding all files whose status is "?", so it does not operate on your ignored files, as these do not appear in the status command.</em></p>
 
             <h3>SVN Move</h3>
             <p>This set of commands moves or renames a file or directory. Moving or renaming a file through SVN is better than simply doing it through your operating system, because the file's change history will be maintained. (That is, it will copy the history of the old file to the new file's history.) Note that these changes must all be followed by a commit.</p>
@@ -90,15 +137,13 @@
             <p><em>Rename a file/directory.</em></p>
 
             <h3>SVN Remove/Delete</h3>
-            <p>This set of commands removes a specific file or directory from the repository. Note that these changes must all be followed by a commit.</p>
-            <p>JERRY: remove/rm/delete/del all seem to be identical; verify this, and note it</p>
+            <p>This set of commands removes a specific file or directory from the repository. The following svn commands behave identically: <code>remove, delete, rm, del</code>. Note that these changes must all be followed by a commit.</p>
             
             <li><strong><code>$ svn rm &lt;filename&gt;</code></strong></li>
             <p><em>Remove the file/directory from both your filesystem and the repository.</em></p>
 
             <li><strong><code>$ svn rm --keep-local &lt;filename&gt;</code></strong></li>
             <p><em>Remove the file/directory from the repository, but not locally. This will generally be an important file or directory, e.g. .classpath. Ordinarily you will also want to <code>ignore</code> this file as well--see below.</em></p>
-            <p>JERRY: correct line spacing in the above</p>
             
             <li><strong><code>$ for i in  $(svn status | grep \! | awk '{print $2}'); do svn delete $i; done</code></strong></li>
             <p><em>Unix command to recursively delete all missing files from the repository, whether their directories are versioned or unversioned. The command works by deleting all files whose status is "!". Since, unlike <code>add</code>, there is no recursive version of <code>delete</code>, this command can sometimes be very useful--for example, if you've deleted many files in several directories via your operating system.</em></p>
@@ -122,8 +167,6 @@
             <li><strong><code>$ svn diff &lt;filename&gt;</code></strong></li>
             <p><em>Does a Unix-style diff of the file and the base revision.</em></p>
 
-
-            <p>JERRY: add/delete items to sidebar</p>
 		</div>
 		<div id="sidebar">
 			<div class="internalLinkBox">

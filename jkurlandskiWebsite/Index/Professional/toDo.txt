@@ -3,6 +3,7 @@ hashBasedTable
 
 htmlEntities
 - not complete
+- need Internet
 
 svnCheatSheet
 - not complete
@@ -10,5 +11,3 @@ svnCheatSheet
 svnExamples
 - only just started
 
-compare work and home computer
-- Why <p> completion works on work computer, but not at home. (Update Aptana page.)
