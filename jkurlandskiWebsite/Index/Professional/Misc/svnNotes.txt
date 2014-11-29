@@ -177,3 +177,12 @@ Deleting       RemoteSystemsTempFiles
 
 Committed revision 76.
 ~/Documents/workspace_website/jkurlandski$ 
+
+
+- - - - - - -
+
+Useful URLs
+
+http://svnbook.red-bean.com/en/1.6/svn.ref.svn.c.status.html
+
+http://svnbook.red-bean.com/en/1.1/ch07s02.html

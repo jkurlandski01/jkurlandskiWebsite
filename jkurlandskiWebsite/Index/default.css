@@ -104,21 +104,6 @@ figcaption p {
     padding-bottom: 0px;
 }
 
-/* pre */
-/* { */
-/*     font-family: "Courier New" Courier monospace; */
-/* 	font-size: 0.80em; */
-/*     background: #E8E8E8; */
-/*     overflow: auto; */
-/* //    padding-top: 10px; */
-/*     padding-left: 5px; */
-/*     // a long commented out line that displays the scrolling feature if it is ever needed one two three four five six seven eight nine ten */
-/* 	// margin-top: 20px; */
-/* 	// padding: none; */
-/* 	// margin: none; */
-/*     // color: #055; */
-/* } */
-
 	pre.preCode
 	{
 	    font-family: "Courier New" Courier monospace;
@@ -138,11 +123,15 @@ figcaption p {
 	    padding: 10px;
 	 }
 
+/* Paragraph whose lines are narrowly spaced. */
+.singleSpacedDescription	{
+	clear: both;
+}
 
-/* pre.withCaption */
-/* { */
-/*     margin-top: 0px; */
-/* } */
+.singleSpacedDescription	p {
+	line-height: 110%;
+}
+
 
 /* Follows a series of floating images, without floating up alongside of them. */
 .nonFloatingPar	p	{
