@@ -43,9 +43,10 @@
 				<h2>In CSS / HTML</h2>
 			</div>
 			<p>JERRY: I need internal space in the tables</p>
-			<p>While building up my website I've learned a thing or two about floating tables and images. Here my examples are all for tables. But the same technique can be applied for images.</p>
+				<p>While building up my website I've learned a thing or two about floating tables and images. Here my examples are all for tables. But the same technique can be applied for images.</p>
+
 				<h3>Two examples</h3>
-			<p>Here's a paragraph that is followed by a table. I'm adding another sentence here to make the paragraph a bit longer. And another sentence here. And another here. And one more sentence for good measure.</p>
+				<p>Here's a paragraph that is followed by a table. I'm adding another sentence here to make the paragraph a bit longer. And another sentence here. And another here. And one more sentence for good measure.</p>
 			<div id="table">
 				<table border="1">
 					<tr>
@@ -149,9 +150,9 @@ figcaption p {
 			&lt;td&gt;United States&lt;/td&gt;
 		&lt;/tr&gt;
 	&lt;/table&gt; 
-&lt;/div&gt;
-&lt;div class=&quot;figcaption&quot;&gt;
-	&lt;p&gt;A floating table&lt;/p&gt;
+	&lt;div class=&quot;figcaption&quot;&gt;
+		&lt;p&gt;A floating table&lt;/p&gt;
+	&lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;Here&#x27;s a paragraph that is paired with what they call a floating table. The 
 table is the same--only the styling is different. I&#x27;m adding another sentence here 
@@ -254,11 +255,19 @@ good measure.&lt;/p&gt;
 </pre>
 
 			<p>And here's the HTML that makes use of the definition:</p>
-			<p class="precaption">Listing 5: Using the non-floating paragraph style in HTML</p>
 
+<p class="precaption">Listing 5: Using the non-floating paragraph style in HTML</p>
 <pre class="preCodeWithCaption">
 &lt;div class=&quot;nonFloatingPar&quot;&gt;
 	&lt;p&gtHere's some text I DON'T want to appear alongside the tables.&lt;/p&gt;
+&lt;/div&gt;
+</pre>
+
+		<p>Sometimes you want to stop all floating of any elements below a certain point on the page. This snippet makes use of the nonFloatingPar style with an empty paragraph.</p>
+<p class="precaption">Listing 6: Using the non-floating paragraph style to stop floating <em>from this point on the page, down</em>.</p>
+<pre class="preCodeWithCaption">
+&lt;div class=&quot;nonFloatingPar&quot;&gt;
+	&lt;p&gt&lt;/p&gt;
 &lt;/div&gt;
 </pre>
 
