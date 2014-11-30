@@ -6,7 +6,7 @@ htmlEntities
 - need Internet
 
 svnCheatSheet
-- not complete
+- needs proofing
 
 svnExamples
 - only just started
