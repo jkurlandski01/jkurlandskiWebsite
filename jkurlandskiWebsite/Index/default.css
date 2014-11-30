@@ -123,13 +123,23 @@ figcaption p {
 	    padding: 10px;
 	 }
 
-/* Paragraph whose lines are narrowly spaced. */
+
+/* Section allowing for a series of descriptions of things. Floating is allowed, but turned off between descriptions. 
+li = thing being described (for time being that is an SVN command, hence the monospace font;
+p = the description
+*/
 .singleSpacedDescription	{
 	clear: both;
 }
-
+.singleSpacedDescription	li {
+	font-family: monospace;
+	font-weight: bold;
+}
 .singleSpacedDescription	p {
-	line-height: 110%;
+	line-height: 120%;
+	font-style: italic;
+	//margin-bottom: 0px;
+	//margin-bottom: 20px;
 }
 
 

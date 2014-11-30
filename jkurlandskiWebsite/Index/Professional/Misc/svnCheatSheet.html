@@ -46,7 +46,7 @@
 
             <p>JERRY: add/delete items to sidebar</p>
             
-            <p>JERRY: correct line spacing in the multi-line descriptions</p>
+            <p>JERRY: need first par of each section to be closer to the heading</p>
             <p>JERRY: need to replace file/folder with item, when appropriate</p>
             <p>JERRY: tables need a little vertical space on the inside</p>
 
@@ -57,6 +57,7 @@
             <h3>SVN Status</h3>
             <p>This set of commands compares your changes to other versions of the code base.</p>
 
+            <div class="singleSpacedDescription">
                     <div class="floatedtable">
                         <table border="1">
                             <tr>
@@ -100,12 +101,11 @@
                             <p>Symbols for simple <code>svn status</code> command</p>
                         </div>
                     </div>
-
-            <li><strong><code>$ svn status</code></strong></li>
-            <p><em>Compare local version to the base revision. Item status is represented by symbols appearing in the left-most column--see the table at right.</em></p>
-            <div class="nonFloatingPar">
-                <p></p>
+                <li>$ svn status</li>
+                <p>Compare local version to the base revision. Item status is represented by symbols appearing in the left-most column--see the table at right.</p>
             </div>
+
+            <div class="singleSpacedDescription">
                     <div class="floatedtable">
                         <table border="1">
                             <tr>
@@ -125,76 +125,117 @@
                             <p>Symbols for <code>svn status -u</code> command</p>
                         </div>
                     </div>
+                <li>$ svn status -u</li>
+                <p>Compare local version to the repository itself. Tells you what repository updates are not local. In addition to the status of local changes given in the left-most column, this command returns the repository status of items in the middle and right columns--see the table at right for these symbols. The command ends by displaying "Status against revision:" plus a revision number; this is the latest revision in the repository.</p>
+            </div>
 
-            <li><strong><code>$ svn status -u</code></strong></li>
-            <p><em>Compare local version to the repository itself. Tells you what repository updates are not local. In addition to the status of local changes given in the left-most column, this command returns the repository status of items in the middle and right columns--see the table at right for these symbols. The command ends by displaying "Status against revision:" plus a revision number; this is the latest revision in the repository.</em></p>
-
-            <li><strong><code>$ svn status --no-ignore</code></strong></li>
-            <p><em>Run the "svn status" command, but include in the output the status of ignored elements.</em></p>
+            <div class="singleSpacedDescription">
+                <li>$ svn status --no-ignore</li>
+                <p>Run the "svn status" command, but include in the output the status of ignored elements.</p>
+            </div>
+            
 
             <h3>SVN Commit</h3>
             <p>Commits not only commit your modifications to the repository, but also commit the addition or removal of files to the repository; in other words, an "svn add" and "svn remove" must be followed by a commit..</p>
             
-            <li><strong><code>$ svn commit -m "your message"</code></strong></li>
-            <p><em>Recursively commit your local changes to the repository. The message becomes part of the change history.</em></p>
-
-            <li><strong><code>$ svn commit -m "your message" &lt;filename&gt;</code></strong></li>
-            <p><em>Commits changes at the given location and, recursively, below that to the repository, with a message.</em></p>
-
+            <div class="singleSpacedDescription">
+                <li>$ svn commit -m "your message" &lt;filename&gt;</li>
+                <p>Commit a single item, with a message that will go into the file's history.</p>
+            </div>
+            
+            <div class="singleSpacedDescription">
+                <li>$ svn commit -m "your message"</li>
+                <p>Recursively commit your local changes to the repository. The message becomes part of the change history.</p>
+            </div>
+            
+            
             <h3>SVN Add</h3>
             <p>This set of commands adds files and directories to the repository. They deal only with items whose status is marked by a question mark ("?"). Note that these changes must all be followed by a commit.</p>
             
-            <li><strong><code>$ svn add &lt;filename&gt;</code></strong></li>
-            <p><em>Add the file to the repository. If &lt;filename&gt; is a directory, all unversioned subfolders and files will also be added.</em></p>
+            <div class="singleSpacedDescription">
+                <li>$ svn add &lt;filename&gt;</li>
+                <p>Add the file to the repository. If &lt;filename&gt; is a directory, all unversioned subfolders and files will also be added.</p>
+            </div>
 
-            <li><strong><code>$ svn add * </code></strong></li>
-            <p><em>Recursively add all files/folders to the repository. This command skips over versioned directories, i.e. it will not add unversioned files in a versioned directory (or even a non-versioned directory in a versioned directory). Note that this command will also add files/folders in the current directory which are in your ignore list!</em></p>
+            <div class="singleSpacedDescription">
+                <li>$ for i in  $(svn status | grep \? | awk '{print $2}'); do svn add $i; done</li>
+                <p>Probably your best bet for a recursive add. This Unix command recursively adds all new files to the repository, whether their directories are versioned or unversioned. The command works by adding all files whose status is "?", so it does not operate on your ignored files, as these do not appear in the status command.</p>
+            </div>
 
-            <li><strong><code>$ svn add * --force</code></strong></li>
-            <p><em>Recursively add all files to the repository, whether their directories are versioned or unversioned. Note that this command will also add files/folders in the current directory which are in your ignore list! (See the Unix command below if this is a problem.)</em></p>
+            <div class="singleSpacedDescription">
+                <li>$ svn add *</li>
+                <p>Recursively add all new items to the repository. This command skips over versioned directories, i.e. it will not add unversioned files in a versioned directory (or even a non-versioned directory in a versioned directory). Note that this command will also add files/folders in the current directory which are in your ignore list!</p>
+            </div>
 
-            <li><strong><code>$ for i in  $(svn status | grep \? | awk '{print $2}'); do svn add $i; done</code></strong></li>
-            <p><em>Unix command to recursively add all files to the repository, whether their directories are versioned or unversioned. The command works by adding all files whose status is "?", so it does not operate on your ignored files, as these do not appear in the status command.</em></p>
+            <div class="singleSpacedDescription">
+                <li>$ svn add * --force</li>
+                <p>Recursively add all new items to the repository, whether their directories are versioned or unversioned. Note that this command will also add files/folders in the current directory which are in your ignore list! (See the Unix command below if this is a problem.)</p>
+            </div>
+
 
             <h3>SVN Move</h3>
             <p>This set of commands moves or renames a file or directory. Moving or renaming a file through SVN is better than simply doing it through your operating system, because the file's change history will be maintained. (That is, it will copy the history of the old file to the new file's history.) Note that these changes must all be followed by a commit.</p>
-            <li><strong><code>$ svn move &lt;oldName&gt; &lt;newName&gt;</code></strong></li>
-            <p><em>Rename a file/directory.</em></p>
 
-            <li><strong><code>$ svn move &lt;oldPath/file&gt; &lt;newPath/file&gt;</code></strong></li>
-            <p><em>Rename a file/directory.</em></p>
+            <div class="singleSpacedDescription">
+                <li>$ svn move &lt;oldItemName&gt; &lt;newItemName&gt;</li>
+                <p>Rename a file/directory.</p>
+            </div>
+
+            <div class="singleSpacedDescription">
+                <li>$ svn move &lt;oldPath/item&gt; &lt;newPath/item&gt;</li>
+                <p>Move a file/directory.</p>
+            </div>
+
 
             <h3>SVN Remove/Delete</h3>
             <p>This set of commands removes a specific file or directory from the repository. The following svn commands behave identically: <code>remove, delete, rm, del</code>. Note that these changes must all be followed by a commit.</p>
             
-            <li><strong><code>$ svn rm &lt;filename&gt;</code></strong></li>
-            <p><em>Remove the file/directory from both your filesystem and the repository.</em></p>
+            <div class="singleSpacedDescription">
+                <li>$ svn rm &lt;filename&gt;</li>
+                <p>Remove the file/directory from both your filesystem and the repository.</p>
+            </div>
 
-            <li><strong><code>$ svn rm --keep-local &lt;filename&gt;</code></strong></li>
-            <p><em>Remove the file/directory from the repository, but not locally. This will generally be an important file or directory, e.g. .classpath. Ordinarily you will also want to <code>ignore</code> this file as well--see below.</em></p>
-            
-            <li><strong><code>$ for i in  $(svn status | grep \! | awk '{print $2}'); do svn delete $i; done</code></strong></li>
-            <p><em>Unix command to recursively delete all missing files from the repository, whether their directories are versioned or unversioned. The command works by deleting all files whose status is "!". Since, unlike <code>add</code>, there is no recursive version of <code>delete</code>, this command can sometimes be very useful--for example, if you've deleted many files in several directories via your operating system.</em></p>
+            <div class="singleSpacedDescription">
+                <li>$ svn rm --keep-local &lt;filename&gt;</li>
+                <p>Remove the file/directory from the repository, but not locally. This will generally be an important file or directory, e.g. .classpath. Ordinarily you will also want to <code>ignore</code> this file as well--see below.</p>
+            </div>
+
+            <div class="singleSpacedDescription">
+                <li>$ for i in  $(svn status | grep \! | awk '{print $2}'); do svn delete $i; done</li>
+                <p>Unix command to recursively delete all missing files from the repository, whether their directories are versioned or unversioned. The command works by deleting all files whose status is "!". Since, unlike <code>add</code>, there is no recursive version of <code>delete</code>, this command can sometimes be very useful--for example, if you've deleted many files in several directories via your operating system.</p>
+            </div>
+
 
             <h3>SVN Ignore</h3>
             <p>Use svn's ignore property to avoid putting items into the repository. You do this, for example, with files that may differ from one machine to the next, as with .classpath settings--or with files which are produced in the compilation process, as with .class or .exe files and the directories which contain them.</p>
             
-            <li><strong><code>export SVN_EDITOR=vim</code></strong></li>
-            <p><em>Sets your property editor to vim; useful if the command below fails because you have no property editor. Note that vi and vim are powerful but not user friendly.</em></p>
+            <div class="singleSpacedDescription">
+                <li>$ export SVN_EDITOR=vim</li>
+                <p>Sets your property editor to vim; useful if the command below fails because you have no property editor. Note that vi and vim are powerful but not user friendly.</p>
+            </div>
 
-            <li><strong><code>svn propedit svn:ignore .</code></strong></li>
-            <p><em>This will bring up your text editor so you can enter a list of files or directories to ignore. Applicable only to those files and folders in the current directory.</em></p>
+            <div class="singleSpacedDescription">
+                <li>$ svn propedit svn:ignore .</li>
+                <p>This will bring up your text editor so you can enter a list of files or directories to ignore. Applicable only to those files and folders in the current directory.</p>
+            </div>
+
 
             <h3>Less often used SVN commands</h3>
             <p>These commands are useful, but tend not to be used as often as the ones above.</p>
             
-            <li><strong><code>$ svn checkout &lt;URL&gt;</code></strong></li>
-            <p><em>Copies the files at the repository location to the current location in your file system. If a password is required you will be prompted with your computer user name as the default logon user name; if that is not correct, the password will fail and you'll be given a chance to input both the repository user name and the repository password.</em></p>
-            
-            <li><strong><code>$ svn diff &lt;filename&gt;</code></strong></li>
-            <p><em>Does a Unix-style diff of the file and the base revision.</em></p>
+            <div class="singleSpacedDescription">
+                <li>$ svn checkout &lt;URL&gt;</li>
+                <p>Creates a local version of the repository, by linking the current directory to the repository and copying the files at the repository location to the current location in your file system. If a password is required you will be prompted with your computer user name as the default logon user name; if that is not correct, the password will fail and you'll be given a chance to input both the repository user name and the repository password.</p>
+            </div>
+
+            <div class="singleSpacedDescription">
+                <li>$ svn diff &lt;filename&gt;</li>
+                <p>Does a Unix-style diff of the file and the base revision.</p>
+            </div>
 
 		</div>
+		
+		
 		<div id="sidebar">
 			<div class="internalLinkBox">
 				<div class="title">
