@@ -165,6 +165,7 @@ p = the description
 }
 
 .floatedtable {
+	border: 1;
 	float: right;
 	// left margin: 55px;
 	padding: 10px;

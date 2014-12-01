@@ -18,3 +18,11 @@ tables should not have the "id"
 - Clean out of all code.
 	- Search id="table"
 	- Search id=&quot;table&quot;
+	
+floatedtable:
+- caption side value doesn't seem to do anything; delete it and there are no changes.
+- if I'm right, I need to remove it from floating.html
+- cellpadding doesn't seem to do much, either
+
+browser issues
+- In Safari with the left sidebar open, there is no left hand margin
