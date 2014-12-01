@@ -47,8 +47,8 @@
 
 				<h3>Two examples</h3>
 				<p>Here's a paragraph that is followed by a table. I'm adding another sentence here to make the paragraph a bit longer. And another sentence here. And another here. And one more sentence for good measure.</p>
-			<div id="table">
-				<table border="1">
+
+				<table border="1" cellpadding="4px">
 					<tr>
 					<th>Title</th>
 					<th>Director</th>
@@ -70,7 +70,7 @@
 					<td>United States</td>
 					</tr>
 				</table> 
-			</div>
+
 			<div class="figcaption">
 				<p>This table is styled normally.</p>
 			</div>
@@ -163,34 +163,34 @@ good measure.&lt;/p&gt;
 			<p>If your table has too many columns, or the contents of the columns are too long, you'll want to use a traditional table. An example is the very first table at the top of this page. The HTML for that looks like this.</p>
 			<p class="precaption">Listing 3: HTML for a traditional table</p>
 <pre class="preCodeWithCaption">
-&lt;div id=&quot;table&quot;&gt;
-	&lt;table border=&quot;1&quot;&gt;
-		&lt;tr&gt;
-			&lt;th&gt;Title&lt;/th&gt;
-			&lt;th&gt;Director&lt;/th&gt;
-			&lt;th&gt;Country&lt;/th&gt;
-		&lt;/tr&gt;
-		&lt;tr&gt;
-			&lt;td&gt;Seventh Seal&lt;/td&gt;
-			&lt;td&gt;Ingmar Bergman&lt;/td&gt;
-			&lt;td&gt;Sweden&lt;/td&gt;
-		&lt;/tr&gt;
-		&lt;tr&gt;
-			&lt;td&gt;Seven Samari&lt;/td&gt;
-			&lt;td&gt;Akira Kurosawa&lt;/td&gt;
-			&lt;td&gt;Japan&lt;/td&gt;
-		&lt;/tr&gt;
-		&lt;tr&gt;
-			&lt;td&gt;Seven&lt;/td&gt;
-			&lt;td&gt;Andy Sidaris&lt;/td&gt;
-			&lt;td&gt;United States&lt;/td&gt;
-		&lt;/tr&gt;
-	&lt;/table&gt; 
-&lt;/div&gt;
+&lt;table border=&quot;1&quot; cellpadding=&quot;4px&quot;&gt;
+	&lt;tr&gt;
+		&lt;th&gt;Title&lt;/th&gt;
+		&lt;th&gt;Director&lt;/th&gt;
+		&lt;th&gt;Country&lt;/th&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;Seventh Seal&lt;/td&gt;
+		&lt;td&gt;Ingmar Bergman&lt;/td&gt;
+		&lt;td&gt;Sweden&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;Seven Samari&lt;/td&gt;
+		&lt;td&gt;Akira Kurosawa&lt;/td&gt;
+		&lt;td&gt;Japan&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;Seven&lt;/td&gt;
+		&lt;td&gt;Andy Sidaris&lt;/td&gt;
+		&lt;td&gt;United States&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/table&gt; 
 &lt;div class=&quot;figcaption&quot;&gt;
 	&lt;p&gt;This table is styled normally.&lt;/p&gt;
 &lt;/div&gt;
 </pre>
+        
+            <p>Notice that the styling above calls for a little bit of cell padding. I think that the table looks a tad nicer this way, and since the table isn't floating you probably have the room for it.</p>
 			
 			<h3>But what if you DON't want to float?</h3>
 			<p>If you don't want text alongside your table, simply don't float the table--use the normal table html given above. But suppose you have two small tables, or two thumbnail images, and you want them to appear side-by-side? In this case you would float them both. The problem is that, if you float the two tables or images, then any text that follows them will be placed next to them.</p>

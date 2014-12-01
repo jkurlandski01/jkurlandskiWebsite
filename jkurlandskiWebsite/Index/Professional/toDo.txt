@@ -2,12 +2,19 @@ hashBasedTable
 - not using the correct style for code snippets
 
 htmlEntities
-- not complete
-- need Internet
+- needs proofing
+- external link
 
 svnCheatSheet
 - needs proofing
+- add pdf page
 
 svnExamples
 - only just started
 
+tables should not have the "id"
+- In fact, it doesn't even need the "div"
+- Change examples in floating.html.
+- Clean out of all code.
+	- Search id="table"
+	- Search id=&quot;table&quot;
