@@ -46,13 +46,12 @@
 
             <p>JERRY: add/delete items to sidebar</p>
             
-            <p>JERRY: need first par of each section to be closer to the heading</p>
             <p>JERRY: need to replace file/folder with item, when appropriate</p>
             <p>JERRY: tables need a little vertical space on the inside</p>
-
-            <p>I love Eclipse. I love its layout, its functionality, and the general utility it receives from its many plug-ins. But the SVN plugins for Eclipse, over the years, have let me down too many times. They're a pain when it comes to ignoring files once they've been added to the repository; they tend to lose the file history when you rename a file; and they're just buggy enough to, every once in while, cause me to lose a lot of work.</p>
-            <p>So I've moved to the command line for most of my SVN work. I still like the Eclipse plug-ins for viewing diffs, for the similar task of resolving conflicts, and for going through a file's version history. This plug-in functionality is useful and very reliable. But I don't use Eclipse for the tasks like the following: committing, updating, adding and deleting files, renaming files and moving files. Also the tedious but necessary task of ignoring files and folders--that is, telling the SVN repository not to consider them--is best done at the command line.</p>
-            <p>Here's a quick guide--for my own use as much as anyone else's--of the commands I most often use and what they do.</p>
+            <p>JERRY: talking about subclipse or subversion or both? Consider dropping the first two paragraphs.</p>
+            <p>I love Eclipse. I love its layout, its functionality, and the general utility it receives from its many plugins. But the SVN plugins for Eclipse, over the years, have let me down too many times. They're a pain when it comes to ignoring a file once it's been added to the repository; they tend to lose the file history when you rename a file; and they're just buggy enough to, every once in while, cause me to lose some work.</p>
+            <p>So I've moved to the command line for most of my SVN work. I still like the Eclipse plugins for viewing diffs, for the similar task of resolving conflicts, and for going through a file's version history. For these tasks the plugins are useful and very reliable. But I don't use Eclipse for the tasks like the following: committing, updating, adding and deleting files, renaming files and moving files. Also the tedious but necessary task of ignoring files and folders--that is, telling the SVN repository not to consider them--is best done at the command line.</p>
+            <p>Here's a quick guide--for my own use as much as anyone else's--of the SVN commands I most often use and what they do. Note: the term "item" refers to both files and directories.</p>
             
             <h3>SVN Status</h3>
             <p>This set of commands compares your changes to other versions of the code base.</p>
@@ -102,7 +101,7 @@
                         </div>
                     </div>
                 <li>$ svn status</li>
-                <p>Compare local version to the base revision. Item status is represented by symbols appearing in the left-most column--see the table at right.</p>
+                <p>Compare local version to the base revision. Item status is represented by symbols appearing in the left-most column of the output--see the table at right.</p>
             </div>
 
             <div class="singleSpacedDescription">
@@ -126,12 +125,12 @@
                         </div>
                     </div>
                 <li>$ svn status -u</li>
-                <p>Compare local version to the repository itself. Tells you what repository updates are not local. In addition to the status of local changes given in the left-most column, this command returns the repository status of items in the middle and right columns--see the table at right for these symbols. The command ends by displaying "Status against revision:" plus a revision number; this is the latest revision in the repository.</p>
+                <p>Compare local version to the repository itself. Tells you what updates to the repository are not in the local version. In addition to the status of local changes given in the left-most column, this command returns the repository status of items in the middle and right columns--see the table at right for these symbols. The command ends by displaying "Status against revision:" plus a revision number; this is the latest revision in the repository.</p>
             </div>
 
             <div class="singleSpacedDescription">
                 <li>$ svn status --no-ignore</li>
-                <p>Run the "svn status" command, but include in the output the status of ignored elements.</p>
+                <p>Run the "svn status" command, but include in the output the status of ignored items.</p>
             </div>
             
 
