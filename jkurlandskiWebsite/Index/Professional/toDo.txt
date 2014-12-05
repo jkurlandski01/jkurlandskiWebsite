@@ -5,10 +5,6 @@ htmlEntities
 - needs proofing
 - external link
 
-svnCheatSheet
-- needs proofing
-- add pdf page
-
 svnExamples
 - only just started
 
@@ -26,3 +22,7 @@ floatedtable:
 
 browser issues
 - In Safari with the left sidebar open, there is no left hand margin
+
+svnCheatSheet
+- needs a main index.html page
+

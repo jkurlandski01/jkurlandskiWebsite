@@ -46,19 +46,16 @@
 
             <p>JERRY: add/delete items to sidebar</p>
             
-            <p>JERRY: need to replace file/folder with item, when appropriate</p>
-            <p>JERRY: tables need a little vertical space on the inside</p>
-            <p>JERRY: talking about subclipse or subversion or both? Consider dropping the first two paragraphs.</p>
-            <p>I love Eclipse. I love its layout, its functionality, and the general utility it receives from its many plugins. But the SVN plugins for Eclipse, over the years, have let me down too many times. They're a pain when it comes to ignoring a file once it's been added to the repository; they tend to lose the file history when you rename a file; and they're just buggy enough to, every once in while, cause me to lose some work.</p>
-            <p>So I've moved to the command line for most of my SVN work. I still like the Eclipse plugins for viewing diffs, for the similar task of resolving conflicts, and for going through a file's version history. For these tasks the plugins are useful and very reliable. But I don't use Eclipse for the tasks like the following: committing, updating, adding and deleting files, renaming files and moving files. Also the tedious but necessary task of ignoring files and folders--that is, telling the SVN repository not to consider them--is best done at the command line.</p>
-            <p>Here's a quick guide--for my own use as much as anyone else's--of the SVN commands I most often use and what they do. Note: the term "item" refers to both files and directories.</p>
+            <p>Here's a quick guide--for my own use as much as anyone else's--to the SVN commands I most often use.</p>
+            <p>A similar resource is the very useful "SVN Cheat Sheet" written up by AddedBytes.com. I've taken the liberty of adding their pdf to the internal links at right, rather than to the external links, because lately the document seems to have disappeared from the Internet.</p>
+            <p>Note: in the explanations below, the term "item" refers to both files and directories.</p>
             
             <h3>SVN Status</h3>
             <p>This set of commands compares your changes to other versions of the code base.</p>
 
             <div class="singleSpacedDescription">
                     <div class="floatedtable">
-                        <table border="1">
+                        <table border="1" cellpadding="4px">
                             <tr>
                                 <th>Symbol</th>
                                 <th>Meaning</th>
@@ -106,7 +103,7 @@
 
             <div class="singleSpacedDescription">
                     <div class="floatedtable">
-                        <table border="1">
+                        <table border="1" cellpadding="4px">
                             <tr>
                                 <th>Symbol</th>
                                 <th>Meaning</th>
@@ -125,7 +122,7 @@
                         </div>
                     </div>
                 <li>$ svn status -u</li>
-                <p>Compare local version to the repository itself. Tells you what updates to the repository are not in the local version. In addition to the status of local changes given in the left-most column, this command returns the repository status of items in the middle and right columns--see the table at right for these symbols. The command ends by displaying "Status against revision:" plus a revision number; this is the latest revision in the repository.</p>
+                <p>Compare local version to the repository itself. Tells you what updates to the repository are not in the local version. In addition to the status of local changes given in the left-most column of the output, this command returns the repository status of items in the middle and right columns--see the table at right for these symbols. The command ends by displaying "Status against revision:" plus a revision number; this is the latest revision in the repository.</p>
             </div>
 
             <div class="singleSpacedDescription">
@@ -138,7 +135,7 @@
             <p>Commits not only commit your modifications to the repository, but also commit the addition or removal of files to the repository; in other words, an "svn add" and "svn remove" must be followed by a commit..</p>
             
             <div class="singleSpacedDescription">
-                <li>$ svn commit -m "your message" &lt;filename&gt;</li>
+                <li>$ svn commit -m "your message" &lt;item&gt;</li>
                 <p>Commit a single item, with a message that will go into the file's history.</p>
             </div>
             
@@ -149,10 +146,10 @@
             
             
             <h3>SVN Add</h3>
-            <p>This set of commands adds files and directories to the repository. They deal only with items whose status is marked by a question mark ("?"). Note that these changes must all be followed by a commit.</p>
+            <p>This set of commands adds files and directories to the repository. They deal only with items whose status is marked by a question mark ("?"). Note that <code>svn add </code> must all be followed by a commit.</p>
             
             <div class="singleSpacedDescription">
-                <li>$ svn add &lt;filename&gt;</li>
+                <li>$ svn add &lt;item&gt;</li>
                 <p>Add the file to the repository. If &lt;filename&gt; is a directory, all unversioned subfolders and files will also be added.</p>
             </div>
 
@@ -173,7 +170,7 @@
 
 
             <h3>SVN Move</h3>
-            <p>This set of commands moves or renames a file or directory. Moving or renaming a file through SVN is better than simply doing it through your operating system, because the file's change history will be maintained. (That is, it will copy the history of the old file to the new file's history.) Note that these changes must all be followed by a commit.</p>
+            <p>This set of commands moves or renames a file or directory. Moving or renaming a file through SVN is better than simply doing it through your operating system, because the file's change history will be maintained. (That is, SVN will copy the history of the old file to the new file's history.) Note that these changes must all be followed by a commit.</p>
 
             <div class="singleSpacedDescription">
                 <li>$ svn move &lt;oldItemName&gt; &lt;newItemName&gt;</li>
@@ -190,12 +187,12 @@
             <p>This set of commands removes a specific file or directory from the repository. The following svn commands behave identically: <code>remove, delete, rm, del</code>. Note that these changes must all be followed by a commit.</p>
             
             <div class="singleSpacedDescription">
-                <li>$ svn rm &lt;filename&gt;</li>
+                <li>$ svn rm &lt;item&gt;</li>
                 <p>Remove the file/directory from both your filesystem and the repository.</p>
             </div>
 
             <div class="singleSpacedDescription">
-                <li>$ svn rm --keep-local &lt;filename&gt;</li>
+                <li>$ svn rm --keep-local &lt;item&gt;</li>
                 <p>Remove the file/directory from the repository, but not locally. This will generally be an important file or directory, e.g. .classpath. Ordinarily you will also want to <code>ignore</code> this file as well--see below.</p>
             </div>
 
@@ -228,7 +225,7 @@
             </div>
 
             <div class="singleSpacedDescription">
-                <li>$ svn diff &lt;filename&gt;</li>
+                <li>$ svn diff &lt;item&gt;</li>
                 <p>Does a Unix-style diff of the file and the base revision.</p>
             </div>
 
@@ -238,15 +235,20 @@
 		<div id="sidebar">
 			<div class="internalLinkBox">
 				<div class="title">
-					<h2>Intermediate CSS / HTML Links</h2>
+					<h2>Internal Links</h2>
 				</div>
 				<ul class="style2">
-                    <li><a href="floating.html">Floating Tables and Images</a></li>
-                    <li><a href="preAndCode.html">Using  &lt;pre&gt; and &lt;code&gt; to Display Code</a></li>
-                    <li><a href="htmlEntities.html">HTML Entities and Reserved Characters</a></li>
-                    <li><a href="aptana.html">Useful tools in the Aptana Eclipse Plug-in</a></li>
+                    <li><a href="subversion-cheat-sheet-v1.pdf">SVN Cheat Sheet by AddedBytes.com</a></li>
 				</ul>
 			</div>
+            <div class="internalLinkBox">
+                <div class="title">
+                    <h2>External Links</h2>
+                </div>
+                <ul class="style2">
+                    <li><a href="floating.html">????????</a></li>
+                </ul>
+            </div>
 		</div>
 	</div>
 </div>
