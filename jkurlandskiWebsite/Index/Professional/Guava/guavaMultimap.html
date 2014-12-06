@@ -45,6 +45,19 @@
             <p>JERRY: Capitalization in title should be mixed</p>
             <p>blah </p>
 
+<p class="precaption">Listing 1: Your browser's default settings for &lt;pre&gt;.</p>
+<pre class="preCodeWithCaption">
+Multimap<ResponsePool, ResponsePoolEntry> mysqlResponsesToDelete = ArrayListMultimap.create();
+...
+mysqlResponsesToDelete.put(responsePool, poolEntry);
+
+// Iterate through all the entries
+for(Map.Entry<ResponsePool, ResponsePoolEntry> mapPair : mysqlResponsesToDelete.entries())  {
+    ResponsePool responsePool = mapPair.getKey();
+    ResponsePoolEntry poolEntry = mapPair.getValue();
+    ...
+}
+</pre>
 		</div>
 		
 		<div id="sidebar">

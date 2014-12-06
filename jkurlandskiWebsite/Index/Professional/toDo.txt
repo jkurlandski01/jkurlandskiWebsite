@@ -1,5 +1,6 @@
-hashBasedTable
-- not using the correct style for code snippets
+Not using correct style for code snippets; follow floating.html
+- hashBasedTable
+- usingPreAndCode
 
 htmlEntities
 - needs proofing
