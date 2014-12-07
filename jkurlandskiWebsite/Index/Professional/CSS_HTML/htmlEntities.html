@@ -52,17 +52,16 @@
                 <li>the "&amp;" symbol (the ampersand) must be replaced with "&amp;amp;".</li>
             </ul>
             <p>To make this perfectly clear, in order to display this on my screen--&lt;p&gt;--I must type in this: &amp;lt;p&amp;gt; And in order to display this on my screen--&amp;--I have to type in this: &amp;amp;</p>
+            <p>It's not just  HTML that has to be transformed in this way. Java's generic types--as in <code>List&lt;String&gt;</code>--as well as the "&amp;" symbol in C and C++--will all have to be converted in this manner.</p>  
             <p>As you can imagine, this conversion is unpleasant business. Aptana, a plug-in for the Eclipse IDE, offers a command that will do this for you automatically. See my page on Aptana and its tools.</p>
-            <p>It's not just  HTML that has to be transformed in this way. Java's generic types--as in <code>List&lt;String&gt;</code>--as well as the "&amp;" symbol in C and C++--will all have to be converted in this manner. So a tool that does this for you automatically is a very useful tool indeed.</p>	
 
             <h3>HTML entities</h3>
             <p>The cent sign, &cent;, is just one example of a plethora of special characters that are not on the average computer keyboard, but which you might well want to put on your web page. For each entity, there are two representations, whose syntax is either <code>&entity_name;</code> or <code>&#entity_number;</code>, respectively. You see how the entities for the angle brackets and the ampersand given in the section above fall into the first pattern.</p>
-            <p>Supposedly, there is better support for the entity number patterns than for the entity name patterns. But for the special characters that I use on my own pages, I have never found that I needed the numbers in order for them to display properly in the most popular browsers.</p>
+            <p>There are some symbols for which no entity name pattern exists--they have only an entity number pattern. Also, supposedly there is better support for the entity number patterns than for the entity name patterns. But for the special characters that I use on my own pages, I have never found an entity name pattern not to display properly in the most popular browsers.</p>
             <p>The lists below are meant to serve as a one-stop place where I can find the HTML entities for the special characters that I use the most. Hopefully other people will find these lists equally useful.</p>
-            <p>JERRY: put this link at right</p>
-            <p>http://character-code.com/french-html-codes.php</p>
             
-                <table border="1" cellpadding="5px">
+                <div class="precaption"><p>HTML Entities for Common French Diacritics</p></div>
+                <table style="margin-top:10px;margin-bottom:40px" border="1" cellpadding="5px">
                     <tr>
                     <th>Character</th>
                     <th>Description</th>
@@ -104,11 +103,9 @@
                     <td>&amp;ugrave;</td>
                     </tr>
                 </table> 
-            <div class="figcaption">
-                <p><strong>HTML Entities for Common French Diacritics</strong></p>
-            </div>
 
-                <table border="1" cellpadding="5px">
+                <div class="precaption"><p>HTML Entities for Other Diacritics</p></div>
+                <table style="margin-top:10px;margin-bottom:40px" border="1" cellpadding="5px">
                     <tr>
                     <th>Character</th>
                     <th>Description</th>
@@ -144,12 +141,20 @@
                     <td>uppercase e-circumflex</td>
                     <td>&amp;Ecirc;</td>
                     </tr>
+                    <tr>
+                    <td>&ouml;</td>
+                    <td>lowercase o-umlaut</td>
+                    <td>&amp;ouml;</td>
+                    </tr>
+                    <tr>
+                    <td>&Ouml;</td>
+                    <td>uppercase o-umlaut</td>
+                    <td>&amp;Ouml;</td>
+                    </tr>
                 </table> 
-            <div class="figcaption">
-                <p><strong>HTML Entities for Less-common French Diacritics</strong></p>
-            </div>
 
-                <table border="1" cellpadding="5px">
+                <div class="precaption"><p>HTML Entities for Miscellaneous Characters</p></div>
+                <table style="margin-top:10px;margin-bottom:40px" border="1" cellpadding="5px">
                     <tr>
                     <th>Character</th>
                     <th>Description</th>
@@ -166,6 +171,21 @@
                     <td>&amp;gt;</td>
                     </tr>
                     <tr>
+                    <td>&frac12;</td>
+                    <td>one-half symbol</td>
+                    <td>&amp;frac12;</td>
+                    </tr>
+                    <tr>
+                    <td>&#8531;</td>
+                    <td>one-third symbol</td>
+                    <td>&amp;#8531;</td>
+                    </tr>
+                    <tr>
+                    <td>&frac14;</td>
+                    <td>one-fourth symbol</td>
+                    <td>&amp;frac14;</td>
+                    </tr>
+                    <tr>
                     <td>&amp;</td>
                     <td>ampersand</td>
                     <td>&amp;amp;</td>
@@ -176,38 +196,76 @@
                     <td>&amp;pound;</td>
                     </tr>
                     <tr>
+                    <tr>
+                    <td>&euro;</td>
+                    <td>Euro</td>
+                    <td>&amp;euro;</td>
+                    </tr>
+                    <tr>
                     <td>&cent;</td>
                     <td>cent sign</td>
                     <td>&amp;cent;</td>
                     </tr>
                     <tr>
+                    <td>&divide;</td>
+                    <td>division sign</td>
+                    <td>&amp;divide;</td>
+                    </tr>
+                    <tr>
+                    <td>&times;</td>
+                    <td>multiplication sign</td>
+                    <td>&amp;times;</td>
+                    </tr>
+                    <tr>
+                    <td>&#10004;</td>
+                    <td>heavy check mark</td>
+                    <td>&amp;#10004;</td>
+                    </tr>
+                    <tr>
+                    <td>&sup1;</td>
+                    <td>superscript 1</td>
+                    <td>&amp;sup1; (or use &lt;sup&gt;&lt;/sup&gt; tags)</td>
+                    </tr>
+                    <tr>
+                    <td>&#8321;</td>
+                    <td>subscript 1</td>
+                    <td>&amp;#8321; (or use &lt;sub&gt;&lt;/sub&gt; tags)</td>
+                    </tr>
+                    <tr>
                     <td>&nbsp;</td>
-                    <td>non-breaking space*</td>
+                    <td>non-breaking space&<sup>1</sup></td>
                     <td>&amp;nbsp;</td>
                     </tr>
                 </table> 
-            <div class="figcaption">
-                <p><strong>HTML Entities for Miscellaneous Characters</strong></p>
-            </div>
                 
             <div class="singleSpacedDescription">
-                <p>*Non-breaking spaces are useful when you DON'T want the browser to collapse multiple spaces. By "collapsing multiple spaces," I'm referring to the fact that, normally, browsers will turn five spaces into a single space. Use a non-breaking space character instead of the ordinary space character when you want five space to be rendered as, literally, five spaces.</p>
+                <p>&sup1; Non-breaking spaces are useful when you DON'T want the browser to collapse multiple spaces. By "collapsing multiple spaces," I'm referring to the fact that, normally, browsers will turn five spaces into a single space. Use a non-breaking space character instead of the ordinary space character when you want five space to be rendered as, literally, five spaces.</p>
             </div>
                 
 
 	</div>
 		<div id="sidebar">
-			<div class="internalLinkBox">
-				<div class="title">
-					<h2>Intermediate CSS / HTML Links</h2>
-				</div>
-				<ul class="style2">
-                    <li><a href="floating.html">Floating Tables and Images</a></li>
+            <div class="internalLinkBox">
+                <div class="title">
+                    <h2>Intermediate CSS / HTML Links</h2>
+                </div>
+                <ul class="style2">
+                    <li><a href="floatingTable.html">Floating Tables and Images</a></li>
                     <li><a href="preAndCode.html">Using  &lt;pre&gt; and &lt;code&gt; to Display Code</a></li>
                     <li><a href="htmlEntities.html">HTML Entities and Reserved Characters</a></li>
                     <li><a href="aptana.html">Useful tools in the Aptana Eclipse Plug-in</a></li>
-				</ul>
-			</div>
+                </ul>
+            </div>
+            <div class="internalLinkBox">
+                <div class="title">
+                    <h2>Related External Links</h2>
+                </div>
+                <ul class="style2">
+                    <li><a href="http://character-code.com/french-html-codes.php">HTML Code for French Characters</a></li>
+                    <li><a href="http://www.w3schools.com/charsets/ref_utf_dingbats.asp">w3schools potpourri of HTML Dingbats</a></li>
+                    <li><a href="http://www.dionysia.org/html/entities/symbols.html">Another Potpourri of HTML Characters</a></li>
+                </ul>
+            </div>
 		</div>
 	</div>
 </div>

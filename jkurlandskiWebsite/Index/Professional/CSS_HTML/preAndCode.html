@@ -71,15 +71,15 @@ someTag {
 		<p>Each browser has its own default version of this tag. Since &lt;pre&gt; is not defined in my CSS stylesheet, the snippet of code above illustrates how your browser's default setting for rendering text surrounded by the pre tag. Most browswers will assign a monospace type to text wrapped by this tag.</p>
 		<p>The next snippet contains the exactly the same text, but wrapped in the &lt;code&gt; tag instead.</p>
         
-        <p class="precaption">Listing 2: Your browser's default settings for &lt;code&gt;.</p>
-        <br>
-		<code>
+<p class="precaption">Listing 2: Your browser's default settings for &lt;code&gt;.</p>
+<br>
+<code>
 someTag {
     margin: 0px;
     //3456789012
 }
-		</code>
-		</p>
+</code>
+</p>
 		
 		<p>You see that the &lt;code&gt; tag also assigns a monospace font, but it seems less useful, if only because browsers typically ignore the contents' newlines and collapse the whitespace. If whitespace is important in your display of code (and usually it is to the reader, if not the compiler), then you need &lt;pre&gt;. The &lt;code&gt; tag can be used for inline elements, like the following: <code>public static int HUNDRED = 100; </code></p>
 		<p>Some will say that you should present blocks of code with both &lt;pre&gt; and &lt;code&gt;. But I don't see the point of the code tag for blocks of text; incuding it just seems like extra work to me.</p>
@@ -114,10 +114,10 @@ pre.preCode
 		<p>By the way, &lt;pre&gt; is so literal that you can't indent it. The next listing is the same as the above, but with the tags indented, as HTML normally is. Note the extra space at the bottom of the tinted window. That space is due to the whitespace between the left margin and the closing &lt;/pre&gt; tag.</p>
 
         <p class="precaption">Listing 5: The same as Listing 4, but with the tags indented.</p>
-        <pre class="preCode">
-            &lt;pre class=&quot;preCode&quot;&gt;
-            ...
-            &lt;/pre&gt;
+    <pre class="preCode">
+     &lt;pre class=&quot;preCode&quot;&gt;
+...
+     &lt;/pre&gt;
         </pre>
 
         <p>The problem is, if you don't indent it, the code becomes a little harder to read; therefore, I find my HTML is clearest if I leave blank lines before and after my unindented &lt;pre&gt; blocks.</p>
@@ -169,7 +169,7 @@ pre.preCodeWithCaption
 					<h2>Intermediate CSS / HTML Links</h2>
 				</div>
 				<ul class="style2">
-                    <li><a href="floating.html">Floating Tables and Images</a></li>
+                    <li><a href="floatingTable.html">Floating Tables and Images</a></li>
                     <li><a href="preAndCode.html">Using  &lt;pre&gt; and &lt;code&gt; to Display Code</a></li>
                     <li><a href="htmlEntities.html">HTML Entities and Reserved Characters</a></li>
                     <li><a href="aptana.html">Useful tools in the Aptana Eclipse Plug-in</a></li>

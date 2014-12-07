@@ -1,25 +1,21 @@
-Not using correct style for code snippets; follow floating.html
-- hashBasedTable
-- usingPreAndCode
-
-htmlEntities
-- needs proofing
-- external link
-
-svnExamples
-- only just started
-
 tables should not have the "id"
 - In fact, it doesn't even need the "div"
-- Change examples in floating.html.
+- Change examples in floatingTable.html.
 - Clean out of all code.
 	- Search id="table"
 	- Search id=&quot;table&quot;
 	
 floatedtable:
 - caption side value doesn't seem to do anything; delete it and there are no changes.
-- if I'm right, I need to remove it from floating.html
+- if I'm right, I need to remove it from floatingTable.html
 - cellpadding doesn't seem to do much, either
+
+precaption
+- I don't think I'm using it right in preAndCode.html
+- It's a class; shouldn't it be used with div instead of p?
+
+svnExamples
+- only just started
 
 browser issues
 - In Safari with the left sidebar open, there is no left hand margin
