@@ -77,6 +77,37 @@ a img {
 			width: auto;
 		}
 
+/* td {  */
+/*     padding-left: 5px; */
+/*     padding-right: 5px; */
+/* } */
+
+
+table	{
+	padding: 0px;
+	border: 1px solid black;
+}
+
+th, td	{
+	padding: 4px;
+	border: 1px solid black;
+}
+
+.floatedtable {
+	// next line doesn't appear to do anything
+	border: 1;
+	float: right;
+	// left margin: 55px;
+	padding: 10px;
+	// next line doesn't appear to do anything
+	cellpadding: 30px;
+	// next line doesn't appear to do anything
+	caption-side:bottom;
+	//text-align: center;	
+}
+
+
+
 figcaption p { 
 	line-height: 1;
 	font-size: 10pt;
@@ -162,21 +193,6 @@ p = the description
 
 .floatedfigure {
 	float: right;
-}
-
-.floatedtable {
-	border: 1;
-	float: right;
-	// left margin: 55px;
-	padding: 10px;
-	cellpadding: 30px;
-	caption-side:bottom;
-	//text-align: center;	
-}
-
-td { 
-    padding-left: 5px;
-    padding-right: 5px;
 }
 
 hr {

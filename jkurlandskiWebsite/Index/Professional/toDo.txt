@@ -1,9 +1,10 @@
 tables should not have the "id"
 - In fact, it doesn't even need the "div"
-- Change examples in floatingTable.html.
 - Clean out of all code.
 	- Search id="table"
 	- Search id=&quot;table&quot;
+- Maybe create syle in css
+- When finished, change example(s) in floatingTable.html.
 	
 floatedtable:
 - caption side value doesn't seem to do anything; delete it and there are no changes.
@@ -13,6 +14,10 @@ floatedtable:
 precaption
 - I don't think I'm using it right in preAndCode.html
 - It's a class; shouldn't it be used with div instead of p?
+
+multimap
+- Write & compile code with output.
+- Put code and output onto page.
 
 svnExamples
 - only just started
