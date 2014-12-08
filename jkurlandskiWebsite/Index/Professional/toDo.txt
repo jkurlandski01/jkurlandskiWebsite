@@ -1,15 +1,8 @@
-tables should not have the "id"
-- In fact, it doesn't even need the "div"
-- Clean out of all code.
-	- Search id="table"
-	- Search id=&quot;table&quot;
-- Maybe create syle in css
-- When finished, change example(s) in floatingTable.html.
-	
 floatedtable:
-- caption side value doesn't seem to do anything; delete it and there are no changes.
-- if I'm right, I need to remove it from floatingTable.html
-- cellpadding doesn't seem to do much, either
+- Adjust margin-left
+- I'd rather border be set in the css style
+- Fix floatingTable.html
+- Kurlandski and other floating tables should have a caption
 
 precaption
 - I don't think I'm using it right in preAndCode.html

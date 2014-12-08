@@ -70,15 +70,15 @@
 					<td>United States</td>
 					</tr>
 				</table> 
-
 			<div class="figcaption">
 				<p>This table is styled normally.</p>
 			</div>
 			<br />
+			
 			<p>While sometimes empty space can be a powerful tool for capturing and holding the reader's attention, often it just looks ... clumsy and wasteful, I suppose.</p>
 			<br />
 			<div class="floatedtable">
-				<table border="1">
+				<table>
 					<tr>
 					<th>Title</th>
 					<th>Director</th>
@@ -104,7 +104,6 @@
 			        <p>A floating table</p>
 			    </div>
 			</div>
-			<p>JERRY: I don't think caption-side does anything.</p>
 			<p>Here's a paragraph that is paired with what they call a floating table. The table is the same--only the styling is different. I'm adding another sentence here to make the paragraph a bit longer. And another here. And one more sentence for good measure.</p>
 			<br>
 			<h3>The code</h3>
@@ -161,10 +160,22 @@ to make the paragraph a bit longer. And another here. And one more sentence for
 good measure.&lt;/p&gt;
 </pre>
 
-			<p>If your table has too many columns, or the contents of the columns are too long, you'll want to use a traditional table. An example is the very first table at the top of this page. The HTML for that looks like this.</p>
-			<p class="precaption">Listing 3: HTML for a traditional table</p>
+			<p>If your table has too many columns, or the contents of the columns are too long, you'll want to use a traditional table. An example is the very first table at the top of this page. Here are the CSS style and the HTML that produced that.</p>
+			<p class="precaption">Listing 3: CSS and HTML for a traditional table</p>
 <pre class="preCodeWithCaption">
-&lt;table border=&quot;1&quot; cellpadding=&quot;4px&quot;&gt;
+CSS:
+table   {
+    padding: 0px;
+    border: 1px solid black;
+}
+
+th, td  {
+    padding: 4px;
+    border: 1px solid black;
+}
+
+HTML:
+&lt;table&gt;
 	&lt;tr&gt;
 		&lt;th&gt;Title&lt;/th&gt;
 		&lt;th&gt;Director&lt;/th&gt;

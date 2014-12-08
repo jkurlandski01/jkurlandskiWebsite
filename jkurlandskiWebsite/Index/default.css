@@ -93,16 +93,15 @@ th, td	{
 	border: 1px solid black;
 }
 
-.floatedtable {
-	// next line doesn't appear to do anything
-	border: 1;
+.floatedtable  {
 	float: right;
-	// left margin: 55px;
-	padding: 10px;
-	// next line doesn't appear to do anything
-	cellpadding: 30px;
-	// next line doesn't appear to do anything
 	caption-side:bottom;
+	margin-left: 45px;
+}
+
+.floatedtable table {
+	padding: 0px;
+	//margin-left: 55px;
 	//text-align: center;	
 }
 
