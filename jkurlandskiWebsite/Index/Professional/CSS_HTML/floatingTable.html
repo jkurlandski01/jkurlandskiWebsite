@@ -105,59 +105,67 @@
 			    </div>
 			</div>
 			<p>Here's a paragraph that is paired with what they call a floating table. The table is the same--only the styling is different. I'm adding another sentence here to make the paragraph a bit longer. And another here. And one more sentence for good measure.</p>
+			<p>JERRY: do same for para and image; put the css into the snippet below; maybe not html</p> 
 			<br>
 			<h3>The code</h3>
 			<p>Here are the CSS definitions for the floating table above as well as the caption that you see beneath it.</p>
 
 <p class="precaption">Listing 1: CSS definition for floating table and its caption</p>
 <pre class="preCodeWithCaption">
-floatedtable {
-	float: right;
-	padding: 10px;
-	caption-side:bottom;
+.floatedtable  {
+    float: right;
+    caption-side:bottom;
+    margin-left: 40px;
+    margin-bottom: 10px;
 }
-figcaption p { 
-	line-height: 1;
-	font-size: 10pt;
-	font-family: 'FontAwesome';
+
+.floatedtable table {
+    padding: 0px;
+    border: 1px solid black;
+}
+
+.precaption {
+    line-height: 1;
+    font-size: 10pt;
+    font-family: 'FontAwesome';
+    font-weight: 600;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
 }
 </pre>
 
 			<p>Here's how you use these definitions in the html. The only tricky thing is that in the html the table comes <em>before</em> the text that you want to pair it with. What is <em>really</em> floating, then, is the text--not the table--in the sense that the text "floats" upward until it's level with the table.</p>
-			<p class="precaption">Listing 2: Using the floating table styles in HTML</p>
-			
+
+<p class="precaption">Listing 2: Using the floating table styles in HTML</p>
 <pre class="preCodeWithCaption">
 &lt;div class=&quot;floatedtable&quot;&gt;
-	&lt;table border=&quot;1&quot;&gt;
-		&lt;tr&gt;
-			&lt;th&gt;Title&lt;/th&gt;
-			&lt;th&gt;Director&lt;/th&gt;
-			&lt;th&gt;Country&lt;/th&gt;
-		&lt;/tr&gt;
-		&lt;tr&gt;
-			&lt;td&gt;Seventh Seal&lt;/td&gt;
-			&lt;td&gt;Ingmar Bergman&lt;/td&gt;
-			&lt;td&gt;Sweden&lt;/td&gt;
-		&lt;/tr&gt;
-		&lt;tr&gt;
-			&lt;td&gt;Seven Samari&lt;/td&gt;
-			&lt;td&gt;Akira Kurosawa&lt;/td&gt;
-			&lt;td&gt;Japan&lt;/td&gt;
-		&lt;/tr&gt;
-		&lt;tr&gt;
-			&lt;td&gt;Seven&lt;/td&gt;
-			&lt;td&gt;Andy Sidaris&lt;/td&gt;
-			&lt;td&gt;United States&lt;/td&gt;
-		&lt;/tr&gt;
-	&lt;/table&gt; 
-	&lt;div class=&quot;figcaption&quot;&gt;
-		&lt;p&gt;A floating table&lt;/p&gt;
-	&lt;/div&gt;
+    &lt;table&gt;
+        &lt;tr&gt;
+        &lt;th&gt;Title&lt;/th&gt;
+        &lt;th&gt;Director&lt;/th&gt;
+        &lt;th&gt;Country&lt;/th&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+        &lt;td&gt;Seventh Seal&lt;/td&gt;
+        &lt;td&gt;Ingmar Bergman&lt;/td&gt;
+        &lt;td&gt;Sweden&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+        &lt;td&gt;Seven Samari&lt;/td&gt;
+        &lt;td&gt;Akira Kurosawa&lt;/td&gt;
+        &lt;td&gt;Japan&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+        &lt;td&gt;Seven&lt;/td&gt;
+        &lt;td&gt;Andy Sidaris&lt;/td&gt;
+        &lt;td&gt;United States&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/table&gt; 
+    &lt;div class=&quot;figcaption&quot;&gt;
+        &lt;p&gt;A floating table&lt;/p&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
-&lt;p&gt;Here&#x27;s a paragraph that is paired with what they call a floating table. The 
-table is the same--only the styling is different. I&#x27;m adding another sentence here 
-to make the paragraph a bit longer. And another here. And one more sentence for 
-good measure.&lt;/p&gt;
+&lt;p&gt;Here&#x27;s a paragraph that is paired with what they call a floating table. The table is the same--only the styling is different. I&#x27;m adding another sentence here to make the paragraph a bit longer. And another here. And one more sentence for good measure.&lt;/p&gt;
 </pre>
 
 			<p>If your table has too many columns, or the contents of the columns are too long, you'll want to use a traditional table. An example is the very first table at the top of this page. Here are the CSS style and the HTML that produced that.</p>
@@ -208,7 +216,7 @@ HTML:
 			<p>If you don't want text alongside your table, simply don't float the table--use the normal table html given above. But suppose you have two small tables, or two thumbnail images, and you want them to appear side-by-side? In this case you would float them both. The problem is that, if you float the two tables or images, then any text that follows them will be placed next to them.</p>
 			<p>Here is an illustration of the problem I'm describing.</p>
 			<div class="floatedtable">
-				<table border="1">
+				<table>
 					<tr>
 					<th>Title</th>
 					<th>Director</th>
@@ -231,7 +239,7 @@ HTML:
 			    </div>
 			</div>
 			<div class="floatedtable">
-				<table border="1">
+				<table>
 					<tr>
 					<th>Title</th>
 					<th>Country</th>
@@ -275,7 +283,8 @@ HTML:
 &lt;/div&gt;
 </pre>
 
-		<p>Sometimes you want to stop all floating of any elements below a certain point on the page. This snippet makes use of the nonFloatingPar style with an empty paragraph.</p>
+        <p>Use of the HTML above will stop not just the paragraph itself from floating up alongside an image or a table. It turns off all floating altogether.</p>
+		<p>Which leads us to a bit of a kluge. Sometimes you want to stop all floating of any elements below a certain point on the page, but you don't have anything to say within a set of &lt;p&gt; &lt;/p&gt; tags. This snippet makes use of the nonFloatingPar style with an empty paragraph.</p>
 <p class="precaption">Listing 6: Using the non-floating paragraph style to stop floating <em>from this point on the page, down</em>.</p>
 <pre class="preCodeWithCaption">
 &lt;div class=&quot;nonFloatingPar&quot;&gt;
@@ -283,9 +292,6 @@ HTML:
 &lt;/div&gt;
 </pre>
 
-			<h3>Displaying CSS and HTML code on a webpage</h3>
-			<p>JERRY: Need link to my page. Probably go into too much detail here.</p>
-			<p>By the way, it's tricky getting CSS and HTML to appear on a web page--the browser tries to render it the same way it renders the rest of your page. Css can be enclosed in &lt;code&gt; or &lt;pre&gt; tags. You're supposed to be able to do the same with html, but in my experience you need the special tags AND the html code itself has to be converted: the "&lt;" symbol must be replaced with "&amp;lt;" (think "less than"); the "&gt;" symbol with "&amp;gt;" (think "greater than"); and "&amp;" with "&amp;amp;". The conversion is unpleasant business. Eclipse offers a tool that will do this for you--see a separate page in this section of <strong>Close to the Machine</strong>.</p>
 		</div>
 		<div id="sidebar">
 			<div class="internalLinkBox">
