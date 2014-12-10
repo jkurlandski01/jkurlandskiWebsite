@@ -25,4 +25,17 @@ browser issues
 svnCheatSheet
 - needs a main index.html page
 
-Kurlandski and other tables should have a caption
+Kurlandski and other tables should have a caption.
+
+Forvo API 
+The Forvo API allows users to integrate the functionality of Forvo into their websites or applications. Forvo is the largest pronunciation guide in the world, the place where you will find millions of words pronounced in their original languages. Ask for that word or name, and another user will pronounce it for you. You can also help 
+- Could use for pronunciation of Uncle and Aunt.
+
+uClassify
+The uClassify API allows you to classify text. You might use it to create a spam filter, categorize web pages, automate e-mail support, detect languages, classify a batch of blog posts, and more....
+
+Dipity
+Timelines
+- Could use for two persons on whom we have some dated information, e.g. two people who would eventually get married.
+- http://www.dipity.com
+
