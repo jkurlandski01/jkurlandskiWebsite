@@ -1,9 +1,9 @@
-floatedtable:
-- Reword floatingTable.html to include images
-
 floated image on onTheTrail.html
 - Collapse floatedFigure and floatedImage into a single style.
 - This would mean updating floatingTable.html accordingly.
+
+floatedtable:
+- Reword floatingTable.html to include images
 
 Not giving every page its own <title> (appears on the tab)
 - The templates should have JERRY here
