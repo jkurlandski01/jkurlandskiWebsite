@@ -93,38 +93,38 @@ th, td	{
 	border: 1px solid black;
 }
 
-.floatedtable  {
+.floatedObject  {
 	float: right;
 	caption-side:bottom;
 	margin-left: 40px;
 	margin-bottom: 10px;
 }
 
-.floatedtable table {
+.floatedObject table {
 	padding: 0px;
 	border: 1px solid black;
 }
 
-
-/* Follows a series of floating images, without floating up alongside of them. */
-.nonFloatingPar	p	{
-	clear: both;
-}
+/* .floatedfigure { */
+/* 	float: right; */
+/* } */
 
 .floatedthumbnail	{
 	float: left;
 	padding: 20px;
 }
 
+/* Follows a series of floating images, without floating up alongside of them. */
+.nonFloatingPar	p	{
+	clear: both;
+}
+
+
 .thumbfigcaption p {
 	display:table-caption;
 	line-height: 15px;
 	font-size: 10pt;
 	font-family: 'FontAwesome';
-}
-
-.floatedfigure {
-	float: right;
 }
 
 
