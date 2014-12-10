@@ -49,10 +49,61 @@
             
             <div class="singleSpacedDescription">
                 <li>$ git status</li>
-                <p>blah</p>
+                <p>Get status.</p>
+                
+                <li>$ git status</li>
+                <p>Performs several tasks, depending on the context. If a file has not been added, the command can be used to begin tracking the file. The command can also be used to stage files/directories--that is, to commit them to the local branch.</p>
+
+                <li>$ git diff --staged</li>
+                <p>(Same as "git diff --cached".) Shows what you've staged that will go into your next commit. This is useful because "git diff" by itself will return nothing if you've already staged all your changes--that is, it only displays changes that are still unstaged.</p>
+
+<li>$ git difftool --tool-help</li>
+<p>Shows tools on your system that are available for viewing the diffs.</p>
+
+<li>$ git commit</li>
+<p>Note that all the "git commit" commands operate only on items that have already been staged.</p>
+<li>$ git commit</li>
+<p>This command launches an editor of your choice where you can see what you're committing and insert a message to go with the commit.</p>
+<li>$ git commit -m "<your message>"</li>
+<p>Commits with your message, not opening up an editor.</p>
+
+<li>$ git commit -a -m "<your message>"</li>
+<p>The "-a" option lets you skip the staging area altogether, and commit directory to the repository. Note that it applies only to files currently being tracked--that is, if the file is new, you must first add it to begin tracking on the file; only then can you commit it to the repository with the "commit -a " option.</p>
+
+<li>$ git rm item</li>
+<p>Removes an item from git tracking, and also removes it from your file system.</p>
+
+<li>$ git rm --cached item</li>
+<p>Removes an item from git tracking, but retains it in your file system.</p>
+
+<li>$ git mv <oldItemName> <newItemName></li>
+<p>Renames an item, retaining file history. But note that git is capable of recognizing file renames performed via the operating system. In other words, use of the mv command is the same as the following three-step process.</p>
+<pre>
+mv <oldItemName> <newItemName>
+git rm <oldItemName>
+git add <newItemName>
+</pre>
+
+<h4>File-glob patterns</h4>
+<li>$ git rm log/\*.log</li>
+<p>Removes all files ending in .log from the log directory.</p>
+
+<h4>Undoing Actions</h4>
+
+<li>$ git commit -amend</li>
+<p>(Assuming you've made no changes since you're last commit; e.g. you run it just after a commit.) Launches your text editor with the message of your last commit, allowing you to edit the message.</p>
+<p>(Assuming you've committed, realized you forgot to include a file, and have since added the file to staging.) Launches your text editor with the message of your last commit, allowing you to edit the message--and includes the missing file in the same commit as the previously-committed files.</p>
+
+<li>$ git reset HEAD <item></li>
+<p>Removes an item added to staging--e.g. so that you can commit something else added at the same time.</p>
+
+<li>$ git checkout -- <item></li>
+<p>Reverts changes to the item. Dangerous in the sense that there is no way to recovery your changes to the file.</p>
+
+
             </div>
 
-            
+
             <p>JERRY: Fix sidebar</p>
 		</div>
 		<div id="sidebar">
