@@ -1,8 +1,12 @@
 floatedtable:
-- Adjust margin-left
-- I'd rather border be set in the css style
-- Fix floatingTable.html
-- Kurlandski and other floating tables should have a caption
+- Reword floatingTable.html to include images
+
+floated image on onTheTrail.html
+- Collapse floatedFigure and floatedImage into a single style.
+- This would mean updating floatingTable.html accordingly.
+
+Not giving every page its own <title> (appears on the tab)
+- The templates should have JERRY here
 
 precaption
 - I don't think I'm using it right in preAndCode.html
@@ -21,3 +25,4 @@ browser issues
 svnCheatSheet
 - needs a main index.html page
 
+Kurlandski and other tables should have a caption
