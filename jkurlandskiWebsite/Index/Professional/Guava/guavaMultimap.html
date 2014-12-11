@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Close to the Machine</title>
+<title>Multimap</title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <link href="../../default.css" rel="stylesheet" type="text/css" media="all" />
@@ -43,21 +43,46 @@
 			</div>
             <p>JERRY: Need links at right.</p>
             <p>JERRY: Capitalization in title should be mixed</p>
-            <p>blah </p>
+            <p>Guava's Multimap interface and its implementations give all Java developers a new and extremely useful tool. It replaces the difficult-to-use Map&lt;X, List&lt;Y&gt;&gt; that we all-too-often find ourselves resorting to, for lack of anything better.</p>
+            <p>For the sake of illustration, suppose we want to associate a number of indicative forms of an English verb with their infinitive form. Before the Multimap, you would probably use a Map&lt;String, List&lt;String&gt;&gt;, where the key was the infinitive form, and the list associated with each key consisted of all the infinitive's forms. </p>
+            <p>With Guava, you would use a Multimap&lt;String, String&gt; instead. The lines below show you how to create the multimap and load it with the forms for two verbs, <em>ask</em> and <em>be</em>.</p>
 
-<p class="precaption">Listing 1: Your browser's default settings for &lt;pre&gt;.</p>
+<p class="precaption">Listing 1: Creating and populating a Multimap</p>
 <pre class="preCodeWithCaption">
-Multimap<ResponsePool, ResponsePoolEntry> mysqlResponsesToDelete = ArrayListMultimap.create();
-...
-mysqlResponsesToDelete.put(responsePool, poolEntry);
-
-// Iterate through all the entries
-for(Map.Entry<ResponsePool, ResponsePoolEntry> mapPair : mysqlResponsesToDelete.entries())  {
-    ResponsePool responsePool = mapPair.getKey();
-    ResponsePoolEntry poolEntry = mapPair.getValue();
-    ...
-}
+Multimap<String, String> mm = ArrayListMultimap.create();
+mm.put("ask", "ask");
+mm.put("ask", "asks");
+mm.put("ask", "asked");
+List<String> beList = Lists.newArrayList("am", "are", "is", "was", "were");
+mm.putAll("be", beList);
 </pre>
+        
+            <p>Listing 1 shows that you can load each list element individually, with put( ), or collectively, with putAll( ). Significantly, in neither case do you have to worry about whether the key's list has already been instantiated.</p>
+            <p>Now suppose you've populated your map and you want to do something useful with it.</p>
+
+<p class="precaption">Listing 1: Creating and populating a Multimap</p>
+<pre class="preCodeWithCaption">
+// Iterate through all the entries
+for(Entry&lt;String, String&gt; mapPair : mm.entries())  {
+    String key = mapPair.getKey();
+    String value = mapPair.getValue();
+    System.out.println(&quot;key = &quot; + key + &quot;; value = &quot; + value);
+}
+
+Output:
+key = ask; value = ask
+key = ask; value = asks
+key = ask; value = asked
+key = be; value = am
+key = be; value = are
+key = be; value = is
+key = be; value = was
+key = be; value = were
+</pre>
+
+        <p>So you see that you don't have to retrieve every key separately, and then iterate through all the elements of its list. The entries( ) method does this work for you.</p>
+
+
 		</div>
 		
 		<div id="sidebar">
