@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Close to the Machine</title>
+<title>Floating</title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <link href="../../default.css" rel="stylesheet" type="text/css" media="all" />
@@ -42,34 +42,33 @@
 				<h2>Floating Tables and Images</h2>
 				<h2>In CSS / HTML</h2>
 			</div>
-			<p>JERRY: I need internal space in the tables</p>
-				<p>While building up my website I've learned a thing or two about floating tables and images. Here my examples are almost always for tables. But the same technique can be applied for images.</p>
+			<p>While building up my website I've learned a thing or two about floating tables and images. Floating lets you put text and images alongside of each other, letting you use the space on your page more wisely. Used well, it can also get your message across more effectively.</p>
 
-				<h3>Two examples</h3>
-				<p>Here's a paragraph that is followed by a table. I'm adding another sentence here to make the paragraph a bit longer. And another sentence here. And another here. And one more sentence for good measure.</p>
+			<h3>Two examples</h3>
+			<p>Here's a paragraph that is followed by a table. I'm adding another sentence here to make the paragraph a bit longer. And another sentence here. And another here. And one more sentence for good measure.</p>
 
-				<table>
-					<tr>
+			<table>
+				<tr>
 					<th>Title</th>
 					<th>Director</th>
 					<th>Country</th>
-					</tr>
-					<tr>
+				</tr>
+				<tr>
 					<td>Seventh Seal</td>
 					<td>Ingmar Bergman</td>
 					<td>Sweden</td>
-					</tr>
-					<tr>
+				</tr>
+				<tr>
 					<td>Seven Samari</td>
 					<td>Akira Kurosawa</td>
 					<td>Japan</td>
-					</tr>
-					<tr>
+				</tr>
+				<tr>
 					<td>Seven</td>
 					<td>Andy Sidaris</td>
 					<td>United States</td>
-					</tr>
-				</table> 
+				</tr>
+			</table>
 			<div class="figcaption">
 				<p>This table is styled normally.</p>
 			</div>
@@ -115,7 +114,7 @@
             <p>And this paragraph is paired with a floating image. The styling is the same as for the floating table above. I'm adding another sentence here to make the paragraph a bit longer. And another here. And one more sentence for good measure.</p>
 			<br>
 			<h3>The code</h3>
-			<p>Here are the CSS definitions for the floating table above as well as the caption that you see beneath it.</p>
+			<p>Here are the CSS definitions for the floating table and images above as well as the captions that you see beneath them.</p>
 
 <p class="precaption">Listing 1: CSS definition for floating table and its caption</p>
 <pre class="preCodeWithCaption">
@@ -141,7 +140,7 @@
 }
 </pre>
 
-			<p>Here's how you use these definitions in the html. The only tricky thing is that in the html the table comes <em>before</em> the text that you want to pair it with. What is <em>really</em> floating, then, is the text--not the table--in the sense that the text "floats" upward until it's level with the table.</p>
+			<p>Here's how you use these definitions in the HTML. The only tricky thing is that, in the HTML, the table or image comes <em>before</em> the text that you want to pair it with. What is <em>really</em> floating, then, is the text--not the table--in the sense that the text "floats" upward until it's level with the table.</p>
 
 <p class="precaption">Listing 2: Using the floating table styles in HTML</p>
 <pre class="preCodeWithCaption">
@@ -216,9 +215,7 @@ HTML:
 	&lt;p&gt;This table is styled normally.&lt;/p&gt;
 &lt;/div&gt;
 </pre>
-        
-            <p>Notice that the styling above calls for some cell padding. I think that the table looks a tad nicer this way, and since the table isn't floating you probably have the room for it.</p>
-			
+        			
 			<h3>But what if you DON't want to float?</h3>
 			<p>If you don't want text alongside your table, simply don't float the table--use the normal table html given above. But suppose you have two small tables, or two thumbnail images, and you want them to appear side-by-side? In this case you would float them both. The problem is that, if you float the two tables or images, then any text that follows them will be placed next to them.</p>
 			<p>Here is an illustration of the problem I'm describing.</p>
@@ -303,7 +300,7 @@ HTML:
 </pre>
 
         <p>Use of the HTML above will stop not just the paragraph itself from floating up alongside an image or a table. It turns off all floating altogether.</p>
-		<p>Which leads us to a bit of a kluge. Sometimes you want to stop all floating of any elements below a certain point on the page, but you don't have anything to say within a set of &lt;p&gt; &lt;/p&gt; tags. This snippet makes use of the nonFloatingPar style with an empty paragraph.</p>
+		<p>Which leads us to a bit of a kluge. Sometimes you want to stop all floating of any elements below a certain point on the page, but you don't have anything to say within a set of &lt;p&gt; &lt;/p&gt; tags. The snippet below makes use of the nonFloatingPar style with an empty paragraph.</p>
 <p class="precaption">Listing 6: Using the non-floating paragraph style to stop floating <em>from this point on the page, down</em>.</p>
 <pre class="preCodeWithCaption">
 &lt;div class=&quot;nonFloatingPar&quot;&gt;
