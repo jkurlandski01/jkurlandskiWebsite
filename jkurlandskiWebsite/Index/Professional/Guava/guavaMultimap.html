@@ -39,11 +39,13 @@
 	<div id="page" class="container">
 		<div id="content">
 			<div class="title">
-				<h2>Guava's MultiMap</h2>
+				<h2>Guava's Multimap</h2>
 			</div>
             <p>JERRY: Need links at right.</p>
             <p>JERRY: Capitalization in title should be mixed</p>
-            <p>Guava's Multimap interface and its implementations give all Java developers a new and extremely useful tool. It replaces the difficult-to-use Map&lt;X, List&lt;Y&gt;&gt; that we all-too-often find ourselves resorting to, for lack of anything better.</p>
+            <p>Guava's Multimap interface and its implementations give Java developers a new and extremely useful tool. It replaces the difficult-to-use Map&lt;X, List&lt;Y&gt;&gt; that we all-too-often find ourselves resorting to, for lack of anything better. In case you don't know what I'm talking about, see the separate section below on the deficiencies of Map&lt;X, List&lt;Y&gt;&gt;.</p>
+
+            <h3>How to use the Multimap</h3>
             <p>For the sake of illustration, suppose we want to associate a number of indicative forms of an English verb with their infinitive form. Before the Multimap, you would probably use a Map&lt;String, List&lt;String&gt;&gt;, where the key was the infinitive form, and the list associated with each key consisted of all the infinitive's forms. </p>
             <p>With Guava, you would use a Multimap&lt;String, String&gt; instead. The lines below show you how to create the multimap and load it with the forms for two verbs, <em>ask</em> and <em>be</em>.</p>
 
@@ -60,7 +62,7 @@ mm.putAll("be", beList);
             <p>Listing 1 shows that you can load each list element individually, with put( ), or collectively, with putAll( ). Significantly, in neither case do you have to worry about whether the key's list has already been instantiated.</p>
             <p>Now suppose you've populated your map and you want to do something useful with it.</p>
 
-<p class="precaption">Listing 1: Creating and populating a Multimap</p>
+<p class="precaption">Listing 2: Iterating through all Multimap entries</p>
 <pre class="preCodeWithCaption">
 // Iterate through all the entries
 for(Entry&lt;String, String&gt; mapPair : mm.entries())  {
@@ -80,8 +82,68 @@ key = be; value = was
 key = be; value = were
 </pre>
 
-        <p>So you see that you don't have to retrieve every key separately, and then iterate through all the elements of its list. The entries( ) method does this work for you.</p>
+        <p>You see that you don't have to retrieve every key separately, and then iterate through all the elements of its list. The entries( ) method does this work for you.</p>
+        
+        <p>The next listing shows that you needn't iterate through the elements if all you want is to print them out.</p>
 
+<p class="precaption">Listing 3: Multimap's toString( )</p>
+<pre class="preCodeWithCaption">
+System.out.println("Write using toString():");
+System.out.println(mm.toString());
+
+Output:
+Write using toString():
+{ask=[ask, asks, asked], be=[am, are, is, was, were]}
+</pre>
+
+        <p>Perhaps you're completely indifferent about the keys, and all you want is the elements of all the lists. The next example gets all the elements with a method call to values( ); then, just for the fun of it, the code snippet goes on to sort those entries and write out the result.</p>
+            
+<p class="precaption">Listing 4: Getting just the entries with Multimap.values( )</p>
+<pre class="preCodeWithCaption">
+// Getting all entries when you don't care about the key.
+Collection&lt;String&gt; valuesAsCollection = mm.values();
+List&lt;String&gt; valuesAsList = Lists.newArrayList(valuesAsCollection);
+Collections.sort(valuesAsList);
+System.out.println(valuesAsList);
+
+Output:
+[am, are, ask, asked, asks, is, was, were]
+</pre>
+
+        <p>Of course, the Multimap interface offers you the same methods you expect from an ordinary map. The next listing demonstrates these with unit test assertions.</p>
+            
+<p class="precaption">Listing 5: Other useful Multimap methods</p>
+<pre class="preCodeWithCaption">
+// Testing the values for the key &quot;be&quot;.
+// containsKey( )
+assertTrue(mm.containsKey(&quot;be&quot;));
+
+// get( )
+Collection&lt;String&gt; beForms = mm.get(&quot;be&quot;);
+assertEquals(5, beForms.size());
+
+// containsEntry( )
+assertTrue(mm.containsEntry(&quot;be&quot;, &quot;was&quot;));
+
+// keySet( )
+Set&lt;String&gt; keys = mm.keySet();
+assertEquals(2, keys.size());
+</pre>
+
+        <p>Finally, the keys( ) method returns another Guava interface called <em>Multiset</em>. The next listing gives you just a taste of what a Multiset can do for you. See the link at right for more.</p>
+            
+<p class="precaption">Listing 6: Getting a Multiset from Multimap.keys( )</p>
+<pre class="preCodeWithCaption">
+Multiset&lt;String&gt; multiset = mm.keys();
+int size = multiset.size();
+assertEquals(8, size);
+assertEquals(5, multiset.count(&quot;be&quot;));
+assertEquals(3, multiset.count(&quot;ask&quot;));
+</pre>
+        <br/>
+
+        <h3>The old way, using Map&lt;X, List&lt;Y&gt;&gt;</h3>
+        <p>Just in case you're not personally familiar with the tribulations associated with a Map&lt;X, List&lt;Y&gt;&gt;, let me lay a few on you now.</p>
 
 		</div>
 		
