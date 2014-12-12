@@ -1,10 +1,17 @@
-precaption
-- I don't think I'm using it right in preAndCode.html
-- It's a class; shouldn't it be used with div instead of p?
-
 multimap
 - Write & compile code with output.
 - Put code and output onto page.
+- There seems to be less horizontal space after the snippets than before.
+- Proofread
+
+Multiset
+- start; reference from multimap
+
+The code snippets in MapSort look funny.
+- Is the font too large?
+
+hashtable for all data types
+- specify the sort when you call sort; stores everything as a string
 
 svnExamples
 - only just started
