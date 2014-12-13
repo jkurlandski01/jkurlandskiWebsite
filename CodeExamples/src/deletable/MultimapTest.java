@@ -29,14 +29,23 @@ public class MultimapTest {
 
 	@Test
 	public void testOldWay() {
+		// Get the map.
 		Map<String, List<String>> map = getHashMap();
+		
+		// Carefully add a new value to the list.
 		List<String> diveForms = map.get("dive");
 		diveForms.add("dove");
-		map.put("dive", diveForms);
+		// Put not necessary, since we modified a reference. But invoking put( ) will not cause anything to break.
+		// map.put("dive", diveForms);
+		
+		// Test passes.
 		assertEquals(4, map.get("dive").size());
 		
+		// Oops! Overwriting the old list because you forgot to update the list instead of the map.
 		List<String> moreDiveForms = Lists.newArrayList("diveth");
 		map.put("dive", moreDiveForms);
+		
+		// Test fails.
 		assertEquals(5, map.get("dive").size());		
 	}
 	
@@ -51,9 +60,15 @@ public class MultimapTest {
 	public void testNewWay() {
 		Multimap<String, String> mm = getMultimap();
 		mm.put("dive", "dove");
+		
+		// Test passes.
 		assertEquals(4, mm.get("dive").size());
 		
+		// Add a new value to the list.
 		mm.put("dive", "diveth");
+		
+		// Test passes.
+		assertEquals(5, mm.get("dive").size());
 	}
 	
 	@Test
