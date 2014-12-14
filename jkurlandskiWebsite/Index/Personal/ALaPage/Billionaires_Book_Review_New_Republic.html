@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Standard Meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"UgQAVVVQGwEHV1RTBAU="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o?o:e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({QJf3ax:[function(t,e){function n(t){function e(e,n,a){t&&t(e,n,a),a||(a={});for(var c=s(e),f=c.length,u=i(a,o,r),d=0;f>d;d++)c[d].apply(u,n);return u}function a(t,e){f[t]=s(t).concat(e)}function s(t){return f[t]||[]}function c(){return n(e)}var f={};return{on:a,emit:e,create:c,listeners:s,_events:f}}function r(){return{}}var o="nr@context",i=t("gos");e.exports=n()},{gos:"7eSDFh"}],ee:[function(t,e){e.exports=t("QJf3ax")},{}],3:[function(t){function e(t,e,n,i,s){try{c?c-=1:r("err",[s||new UncaughtException(t,e,n)])}catch(f){try{r("ierr",[f,(new Date).getTime(),!0])}catch(u){}}return"function"==typeof a?a.apply(this,o(arguments)):!1}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function n(t){r("err",[t,(new Date).getTime()])}var r=t("handle"),o=t(5),i=t("ee"),a=window.onerror,s=!1,c=0;t("loader").features.err=!0,window.onerror=e,NREUM.noticeError=n;try{throw new Error}catch(f){"stack"in f&&(t(1),t(4),"addEventListener"in window&&t(2),window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&t(3),s=!0)}i.on("fn-start",function(){s&&(c+=1)}),i.on("fn-err",function(t,e,r){s&&(this.thrown=!0,n(r))}),i.on("fn-end",function(){s&&!this.thrown&&c>0&&(c-=1)}),i.on("internal-error",function(t){r("ierr",[t,(new Date).getTime(),!0])})},{1:8,2:5,3:9,4:7,5:20,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],4:[function(t){function e(){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var n=t("ee"),r=t("handle"),o=t(2);t("loader").features.stn=!0,t(1),n.on("fn-start",function(t){var e=t[0];e instanceof Event&&(this.bstStart=Date.now())}),n.on("fn-end",function(t,e){var n=t[0];n instanceof Event&&r("bst",[n,e,this.bstStart,Date.now()])}),o.on("fn-start",function(t,e,n){this.bstStart=Date.now(),this.bstType=n}),o.on("fn-end",function(t,e){r("bstTimer",[e,this.bstStart,Date.now(),this.bstType])}),n.on("pushState-start",function(){this.time=Date.now(),this.startPath=location.pathname+location.hash}),n.on("pushState-end",function(){r("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),"addEventListener"in window.performance&&(window.performance.addEventListener("webkitresourcetimingbufferfull",function(){r("bstResource",[window.performance.getEntriesByType("resource")]),window.performance.webkitClearResourceTimings()},!1),window.performance.addEventListener("resourcetimingbufferfull",function(){r("bstResource",[window.performance.getEntriesByType("resource")]),window.performance.clearResourceTimings()},!1)),document.addEventListener("scroll",e,!1),document.addEventListener("keypress",e,!1),document.addEventListener("click",e,!1)}},{1:6,2:8,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],5:[function(t,e){function n(t){i.inPlace(t,["addEventListener","removeEventListener"],"-",r)}function r(t){return t[1]}var o=(t(1),t("ee").create()),i=t(2)(o),a=t("gos");if(e.exports=o,n(window),"getPrototypeOf"in Object){for(var s=document;s&&!s.hasOwnProperty("addEventListener");)s=Object.getPrototypeOf(s);s&&n(s);for(var c=XMLHttpRequest.prototype;c&&!c.hasOwnProperty("addEventListener");)c=Object.getPrototypeOf(c);c&&n(c)}else XMLHttpRequest.prototype.hasOwnProperty("addEventListener")&&n(XMLHttpRequest.prototype);o.on("addEventListener-start",function(t){if(t[1]){var e=t[1];"function"==typeof e?this.wrapped=t[1]=a(e,"nr@wrapped",function(){return i(e,"fn-",null,e.name||"anonymous")}):"function"==typeof e.handleEvent&&i.inPlace(e,["handleEvent"],"fn-")}}),o.on("removeEventListener-start",function(t){var e=this.wrapped;e&&(t[1]=e)})},{1:20,2:21,ee:"QJf3ax",gos:"7eSDFh"}],6:[function(t,e){var n=(t(2),t("ee").create()),r=t(1)(n);e.exports=n,r.inPlace(window.history,["pushState"],"-")},{1:21,2:20,ee:"QJf3ax"}],7:[function(t,e){var n=(t(2),t("ee").create()),r=t(1)(n);e.exports=n,r.inPlace(window,["requestAnimationFrame","mozRequestAnimationFrame","webkitRequestAnimationFrame","msRequestAnimationFrame"],"raf-"),n.on("raf-start",function(t){t[0]=r(t[0],"fn-")})},{1:21,2:20,ee:"QJf3ax"}],8:[function(t,e){function n(t,e,n){var r=t[0];"string"==typeof r&&(r=new Function(r)),t[0]=o(r,"fn-",null,n)}var r=(t(2),t("ee").create()),o=t(1)(r);e.exports=r,o.inPlace(window,["setTimeout","setInterval","setImmediate"],"setTimer-"),r.on("setTimer-start",n)},{1:21,2:20,ee:"QJf3ax"}],9:[function(t,e){function n(){c.inPlace(this,d,"fn-")}function r(t,e){c.inPlace(e,["onreadystatechange"],"fn-")}function o(t,e){return e}var i=t("ee").create(),a=t(1),s=t(2),c=s(i),f=s(a),u=window.XMLHttpRequest,d=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"];e.exports=i,window.XMLHttpRequest=function(t){var e=new u(t);try{i.emit("new-xhr",[],e),f.inPlace(e,["addEventListener","removeEventListener"],"-",function(t,e){return e}),e.addEventListener("readystatechange",n,!1)}catch(r){try{i.emit("internal-error",[r])}catch(o){}}return e},window.XMLHttpRequest.prototype=u.prototype,c.inPlace(XMLHttpRequest.prototype,["open","send"],"-xhr-",o),i.on("send-xhr-start",r),i.on("open-xhr-start",r)},{1:5,2:21,ee:"QJf3ax"}],10:[function(t){function e(t){if("string"==typeof t&&t.length)return t.length;if("object"!=typeof t)return void 0;if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if("undefined"!=typeof FormData&&t instanceof FormData)return void 0;try{return JSON.stringify(t).length}catch(e){return void 0}}function n(t){var n=this.params,r=this.metrics;if(!this.ended){this.ended=!0;for(var i=0;c>i;i++)t.removeEventListener(s[i],this.listener,!1);if(!n.aborted){if(r.duration=(new Date).getTime()-this.startTime,4===t.readyState){n.status=t.status;var a=t.responseType,f="arraybuffer"===a||"blob"===a||"json"===a?t.response:t.responseText,u=e(f);if(u&&(r.rxSize=u),this.sameOrigin){var d=t.getResponseHeader("X-NewRelic-App-Data");d&&(n.cat=d.split(", ").pop())}}else n.status=0;r.cbTime=this.cbTime,o("xhr",[n,r,this.startTime])}}}function r(t,e){var n=i(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}if(window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&!/CriOS/.test(navigator.userAgent)){t("loader").features.xhr=!0;var o=t("handle"),i=t(2),a=t("ee"),s=["load","error","abort","timeout"],c=s.length,f=t(1);t(4),t(3),a.on("new-xhr",function(){this.totalCbs=0,this.called=0,this.cbTime=0,this.end=n,this.ended=!1,this.xhrGuids={}}),a.on("open-xhr-start",function(t){this.params={method:t[0]},r(this,t[1]),this.metrics={}}),a.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),a.on("send-xhr-start",function(t,n){var r=this.metrics,o=t[0],i=this;if(r&&o){var f=e(o);f&&(r.txSize=f)}this.startTime=(new Date).getTime(),this.listener=function(t){try{"abort"===t.type&&(i.params.aborted=!0),("load"!==t.type||i.called===i.totalCbs&&(i.onloadCalled||"function"!=typeof n.onload))&&i.end(n)}catch(e){try{a.emit("internal-error",[e])}catch(r){}}};for(var u=0;c>u;u++)n.addEventListener(s[u],this.listener,!1)}),a.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),a.on("xhr-load-added",function(t,e){var n=""+f(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),a.on("xhr-load-removed",function(t,e){var n=""+f(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),a.on("addEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-added",[t[1],t[2]],e)}),a.on("removeEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-removed",[t[1],t[2]],e)}),a.on("fn-start",function(t,e,n){e instanceof XMLHttpRequest&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=(new Date).getTime()))}),a.on("fn-end",function(t,e){this.xhrCbStart&&a.emit("xhr-cb-time",[(new Date).getTime()-this.xhrCbStart,this.onload,e],e)})}},{1:"XL7HBI",2:11,3:9,4:5,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],11:[function(t,e){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");return!r.port&&o[1]&&(r.port=o[1].split("/")[0].split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname),r.sameOrigin=!e.hostname||e.hostname===document.domain&&e.port===n.port&&e.protocol===n.protocol,r}},{}],gos:[function(t,e){e.exports=t("7eSDFh")},{}],"7eSDFh":[function(t,e){function n(t,e,n){if(r.call(t,e))return t[e];var o=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:o,writable:!0,enumerable:!1}),o}catch(i){}return t[e]=o,o}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],D5DuLP:[function(t,e){function n(t,e,n){return r.listeners(t).length?r.emit(t,e,n):(o[t]||(o[t]=[]),void o[t].push(e))}var r=t("ee").create(),o={};e.exports=n,n.ee=r,r.q=o},{ee:"QJf3ax"}],handle:[function(t,e){e.exports=t("D5DuLP")},{}],XL7HBI:[function(t,e){function n(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:i(t,o,function(){return r++})}var r=1,o="nr@id",i=t("gos");e.exports=n},{gos:"7eSDFh"}],id:[function(t,e){e.exports=t("XL7HBI")},{}],loader:[function(t,e){e.exports=t("G9z0Bl")},{}],G9z0Bl:[function(t,e){function n(){var t=p.info=NREUM.info;if(t&&t.agent&&t.licenseKey&&t.applicationID&&c&&c.body){p.proto="https"===d.split(":")[0]||t.sslForHttp?"https://":"http://",a("mark",["onload",i()]);var e=c.createElement("script");e.src=p.proto+t.agent,c.body.appendChild(e)}}function r(){"complete"===c.readyState&&o()}function o(){a("mark",["domContent",i()])}function i(){return(new Date).getTime()}var a=t("handle"),s=window,c=s.document,f="addEventListener",u="attachEvent",d=(""+location).split("?")[0],p=e.exports={offset:i(),origin:d,features:{}};c[f]?(c[f]("DOMContentLoaded",o,!1),s[f]("load",n,!1)):(c[u]("onreadystatechange",r),s[u]("onload",n)),a("mark",["firstbyte",i()])},{handle:"D5DuLP"}],20:[function(t,e){function n(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(0>o?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=n},{}],21:[function(t,e){function n(t){return!(t&&"function"==typeof t&&t.apply&&!t[i])}var r=t("ee"),o=t(1),i="nr@wrapper",a=Object.prototype.hasOwnProperty;e.exports=function(t){function e(t,e,r,a){function nrWrapper(){var n,i,s,f;try{i=this,n=o(arguments),s=r&&r(n,i)||{}}catch(d){u([d,"",[n,i,a],s])}c(e+"start",[n,i,a],s);try{return f=t.apply(i,n)}catch(p){throw c(e+"err",[n,i,p],s),p}finally{c(e+"end",[n,i,f],s)}}return n(t)?t:(e||(e=""),nrWrapper[i]=!0,f(t,nrWrapper),nrWrapper)}function s(t,r,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<r.length;c++)s=r[c],a=t[s],n(a)||(t[s]=e(a,f?s+o:o,i,s,t))}function c(e,n,r){try{t.emit(e,n,r)}catch(o){u([o,e,n,r])}}function f(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){u([r])}for(var o in t)a.call(t,o)&&(e[o]=t[o]);return e}function u(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=r),e.inPlace=s,e.flag=i,e}},{1:20,ee:"QJf3ax"}]},{},["G9z0Bl",3,10,4]);</script>
+
+  <!-- Site Properities -->
+  <title>'Billionaires' Book Review: Money Can't Buy Happiness | New Republic</title>
+
+  
+  <!-- Mobile Properities -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/sites/all/themes/tnr/assets/images/apple/apple-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/sites/all/themes/tnr/assets/images/apple/apple-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/sites/all/themes/tnr/assets/images/apple/apple-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="/sites/all/themes/tnr/assets/images/apple/apple-icon-144x144.png" />
+
+  <meta name="apple-mobile-web-app-title" content="New Republic">
+  <meta name="google-site-verification" content="yjAiUZ-nXs91TSe9Er7xAnQBp2C8V2gg-mpTF7aZh20" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Social Properities -->
+  <meta property="twitter:account_id" content="82689705" />
+  <meta property="fb:app_id" content="219642118178156" />
+  <meta property="fb:admins" content="100001770781440" />
+  <meta property="fb:admins" content="19000185" />
+  <meta property="fb:admins" content="2400669" />
+  <meta property="fb:admins" content="600931" />
+  <meta property="fb:admins" content="5" />
+  <link href="https://plus.google.com/+thenewrepublic/" rel="publisher" />
+
+  <meta name="parsely-page" content='{"title":"Extreme Wealth Is Bad for Everyone\u2014Especially the Wealthy","link":"http:\/\/www.newrepublic.com\/article\/120092\/billionaires-book-review-money-cant-buy-happiness","section":"Books","pub_date":"2014-11-12T18:05:00-05:00","post_id":"120092","author":"Michael Lewis","type":"post","tags":["Books","Culture","Wealth","inequality","Money","100 years","Billionaires","Politics"]}' />
+  <link rel="canonical" href="http://www.newrepublic.com/article/120092/billionaires-book-review-money-cant-buy-happiness" />
+<meta property="og:image" content="http://www.newrepublic.com/sites/default/files/bloomberg_2.jpg" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:width" content="1250" />
+<meta property="og:image:height" content="517" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="twitter:image:src" content="http://www.newrepublic.com/sites/default/files/styles/large/public/bloomberg_2.jpg?itok=3KRAc6Zx" />
+<meta name="twitter:description" content="The filthy rich, writes Michael Lewis, are unhappy, unhelpful, and always wanting more." />
+<meta property="sailthru.rubric" content="Books" />
+<meta property="article:section" content="Politics" />
+<link rel="alternate" type="application/rss+xml" title="The New Republic | The Plank" href="http://www.newrepublic.com/plank-rss.xml" />
+<link rel="shortcut icon" href="http://www.newrepublic.com/sites/default/files/newrepublic-icon.ico" type="image/vnd.microsoft.icon" />
+<meta name="sailthru.articleID" content="120092" />
+<meta name="parsely-metadata" content='{"thumb_image":"http:\/\/www.newrepublic.com\/sites\/default\/files\/styles\/homepage_bottom_feature\/public\/bloomberg_2.jpg?itok=-eFdEd2s"}' /><meta name="keywords" content="Books, Culture, Wealth, inequality, Money, 100 years, Billionaires, Politics" />
+<link rel="alternate" type="application/rss+xml" title="The New Republic" href="http://www.newrepublic.com/rss.xml" />
+<meta property="author" content="Michael Lewis" />
+<meta property="sailthru.date" content="2014-11-12 18:05:00" />
+<meta property="article:published_time" content="2014-11-12T18:05:00-05:00" />
+<meta property="dcterms.creator" content="Michael Lewis" />
+<meta property="sailthru.author" content="Michael Lewis" />
+<meta name="twitter:title" content="Extreme Wealth Is Bad for Everyone—Especially the Wealthy" />
+<meta name="twitter:site" content="@tnr" />
+<meta property="article:tag" content="Books" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="description" content="The filthy rich, writes Michael Lewis, are unhappy, unhelpful, and always wanting more." />
+<meta name="generator" content="Drupal 7 (http://drupal.org)" />
+<meta property="og:site_name" content="New Republic" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://www.newrepublic.com/article/120092/billionaires-book-review-money-cant-buy-happiness" />
+<meta property="og:title" content="Extreme Wealth Is Bad for Everyone—Especially the Wealthy" />
+<meta property="og:description" content="The filthy rich, writes Michael Lewis, are unhappy, unhelpful, and always wanting more." />
+<meta name="dcterms.date" content="2014-11-12T18:05-05:00" />
+<meta name="dcterms.type" content="Text" />
+<meta name="dcterms.format" content="text/html" />
+<meta name="dcterms.identifier" content="http://www.newrepublic.com/article/120092/billionaires-book-review-money-cant-buy-happiness" />
+<meta name="dcterms.language" content="und" />
+  <link type="text/css" rel="stylesheet" href="http://www.newrepublic.com/sites/default/files/css/css_4hPmAO_Nvj6jiRjsl7yjW6iGzgIXcDYAzsF_zjCZPRU.css" media="all" />
+<link type="text/css" rel="stylesheet" href="http://www.newrepublic.com/sites/default/files/css/css_LCXOee6K6qCI1i50ATPbvvkTNGz0mN-S7M2eAYEhNlk.css" media="all" />
+<link type="text/css" rel="stylesheet" href="http://www.newrepublic.com/sites/default/files/css/css_m16U8G5TUJP-3AqUH142AI_xaLdA6OZzARxwbg_MIVY.css" media="all" />
+<link rel="stylesheet" type="text/css" href="/sites/all/themes/tnr/build/devices/print.css" media="print">
+  <!-- Reset JS before Page Load !-->
+<script src="/sites/all/themes/tnr/javascript/reset.js"></script>
+  <!-- Google Analytics -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  var pluginUrl =
+ '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+  _gaq.push(['_setAccount', 'UA-10465183-1']);
+  _gaq.push(['_setDomainName', 'newrepublic.com']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+<!-- comScore -->
+<script>
+var _comscore = _comscore || [];
+_comscore.push({ c1: "2", c2: "15230262" });
+(function() {
+var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+el.parentNode.insertBefore(s, el);
+})();
+</script>  
+<!-- Google Ads -->
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+
+// pusher
+window.googletag     = window.googletag || {}
+window.googletag.cmd = window.googletag.cmd || [];
+
+// loader
+(function() {
+  var
+    gads   = document.createElement('script'),
+    useSSL = 'https:' == document.location.protocol,
+    node
+  ;
+  gads.async = true;
+  gads.type  = 'text/javascript';
+  gads.src   = (useSSL ? 'https:' : 'http:') + '//www.googletagservices.com/tag/js/gpt.js';
+  node       = document.getElementsByTagName('script')[0];
+  node.parentNode.insertBefore(gads, node);
+})();
+//--><!]]>
+</script>
+
+<style>
+.leaderboard.advertisement {
+  width:728px;
+  height:90px;
+}
+</style>
+
+<!-- Google Ad Leaderboards -->
+<script type="text/javascript">
+// push ads available on all pages onready without jquery (not available till end of page)
+document.onreadystatechange = function () {
+  var
+    state = document.readyState
+  ;
+  if (state === 'interactive' && window.site !== undefined) {
+    site.utilities.load.ads([
+      {
+        name  : '/25738720/Web-LB0',
+        id    : 'leaderboard-ad',
+        sizes : [
+          [728, 90]
+        ]
+      },
+      {
+        name  : '/25738720/Mobile-LB1',
+        id    : 'mobile-leaderboard-ad',
+        sizes : [
+          [320, 50]
+        ]
+      }
+    ]);
+  }
+};
+</script>
+
+</head>
+<body id="article" >
+    <!-- Header !-->
+
+
+  <div class="ui page navigation container">
+
+    <div class="leaderboard advertisement" id="leaderboard-ad"></div>
+<div class="mobile advertisement" id="mobile-leaderboard-ad"></div>    <div class="ui relaxed fitted grid">
+      <div class="left column">
+                <h2>New Republic</h2>
+                <span itemscope itemtype="http://schema.org/Organization">
+          <a class="logo ui image" itemprop="url" href="/" >
+            <img itemprop="logo" src="/sites/all/themes/tnr/assets/images/logo-100-slim.png">
+          </a>
+        </span>
+        <div class="ui compact basic large mobile button">
+          <i class="list layout icon"></i> Menu
+        </div>
+        <nav class="ui divided horizontal category list">
+          <a href="/tags/politics" class="item">Politics</a>
+          <a href="/tags/culture" class="item">Culture</a>
+          <a href="/current-issue" class="item">Magazine</a>
+        </nav>
+        <nav class="ui horizontal sub category list">
+          <a href="/latest" class="item">The Latest</a>
+          <a href="/qed" class="item">Q.E.D.</a>
+          <a href="/tags/books" class="item">Books</a>
+          <a href="/tags/obamacare" class="item">Obamacare</a>
+          <a href="/project/next-republic" class="sponsored item">
+            Next Republic
+            <i class="triangle down icon"></i>
+          </a>
+        </nav>
+        <div class="ui sponsored wide popup">
+          <div class="ui four column fitted grid">
+            <div class="column">
+              <a href="/project/next-republic">
+                <img class="ui image" src="/sites/all/themes/tnr/assets/images/suisse/next-republic-navcallout.jpg" alt="Next Republic">
+              </a>
+            </div>
+              <div class="column">
+    <div class="ui headline">
+      <h3 class="ui rubric header">
+        <a href="/tags/identity" class="title">Identity</a>      </h3>
+      <a class="ui image" href="/article/120419/lilting-better-depiction-asian-americans-tv-and-movies">
+                <img src="http://www.newrepublic.com/sites/default/files/styles/latest/public/7f1498792129ca24a1c9897d2f89a2a8.jpg?itok=7UQFlp9n" />
+              </a>
+      <h3 class="ui header">
+        <a href="/article/120419/lilting-better-depiction-asian-americans-tv-and-movies">
+          Finally a Movie That Captures What It's Like to Be Asian American        </a>
+        <div class="sub header">
+                  </div>
+      </h3>
+      <div class="author">
+        <a href="/authors/elaine-teng">Elaine Teng</a>      </div>
+    </div>
+  </div>
+  <div class="column">
+    <div class="ui headline">
+      <h3 class="ui rubric header">
+        <a href="/tags/race" class="title">race</a>      </h3>
+      <a class="ui image" href="/article/120387/people-identifying-white-and-black-are-future-america">
+                <img src="http://www.newrepublic.com/sites/default/files/styles/latest/public/lede_art_bir2.jpg?itok=8XOKScwt" />
+              </a>
+      <h3 class="ui header">
+        <a href="/article/120387/people-identifying-white-and-black-are-future-america">
+          The Major Demographic Shift That's Upending How We Think About Race        </a>
+        <div class="sub header">
+                  </div>
+      </h3>
+      <div class="author">
+        <a href="/authors/william-h-frey">William H. Frey</a>      </div>
+    </div>
+  </div>
+  <div class="column">
+    <div class="ui headline">
+      <h3 class="ui rubric header">
+        <a href="/tags/sponsored-content" class="title">Sponsored Content</a>      </h3>
+      <a class="ui image" href="/article/120386/credit-suisse-launches-entrepreneurs-circle-help-african-americans">
+                <img src="http://www.newrepublic.com/sites/default/files/styles/latest/public/cs_lede_art_112114.png?itok=aOM1cv79" />
+              </a>
+      <h3 class="ui header">
+        <a href="/article/120386/credit-suisse-launches-entrepreneurs-circle-help-african-americans">
+          Creating New Opportunities for African-American Entrepreneurs        </a>
+        <div class="sub header">
+                  </div>
+      </h3>
+      <div class="author">
+              </div>
+    </div>
+  </div>
+          </div>
+        </div>
+      </div>
+      <div class="right column">
+              <div class="ui right floated red subscribe buttons">
+          <div class="ui dropdown button">
+            <a target="_blank" href="/subscription/self/header">Subscribe Now</a>
+            <i class="dropdown icon"></i>
+            <div class="menu">
+              <a class="item" href="/subscription/self/dropdown">Order a Subscription</a>
+              <a class="item" href="/subscription/gift/header">Give a Gift</a>
+              <a class="item" href="/subscription/international/header">International Orders</a>
+              <a class="item" href="/subscription/canada/header">Canadian Orders</a>
+              <a class="item" href="/subscription/digital/header">Digital Subscription</a>
+            </div>
+          </div>
+        </div>
+        <div class="ui small secondary user menu">
+          <a class="login item">Sign In</a><div class="ui login popup"><form class="ui form" action="/article/120092/billionaires-book-review-money-cant-buy-happiness?destination=node/120092" method="post" id="user-login-form" accept-charset="UTF-8"><div><div class="field"><div class="form-item form-type-textfield form-item-name">
+  <label for="edit-name--2">E-mail Address </label>
+ <span class="field-prefix"><a href="/subscription/self/header" data-content="User accounts are for The New Republic subscribers only. Click here to gain full access to the site." data-title="Get Complete Access" tabindex="5" class="create">Subscribe for Access</a><div class="ui left icon input"><i class="mail icon"></i></span> <input tabindex="1" autocomplete="email" data-validate="username" type="text" id="edit-name--2" name="name" value="" maxlength="60" class="form-text" /> <span class="field-suffix"></div></span>
+</div>
+</div><div class="field"><div class="form-item form-type-password form-item-pass">
+  <label for="edit-pass--2">Password </label>
+ <span class="field-prefix"><a class="forgot" tabindex="6" href="/customer-service">Forgot Your Password?</a><div class="ui left icon input"><i class="lock icon"></i></span> <input tabindex="2" data-validate="password" type="password" id="edit-pass--2" name="pass" maxlength="128" class="form-text" /> <span class="field-suffix"></div></span>
+</div>
+</div><div class="ui inline field"><div class="ui checkbox"><div class="form-item form-type-checkbox form-item-remember-me">
+ <input tabindex="3" type="checkbox" id="edit-remember-me--2" name="remember_me" value="1" checked="checked" class="form-checkbox" />  <label class="option" for="edit-remember-me--2">Remember me on this computer </label>
+
+</div>
+</div></div><input type="hidden" name="form_build_id" value="form-Zi-Ci2BJNX28lKu1ZlTRR1HHJBlvZsdtT8nEvm1TLr4" />
+<input type="hidden" name="form_id" value="user_login_block" />
+<div class="form-actions form-wrapper" id="edit-actions--2"><input tabindex="4" class="ui submit button form-submit" type="submit" id="edit-submit--2" name="op" value="Sign In" /></div></div></form></div>        </div>
+              <div class="ui search">
+          <div class="ui small icon input">
+            <input class="prompt" type="text" name="q" autocomplete="off" placeholder="Search...">
+            <i class="search icon"></i>
+          </div>
+          <div class="results"></div>
+        </div>
+      </div>
+    </div>
+    <div class="ui fluid inverted vertical logged-out mobile menu">
+      <a class="item" href="/page/account-information">Sign In</a>
+      <a class="item" href="/subscription/self/header">Subscribe</a>
+      <div class="header item">Sections</div>
+      <a href="/latest" class="item">The Latest</a>
+      <a href="/qed" class="item">QED</a>
+      <a href="/tags/politics" class="item">Politics</a>
+      <a href="/tags/culture" class="item">Culture</a>
+      <a href="/current-issue" class="item">The Magazine</a>
+      <a href="/tags/future-work" class="item">Next Republic</a>
+    </div>
+  </div>
+
+<div class="page body">
+    <script type="text/javascript">
+site.page.config = {
+  enablePaywall: false,
+  adInterval : 30,
+    ads        : [
+    {
+      name  : '/25738720/Web-LR1',
+      id    : 'rail-ad',
+      sizes : [
+        [300, 250],
+        [300, 600],
+        [300, 1050]
+      ]
+    },
+    {
+      name  : '/25738720/Web-LR2',
+      id    : 'sticky-rail-ad',
+      sizes : [
+        [300, 250],
+        [300, 600]
+      ]
+    },
+    {
+      name  : '/25738720/Web-LR3',
+      id    : 'extra-rail-ad',
+      sizes : [
+        [300, 250]
+      ]
+    },
+    {
+      name  : '/25738720/Web-SR1',
+      id    : 'house-small-rectangle',
+      sizes : [
+        [300, 100]
+      ]
+    },
+    {
+      name  : '/25738720/Web-Teads1',
+      id    : 'ad-teads',
+      sizes : [
+        [1, 1]
+      ]
+    },
+    {
+      name  : '/25738720/Web-C-80x80',
+      id    : 'house-left-rail',
+      sizes : [
+        [80, 80]
+      ]
+    },
+    {
+      name  : '/25738720/Mobile-WS1',
+      id    : 'tablet-sticky-rail-ad',
+      sizes : [
+        [160, 600]
+      ]
+    },
+    {
+      name  : '/25738720/Mobile-LR1',
+      id    : 'mobile-article-bottom-ad',
+      sizes : [
+        [300, 250],
+        [300, 600]
+      ]
+    }
+  ]
+  };
+</script>
+
+<div class="ui page content container">
+    <div class="story image"
+    data-image="http://www.newrepublic.com/sites/default/files/bloomberg_2.jpg"
+      >
+    <div class="ui active flipping loader">
+      <div class="shape"></div>
+    </div>
+        <span class="attribution">
+      Photo: Getty Images    </span>
+      </div>
+  <img src="http://www.newrepublic.com/sites/default/files/styles/static_cover_img_500/public/bloomberg_2.jpg?itok=AhTeg9BG" class="ui fluid inline image" alt="Extreme Wealth Is Bad for Everyone—Especially the Wealthy">
+  
+  <div class="article container" itemscope itemtype="http://schema.org/Article">
+
+    <div class="header">
+      <div class="story title">
+                  <a href="/tags/books" itemprop="articleSection" class="category">Books</a>                <h5 class="date" itemprop="datePublished"><span property="dc:date dc:created" content="2014-11-12T18:05:00-05:00" datatype="xsd:dateTime">November 12, 2014</span></h5>
+        <h1 class="title">
+          <span class="headline" itemprop="name">Extreme Wealth Is Bad for Everyone—Especially the Wealthy</span>
+                  </h1>
+      </div>
+    </div>
+    <div class="content">
+      <div class="story">
+        <div class="inline tools">
+          <div class="share module">
+            <div class="twitter slim"
+              data-url="http://www.newrepublic.com/article/120092/billionaires-book-review-money-cant-buy-happiness"
+              data-text="Extreme Wealth Is Bad for Everyone—Especially the Wealthy"
+              data-title="Tweet">
+            </div>
+            <div class="facebook slim"
+              data-url="http://www.newrepublic.com/article/120092/billionaires-book-review-money-cant-buy-happiness"
+              data-text="Extreme Wealth Is Bad for Everyone—Especially the Wealthy"
+              data-title="Share">
+            </div>
+          </div>
+        </div>
+        <div class="tracking">
+          <div class="body text">
+                        <h5 class="ui author dividing header">
+              By <a href="/authors/michael-lewis" itemprop="author" rel="author">Michael Lewis</a>                              <span class="attribution">
+                  Photo: Getty Images                </span>
+                          </h5>
+                        
+                          <div class="introduction">
+                <p><a href="http://www.amazon.com/Billionaires-Reflections-Darrell-M-West/dp/0815725965/ref=sr_1_1?ie=UTF8&amp;qid=1415035742&amp;sr=8-1&amp;keywords=reflections+on+the+upper+crust"><em>Billionaires: Reflections on the Upper Crust</em></a> by Darrell M. West (Brookings)</p>              </div>
+                                    <div class="body" itemprop="articleBody" >
+              <p class="p1"><span class="dropcap">W</span>hen I was fourteen I met a man with a talent for restoring a sense of fairness to a society with vast and growing inequalities in wealth. His name was Jack Kenney and he’d created a tennis camp, called Tamarack, in the mountains of northern New Hampshire. The kids who went to the Tamarack Tennis Camp mostly came from well-to-do East Coast families, but the camp itself didn’t feel like a rich person’s place: it wasn’t unusual for the local health inspectors to warn the camp about its conditions, or for the mother of some Boston Brahmin dropping her child off, and seeing where he would sleep and eat for the next month, to burst into tears. Kenney himself had enjoyed a brief, exotic career as a professional tennis player<span class="em">&mdash;</span>he’d even played a doubles match on ice with Fred Perry<span class="em">&mdash;</span>but he was pushing sixty and had long since abandoned whatever interest he’d had in fame and fortune. He ran his tennis camp less as a factory for future champions than as an antidote to American materialism<span class="em">&mdash;</span>and also to the idea that a person could be at once successful and selfish. (You can still hear his quixotic suspicion of conventional success echoed in his grandson, the Olympic champion Bode Miller, who grew up on the campsite.) </p><p class="p2">Jack Kenney’s assault on teenaged American inequality began at breakfast the first morning. The bell clanged early, and the kids all rolled out of their old stained bunk beds, scratched their fresh mosquito bites, and crawled to the dining hall. On each table were small boxes of cereal, enough for each kid to have one box, but not enough that everyone could have the brand of cereal he wanted. There were Fruit Loops and Cheerios, but also more than a few boxes of the deadly dark bran stuff consumed willingly only by old people suffering from constipation. On the second morning, when the breakfast bell clanged, a mad footrace ensued. Kids sprung from their bunks and shot from cabins in the New Hampshire woods to the dining hall. The winners got the Fruit Loops, the losers a laxative. By the third morning, it was clear that, in the race to the Fruit Loops, some kids had a natural advantage. They were bigger and faster; or their cabins were closer to the dining hall; or they just had that special knack some people have for getting whatever they want. Some kids would always get the Fruit Loops, and others would always get the laxative. Life was now officially unfair.</p><p class="p3">After that third breakfast, Kenney called an assembly on a hill overlooking a tennis court. He was unkempt and a bit odd; wisps of gray hair crossed his forehead and he looked as if he hadn’t bathed in a week. He was also kind and gentle and funny, and kids instantly sensed that he was worth listening to, and wanted to hear what he had to say. “You all live in important places surrounded by important people,” he’d begin. “When I’m in the big city, I never understand the faces of the people, especially the people who want to be successful. They look so worried! So unsatisfied!” Here his eyes closed shut and his hands became lobster claws, pinching and grasping the air in front of him. “In the city you see people grasping, grasping, grasping. Taking, taking, taking. And it must be so hard! To be always grasping-grasping, and taking-taking. But no matter how much they have, they never have enough. They’re still worried. About what they don’t have. They’re always empty.” Eyes closed, talking as much to himself as to us, he described the life of not-so-quiet desperation until every kid on the hill wondered what this had to do with the two-handed backhand. Then he opened his eyes and finished: “You have a choice. You don’t realize it, but you have a choice. You can be a giver or you can be a taker. You can get filled up or empty. You make that choice every day. You make that choice at breakfast when you rush to grab the cereal you want so others can’t have what they want.” And then he moved on to why no one should ever hit a two-handed backhand<span class="em">&mdash;</span>while every kid on the hill squirmed and reddened and glanced at each other, wondering if everyone else realized what an asshole he’d been. </p><p class="p3">On the fourth morning, no one ate the Fruit Loops. Kids were thrusting the colorful boxes at each other and leaping on the constipation cereal like war heroes jumping on hand grenades. In a stroke, the texture of life in this tennis camp had changed, from a chapter out of <em>Lord of the Flies</em> to the feeling between the lines of <em>Walden.</em> Even the most fantastically selfish kids did what they could to contribute to the general welfare of the place, and there was not a shred of doubt that everyone felt happier for it. The distinction between haves and have-nots, winners and losers, wasn’t entirely gone, of course. But it became less important than this other distinction, between the givers and the takers. </p><p><div class="pull-center"><div><img src="http://wp.newrepublic.com/wp-content/uploads/2014/11/ARTICLE_INSET_LEWIS_625-624x746.jpg" height="746" width="624" /></div><div class="credit">Illustration by Mike Lee</div></div></p><p class="p1"><span class="dropcap">I</span>t’s an obvious point: people’s behavior can be changed. But it’s largely absent from the growing and increasingly heated discussion about the growing gap between the very rich and everyone else. The grotesque inequality between the haves and the have-nots is seldom framed as a problem that the haves might privately help to resolve. Instead, it is a problem the have-nots must persuade their elected officials to do something about, presumably against the wishes of the haves. The latest contribution to the discussion comes from Darrell West, a scholar at the Brookings Institution. “Wealth<span class="em">&mdash;</span>its uses and abuses<span class="em">&mdash;</span>is a subject that has intrigued me since my youth in the rural Midwest,” West writes in the introduction to his study of billionaires. From his seat in Washington, D.C., he has grown concerned about the effects on democracy of a handful of citizens controlling more and more wealth. </p><p class="p3">Drawing on the work of Thomas Piketty and Emmanuel Saez, West notes that the concentration of wealth in the top 1 percent of American citizens has returned to levels not seen in a century. One percent of the population controls a third of its wealth, and the problem is only getting worse: from 1979 to 2009 after-tax income for the top 1 percent rose by 155 percent while not changing all that much for everyone else. By another measure of inequality, which compares the income controlled by the top 10 percent with that of the bottom 40 percent, the United States is judged to come forty-fourth out of the eighty-six nations in the race, and last among developed nations. But the object of West’s interest is not the top 10 percent or even the top 1 percent, but the handful of the richest people on the planet<span class="em">&mdash;</span>the 1,645 (according to <em>Forbes</em>) or 1,682 (the Knight Frank group) or 1,867 (China’s Start Property Group) or 2,170 (UBS Financial Services) people on the planet worth a billion dollars or more. (The inability to identify even the number of billionaires hints at a bigger problem: how little even those who claim an expertise about this class of people actually know about them.) </p><p class="p3"><em>Billionaires</em> seems to have been sparked by West’s belief that rich people, newly empowered to use their money in politics, are now more likely than usual to determine political outcomes. This may be true, but so far the evidence<span class="em">&mdash;</span>and evidence here is really just a handful of anecdotes<span class="em">&mdash;</span>suggests that rich people, when they seek to influence political outcomes, often are wasting their money. Michael Bloomberg was able to use his billions to make himself mayor of New York City (which seems to have worked out pretty well for New York City), but Meg Whitman piled $144 million of her own money in the streets of California and set it on fire in her failed attempt to become governor. Mitt Romney might actually have been a stronger candidate if he had less money, or at least had been less completely defined by his money. For all the angst caused by the Koch Brothers and Sheldon Adelson and their efforts to unseat Barack Obama, they only demonstrated how much money could be spent on a political campaign while exerting no meaningful effect upon it. </p><p class="p3">As West points out, many rich people are more interested in having their way with specific issues than with candidates, but even here their record is spotty. Perhaps they are having their way in arguments about raising federal estate tax; but the states with the most billionaires in them, California and New York, have among the highest tax rates on income and capital gains. If these billionaires are seeking, as a class, to minimize the sums they return to society, they are not doing a very good job of it. But of course they aren’t seeking anything, as a class: it’s not even clear they can agree on what their collective interests are. The second richest American billionaire, Warren Buffett, has been quite vocal about his desire for higher tax rates on the rich. The single biggest donor to political campaigns just now is Tom Steyer, a Democrat with a passion for climate change. And for every rich person who sets off on a jag to carve California into seven states, or to defeat Barack Obama, there are many more who have no interest in politics at all except perhaps, in a general way, to prevent them from touching their lives. Rich people, in my experience, don’t want to change the world. The world as it is suits them nicely. </p><p class="p4"> </p><p class="p1"><span class="dropcap">O</span>ne trouble for a writer who wants to see the concentration of wealth at the very top chiefly as a political problem is that the politics of the very rich are not all that predictable or consistent. Obviously billionaires are not perfect reflections of the societies they inhabit, but it’s not insane to consider that their quirks and proclivities might be politically self-canceling, like the irrationalities of consumers in models in classical economics, and so might be assumed away. Even on the most obvious political issues, on which you might think all billionaires could agree, they are often at war with each other. In the end, West more or less concludes that even if money cannot directly rig the democracy, and buy political outcomes, the public’s perception that it can will lead to public cynicism, and corrode the democracy. That may be true. But it tells you something when someone sets out to write a book about the effects of rich people on politics and can’t do any better than that.</p><p class="p3">And it raises a bigger question: just how influential are the very rich? They are much in the news; often they own the news. But what are their deeper effects, as a class, on the rest of us? There was a time in America when a few rich people could elect a president (see McKinley), but they haven’t been very good at that lately. When was the last time a billionaire wrote a seminal book or achieved some dramatic scientific breakthrough or created some lasting work of art? Acts of the imagination are responses to needs and desires. The Knight Frank real estate agency’s report on billionaires describes them, nauseatingly, as people “driven by desire.” But desire, at least the profitable kind, is exactly what you lose when have more of everything than you could possibly need<span class="em">&mdash;</span>especially when you are born with it. Ditto the willingness to suffer in the pursuit of excellence. The American upper middle class has spent a fortune teaching its children to play soccer: how many great soccer players come from the upper middle class? The more you think about the very rich, the more tempting it is to take the other side of this argument. True, people occasionally become very rich by changing the world as we know it, but in these cases money is the effect, not the cause. Mark Zuckerberg wasn’t rich when he created Facebook, and neither were Sergey Brin and Larry Page when they created Google. </p><p class="p3">It’s just not as easy as it seems to use money to change the world, even when what you are doing with the money is giving it away. West has a good chapter on billionaires’ activist philanthropy but, as any billionaire will tell you, this is as much a story of frustration as of success. (Zuckerberg has discovered this in the Newark public schools.) The big surprise about money, in this age of grotesque and growing economic inequality, may be its limits. At any rate, it’s not at all clear how the swelling heap of money controlled by the extremely rich is changing us. </p><p class="p4"> </p><p class="p1"><span class="dropcap">W</span>hat <em>is</em> clear about rich people and their money<span class="em">&mdash;</span>and becoming ever clearer<span class="em">&mdash;</span>is how it changes them. A body of quirky but persuasive research has sought to understand the effects of wealth and privilege on human behavior<span class="em">&mdash;</span>and any future book about the nature of billionaires would do well to consult it. One especially fertile source is the University of California, Berkeley, psychology department lab overseen by a professor named Dacher Keltner. In one study, Keltner and his colleague Paul Piff installed note-takers and cameras at city street intersections with four-way stop signs. The people driving expensive cars were four times more likely to cut in front of other drivers than drivers of cheap cars. The researchers then followed the drivers to the city’s cross walks and positioned themselves as pedestrians, waiting to cross the street. The drivers in the cheap cars all respected the pedestrians’ right of way. The drivers in the expensive cars ignored the pedestrians 46.2 percent of the time<span class="em">&mdash;</span>a finding that was replicated in spirit by another team of researchers in Manhattan, who found drivers of expensive cars were far more likely to double park. In yet another study, the Berkeley researchers invited a cross section of the population into their lab and marched them through a series of tasks. Upon leaving the laboratory testing room the subjects passed a big jar of candy. The richer the person, the more likely he was to reach in and take candy from the jar<span class="em">&mdash;</span>and ignore the big sign on the jar that said the candy was for the children who passed through the department.</p><p class="p2">Maybe my favorite study done by the Berkeley team rigged a game with cash prizes in favor of one of the players, and then showed how that person, as he grows richer, becomes more likely to cheat. In his forthcoming book on power, Keltner contemplates his findings: </p><blockquote><p class="p6">If I have $100,000 in my bank account, winning $50 alters my personal wealth in trivial fashion. It just isn’t that big of a deal. If I have $84 in my bank account, winning $50 not only changes my personal wealth significantly, it matters in terms of the quality of my life<span class="em">&mdash;</span>the extra $50 changes what bill I might be able to pay, what I might put in my refrigerator at the end of the month, the kind of date I would go out on, or whether or not I could buy a beer for a friend. The value of winning $50 is greater for the poor, and, by implication, the incentive for lying in our study greater. Yet it was our wealthy participants who were far more likely to lie for the chance of winning fifty bucks.</p></blockquote><p class="p7">There is plenty more like this to be found, if you look for it. A team of researchers at the New York State Psychiatric Institute surveyed 43,000 Americans and found that, by some wide margin, the rich were more likely to shoplift than the poor. Another study, by a coalition of nonprofits called the Independent Sector, revealed that people with incomes below twenty-five grand give away, on average, 4.2 percent of their income, while those earning more than 150 grand a year give away only 2.7 percent. A UCLA neuroscientist named Keely Muscatell has published an interesting paper showing that wealth quiets the nerves in the brain associated with empathy: if you show rich people and poor people pictures of kids with cancer, the poor people’s brains exhibit a great deal more activity than the rich people’s. (An inability to empathize with others has just got to be a disadvantage for any rich person seeking political office, at least outside of New York City.) “As you move up the class ladder,” says Keltner, “you are more likely to violate the rules of the road, to lie, to cheat, to take candy from kids, to shoplift, and to be tightfisted in giving to others. Straightforward economic analyses have trouble making sense of this pattern of results.” </p><p class="p3">There is an obvious chicken-and-egg question to ask here. But it is beginning to seem that the problem isn’t that the kind of people who wind up on the pleasant side of inequality suffer from some moral disability that gives them a market edge. The problem is caused by the inequality itself: it triggers a chemical reaction in the privileged few. It tilts their brains. It causes them to be less likely to care about anyone but themselves or to experience the moral sentiments needed to be a decent citizen. </p><p class="p3">Or even a happy one. Not long ago an enterprising professor at the Harvard Business School named Mike Norton persuaded a big investment bank to let him survey the bank’s rich clients. (The poor people in the survey were millionaires.) In a forthcoming paper, Norton and his colleagues track the effects of getting money on the happiness of people who already have a lot of it: a rich person getting even richer experiences zero gain in happiness. That’s not all that surprising; it’s what Norton asked next that led to an interesting insight. He asked these rich people how happy they were at any given moment. Then he asked them how much money they would need to be even happier. “All of them said they needed two to three times more than they had to feel happier,” says Norton. The evidence overwhelmingly suggests that money, above a certain modest sum, does not have the power to buy happiness, and yet even very rich people continue to believe that it does: the happiness will come from the money they don’t yet have. To the general rule that money, above a certain low level, cannot buy happiness there is one exception. “While spending money upon oneself does nothing for one’s happiness,” says Norton, “spending it on others increases happiness.” </p><p class="p3">If the Harvard Business School is now making a home for research exposing the folly of a life devoted to endless material ambition, something in the world has changed<span class="em">&mdash;</span>or is changing. And I think it is: there is a growing awareness that the yawning gap between rich and poor is no longer a matter of simple justice but also the enemy of economic success and human happiness. It’s not just bad for the poor. It’s also bad for the rich. It’s funny, when you think about it, how many rich people don’t know this. But they are not idiots; they can learn. Many even possess the self-awareness to correct for whatever tricks their brain chemicals seek to play on them; some of them already do it. When you control a lot more than your share of the Fruit Loops, there really isn’t much doubt about what you should do with them, for your own good. You just need to be reminded, loudly and often.</p>
+                            <div id="ad-teads"></div>
+              
+              
+              
+                              <div class="ui tertiary biography segment">
+                  <p>Michael Lewis is a former senior editor of <em>The New Republic</em> and the author, most recently, of <em>Flash Boys</em> (Norton).</p>                </div>
+              
+              
+            </div>
+          </div>
+          <div class="apostrophe"></div>
+          <div class="variable advertisement" id="mobile-article-bottom-ad"></div>
+          <div class="taboola">
+            <div class="ui active flipping loader">
+              <div class="shape"></div>
+              Loading Related Articles...
+            </div>
+            <div id="taboola-main"></div>
+            <div id="taboola-text"></div>
+          </div>
+
+                    <div class="inline category">
+            <a href="/tags/politics"><img typeof="foaf:Image" src="/sites/all/themes/tnr/assets/images/tags/tnr-politics-187x80.gif" alt="Politics" /></a>          </div>
+          
+                    <div class="ui basic vertical inline tag segment">
+            <h4 class="ui header">More articles tagged as</h4>
+            <div class="ui labels">
+              <a href="/tags/books" class="ui label">Books</a><a href="/tags/culture" class="ui label">culture</a><a href="/tags/wealth" class="ui label">wealth</a><a href="/tags/inequality" class="ui label">inequality</a><a href="/tags/money" class="ui label">money</a><a href="/tags/100-years" class="ui label">100 years</a><a href="/tags/billionaires" class="ui label">billionaires</a><a href="/tags/politics" class="ui label">politics</a>            </div>
+          </div>
+          
+          <div class="inline recirculation">
+            <div id="bottomCenter" class="recirculation module">
+  <div class="ui two item tabular top attached menu">
+        <a class="active item" data-tab="related">Related</a>
+        <a class="item" data-tab="trending">Trending</a>
+      </div>
+    <div class="ui active bottom attached piled tab segment" data-tab="related">
+    <div class="filter">More Articles in <a Href="/tags/books" Itemprop="articleSection" Class="category">Books</a></div>
+    <div class="ui relaxed bulleted list">
+            <div href="/article/120519/tyranny-silence-how-one-cartoon-ignited-global-debate" class="article item">
+  <a href="/article/120519/tyranny-silence-how-one-cartoon-ignited-global-debate">
+    The Man Behind the Most Infamous Cartoon of All Time  </a>
+</div>
+<div href="/article/120489/udi-greenbergs-weimar-century-review" class="article item">
+  <a href="/article/120489/udi-greenbergs-weimar-century-review">
+    Do the Roots of the Cold War Alliance Lie in Weimar Germany?  </a>
+</div>
+<div href="/article/120448/end-days-reviewed-adam-kirsch" class="article item">
+  <a href="/article/120448/end-days-reviewed-adam-kirsch">
+    An Innovative Exploration of Death in Fiction  </a>
+</div>
+<div href="/article/120363/bertolt-brechts-love-poems-review" class="article item">
+  <a href="/article/120363/bertolt-brechts-love-poems-review">
+    The Surprisingly Erotic Poetry of Bertolt Brecht  </a>
+</div>
+<div href="/article/120374/childrens-books-dont-need-gender-specific-titles" class="article item">
+  <a href="/article/120374/childrens-books-dont-need-gender-specific-titles">
+    Girls and Boys Don't Need Separate Books  </a>
+</div>
+    </div>
+  </div>
+    <div class="ui bottom attached piled tab segment" data-tab="trending">
+    <div class="filter">Popular Articles
+      <div class="inline ui dropdown">
+          <span class="text">Now</span>
+          <i class="dropdown icon"></i>
+          <div class="menu">
+            <div class="active item" data-value="now">Now</div>
+            <div class="item" data-value="week">This Week</div>
+            <div class="item" data-value="month">This Month</div>
+        </div>
+      </div>
+    </div>
+    <div class="ui relaxed ordered list">
+            <div href="/article/120525/pelosi-government-shutdown-over-wall-street-derivatives-trading" class="article item">
+  <a href="/article/120525/pelosi-government-shutdown-over-wall-street-derivatives-trading">
+    Nancy Pelosi and Harry Reid Just Revealed Democrats' 2015 Strategy  </a>
+</div>
+<div href="/article/120544/chances-elizabeth-warren-runs-president-increased-week" class="article item">
+  <a href="/article/120544/chances-elizabeth-warren-runs-president-increased-week">
+    The Week Elizabeth Warren Decided to Run for President  </a>
+</div>
+<div href="/article/120534/democrats-southern-strategy-should-focus-poor-non-voters" class="article item">
+  <a href="/article/120534/democrats-southern-strategy-should-focus-poor-non-voters">
+    Democrats Can Win the South Again. Here's a Simple Strategy for Hillary 2016.  </a>
+</div>
+<div href="/article/120545/elizabeth-warren-vs-barack-obama-cromnibus-vote-exposes-faultlines" class="article item">
+  <a href="/article/120545/elizabeth-warren-vs-barack-obama-cromnibus-vote-exposes-faultlines">
+    We Just Witnessed the Most Important Day in Politics All Year  </a>
+</div>
+<div href="/article/120546/exodus-gods-and-kings-review-stop-bible-movies-meme" class="article item">
+  <a href="/article/120546/exodus-gods-and-kings-review-stop-bible-movies-meme">
+    Ridley Scott's 'Exodus' Proves the "Bible Movies" Trend Is Nonsense  </a>
+</div>
+    </div>
+  </div>
+  </div>          </div>
+        </div>
+
+        <div class="left article rail">
+          
+          <div class="ui sticky">
+            <div class="share module">
+  <div class="social">
+    <div class="vertical facebook"
+      data-url="http://www.newrepublic.com/article/120092/billionaires-book-review-money-cant-buy-happiness"
+      data-text="Ridley Scott's 'Exodus' Proves the "Bible Movies" Trend Is Nonsense"
+      data-title="Share">
+    </div>
+    <div class="vertical twitter"
+      data-url="http://www.newrepublic.com/article/120092/billionaires-book-review-money-cant-buy-happiness"
+      data-text="Extreme Wealth Is Bad for Everyone—Especially the Wealthy"
+      data-title="Tweet"></div>
+  </div>
+</div>            <div id="house-left-rail" style="margin-bottom:40px;"></div>
+            <div class="tools module">
+  <div class="ui vertical icon menu">
+    <div class="link email item" data-position="right center"  data-content="E-mail this article">
+      <i class="mail icon"></i>
+    </div>
+    <div class="link save ui dropdown item" data-position="right center"  data-content="Save for Later">
+      <i class="bookmark icon"></i>
+      <div class="vertical menu">
+        <div class="header item">
+          Choose Service
+        </div>
+        <a class="item" target="_blank" href="http://www.instapaper.com/hello2?url=http%3A%2F%2Fwww.newrepublic.com%2Farticle%2F120092%2Fbillionaires-book-review-money-cant-buy-happiness&amp;title=Extreme+Wealth+Is+Bad+for+Everyone%E2%80%94Especially+the+Wealthy&amp;description=The+filthy+rich%2C+writes+Michael+Lewis%2C+are+unhappy%2C+unhelpful%2C+and+always+wanting+more.">
+          Save to Instapaper
+        </a>
+        <a class="item" target="_blank" href="http://readability.com/save?url=http://www.newrepublic.com/article/120092/billionaires-book-review-money-cant-buy-happiness">
+          Save to Readability
+        </a>
+        <div class="item">
+          <a data-pocket-label="pocket" data-pocket-count="horizontal" class="pocket-btn" data-lang="en"></a>
+          <script type="text/javascript">
+          !function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");
+          </script>
+        </div>
+      </div>
+    </div>
+    <div class="ui font dropdown link item" data-position="right center" data-content="Font Size">
+      <i class="font icon"></i>
+      <div class="menu">
+        <div class="small item" data-value="1/1.8">Small</div>
+        <div class="active medium item" data-value="">Medium</div>
+        <div class="large item" data-value="1.4/1.6">Large</div>
+        <div class="x-large item" data-value="1.5/1.65">Extra Large</div>
+      </div>
+    </div>
+    <div class="link print item" data-position="right center" data-content="Print">
+      <i class="print icon"></i>
+    </div>
+  </div>
+</div>
+          </div>
+        </div>
+
+        <div class="right article rail">
+
+<!-- Ad LR1 -->
+                      <div class="variable advertisement module" id="rail-ad"></div>          
+<!-- Recirc Top -->
+                      <div id="trending" class="trending module">
+  <div class="selection">
+        Most Popular
+        <div class="inline ui dropdown"  >
+      <span class="text">Now</span>
+      <i class="dropdown icon"></i>
+      <div class="menu">
+        <div class="active item" data-value="now">Now</div>
+        <div class="item" data-value="week">This Week</div>
+        <div class="item" data-value="month">This Month</div>
+      </div>
+    </div>
+  </div>
+  <div class="ui headlines">
+    <div class="article headline">
+    <h4 class="header">
+    <a href="/article/120544/chances-elizabeth-warren-runs-president-increased-week">
+      The Week Elizabeth Warren Decided to Run for President    </a>
+  </h4>
+</div>
+<div class="article headline">
+    <h4 class="header">
+    <a href="/article/120548/yougov-study-finds-republicans-approve-cia-torture">
+      It's Depressing How Many Americans Still Support Torture    </a>
+  </h4>
+</div>
+<div class="article headline">
+    <h4 class="header">
+    <a href="/article/120545/elizabeth-warren-vs-barack-obama-cromnibus-vote-exposes-faultlines">
+      We Just Witnessed the Most Important Day in Politics All Year    </a>
+  </h4>
+</div>
+<div class="ui active flipping loader">
+  <div class="shape"></div>
+  Loading
+</div>    <div class="ui active flipping loader">
+      <div class="shape"></div>
+      Loading
+    </div>
+  </div>
+</div>          
+<!-- Marginalia / House spots -->
+          <!-- Email Newsletter -->
+            <!-- Temp LR spot -->
+                          <div class="variable advertisement module" id="extra-rail-ad"></div>
+                      
+<!-- Regular Right Rail -->
+          
+  <!-- Tools -->
+            <div>
+              <div class="ui fluid expand button">
+                <i class="list layout icon"></i> Article Tools
+              </div>
+              <div class="ui clearing section expand divider"></div>
+              <div class="share module">
+  <div class="social">
+    <div class="inline facebook"
+      data-url="http://www.newrepublic.com/article/120092/billionaires-book-review-money-cant-buy-happiness"
+      data-text="We Just Witnessed the Most Important Day in Politics All Year"
+      data-title="Share">
+    </div>
+    <div class="inline twitter"
+      data-url="http://www.newrepublic.com/article/120092/billionaires-book-review-money-cant-buy-happiness"
+      data-text="Extreme Wealth Is Bad for Everyone—Especially the Wealthy"
+      data-title="Tweet"></div>
+  </div>
+</div>            </div>
+
+  <!-- Sticky Spot -->
+            <div class="ui sticky">
+              <div class="variable advertisement module">
+  <div id="sticky-rail-ad"></div>
+  <div id="tablet-sticky-rail-ad"></div>
+</div>            </div>
+
+
+                  </div><!-- end right rail -->
+
+                            <div class="comments">
+            <div class="ui active flipping loader">
+              <div class="shape"></div>
+              Loading Comments
+            </div>
+            <div id="livefyre-comments"></div>
+            <div class="right rail">
+              <div class="ui sticky">
+                <div id="bottomRight" class="recirculation module">
+  <div class="ui small two item secondary pointing menu">
+    <a class="active blue item" data-tab="trending">Trending</a>
+        <a class="item" data-tab="related">Related</a>
+          </div>
+  <div class="ui active bottom attached stacked secondary tab segment" data-tab="trending">
+    <div class="filter">Popular Articles
+      <div class="inline ui dropdown">
+          <span class="text">Now</span>
+          <i class="dropdown icon"></i>
+          <div class="menu">
+            <div class="active item" data-value="now">Now</div>
+            <div class="item" data-value="week">This Week</div>
+            <div class="item" data-value="month">This Month</div>
+        </div>
+      </div>
+    </div>
+    <div class="ui relaxed ordered list">
+      <div href="/article/120525/pelosi-government-shutdown-over-wall-street-derivatives-trading" class="article item">
+  <a href="/article/120525/pelosi-government-shutdown-over-wall-street-derivatives-trading">
+    Nancy Pelosi and Harry Reid Just Revealed Democrats' 2015 Strategy  </a>
+</div>
+<div href="/article/120544/chances-elizabeth-warren-runs-president-increased-week" class="article item">
+  <a href="/article/120544/chances-elizabeth-warren-runs-president-increased-week">
+    The Week Elizabeth Warren Decided to Run for President  </a>
+</div>
+<div href="/article/120534/democrats-southern-strategy-should-focus-poor-non-voters" class="article item">
+  <a href="/article/120534/democrats-southern-strategy-should-focus-poor-non-voters">
+    Democrats Can Win the South Again. Here's a Simple Strategy for Hillary 2016.  </a>
+</div>
+<div href="/article/120545/elizabeth-warren-vs-barack-obama-cromnibus-vote-exposes-faultlines" class="article item">
+  <a href="/article/120545/elizabeth-warren-vs-barack-obama-cromnibus-vote-exposes-faultlines">
+    We Just Witnessed the Most Important Day in Politics All Year  </a>
+</div>
+<div href="/article/120546/exodus-gods-and-kings-review-stop-bible-movies-meme" class="article item">
+  <a href="/article/120546/exodus-gods-and-kings-review-stop-bible-movies-meme">
+    Ridley Scott's 'Exodus' Proves the "Bible Movies" Trend Is Nonsense  </a>
+</div>
+    </div>
+  </div>
+    <div class="ui bottom attached stacked secondary tab segment" data-tab="related">
+    <div class="filter">More Articles in <a Href="/tags/books" Itemprop="articleSection" Class="category">Books</a></div>
+    <div class="ui relaxed bulleted list">
+      <div href="/article/120525/pelosi-government-shutdown-over-wall-street-derivatives-trading" class="article item">
+  <a href="/article/120525/pelosi-government-shutdown-over-wall-street-derivatives-trading">
+    Nancy Pelosi and Harry Reid Just Revealed Democrats' 2015 Strategy  </a>
+</div>
+<div href="/article/120544/chances-elizabeth-warren-runs-president-increased-week" class="article item">
+  <a href="/article/120544/chances-elizabeth-warren-runs-president-increased-week">
+    The Week Elizabeth Warren Decided to Run for President  </a>
+</div>
+<div href="/article/120534/democrats-southern-strategy-should-focus-poor-non-voters" class="article item">
+  <a href="/article/120534/democrats-southern-strategy-should-focus-poor-non-voters">
+    Democrats Can Win the South Again. Here's a Simple Strategy for Hillary 2016.  </a>
+</div>
+<div href="/article/120545/elizabeth-warren-vs-barack-obama-cromnibus-vote-exposes-faultlines" class="article item">
+  <a href="/article/120545/elizabeth-warren-vs-barack-obama-cromnibus-vote-exposes-faultlines">
+    We Just Witnessed the Most Important Day in Politics All Year  </a>
+</div>
+<div href="/article/120546/exodus-gods-and-kings-review-stop-bible-movies-meme" class="article item">
+  <a href="/article/120546/exodus-gods-and-kings-review-stop-bible-movies-meme">
+    Ridley Scott's 'Exodus' Proves the "Bible Movies" Trend Is Nonsense  </a>
+</div>
+    </div>
+  </div>
+    </div>              </div>
+            </div>
+          </div>
+                    </div>
+    </div>
+  </div>
+</div>
+
+<div class="ui very thin inverted vertical icon mobile sidebar tools module menu">
+  <div class="email link item" title="E-mail Story">
+    <i class="mail icon"></i>
+  </div>
+  <div class="link save ui dropdown item" data-position="right center"  data-content="Save for Later">
+    <i class="bookmark icon"></i>
+    <div class="vertical menu">
+      <div class="header item">
+        Choose Service
+      </div>
+      <a class="item" target="_blank" href="http://www.instapaper.com/hello2?url=http%3A%2F%2Fwww.newrepublic.com%2Farticle%2F120092%2Fbillionaires-book-review-money-cant-buy-happiness&amp;title=Extreme+Wealth+Is+Bad+for+Everyone%E2%80%94Especially+the+Wealthy&amp;description=The+filthy+rich%2C+writes+Michael+Lewis%2C+are+unhappy%2C+unhelpful%2C+and+always+wanting+more.">
+        Save to Instapaper
+      </a>
+      <a class="item" target="_blank" href="http://readability.com/save?url=http://www.newrepublic.com/article/120092/billionaires-book-review-money-cant-buy-happiness">
+        Save to Readability
+      </a>
+      <!--div class="item">
+        <a data-pocket-label="pocket" data-pocket-count="horizontal" class="pocket-btn" data-lang="en"></a>
+        <script type="text/javascript">
+        !function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");
+        </script>
+      </div!-->
+    </div>
+  </div>
+  <div class="ui font dropdown link item" title="Font Size"><i class="font icon"></i>
+    <div class="menu">
+      <div class="small item" data-value="1/1.8">Small</div>
+      <div class="active medium item" data-value="">Medium</div>
+      <div class="large item" data-value="1.4/1.6">Large</div>
+      <div class="x-large item" data-value="1.5/1.65">Extra Large</div>
+    </div>
+  </div>
+  <div class="print link item" title="Print"><i class="print icon"></i></div>>
+</div><div class="ui email modal">
+  <i class="close icon"></i>
+  <div class="header">
+    <img src="/sites/all/themes/tnr/assets/images/logo-white.png" class="ui small left floated image">
+    Share by e-mail
+  </div>
+  <div class="content">
+    <form class="ui form">
+      <input type="hidden" name="form_id" value="tnr_article_email_form">
+      <input type="hidden" name="form_build_id" value="XCRRoR5qE3ZHxZZPITQSkR6Vibu3owRwyi5bMXoXkGQ">
+      <input type="hidden" name="js" value="true">
+      <div class="required field">
+        <label>Friend's e-mails (separated by comma)</label>
+        <div class="ui input">
+          <input type="email" name="email_to">
+        </div>
+      </div>
+      <div class="ui divider"></div>
+      <div class="two required fields">
+        <div class="field">
+          <label>Your name</label>
+          <div class="ui input">
+            <input type="text" name="sender_name">
+          </div>
+        </div>
+        <div class="field">
+          <label>Your e-mail</label>
+          <div class="ui input">
+            <input type="email" name="sender_email">
+          </div>
+        </div>
+      </div>
+      <div class="field">
+        <div class="ui checkbox">
+          <input type="checkbox" id="send_copy" name="send_copy" checked>
+          <label for="send_copy">Send yourself a copy</label>
+        </div>
+      </div>
+      <div class="field">
+        <label>Personal message</label>
+        <textarea name="opt_msg"></textarea>
+      </div>
+    </form>
+  </div>
+  <div class="actions">
+    <div class="ui cancel button">Cancel</div>
+    <div class="ui right green labeled icon approve button">
+      <i class="mail icon"></i>
+      Send E-mail
+    </div>
+  </div>
+</div></div>
+<!-- Without the following, metatags are not rendered properly -->
+
+<div class="ui page footer container">
+  <div class="ui relaxed stackable fitted grid">
+    <div class="sixteen wide mobile only center aligned column">
+      <div class="ui horizontal inverted icon divider">
+        <i class="circular inverted sitemap icon"></i>
+      </div>
+      <h5 class="ui inverted header">Sections</h5>
+      <div class="ui relaxed inverted fitted selection list">
+        <a href="/latest" class="item">The Latest</a>
+        <a href="/tags/politics" class="item">Politics</a>
+        <a href="/tags/culture" class="item">Culture</a>
+        <a href="/current-issue" class="item">The Magazine</a>
+      </div>
+      <select name="section" class="sections">
+        <option value="">More</option>
+        <optgroup label="Categories">
+          <option value="/tags/books/">Books</option>
+          <option value="/tags/economy/">Economy</option>
+          <option value="/tags/film/">Film</option>
+          <option value="/tags/plank/">The Plank</option>
+          <option value="/tags/politics/">Politics</option>
+          <option value="/tags/technology/">Technology</option>
+          <option value="/tags/world/">World</option>
+        </optgroup>
+        <optgroup label="New Republic">
+          <option value="/current-issue">Current Issue</option>
+          <option value="/page/about-new-republic">About</option>
+          <option value="/page/advertise-new-republic">Advertise</option>
+          <option value="/page/contact-us">Contact Us</option>
+          <option value="/page/jobs-and-internships">Jobs &amp; Internships</option>
+          <option value="/page/privacy-policy" rel="nofollow">Privacy Policy</option>
+          <option value="/tags/home-news">Home News</option>
+          <option value="/tags/events">Events</option>
+          <option value="/ebsco">Archives</option>
+          <option value="/page/rss-feeds">RSS</option>
+        </optgroup>
+      </select>
+    </div>
+    <div class="ten wide sitemap column">
+      <div class="ui horizontal inverted icon divider">
+        <i class="circular inverted sitemap icon"></i>
+      </div>
+      <div class="ui three column grid">
+        <div class="column">
+          <h5 class="ui inverted header">Sections</h5>
+          <div class="ui small relaxed inverted fitted selection list">
+            <a class="item" href="/tags/books/">Books</a>
+            <a class="item" href="/tags/economy/">Economy</a>
+            <a class="item" href="/tags/film/">Film</a>
+            <a class="item" href="/tags/plank/">The Plank</a>
+            <a class="item" href="/tags/politics/">Politics</a>
+            <a class="item" href="/tags/technology/">Technology</a>
+            <a class="item" href="/tags/world/">World</a>
+            <a class="item" href="/tags/events/">Events</a>
+          </div>
+        </div>
+        <div class="column">
+          <h5 class="ui inverted header">The Magazine</h5>
+          <div class="ui small relaxed inverted fitted selection list">
+            <a class="item" href="/latest">Our Latest</a>
+            <a class="item" href="/current-issue">Current Issue</a>
+          </div>
+          <h5 class="ui inverted header">Subscriptions</h5>
+          <div class="ui small relaxed inverted fitted selection list">
+            <a class="item" href="/subscription/self/footer/textlink">Order a Subscription</a>
+            <a class="item" href="/subscription/gift/footer/textlink">Give a Gift</a>
+            <a class="item" href="/page/subscriber-services">Subscriber Services</a>
+            <a class="item" href="/ebsco">Archives</a>
+            <a class="item" href="/page/frequently-asked-questions">FAQ</a>
+          </div>
+        </div>
+        <div class="column">
+          <h5 class="ui inverted header">The New Republic</h5>
+          <div class="ui small relaxed inverted fitted selection list">
+            <a class="item" href="/page/about-new-republic">About</a>
+            <a class="item" href="/page/advertise-new-republic">Advertise</a>
+            <a class="item" href="/newsletter">Newsletter</a>
+            <a class="item" href="/page/contact-us">Contact Us</a>
+            <a class="item" href="/page/jobs-and-internships">Jobs &amp; Internships</a>
+            <a class="item" href="/page/privacy-policy" rel="nofollow">Privacy Policy</a>
+            <a class="item" href="/tags/home-news">Home News</a>
+            <a class="item" href="/page/rss-feeds">RSS</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="six wide signup column">
+      <div class="ui horizontal inverted icon divider">
+        <i class="circular inverted bullhorn icon"></i>
+      </div>
+      <h4 class="ui red header">Sign Up For The New Republic Daily</h4>
+      <p>Sign up now to get your dose of politics, culture, and big ideas with our free daily newsletter.</p>
+      <form class="ui form" method="post" action="http://link.newrepublic.com/s/TNR">
+  <input type="hidden" name="list[Master List]" value="1" />
+  <input type="hidden" name="vars[marketing]" value="TRUE" />
+  <input type="hidden" name="vars[source]" value="daily_footer" />
+  <input type="hidden" name="vars[tnr_daily]" value="TRUE" />
+  <div class="field">
+    <div class="ui fluid left labeled icon input">
+      <input type="text" name="email" placeholder="Enter e-mail" data-validate="email"  />
+      <i class="mail icon"></i>
+    </div>
+  </div>
+  <div class="ui blue submit button" type="submit">Sign Up</div>
+  <div class="ui success message">
+    <i class="checkmark icon"></i>
+    Signed up!
+  </div>
+</form>    </div>
+    <div class="six wide promo column">
+      <div class="ui horizontal inverted icon divider">
+        <i class="circular inverted bullhorn icon"></i>
+      </div>
+      <h4 class="ui header">
+        <a href="/subscription/self/footer/callout">Subscribe Now</a>
+      </h4>
+      <h5 class="ui inverted header">
+        Get The New Republic for <b>$19.97/year</b>
+      </h5>
+       <a class="ui left floated image" href="/subscription/self/footer/callout">
+        <img typeof="foaf:Image" src="http://www.newrepublic.com/sites/default/files/styles/curr_issue_cover_footer/public/u184683/112414_cover.online_1.jpg?itok=Zntgn1W1" alt="" />      </a>
+      <div class="ui small inverted fitted selection list" style="margin-left:0;">
+        <a class="item" href="/subscription/self/footer/callout">
+          <i class="book icon"></i>
+          Subscribe Now
+        </a>
+        <a class="item" href="/subscription/gift/footer">
+          <i class="gift icon"></i>
+          Give a Gift
+        </a>
+        <a class="item" href="/subscription/international/footer">
+          <i class="globe icon"></i>
+          International Orders
+        </a>
+        <a class="item" href="/subscription/digital/footer">
+          <i class="tablet icon" ></i>
+          Digital Subscription
+        </a>
+      </div>
+    </div>
+  </div>
+  <a class="ui centered small logo image" href="/">
+    <img src="/sites/all/themes/tnr/assets/images/logo-white.png">
+  </a>
+  <div class="social">
+    <div class="slim twitter sharrre"
+      data-user="tnr"
+      data-url="http://www.newrepublic.com"
+      data-title="Follow"
+    ></div>
+    <div class="slim facebook sharrre"
+      data-url="http://www.facebook.com/thenewrepublic"
+      data-title="Like">
+    </div>
+    <div class="slim google sharrre"
+      data-url="http://www.newrepublic.com"
+      data-title="Plus">
+    </div>
+  </div>
+  <div class="ui mini centered divided inverted horizontal copyright link list">
+    <a class="item" href="/page/masthead">Masthead</a>
+    <div class="item">
+      Copyright 2014 &copy; The New Republic.
+      All Rights Reserved.
+    </div>
+  </div>
+</div>    <div class="ui modal" id="overlay"></div>  <div class="script">
+  <!--[if lt IE 9]>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <![endif]-->
+  <!--[if (gte IE 9) | (!IE)]><!-->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+  <!--<![endif]-->
+<script type="text/javascript" src="http://www.newrepublic.com/sites/default/files/js/js_x37Plx8_jn342x8grHO9i5dFSx-UBPtkvO0IRR288Mo.js"></script>
+
+  <!-- Site Config !-->
+  <script src="/sites/all/themes/tnr/dist/minified/ui/definitions/globals/site.min.js"></script>
+
+  <!-- Site Overlay !-->
+  <script type="text/javascript">
+  $.extend(true, site.config, $.parseJSON('{"loggedIn":false,"node":{"id":"120092"},"overlay":{"force_display_nodes":[],"targeted_overlay_nodes":[],"tnr_overlay_nodes":[],"tnr_paywall_nodes":[],"visit_times_targeted":["1"],"visit_times_general":["1"],"visit_times_paywall":false},"staging":false,"subsection":false,"tag":{"ids":["37661","60312","59784","34179","63382","65405","17538"]},"topTerm":"PolCul"}'));
+  // global debug settings
+  $.site('disable debug');
+    $.site('disable console');
+    </script>
+
+  <script type="text/javascript" src="http://www.newrepublic.com/sites/default/files/js/js_cX6tqpnqP3l8xEES-NOI5DPE2M9lID6OBoo9fVy6FjM.js"></script>
+
+</div>  <div class="tracking">
+
+  <!-- Google Remarketing -->
+  <script type="text/javascript">
+  /* <![CDATA[ */
+  var
+    google_conversion_id = 993343767,
+    google_conversion_label = 'gzoeCIDN0QMQkLP42wM',
+    google_custom_params = window.google_tag_params,
+    google_remarketing_only = true
+  ;
+  /* ]]> */
+  </script>
+  <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js"></script>
+
+  <!-- Quantcast Script -->
+  <script type="text/javascript">
+  _qoptions={
+    qacct : 'p-abwxcJNao5fsc'
+  };
+  </script>
+  <script type="text/javascript" src="http://edge.quantserve.com/quant.js"></script>
+
+  <!-- Parse.ly -->
+  <div id="parsely-root" style="display: none">
+    <div id="parsely-cfg" data-parsely-site="tnr.com"></div>
+  </div>
+  <script>
+  (function(s, p, d) {
+    var h=d.location.protocol, i=p+"-"+s,
+        e=d.getElementById(i), r=d.getElementById(p+"-root"),
+        u=h==="https:"?"d1z2jf7jlzjs58.cloudfront.net"
+        :"static."+p+".com";
+    if (e) return;
+    e = d.createElement(s); e.id = i; e.async = true;
+    e.src = h+"//"+u+"/p.js"; r.appendChild(e);
+  })("script", "parsely", document);
+  </script>
+ 
+    <!-- START horizon sailthru -->
+  <script type="text/javascript">
+    (function() {
+      function loadHorizon() {
+        var s = document.createElement('script');
+        s.type = 'text/javascript';
+        s.async = true;
+        s.src = location.protocol + '//ak.sail-horizon.com/horizon/v1.js';
+        var x = document.getElementsByTagName('script')[0];
+        x.parentNode.insertBefore(s, x);
+      }
+      loadHorizon();
+      var oldOnLoad = window.onload;
+      window.onload = function() {
+        if (typeof oldOnLoad === 'function') {
+          oldOnLoad();
+        }
+        Sailthru.setup({
+          domain: 'horizon.newrepublic.com'
+        });
+      };
+    })();
+  </script>
+  
+  <!-- Nielsen Online SiteCensus V6.0 -->
+  <script type="text/javascript">
+    (function () {
+      var image = new Image(1, 1);
+      image.onerror = image.onload = function () {
+        image.onerror = image.onload = null;
+      };
+      image.src = ["//secure-us.imrworldwide.com/cgi-bin/m?ci=us-106312h&cg=0&cc=1&si=", escape(window.location.href), "&rp=", escape(document.referrer), "&ts=compact&rnd=", (new Date()).getTime()].join('');
+    })();
+  </script>
+
+  <!-- AdRoll -->
+  <script type="text/javascript">
+  adroll_adv_id = "SIJVU24MGJE47PAYLLPPOJ";
+  adroll_pix_id = "6WNJ733UAJGY3LIFHE43PT";
+  (function () {
+  var oldonload = window.onload;
+  window.onload = function(){
+     __adroll_loaded=true;
+     var scr = document.createElement("script");
+     var host = (("https:" == document.location.protocol) ? "https://s.adroll.com" : "http://a.adroll.com");
+     scr.setAttribute('async', 'true');
+     scr.type = "text/javascript";
+     scr.src = host + "/j/roundtrip.js";
+     ((document.getElementsByTagName('head') || [null])[0] ||
+      document.getElementsByTagName('script')[0].parentNode).appendChild(scr);
+     if(oldonload){oldonload()}};
+  }());
+  </script>
+
+  <!-- ChartBeat -->
+  <script type="text/javascript">
+  var _sf_async_config={uid:34517,domain:"tnr.com"};
+  _sf_async_config.useCanonical = true;
+  (function(){
+    function loadChartbeat() {
+    window._sf_endpt=(new Date()).getTime();
+    var e = document.createElement('script');
+    e.setAttribute('language', 'javascript');
+    e.setAttribute('type', 'text/javascript');
+    e.setAttribute('src',
+       (("https:" == document.location.protocol) ? "https://a248.e.akamai.net/chartbeat.download.akamai.com/102508/" : "http://static.chartbeat.com/") +
+       "js/chartbeat.js");
+    document.body.appendChild(e);
+    }
+    var oldonload = window.onload;
+    window.onload = (typeof window.onload != 'function') ?
+     loadChartbeat : function() { oldonload(); loadChartbeat(); };
+  })();
+  </script>
+
+
+  <div class="pixels">
+    <!-- Collective Media pixel -->
+    <img src="http://b.collective-media.net/seg/cm/l1dd" width="1" height="1" />
+    <noscript>
+      <!-- Quantcast Pixel -->
+      <img src="http://pixel.quantserve.com/pixel/p-abwxcJNao5fsc.gif" style="display: none;" border="0" height="1" width="1" alt="Quantcast"/>
+      <!-- Google Re-marketing Pixel -->
+      <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/993343767/?value=0&amp;label=gzoeCIDN0QMQkLP42wM&amp;guid=ON&amp;script=0"/>
+      <!-- Neilsen Census Pixel -->
+      <img src="//secure-us.imrworldwide.com/cgi-bin/m?ci=us-106312h&amp;cg=0&amp;cc=1&amp;ts=noscript"
+      width="1" height="1" alt="" />
+      <!-- ComScore -->
+      <img src="http://b.scorecardresearch.com/p?c1=2&c2=15230262&cv=2.0&cj=1" />
+    </noscript>
+  </div>
+</div><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"beacon-2.newrelic.com","licenseKey":"71240f55fe","applicationID":"2735134","transactionName":"YFRUZkcECEcHV0ZaXFkeY0BcSkldCFBXSx1HWUY=","queueTime":0,"applicationTime":13,"ttGuid":"","agentToken":"","atts":"TBNXEA8eG0k=","errorBeacon":"bam.nr-data.net","agent":"js-agent.newrelic.com\/nr-476.min.js"}</script></body>
+</html>
