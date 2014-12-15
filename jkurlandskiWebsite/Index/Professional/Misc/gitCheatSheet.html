@@ -51,9 +51,10 @@
                 <li>$ git status</li>
                 <p>Get status.</p>
                 
-                <li>$ git status</li>
+                <li>$ git add</li>
                 <p>Performs several tasks, depending on the context. If a file has not been added, the command can be used to begin tracking the file. The command can also be used to stage files/directories--that is, to commit them to the local branch.</p>
 
+                <p>JERRY: I can't make the below work.</p>
                 <li>$ git diff --staged</li>
                 <p>(Same as "git diff --cached".) Shows what you've staged that will go into your next commit. This is useful because "git diff" by itself will return nothing if you've already staged all your changes--that is, it only displays changes that are still unstaged.</p>
 
@@ -91,14 +92,14 @@ git add <newItemName>
 <h4>Undoing Actions</h4>
 
 <li>$ git commit -amend</li>
-<p>(Assuming you've made no changes since you're last commit; e.g. you run it just after a commit.) Launches your text editor with the message of your last commit, allowing you to edit the message.</p>
+<p>(Assuming you've made no changes since your last commit; e.g. you run it just after a commit.) Launches your text editor with the message of your last commit, allowing you to edit the message.</p>
 <p>(Assuming you've committed, realized you forgot to include a file, and have since added the file to staging.) Launches your text editor with the message of your last commit, allowing you to edit the message--and includes the missing file in the same commit as the previously-committed files.</p>
 
-<li>$ git reset HEAD <item></li>
+<li>$ git reset HEAD &lt;item&gt;</li>
 <p>Removes an item added to staging--e.g. so that you can commit something else added at the same time.</p>
 
-<li>$ git checkout -- <item></li>
-<p>Reverts changes to the item. Dangerous in the sense that there is no way to recovery your changes to the file.</p>
+<li>$ git checkout -- &lt;item&gt;</li>
+<p>Reverts changes to the item. Dangerous in the sense that there is no way to recover your changes to the file.</p>
 
 
             </div>
