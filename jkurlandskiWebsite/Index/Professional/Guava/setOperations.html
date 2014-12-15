@@ -39,11 +39,34 @@
 	<div id="page" class="container">
 		<div id="content">
 			<div class="title">
-				<h2>Set Operations with Guava</h2>
+				<h2>Set Operations in Java on Sets and Lists</h2>
 			</div>
-			<p>blah, blah</p>
+			<p>Do an Internet search on "set operations java" and at the top of the results you're sure to find at least one page telling you to use retainAll( ) and addAll( ) for intersection and union, respectively. Some might note that sets and lists behave differently, but generally they don't explore how they behave differently, or what it means to do a traditional set operation on a list. And they certainly don't warn you of the unexpected behavior you'll get if you try to perform a retainAll( ) on a list--let me tell you now that you won't get something akin to set-operation behavior. Here I try to flesh things out a little more deeply.</p>
+			
+            <h3>Set Operations on Sets</h3>
+            <p>This is the easy case, doing set operations on true sets. </p>
+            
+            <h3>Set Operations on Lists (Multisets)</h3>
+            <p>If you are trying to perform set operations on lists, there are three possible explanations, by my count: (1) you don't know what you're doing; (2) you know what you're doing, and you know that your lists are really sets, and you're sure that as the project develops those lists will never one day have duplicate values, which would invalidate them as sets; or (3) you are actually, and knowingly, working with what are called <em>multisets</em>.</p>
+            <p>Briefly, a multiset is a set of objects where order does not matter and it is possible to have more than one of each type of element. For example, {a, b, b, c, d} is a multiset, and it is equivalent to {a, c, d, b, b}. Note that the traditional set {a, b, c} is also a multiset, albeit one which has only one element of each type. Another name for multiset is a <em>bag</em>.</p>
+            
+            <p>We expect set operations to be commutative--that is, we expect A &cap; B = B &cap; A.</p>
+            
+			<p>"Intersection is done with Collection.retainAll; subtraction with Collection.removeAll; union with Collection.addAll. In each case, as Set will act like a set and a List will act like a list. As mutable objects, they operate in place. You'll need to explicitly copy if you want to retain the original mutable object unmutated."</p>
+			
+<pre class="preCodeWithCaption">
+			    Generalized set operations
+The following multiset operations are generalized set operations.
+Multiset containment is a Boolean operation, denoted m \in M, which evaluates to true if and only if νM(m) > 0.
+Multiset inclusion is a Boolean operation, denoted M \subseteq N, which evaluates to true if and only if \nu_{M}(m) \leq \nu_{N}(m).[5]
+Strict multiset inclusion is a Boolean operation, denoted M \subset N, which evaluates to true if and only if νM(m) < νN(m).[6]
+The multiset union M \cup N of two multisets M and N is defined as the multiset for which each member m have the maximal multiplicity it has in either multisets[7]
+\nu_{M \cup N}(m) := \max(\nu_{M}(m), \nu_{N}(m)).
+The multiset intersection M \cap N of two multisets M and N is defined as the multiset for which each member m have the minimal multiplicity it has in either multisets[8]
+\nu_{M \cap N}(m) := \min(\nu_{M}(m), \nu_{N}(m)).
+</pre>
 			<p class="precaption">Listing 1: Using TreeMap to sort the index of an in-memory table</p>
-            <pre class="withCaption">
+<pre class="preCodeWithCaption">
 // JERRY: shouldn't we be using sets, not lists?
                 Set<String> canObjectSet = Sets.newHashSet(candDirObjects);
                 Set<String> utteranceObjectSet = Sets.newHashSet(utteranceDirObjects);
@@ -122,8 +145,7 @@
 					<h2>External Guava Links</h2>
 				</div>
 				<ul class="style2">
-					<li><a href="http://tomjefferys.blogspot.com/2011/09/multimaps-google-guava.html">How to use Multimaps</a></li>
-					<li><a href="http://docs.guava-libraries.googlecode.com/git/javadoc/com/google/common/collect/HashBasedTable.html">HashBasedTable Javadoc</a></li>
+					<li><a href="http://oeis.org/wiki/Multisets">Multimap Operations</a></li>
 				</ul>
 			</div>
 		</div>
