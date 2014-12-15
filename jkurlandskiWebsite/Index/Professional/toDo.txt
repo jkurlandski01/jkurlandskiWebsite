@@ -1,8 +1,8 @@
+set operations
+
 multimap
 - There seems to be less horizontal space after the snippets than before.
 - Proofread
-
-Set Operations
 
 Multiset
 - start; reference from multimap
