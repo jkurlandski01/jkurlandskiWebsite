@@ -1,14 +1,18 @@
 set operations
+- need to find better definitions of multiset intersection and union
+- quote and cite the formal definitions
 
 multimap
-- There seems to be less horizontal space after the snippets than before.
 - Proofread
 
 Multiset
 - start; reference from multimap
 
-The code snippets in MapSort look funny.
-- Is the font too large?
+MapSort
+- start with summary section, like setOperations
+
+Make all page titles mixed case
+- But I want the titles of the sidebars to remain all caps
 
 hashtable for all data types
 - specify the sort when you call sort; stores everything as a string
