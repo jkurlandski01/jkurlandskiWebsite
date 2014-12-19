@@ -2,6 +2,7 @@ package deletable;
 
 import static org.junit.Assert.*;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
@@ -77,32 +78,39 @@ public class SetOperationsTest
 
 	@Test
 	public void testListAddAll() {
-		List<String> list1 = Lists.newArrayList("a", "b", "c", "c");
-		List<String> list2 = Lists.newArrayList("c", "d", "e");
+		List<String> list1 = Lists.newArrayList("a", "b", "c");
+		List<String> list2 = Lists.newArrayList("c", "c", "d", "e");
 		
 		// Union
 		List<String> listUnion = Lists.newArrayList(list1);
 		listUnion.addAll(list2);
 		
 		// Test the results.
-		assertEquals(Lists.newArrayList("a", "b", "c", "c", "c", "d", "e"), listUnion);
-		assertEquals(Lists.newArrayList("a", "b", "c", "c"), list1);
-		assertEquals(Lists.newArrayList("c", "d", "e"), list2);
+		List<String> expectedList = Lists.newArrayList("a", "b", "c", "c", "d", "e");
+		Collections.sort(expectedList);
+		Collections.sort(listUnion);
+		assertEquals(expectedList, listUnion);
+
+		// Verify that the operation is commutative.
+		List<String> listUnion2 = Lists.newArrayList(list2);
+		listUnion2.addAll(list1);
+		Collections.sort(listUnion2);
+		assertEquals(expectedList, listUnion2);
 	}
 
 	@Test
 	public void testListRetainAll() {
-		List<String> list1 = Lists.newArrayList("a", "b", "c", "c");
-		List<String> list2 = Lists.newArrayList("c", "d", "e");
+		List<String> list1 = Lists.newArrayList("a", "b", "c");
+		List<String> list2 = Lists.newArrayList("c", "c", "d", "e");
 		
 		// Intersection
 		List<String> listIntersection = Lists.newArrayList(list1);
 		listIntersection.retainAll(list2);
 		
 		// Test the results.
-		assertEquals(Lists.newArrayList("c", "c"), listIntersection);
+		assertEquals(Lists.newArrayList("c"), listIntersection);
 
-		// Verify that the operation is not commutative.
+		// Verify that the operation is commutative.
 		List<String> listIntersection2 = Lists.newArrayList(list2);
 		listIntersection2.retainAll(list1);
 		assertEquals(Lists.newArrayList("c"), listIntersection2);
@@ -125,6 +133,25 @@ public class SetOperationsTest
 		// Verify that the operation is commutative.
 		Multiset<String> multisetIntersection2 = Multisets.intersection(multiset2, multiset1);
 		assertEquals(expectedMultiset, multisetIntersection2);
+	}
+
+	@Test
+	public void testMultisetUnion() {
+		List<String> list1 = Lists.newArrayList("a", "b", "c", "c");
+		Multiset<String> multiset1 = HashMultiset.create(list1);
+		List<String> list2 = Lists.newArrayList("c", "d", "e");
+		Multiset<String> multiset2 = HashMultiset.create(list2);
+		
+		// Union
+		Multiset<String> multisetUnion = Multisets.union(multiset1, multiset2);
+		
+		// Test the results.
+		Multiset<String> expectedMultiset = HashMultiset.create(Lists.newArrayList("a", "b", "c", "c", "d", "e"));
+		assertEquals(expectedMultiset, multisetUnion);
+
+		// Verify that the operation is commutative.
+		Multiset<String> multisetUnion2 = Multisets.union(multiset2, multiset1);
+		assertEquals(expectedMultiset, multisetUnion2);
 	}
 
 }
