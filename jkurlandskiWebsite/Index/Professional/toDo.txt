@@ -1,18 +1,21 @@
 set operations
-- need to find better definitions of multiset intersection and union
-- quote and cite the formal definitions
-- http://planetmath.org/operationsonmultisets
-    - I have it local as operations on multisets | planetmath.org.html
+- On work computer, I get an error on Multisets.union()
+	- The method union(Multiset<String>, Multiset<String>) is undefined for the type Multisets	SetOperationsTest.java
+	- Probably I have an older jar file than on my home computer.
+	- Need to discuss proper jar file, and list it in the snapshots.
+	- Was guava 13; now 15
+
 
 Multiset
 - See my local copy of GuavaCollectionTypes.html
 - start; reference from multimap
+- see StringCounter code
 
 multimap
 - See my local copy of GuavaCollectionTypes
 - I should be using the set version, not list
    - HashMultimap
-- Need to discuss the ArrayList implementation
+- I've got the unit test, but haven't modified the .html; Need to discuss the ArrayList implementation
 - Proofread
 
 MapSort
