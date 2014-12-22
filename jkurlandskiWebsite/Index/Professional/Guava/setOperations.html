@@ -183,26 +183,17 @@ public void testListRetainAll() {
 java.lang.AssertionError: expected:&lt;[c]&gt; but was:&lt;[c, c]&gt;
 </pre>
             <p>The first test, which passed, was performed on a list initialized with list1, and then called <code>retainAll(list2)</code>. The second test initialized with list2, and called <code>retainAll(list1)</code>. And this test failed because it had one too many "c" elements, thus showing that this way of trying to implement the intersection operation is not commutative.</p>
-            <p>You might ask which is the correct intersection of the two sets--{c} or {c, c}? To me it's pretty obvious that the first one is right, but just in case you have doubts, here is a formal definition of the multiset intersection operation:</p>
-            <p>JERRY: find a definition that is grammatically correct and comprehensible; move footnote to bottom</p>
+            <p>You might ask which is the correct intersection of the two sets--{c} or {c, c}? Here's a formal definition of the multiset intersection operation from PlanetMath.org:</p>
             
-            <pre>The intersection of f and g, denoted by f &cap; g, is the multiset whose domain is A &cap; B, such that
-                (f &cap; g) (x) := min(f(x), g(x))<sup>1</sup>
-            </pre>
+            <p class="indentedQuote">The intersection of f and g, denoted by f &cap; g, is the multiset whose domain is A &cap; B, such that
+                (f &cap; g) (x) := min(f(x), g(x))<sup>1</sup></p> 
             
-            <p>The same page gives a good example of how this works on two multisets.</p>
+            <p>The same page gives a good example of how this works on two multisets. (The Multiset page in Wikipedia offers much the same definition, but no good example.)</p>
             
-            <pre>The union of f and g, denoted by f &cup; g, is the multiset whose domain is A &cup; B, such that
-                (f &cup; g) (x) := max(f(x), g(x))<sup>1</sup>
-            </pre>
-            
-            <p><a href="http://planetmath.org/operationsonmultisets"><sup>1</sup>PlanetMath.org on Multisets</a></p>
-
-            <p>(The Multiset page in Wikipedia offers much the same definition, but no good example.)</p>
-            <p class="indentedQuote">The <b>multiset intersection</b> of two multisets <i>M</i> and <i>N</i> is defined as the multiset for which each member <i>m</i> have the minimal multiplicity it has in either multiset.<sup>1</sup></p>  
-            <p><a href="http://oeis.org/wiki/Multisets"><sup>1</sup>http://oeis.org/wiki/Multisets</a></p>
             <p>So that covers intersections with retainAll( ). Let's deal with union and addAll( ). First we'll go back to the same source for a formal definition of what it means for the union operation to be applied to two multisets.</p>
-            <p class="indentedQuote">The <b>multiset union</b> of two multisets <i>M</i> and <i>N</i> is defined as the multiset for which each member <i>m</i> have the maximal multiplicity it has in either multiset.</p> 
+
+            <p class="indentedQuote">The union of f and g, denoted by f &cup; g, is the multiset whose domain is A &cup; B, such that (f &cup; g) (x) := max(f(x), g(x))<sup>1</sup></p> 
+ 
             <p>So the union of the two multisets {c} and {c, c} is {c, c}, since the maximal multiplicity of the element <i>c</i> is 2. If you think the union should be {c, c, c}, what you are thinking of is defined as the multiset <b>sum</b> operation.</p>
             <p>The next listing shows that addAll( ) does not give the correct multiset behavior for the union operation.</p>
             
@@ -285,6 +276,8 @@ public void testMultisetUnion() {
         <p>This steps involved here are identical to those in the previous listing, with the exception of the call to union( ) instead of intersection( ). Recall that, in order to test the List implementation of the multiset union, we first had to sort both the union and the expected result. We don't have to do that here because the assertEquals( ) override for multisets understands that order is not relevant.</p>
         <p>JERRY: Summarize the links at right. Say the quick reference is in the summary at the top.</p>
 
+        <p><a href="http://planetmath.org/operationsonmultisets"><sup>1</sup>PlanetMath.org on Multisets</a></p>
+
 		</div>
 		
 		<div id="sidebar">
@@ -313,8 +306,8 @@ public void testMultisetUnion() {
 				</div>
 				<ul class="style2">
                     <li><a href="http://oeis.org/wiki/Multisets">JERRY: Guava documentation</a></li>
+                    <li><a href="http://planetmath.org/operationsonmultisets">PlanetMath.org on Multisets</a></li>
                     <li><a href="http://oeis.org/wiki/Multisets">JERRY: wikipedia on multisets</a></li>
-                    <li><a href="http://oeis.org/wiki/Multisets">Multimap Operations</a></li>
 				</ul>
 			</div>
 		</div>
