@@ -185,6 +185,20 @@ java.lang.AssertionError: expected:&lt;[c]&gt; but was:&lt;[c, c]&gt;
             <p>The first test, which passed, was performed on a list initialized with list1, and then called <code>retainAll(list2)</code>. The second test initialized with list2, and called <code>retainAll(list1)</code>. And this test failed because it had one too many "c" elements, thus showing that this way of trying to implement the intersection operation is not commutative.</p>
             <p>You might ask which is the correct intersection of the two sets--{c} or {c, c}? To me it's pretty obvious that the first one is right, but just in case you have doubts, here is a formal definition of the multiset intersection operation:</p>
             <p>JERRY: find a definition that is grammatically correct and comprehensible; move footnote to bottom</p>
+            
+            <pre>The intersection of f and g, denoted by f &cap; g, is the multiset whose domain is A &cap; B, such that
+                (f &cap; g) (x) := min(f(x), g(x))<sup>1</sup>
+            </pre>
+            
+            <p>The same page gives a good example of how this works on two multisets.</p>
+            
+            <pre>The union of f and g, denoted by f &cup; g, is the multiset whose domain is A &cup; B, such that
+                (f &cup; g) (x) := max(f(x), g(x))<sup>1</sup>
+            </pre>
+            
+            <p><a href="http://planetmath.org/operationsonmultisets"><sup>1</sup>PlanetMath.org on Multisets</a></p>
+
+            <p>(The Multiset page in Wikipedia offers much the same definition, but no good example.)</p>
             <p class="indentedQuote">The <b>multiset intersection</b> of two multisets <i>M</i> and <i>N</i> is defined as the multiset for which each member <i>m</i> have the minimal multiplicity it has in either multiset.<sup>1</sup></p>  
             <p><a href="http://oeis.org/wiki/Multisets"><sup>1</sup>http://oeis.org/wiki/Multisets</a></p>
             <p>So that covers intersections with retainAll( ). Let's deal with union and addAll( ). First we'll go back to the same source for a formal definition of what it means for the union operation to be applied to two multisets.</p>

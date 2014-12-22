@@ -1,12 +1,19 @@
 set operations
 - need to find better definitions of multiset intersection and union
 - quote and cite the formal definitions
-
-multimap
-- Proofread
+- http://planetmath.org/operationsonmultisets
+    - I have it local as operations on multisets | planetmath.org.html
 
 Multiset
+- See my local copy of GuavaCollectionTypes.html
 - start; reference from multimap
+
+multimap
+- See my local copy of GuavaCollectionTypes
+- I should be using the set version, not list
+   - HashMultimap
+- Need to discuss the ArrayList implementation
+- Proofread
 
 MapSort
 - start with summary section, like setOperations
