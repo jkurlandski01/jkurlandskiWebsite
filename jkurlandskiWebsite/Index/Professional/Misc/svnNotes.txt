@@ -186,3 +186,48 @@ Useful URLs
 http://svnbook.red-bean.com/en/1.6/svn.ref.svn.c.status.html
 
 http://svnbook.red-bean.com/en/1.1/ch07s02.html
+
+
+
+- - - - - - - - - -
+
+After moving a directory, can't commit the change.
+Solution: do svn update, that seemingly does nothing.
+
+~/Documents/workspace_website/jkurlandski$ svn commit -m "Begin Multiset page."
+Deleting       CodeExamples/src/deletable
+svn: E155011: Commit failed (details follow):
+svn: E155011: Directory '/Users/geraldkurlandski/Documents/workspace_website/jkurlandski/CodeExamples/src/deletable' is out of date
+svn: E170004: Item '/CodeExamples/src/deletable' is out of date
+~/Documents/workspace_website/jkurlandski$ svn status -u
+A                -   jkurlandskiWebsite/Index/Professional/Guava/guavaMultiset.html
+M              102   jkurlandskiWebsite/Index/Professional/Guava/guavaTemplate.html
+M              103   jkurlandskiWebsite/Index/Professional/Guava/setOperations.html
+M              103   jkurlandskiWebsite/Index/Professional/toDo.txt
+D              102   CodeExamples/src/deletable/SortHashKeysTest.java
+D              103   CodeExamples/src/deletable/MultimapTest.java
+D              103   CodeExamples/src/deletable/SetOperationsTest.java
+D              102   CodeExamples/src/deletable
+A  +             -   CodeExamples/src/guavaTests/MultimapTest.java
+A                -   CodeExamples/src/guavaTests/MultisetTest.java
+A  +             -   CodeExamples/src/guavaTests/SetOperationsTest.java
+M  +             -   CodeExamples/src/guavaTests/SortHashKeysTest.java
+A  +             -   CodeExamples/src/guavaTests
+Status against revision:    103
+~/Documents/workspace_website/jkurlandski$ svn update
+Updating '.':
+At revision 103.
+~/Documents/workspace_website/jkurlandski$ svn commit -m "Begin Multiset page."
+Deleting       CodeExamples/src/deletable
+Adding         CodeExamples/src/guavaTests
+Adding         CodeExamples/src/guavaTests/MultimapTest.java
+Adding         CodeExamples/src/guavaTests/MultisetTest.java
+Adding         CodeExamples/src/guavaTests/SetOperationsTest.java
+Sending        CodeExamples/src/guavaTests/SortHashKeysTest.java
+Adding         jkurlandskiWebsite/Index/Professional/Guava/guavaMultiset.html
+Sending        jkurlandskiWebsite/Index/Professional/Guava/guavaTemplate.html
+Sending        jkurlandskiWebsite/Index/Professional/Guava/setOperations.html
+Sending        jkurlandskiWebsite/Index/Professional/toDo.txt
+Transmitting file data ........
+Committed revision 104.
+~/Documents/workspace_website/jkurlandski$ 

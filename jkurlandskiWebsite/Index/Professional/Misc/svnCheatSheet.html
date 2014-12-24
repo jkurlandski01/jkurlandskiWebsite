@@ -46,6 +46,8 @@
 
             <p>JERRY: add/delete items to sidebar</p>
             
+            <p>JERRY: svn update</p>
+            
             <p>Here's a quick guide--for my own use as much as anyone else's--to the SVN commands I most often use.</p>
             <p>A similar resource is the very useful "SVN Cheat Sheet" written up by AddedBytes.com. I've taken the liberty of adding their pdf to the internal links at right, rather than to the external links, because lately the document seems to have disappeared from the Internet.</p>
             <p>Note: in the explanations below, the term "item" refers to both files and directories.</p>
@@ -170,7 +172,9 @@
 
 
             <h3>SVN Move</h3>
-            <p>This set of commands moves or renames a file or directory. Moving or renaming a file through SVN is better than simply doing it through your operating system, because the file's change history will be maintained. (That is, SVN will copy the history of the old file to the new file's history.) Note that these changes must all be followed by a commit.</p>
+            <p>This set of commands moves or renames a file or directory. Moving or renaming a file through SVN is better than simply doing it through your operating system, because the file's change history will be maintained. (That is, SVN will copy the history of the old file to the new file's history.)</p>
+            <p>Note that these changes must all be followed by a commit.</p>
+            <p>Also note that SVN may not at first let you do this commit. If you get the message "Item ... is out of date," don't panic. Do an svn update (see above), which will seemingly do nothing, but which in fact will let you perform the commit.</p>
 
             <div class="singleSpacedDescription">
                 <li>$ svn move &lt;oldItemName&gt; &lt;newItemName&gt;</li>
