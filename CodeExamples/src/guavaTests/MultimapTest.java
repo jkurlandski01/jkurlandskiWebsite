@@ -1,4 +1,4 @@
-package deletable;
+package guavaTests;
 
 import static org.junit.Assert.*;
 
@@ -29,7 +29,7 @@ public class MultimapTest {
 	}
 
 	@Test
-	public void testOldWay() {
+	public void testOldWayFails() {
 		// Get the map.
 		Map<String, List<String>> map = getHashMap();
 		
