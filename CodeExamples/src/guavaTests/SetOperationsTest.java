@@ -1,4 +1,4 @@
-package deletable;
+package guavaTests;
 
 import static org.junit.Assert.*;
 
@@ -78,7 +78,7 @@ public class SetOperationsTest
 	}
 
 	@Test
-	public void testListAddAll() {
+	public void testListAddAllFails() {
 		List<String> list1 = Lists.newArrayList("a", "b", "c");
 		List<String> list2 = Lists.newArrayList("c", "c", "d", "e");
 		
@@ -90,6 +90,8 @@ public class SetOperationsTest
 		List<String> expectedList = Lists.newArrayList("a", "b", "c", "c", "d", "e");
 		Collections.sort(expectedList);
 		Collections.sort(listUnion);
+		
+		// Test fails.
 		assertEquals(expectedList, listUnion);
 
 		// Verify that the operation is commutative.
@@ -100,7 +102,7 @@ public class SetOperationsTest
 	}
 
 	@Test
-	public void testListRetainAll() {
+	public void testListRetainAllFails() {
 		List<String> list1 = Lists.newArrayList("a", "b", "c");
 		List<String> list2 = Lists.newArrayList("c", "c", "d", "e");
 		
@@ -114,6 +116,8 @@ public class SetOperationsTest
 		// Verify that the operation is commutative.
 		List<String> listIntersection2 = Lists.newArrayList(list2);
 		listIntersection2.retainAll(list1);
+		
+		// Test fails.
 		assertEquals(Lists.newArrayList("c"), listIntersection2);
 	}
 

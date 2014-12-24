@@ -1,14 +1,6 @@
-set operations
-- On work computer, I get an error on Multisets.union()
-	- The method union(Multiset<String>, Multiset<String>) is undefined for the type Multisets	SetOperationsTest.java
-	- Probably I have an older jar file than on my home computer.
-	- Need to discuss proper jar file, and list it in the snapshots.
-	- Was guava 13; now 15
-
-
 Multiset
 - See my local copy of GuavaCollectionTypes.html
-- start; reference from multimap
+- start; reference from multimap and setOperations.html
 - see StringCounter code
 
 multimap

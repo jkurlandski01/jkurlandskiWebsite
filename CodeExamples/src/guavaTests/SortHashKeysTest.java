@@ -1,4 +1,4 @@
-package deletable;
+package guavaTests;
 
 import static org.junit.Assert.*;
 

@@ -59,7 +59,7 @@
     Set&lt;String&gt; setUnion = Sets.union(set1, set2);
 </pre>
 
-            <p>If you are working with what are called multisets, or lists where each element may appear more than once, you really should use Guava's Multiset methods.</p>
+            <p>If you are working with what are called multisets, or lists where each element may appear more than once, you really should use Guava's Multiset methods. Make sure you are not using an old jar file for Guave. (The version in guava-15.0.jar is sufficient.)</p>
 
 <p class="precaption">Listing 2: Snapshot of Guava's Multisets.intersect( ) and Multisets.union( )</p>
 <pre class="preCodeWithCaption">
@@ -249,7 +249,7 @@ public void testMultisetIntersection() {
 </pre>
 
             <p>First we create two multisets from exactly the same lists we've been working with in this section. Then we create the intersection of the two multisets with the intersection( ) method. Then we create the expected multiset and perform the unit test. Finally, in order to verify commutativity, we create a new intersection of the two multisets, but in reverse order.</p>
-            <p>The next listing below shows how to perform multiset union.</p>
+            <p>The next listing below shows how to perform multiset union. Note: You'll get a compiler error on Multisets.union( ) if you are using an older version of Guava. Make sure you are using at least the version contained in guava-15.0.jar.</p>
 
 <p class="precaption">Listing 9: Using Multisets.union()</p>
 <pre class="preCodeWithCaption">

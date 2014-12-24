@@ -39,14 +39,34 @@
 	<div id="page" class="container">
 		<div id="content">
 			<div class="title">
-				<h2>Put your title here</h2>
+				<h2>Guava Multisets</h2>
 			</div>
-			<p>blah, blah</p>
+			<p>Guava's Multiset interface and its corresponding implementations offer programmers some very convenient tools. First and foremost, we now have a handy way to count things. Secondly, we can now perform true set-like operations on multisets, also known as bags.</p>
+            <h3><a id="Summary">Summary</a></h3>
+            <p>Use a Multimap to count the number of different types of things, like the number of occurrences of a particular string, or the number of named entities (Persons, Organizations, Dates, etc.) mentioned in a corpus. It will save you a lot of trouble.</p>
+
+<p class="precaption">Listing 1: Counting Types of Objects with Guava's Multiset</p>
+<pre class="preCodeWithCaption">
+@Test
+public void simpleCase() {
+    List&lt;String&gt; input = Lists.newArrayList(&quot;aaa&quot;, &quot;bbb&quot;, &quot;aaa&quot;);
+    Multiset&lt;String&gt; multiset = HashMultiset.create(input);
+    multiset.add(&quot;ddd&quot;);
+    
+    assertEquals(2, multiset.count(&quot;aaa&quot;));
+    assertEquals(1, multiset.count(&quot;bbb&quot;));
+    assertEquals(0, multiset.count(&quot;ccc&quot;));
+    assertEquals(1, multiset.count(&quot;ddd&quot;));
+    
+    assertEquals(4, multiset.size());
+}
+</pre>
+
+			<p> without having to resort to a Map with the tedious checking for </p>
 
 <p class="precaption">Listing </p>
 <pre class="preCodeWithCaption">
 </pre>
-
 
 		</div>
 		<div id="sidebar">
