@@ -59,7 +59,7 @@
     Set&lt;String&gt; setUnion = Sets.union(set1, set2);
 </pre>
 
-            <p>If you are working with what are called multisets, or lists where each element may appear more than once, you really should use Guava's Multiset methods. Make sure you are not using an old jar file for Guave. (The version in guava-15.0.jar is sufficient.)</p>
+            <p>If you are working with what are called multisets, or lists where each element may appear more than once, you really should use Guava's Multiset methods. Make sure you are not using an old jar file for Guava. (The version in guava-15.0.jar is sufficient.)</p>
 
 <p class="precaption">Listing 2: Snapshot of Guava's Multisets.intersect( ) and Multisets.union( )</p>
 <pre class="preCodeWithCaption">
@@ -150,7 +150,7 @@ public void testTrueSetGuavaUnion() {
             <p>In the previous section we saw that there are two perfectly acceptable ways to perform set operations on true sets--although the Guava approach might be slightly preferable to the use of native Java Set methods. However, in this section we'll see that when it comes to multisets, there really is only one option.</p>
             
             <h4>Set operations using List.retainAll( ) and List.addAll( )</h4>
-            <p>This is a long section whose upshot will be: <b>Don't use retainAll( ) and addAll( ) for multisets!</b></p>
+            <p>This is a long section whose upshot will be: <em>Do not use retainAll( ) and addAll( ) for multisets!</em></p>
             <p>Let's start the ball rolling by performing an intersection on a multiset, as implemented by a List.</p>
 
 <p class="precaption">Listing 5: Using retainAll( ) for a List implementation of multisets</p>
