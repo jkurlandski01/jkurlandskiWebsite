@@ -174,6 +174,15 @@ figcaption p {
 	    padding: 10px;
 	 }
 
+	pre.prePoetry
+	{
+		font-family: 'FontAwesome';
+		font-size: 1em;
+	    #background: #E8E8E8;
+	    overflow: auto;
+	    padding: 5px;
+	 }
+	
 
 /* Section allowing for a series of descriptions of things. Floating is allowed, but turned off between descriptions. 
 li = thing being described (for time being that is an SVN command, hence the monospace font;
@@ -284,7 +293,7 @@ hr {
 	.title
 	{
 		margin-bottom: 0em;
-		text-transform: uppercase;
+		# text-transform: uppercase;
 	}
 	
 	.title .noTextTransform
@@ -497,13 +506,19 @@ hr {
 	{
 		font-size: 1.2em;
 		padding: 0em 0em 1em 0em;
-}
+	}
 	
 	#sidebar .internalLinkBox
 	{
 		margin-bottom: 3em;
 	}
-
+	
+	#sidebar .internalLinkBox .title
+	{
+		margin-bottom: 0em;
+		text-transform: uppercase;
+	}
+	
 	#sidebar .scrollingbox
 	{
 		margin-bottom: 3em;
