@@ -64,16 +64,16 @@ public void simpleCase() {
 
             <p>Listing 1 is meant to serve only as a snapshot of how to use Multiset for counting. See below for a description of what is going on in this code snippet, as well as for other uses of Multiset.</p>
             
-            <h3><a id="Summary">Counting with a Multiset</a></h3>
+            <h3><a id="Counting">Counting with a Multiset</a></h3>
             <p>Usually in Java we count things with a Map&lt;Object, Integer&gt;. This means that, every time we find an object, we first have to check whether it already exists in the map. As the excellent Guava documentation says: "This is awkward, prone to mistakes, and doesn't support collecting a variety of useful statistics, like the total number of words. We can do better." (See the link at right.)</p>
             <p>And with Guava's Multiset, the folks at Google have done better.</p>
             <p>Listing 1, above, is meant to illustrate the most useful functionality that this interface provides. First we create a list of strings, some of which are duplicates. Then we initialize the HashMultiset implementation of Multiset with the create( ) method. Alternatively, you can add items to your multiset one at a time, as the following line shows. The next few lines in the code snippet above use unit test assertions to demonstrate the counting functionality, provided by count( ), which provides the count of each type, and size( ), which gives you the total number of elements contained in the multimap.</p>
 
-            <h3><a id="Summary">What is a multiset?</a></h3>
+            <h3><a id="Multiset">What is a multiset?</a></h3>
             <p>Briefly, a multiset (lowercase--<em>not</em> the Guava interface Multiset) is a set of objects where order does not matter and it is possible to have more than one of each type of element. For example, {a, b, b, c, d} is a multiset, and it is equivalent to {a, c, d, b, b}. Note that the traditional set {a, b, c} is also a multiset, albeit one which has only one element of each type. Another name for multiset is a bag, as in "a bag of words model of a document."</p>
             <p>Guava's Multiset implementations give us not just a way to count types of objects, but they also provide additional functionality that we may want to use on multisets.</p>
             
-            <h3><a id="Summary">Additional Guava Multiset functionality</a></h3>
+            <h3><a id="Additional">Additional Guava Multiset functionality</a></h3>
             <p>The next listing is meant to illustrate some of the non-counting behavior which Multiset provides.</p>
             
 <p class="precaption">Listing 2: Additional Multiset functionality</p>
@@ -141,7 +141,7 @@ bbb: 2
 
             <p>Listing 3 is a unit test that we've hijacked so that we have a place for some println( ) statements. The first line of output comes from the <code>System.out.println(multiset)</code> call. It demonstrates the very nice override provided by Guava, which--instead of displaying every element individually--shows each type and the number of times it appears in the collection. The next three lines of output are the result of the for loop on the entrySet( ) method. Here we iterate through each entry, getting the element type (e.g. "aaa," "bbb," etc.) as well as the count of each. When simply written out, as it is here, it's not significantly different from toString( ), but the method could be useful in any number of other ways.</p>
 
-            <h3><a id="Summary">Performing set operations with Multisets</a></h3>
+            <h3><a id="SetOperations">Set operations with Multisets</a></h3>
             <p>Because multisets are very similar to sets, it makes sense to want to perform set operations, like union and intersection, on them. For example, in my own work I've wanted to compare the "topics" of several conversations, the "topic" of each conversation being represented by a multiset of the important words in the dialog. I could say that two conversations were more similar than a third conversation if the intersection of their topic multisets had more elements than the intersection of either with the third conversation.</p>
             <p>The listing below shows you how to perform set opertations on multisets with Guava. Make sure you are not using an old jar file for Guava. (The version in guava-15.0.jar will do the trick.)</p>
 
@@ -163,13 +163,26 @@ bbb: 2
             
 		</div>
 		<div id="sidebar">
+            <div class="internalLinkBox">
+                <div class="title">
+                    <h2>Links on this Page</h2>
+                </div>
+                <ul class="style2">
+                    <li><a href="#Summary">Summary</a></li>
+                    <li><a href="#Counting">Counting with a Multiset</a></li>
+                    <li><a href="#Multiset">What is a Multiset?</a></li>
+                    <li><a href="#Additional">Additional Multiset Functionality</a></li>
+                    <li><a href="#SetOperations">Set Operations with Multisets</a></li>
+                </ul>
+            </div>
 			<div class="internalLinkBox">
 				<div class="title">
 					<h2>Internal Links</h2>
 				</div>
 				<ul class="style2">
 					<li><a href="hashBasedTable.html">Using Guava's HashBasedTable class</a></li>
-					<li><a href="setOperations.html">Java set operations with Guava</a></li>
+                    <li><a href="setOperations.html">Java set operations with Guava</a></li>
+                    <li><a href="guavaMultimap.html">Guava Multimap</a></li>
 				</ul>
 			</div>
 			<div class="internalLinkBox">
