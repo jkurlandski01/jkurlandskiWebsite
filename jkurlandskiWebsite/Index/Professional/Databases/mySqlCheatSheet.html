@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>JERRY</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="../../default.css" rel="stylesheet" type="text/css" media="all" />
+<link href="../../fonts.css" rel="stylesheet" type="text/css" media="all" />
+<!--[if IE 6]>
+<link href="default_ie6.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+</head>
+<body>
+<div id="wrapper">
+	<div id="header-wrapper">
+		<div id="menu" class="container">
+			<ul>
+				<li><a href="../index.html">Home</a></li>
+				<li class="current_page_item"><a href="../Databases/index.html">Guava</a></li>
+				<li><a href="../Java/index.html">Java</a></li>
+				<li><a href="../NLP_AI/index.html">NLP / AI</a></li>
+				<li><a href="../CSS_HTML/index.html">Int. CSS / HTML</a></li>
+				<li><a href="../WWW/index.html">WWW</a></li>
+			</ul>
+		</div>
+		<!-- end #menu -->
+		<div id="header" class="container">
+			<div id="logo">
+				<h1>Close to the</h1>
+				<h1>Machine</h1>
+				<p></p>
+				<p>Jerry Kurlandski</p>
+			</div>
+			<div id="header-image1"> <a href="#" class="image"><img src="../../images/bookshelfPanorama.jpg" alt="" /></a> </div>
+			<div id="header-image2"> <a href="#" class="image"><img src="../../images/bookshelfPanorama.jpg" alt="" /></a> </div>
+		</div>
+	</div>
+	<div id="page" class="container">
+		<div id="content">
+			<div class="title">
+				<h2>mySql Cheat Sheet</h2>
+			</div>
+			<p>Here is a short reference manual, mostly for myself, on some of the work I find myself needing to do in mySql, and often forget exactly how to do it.</p>
+            
+            <p>JERRY: improve the visual aspect of the sql</p>
+            <p>JERRY: make the column and table names "generic"</p>
+            
+            <h3>Select those rows which have the same column value.</h3>
+            <p><code>select response_pool_id, count(*) from response_pool_entry group by response_pool_id having count(*) > 1;</code></p>
+            
+            <h3>Select those rows which have the same column values.</h3>
+            <p>select response_pool_id, response_template, count(*) from response_pool_entry group by response_pool_id, response_template having count(*) > 1;</p>
+            
+            <h3>Show all the tables</h3>
+            <p>show tables;</p>
+            
+            <h3>Create a table with a timestamp column</h3>
+            <pre>CREATE  TABLE `Eliza_analysis`.`analysis` (
+            `id` INT NOT NULL AUTO_INCREMENT ,
+            `input` VARCHAR(255) NOT NULL ,
+            `reply` VARCHAR(255) NOT NULL ,
+            `score` DECIMAL(4,3) NOT NULL ,
+            `eligibleScore` DECIMAL(4,3) NOT NULL ,
+            `depth` INT NOT NULL ,
+            `pertinentInfo` VARCHAR(127) NOT NULL ,
+            `timestamp1` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+            PRIMARY KEY (`id`) ,
+            UNIQUE INDEX `id_UNIQUE` (`id` ASC) );</pre>
+            
+            <h3>Load table from a flat file</h3>
+            <p>LOAD DATA LOCAL INFILE '/Users/geraldkurlandski/Documents/DialogManager/AnalysisTestDriver/20140929_145632.txt' INTO TABLE analysis FIELDS TERMINATED BY '|' ;</p>
+            
+            <h3>Export a table into a flat file</h3>
+            <pre>SELECT *
+                from trueScores
+                INTO OUTFILE '/tmp/data.txt';</pre>
+            
+            <p>If you want column names as headers, this is the easy way to do it.</p>
+            <pre>echo "select * from trueScores limit 5" | sudo mysql Eliza_analysis</pre>
+            
+            <h3>Deleting rows on a table with foreign key constraints</h3>
+            <pre>
+                mysql> truncate conversation;
+                ERROR 1701 (42000): Cannot truncate a table referenced in a foreign key constraint (`eliza`.`conversation_non_volatile`, CONSTRAINT `conversation_non_volatile_ibfk_1` FOREIGN KEY (`conversation_id`) REFERENCES `eliza`.`conversation` (`conversation_id`))
+                mysql> select * from conversation_non_volatile;
+                Empty set (0.00 sec)
+                
+                
+                mysql> SET FOREIGN_KEY_CHECKS=0;
+                Query OK, 0 rows affected (0.00 sec)
+                
+                mysql> truncate conversation;
+                Query OK, 0 rows affected (0.00 sec)
+                
+                mysql> SET FOREIGN_KEY_CHECKS=1;
+                Query OK, 0 rows affected (0.00 sec)
+                
+                mysql> select * from conversation;
+                Empty set (0.00 sec)
+            </pre>
+            
+            <h3>Dumping tables to a .sql file</h3>
+            <p>JERRY: convert entities</p>
+            <p>mysqldump -u<user> -p<password> <schema> table1 table2 table3 > tables.sql</p>
+            
+            <h3>Loading tables from a .sql file</h3>
+            <p>mysql -u<user> -p<password> <schema> < tables.sql </p>
+            
+            <h3></h3>
+            <p></p>
+            
+            <h3></h3>
+            <p></p>
+            
+<p class="precaption">Listing </p>
+<pre class="preCodeWithCaption">
+</pre>
+
+
+		</div>
+		<div id="sidebar">
+			<div class="internalLinkBox">
+				<div class="title">
+					<h2>Internal Links</h2>
+				</div>
+				<ul class="style2">
+                    <li><a href="hashBasedTable.html">Using Guava's HashBasedTable class</a></li>
+                    <li><a href="setOperations.html">Java set operations with Guava</a></li>
+                    <li><a href="guavaMultimap.html">Guava Multimap</a></li>
+                    <li><a href="guavaMultiset.html">Guava Multiset</a></li>
+				</ul>
+			</div>
+			<div class="internalLinkBox">
+				<div class="title">
+					<h2>External Guava Links</h2>
+				</div>
+				<ul class="style2">
+					<li><a href="http://tomjefferys.blogspot.com/2011/09/multimaps-google-guava.html">How to use Multimaps</a></li>
+					<li><a href="http://docs.guava-libraries.googlecode.com/git/javadoc/com/google/common/collect/HashBasedTable.html">HashBasedTable Javadoc</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="copyright" class="container">
+	<p>Copyright (c) 2013 jkurlandski.com. All rights reserved. | Original design by <a href="http://www.freecsstemplates.org/" rel="nofollow">FreeCSSTemplates.org</a>.</p>
+</div>
+</body>
+</html>
