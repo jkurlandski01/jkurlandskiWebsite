@@ -3,6 +3,7 @@ ConceptNet
 
 Multiset
 - reference online, internal, and on the page
+- Multisets union returns a SetView? See Java Interviews book.
 - proofread
 
 multimap
