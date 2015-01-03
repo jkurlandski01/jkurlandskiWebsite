@@ -1,3 +1,6 @@
+ConceptNet
+- Working on ConceptNetQuery and its Test.
+
 Multiset
 - reference online, internal, and on the page
 - proofread
