@@ -2,4 +2,8 @@ open-source java & machine learning
 	http://blog.datumbox.com/new-open-source-machine-learning-framework-written-in-java/
 	
 ConceptNet
+ConceptNetQueryService is the new version of ConceptNetQuery.
+- Parts also sent to Relation class.
+
+
 GATE

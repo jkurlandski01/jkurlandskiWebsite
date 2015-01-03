@@ -247,17 +247,27 @@ public class ConceptNetQuery {
         }
     }
 
-    public static String getJsonString(String queryURI) throws IOException{
-        BufferedReader reader = null;
-        URL url = new URL(queryURI);
-        reader = new BufferedReader(new InputStreamReader(url.openStream()));
+    public String getJsonString(String queryURI) throws IOException	{
+        //URL url = new URL(queryURI);
+        //BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
+        BufferedReader reader = getReaderforQuery(queryURI);
+        if(reader == null)	{
+        	return "";
+        }
+        
         StringBuffer buffer = new StringBuffer();
         int read;
         char[] chars = new char[1024];
-        while ((read = reader.read(chars)) != -1){
+        while ((read = reader.read(chars)) != -1)	{
             buffer.append(chars, 0, read);  
         }
         return buffer.toString();
+    }
+    
+    public BufferedReader getReaderforQuery(String query) throws IOException	 {
+        URL url = new URL(query);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
+        return reader;
     }
 
     public List<Edge> getEdges() {
