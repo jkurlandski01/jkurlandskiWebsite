@@ -1,5 +1,5 @@
 ConceptNet
-- Need to remind myself how to make the test file (.json) path relative to the test location.
+- Post most of ConceptNetQuery and a couple of tests in Test.
 
 Multiset
 - reference online, internal, and on the page
