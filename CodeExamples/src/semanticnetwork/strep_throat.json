@@ -1,152 +1,71 @@
 {
   "edges": [
     {
-      "context": "/ctx/all", 
-      "dataset": "/d/conceptnet/4/en", 
-      "end": "/c/en/serious", 
-      "endLemmas": "serious", 
+      "context": "/ctx/all",
+      "dataset": "/d/conceptnet/4/en",
+      "end": "/c/en/painful",
       "features": [
-        "/c/en/strep_throat /r/HasProperty -", 
-        "/c/en/strep_throat - /c/en/serious", 
-        "- /r/HasProperty /c/en/serious"
-      ], 
-      "id": "/e/094c9407ff84030977104b15279510c0c686fdb1", 
-      "license": "/l/CC/By-SA", 
-      "nodes": [
-        "/c/en/serious", 
-        "/c/en/strep_throat", 
-        "/r/HasProperty"
-      ], 
-      "rel": "/r/HasProperty", 
-      "relLemmas": "", 
-      "score": 13.675213, 
-      "source_uri": "/and/[/s/activity/omcs/response_to_picture/,/s/contributor/omcs/Nancy/]", 
-      "sources": [
-        "/s/activity/omcs/response_to_picture", 
-        "/s/contributor/omcs/Nancy"
-      ], 
-      "start": "/c/en/strep_throat", 
-      "startLemmas": "strep throat", 
-      "surfaceText": "[[Strep throat]] is [[serious]]", 
-      "text": [
-        "serious", 
-        "", 
-        "strep throat"
-      ], 
-      "timestamp": "2014-04-16T22:34:14.746Z", 
-      "uri": "/a/[/r/HasProperty/,/c/en/strep_throat/,/c/en/serious/]", 
-      "weight": 1.5849625
-    }, 
-    {
-      "context": "/ctx/all", 
-      "dataset": "/d/conceptnet/4/en", 
-      "end": "/c/en/painful", 
-      "endLemmas": "painful", 
-      "features": [
-        "/c/en/strep_throat /r/HasProperty -", 
-        "/c/en/strep_throat - /c/en/painful", 
+        "/c/en/strep_throat /r/HasProperty -",
+        "/c/en/strep_throat - /c/en/painful",
         "- /r/HasProperty /c/en/painful"
-      ], 
-      "id": "/e/a9888855b0370a4967e3c0a21c704f6c9368591b", 
-      "license": "/l/CC/By-SA", 
-      "nodes": [
-        "/c/en/painful", 
-        "/r/HasProperty", 
-        "/c/en/strep_throat"
-      ], 
-      "rel": "/r/HasProperty", 
-      "relLemmas": "", 
-      "score": 13.675213, 
-      "source_uri": "/and/[/s/activity/omcs/response_to_picture/,/s/contributor/omcs/tenfiveoh/]", 
+      ],
+      "id": "/e/a9888855b0370a4967e3c0a21c704f6c9368591b",
+      "license": "/l/CC/By-SA",
+      "rel": "/r/HasProperty",
+      "source_uri": "/and/[/s/activity/omcs/response_to_picture/,/s/contributor/omcs/tenfiveoh/]",
       "sources": [
-        "/s/activity/omcs/response_to_picture", 
+        "/s/activity/omcs/response_to_picture",
         "/s/contributor/omcs/tenfiveoh"
-      ], 
-      "start": "/c/en/strep_throat", 
-      "startLemmas": "strep throat", 
-      "surfaceText": "[[Strep throat]] is [[painful]]", 
-      "text": [
-        "", 
-        "strep throat", 
-        "painful"
-      ], 
-      "timestamp": "2014-04-16T22:37:15.824Z", 
-      "uri": "/a/[/r/HasProperty/,/c/en/strep_throat/,/c/en/painful/]", 
-      "weight": 1.5849625
-    }, 
+      ],
+      "start": "/c/en/strep_throat",
+      "surfaceText": "[[Strep throat]] is [[painful]]",
+      "uri": "/a/[/r/HasProperty/,/c/en/strep_throat/,/c/en/painful/]",
+      "weight": 1.5849625007211563
+    },
     {
-      "context": "/ctx/all", 
-      "dataset": "/d/wiktionary/en/en", 
-      "end": "/c/en/streptococcus/n", 
-      "endLemmas": "streptococcus", 
+      "context": "/ctx/all",
+      "dataset": "/d/conceptnet/4/en",
+      "end": "/c/en/serious",
       "features": [
-        "/c/en/strep_throat /r/DerivedFrom -", 
-        "/c/en/strep_throat - /c/en/streptococcus/n", 
+        "/c/en/strep_throat /r/HasProperty -",
+        "/c/en/strep_throat - /c/en/serious",
+        "- /r/HasProperty /c/en/serious"
+      ],
+      "id": "/e/094c9407ff84030977104b15279510c0c686fdb1",
+      "license": "/l/CC/By-SA",
+      "rel": "/r/HasProperty",
+      "source_uri": "/and/[/s/activity/omcs/response_to_picture/,/s/contributor/omcs/Nancy/]",
+      "sources": [
+        "/s/activity/omcs/response_to_picture",
+        "/s/contributor/omcs/Nancy"
+      ],
+      "start": "/c/en/strep_throat",
+      "surfaceText": "[[Strep throat]] is [[serious]]",
+      "uri": "/a/[/r/HasProperty/,/c/en/strep_throat/,/c/en/serious/]",
+      "weight": 1.5849625007211563
+    },
+    {
+      "context": "/ctx/all",
+      "dataset": "/d/wiktionary/en/en",
+      "end": "/c/en/streptococcus/n",
+      "features": [
+        "/c/en/strep_throat /r/DerivedFrom -",
+        "/c/en/strep_throat - /c/en/streptococcus/n",
         "- /r/DerivedFrom /c/en/streptococcus/n"
-      ], 
-      "id": "/e/64faa2c2ba0a740fc6b91f50011e3fd4e84a5647", 
-      "license": "/l/CC/By-SA", 
-      "nodes": [
-        "/r/DerivedFrom", 
-        "/c/en/streptococcus/n", 
-        "/c/en/strep_throat"
-      ], 
-      "rel": "/r/DerivedFrom", 
-      "relLemmas": "", 
-      "score": 7.8144073, 
-      "source_uri": "/and/[/s/rule/wiktionary_monolingual_definitions/,/s/web/en.wiktionary.org/]", 
+      ],
+      "id": "/e/96017dc76adc52a872320c6a73438de7e72f4383",
+      "license": "/l/CC/By-SA",
+      "rel": "/r/DerivedFrom",
+      "source_uri": "/and/[/s/rule/link_section/,/s/web/en.wiktionary.org/wiki/streptococcus/]",
       "sources": [
-        "/s/rule/wiktionary_monolingual_definitions", 
-        "/s/web/en.wiktionary.org"
-      ], 
-      "start": "/c/en/strep_throat", 
-      "startLemmas": "strep throat", 
-      "surfaceText": "[[strep throat]] DerivedFrom [[streptococcus]]", 
-      "text": [
-        "strep throat", 
-        "streptococcus", 
-        ""
-      ], 
-      "timestamp": "2014-04-16T22:38:18.79Z", 
-      "uri": "/a/[/r/DerivedFrom/,/c/en/strep_throat/,/c/en/streptococcus/n/]", 
+        "/s/rule/link_section",
+        "/s/web/en.wiktionary.org/wiki/streptococcus"
+      ],
+      "start": "/c/en/strep_throat",
+      "surfaceText": null,
+      "uri": "/a/[/r/DerivedFrom/,/c/en/strep_throat/,/c/en/streptococcus/n/]",
       "weight": 1.0
-    }, 
-    {
-      "context": "/ctx/all", 
-      "dataset": "/d/jmdict", 
-      "end": "/c/en/strep_throat", 
-      "endLemmas": "strep throat", 
-      "features": [
-        "/c/ja/\u9023\u9396\u7403\u83cc\u6027\u54bd\u982d\u708e /r/TranslationOf -", 
-        "/c/ja/\u9023\u9396\u7403\u83cc\u6027\u54bd\u982d\u708e - /c/en/strep_throat", 
-        "- /r/TranslationOf /c/en/strep_throat"
-      ], 
-      "id": "/e/f361364ffcc60530cc3ed0ca55b9a1db99985b88", 
-      "license": "/l/CC/By-SA", 
-      "nodes": [
-        "/c/ja/\u9023\u9396\u7403\u83cc\u6027\u54bd\u982d\u708e", 
-        "/r/TranslationOf", 
-        "/c/en/strep_throat"
-      ], 
-      "rel": "/r/TranslationOf", 
-      "relLemmas": "", 
-      "score": 4.8731275, 
-      "source_uri": "/s/jmdict/1.07", 
-      "sources": [
-        "/s/jmdict/1.07"
-      ], 
-      "start": "/c/ja/\u9023\u9396\u7403\u83cc\u6027\u54bd\u982d\u708e", 
-      "startLemmas": "\u9023\u9396\u7403\u83cc\u6027\u54bd\u982d\u708e", 
-      "text": [
-        "", 
-        "strep throat", 
-        "\u9023\u9396\u7403\u83cc\u6027\u54bd\u982d\u708e"
-      ], 
-      "timestamp": "2014-04-16T22:34:02.404Z", 
-      "uri": "/a/[/r/TranslationOf/,/c/ja/\u9023\u9396\u7403\u83cc\u6027\u54bd\u982d\u708e/,/c/en/strep_throat/]", 
-      "weight": 0.5849625
     }
-  ], 
-  "maxScore": 13.675213, 
-  "numFound": 4
+  ],
+  "numFound": 3
 }

@@ -68,7 +68,7 @@ public class ConceptNetQuery {
     }
     
     public enum Dataset {
-        ConceptNet, DBPedia, GlobalMind, JmDict, ReVerb, Verbosity, Wiktionary, WordNet;
+        ConceptNet, DBPedia, GlobalMind, JmDict, ReVerb, Verbosity, Wiktionary, WordNet, Umbel;
         
         public static Dataset getDataset(String input)  {
             String tempStr = input.toLowerCase();
@@ -95,6 +95,9 @@ public class ConceptNetQuery {
             }
             else if(tempStr.matches(".*wordnet.*"))    {
                 return Dataset.WordNet;
+            }
+            else if(tempStr.matches(".*umbel.*"))    {
+                return Dataset.Umbel;
             }
             
             throw new IllegalArgumentException("Dataset not found for input: " + tempStr);
@@ -205,6 +208,9 @@ public class ConceptNetQuery {
         }
         
         private String cleanNodes(String in)	{
+        	// TODO: figure out why sometimes the end string ends in an apparently meaningless "/n".
+        	in = in.replaceAll("/n$", "");
+        	
         	String[] start = in.split("/");
         	String retString = start[start.length - 1].replaceAll("_", " ");
             return retString;        	
