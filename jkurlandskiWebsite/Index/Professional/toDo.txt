@@ -1,5 +1,7 @@
 ConceptNet
-- Post most of ConceptNetQuery and a couple of tests in Test.
+- Using BaseConceptNetServiceTest as a source for ConceptNet issues.
+- Clean up the ConceptNetQuery code.
+- Post most of ConceptNetQuery and a couple of tests on a new page.
 
 Multiset
 - reference online, internal, and on the page

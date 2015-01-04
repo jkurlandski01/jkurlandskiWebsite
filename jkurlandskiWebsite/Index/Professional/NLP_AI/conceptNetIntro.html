@@ -82,31 +82,57 @@ n = number entries retrieved
 <pre>
 {
       "context": "/ctx/all",
-      "dataset": "/d/umbel",
-      "end": "/c/en/strep_throat",
+      "dataset": "/d/conceptnet/4/en",
+      "end": "/c/en/painful",
       "features": [
-        "/c/en/strep_throat_infection /r/Synonym -",
-        "/c/en/strep_throat_infection - /c/en/strep_throat",
-        "- /r/Synonym /c/en/strep_throat"
+        "/c/en/strep_throat /r/HasProperty -",
+        "/c/en/strep_throat - /c/en/painful",
+        "- /r/HasProperty /c/en/painful"
       ],
-      "id": "/e/127b5113513a5ae60a9cc2d017faf7e1ef7c3fc8",
+      "id": "/e/a9888855b0370a4967e3c0a21c704f6c9368591b",
       "license": "/l/CC/By-SA",
-      "rel": "/r/Synonym",
-      "source_uri": "/s/umbel/2013",
+      "rel": "/r/HasProperty",
+      "source_uri": "/and/[/s/activity/omcs/response_to_picture/,/s/contributor/omcs/tenfiveoh/]",
       "sources": [
-        "/s/umbel/2013"
+        "/s/activity/omcs/response_to_picture",
+        "/s/contributor/omcs/tenfiveoh"
       ],
-      "start": "/c/en/strep_throat_infection",
-      "surfaceText": "[[strep throat infection]] is a synonym of [[strep throat]]",
-      "uri": "/a/[/r/Synonym/,/c/en/strep_throat_infection/,/c/en/strep_throat/]",
+      "start": "/c/en/strep_throat",
+      "surfaceText": "[[Strep throat]] is [[painful]]",
+      "uri": "/a/[/r/HasProperty/,/c/en/strep_throat/,/c/en/painful/]",
       "weight": 1.5849625007211563
 }
 </pre>
+
+        <p>Note that these edge properties pertain to version 5.3, the latest as of December 2014; version 5.2's is significantly different. The most useful properties are rel (relation), start (the left-hand side of the relation), end (the right-hand side of the relation), and surfaceText (the gloss).</p>
+        <p>To make effective use of ConceptNet, you will need to filter out undesirable information; how you decide what is undesirable will depend on your needs. In my own work, I have never found the weight indicative of either the usefulness or the accuracy of the information. Generally I find myself filtering out according to the relation or the dataset (that is, the source of the information--as in WordNet, DBPedia, and so on.)</p>
 
 <p class="precaption">Listing </p>
 <pre class="preCodeWithCaption">
 </pre>
 
+
+            <h3>ConceptNet Issues and Problems</h3>
+            <p>Here I give a quick list of the kinds of issues you will occasionally encounter as you work with ConceptNet. I first discovered them in version 5.2, but they still exist as of 5.3.</p>
+            
+            <h4>Misinformation</h4>
+            <p>As with any database, especially one whose information is partially crowd-sources, some "facts" are just plain wrong. For example, "Starry, Starry Night" is not a song about Picasso; in fact, Don McLean was writing about Van Gogh, who did the painting of the same name. (The song's true title is "Vincent.")</p>
+
+            <h4>Typographical Errors</h4>
+            <p>Sometimes ConceptNet falls victim to the pre-computer age typographical error. I was doing look-ups on "mouth" and came across the following assertion: "[[Lilcs]] do not have [[a mouth]]." There is no such thing as a "lilc." Somebody somewhere mistyped something.</p>
+
+            <h4>Unexpected Semantic Connections</h4>
+            <p>I call this category "Unexepected Semantic Connections" for lack of a better term. Here is an example what I mean. One sense of the word "brother" is its use in a religious context; so ConceptNet, rightly, gives the term the following relation:</p>
+<pre>
+    brother -- HasContext --> religion 
+</pre>
+
+        <p>The problem is that ConceptNet then proceeds to use WordNet's gloss for "religion," which is "a strong belief in a supernatural power or powers that control human destiny." So, although the above relation seems natural, correct, indeed "human," the final result does not:</p>
+<pre>
+    brother -- HasContext --> a strong belief in a supernatural power or powers that control human destiny 
+</pre>
+
+        <p>To the best of my knowledge, you cannot predict these kinds of problems in advance. In other words, they cannot be dealt with globally, but only on an ad hoc basis.</p>
 
 		</div>
 		<div id="sidebar">

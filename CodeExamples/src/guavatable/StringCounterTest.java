@@ -32,7 +32,7 @@ public class StringCounterTest {
 	}
 
 	@Test
-	public void loadTestStringCounter1Million() {
+	public void loadTestStringCounter1MillionFails() {
 		final int nbrReps = 1000000;
 		
 		List<String> input = Lists.newArrayList();
@@ -94,7 +94,7 @@ public class StringCounterTest {
 	}
 
 	@Test
-	public void pairElementsTest() {
+	public void pairElementsTestFails() {
 		List<String> input = Lists.newArrayList("aaa", "bbb", "aaa", "ccc");
 		Set<String> output = StringCounter.pairElements(input);
 		
