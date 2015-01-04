@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>JERRY</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="../../default.css" rel="stylesheet" type="text/css" media="all" />
+<link href="../../fonts.css" rel="stylesheet" type="text/css" media="all" />
+<!--[if IE 6]>
+<link href="default_ie6.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+</head>
+<body>
+<div id="wrapper">
+	<div id="header-wrapper">
+		<div id="menu" class="container">
+			<ul>
+				<li><a href="../index.html">Home</a></li>
+                <li><a href="../Databases/index.html">Databases</a></li>
+				<li><a href="../Java/index.html">Java</a></li>
+                <li class="current_page_item"><a href="../NLP_AI/index.html">NLP / AI</a></li>
+				<li><a href="../CSS_HTML/index.html">Int. CSS / HTML</a></li>
+				<li><a href="../WWW/index.html">WWW</a></li>
+			</ul>
+		</div>
+		<!-- end #menu -->
+		<div id="header" class="container">
+			<div id="logo">
+				<h1>Close to the</h1>
+				<h1>Machine</h1>
+				<p></p>
+				<p>Jerry Kurlandski</p>
+			</div>
+			<div id="header-image1"> <a href="#" class="image"><img src="../../images/bookshelfPanorama.jpg" alt="" /></a> </div>
+			<div id="header-image2"> <a href="#" class="image"><img src="../../images/bookshelfPanorama.jpg" alt="" /></a> </div>
+		</div>
+	</div>
+	<div id="page" class="container">
+		<div id="content">
+			<div class="title">
+				<h2>Introducing ConceptNet</h2>
+			</div>
+			<p>ConceptNet is an open-source database which is meant to represent real-world knowledge in a form that computers can understand. It comes from the folks at MIT, but they built it upon other publicly-available databases such as WordNet and DBPedia.</p>
+			<p>The external links in the sidebar will get you started if you want to find out more. It looks like the documentation was updated in November of 2014 and is now much better than it used to be.</p>
+			
+			<h3>Getting Started</h3>
+			<p>Take ConceptNet out for a test drive by going to <a href="http://conceptnet5.media.mit.edu/">ConceptNet Home</a>. At the top of the page you'll see two input boxes and a Search button. Type in, for example, the word "throat," leave the Language box unchanged, and hit Search.</p>
+			<p>This brings you to the results page for your search. This will give you a good sense of the kind of information that ConceptNet provides. I won't analyze it in detail here--their documentation is good enough--but let me point out that what you are looking at shows your search term on both the left- and the right-hand side of a number of <b>relations</b>. For example:</p>
+<pre>
+    throat -- IsA --> external body part 
+     
+    throat -- PartOf --> neck
+    a throat is part of a neck.
+</pre>
+
+        <p>In the examples above, the two relations are IsA and PartOf. Some of the entries also provide a <b>gloss</b>, in this case the sentence "a throat is part of a neck."</p>
+        
+        <p>At the top-right of the page you see a link labeled "Get /c/en/throat in JSON format." Clicking on that brings you to the JSON representation of what ConceptNet understands about throats. Experimentation will show that the JSON format page usually includes more entries that the normal web page version (or at least it did in the summer of 2014--perhaps the behavior is different now).</p>
+        <p>Scroll to the bottom of the JSON page and you see that numFound is set to 50. This means that the query in the URL of the page--"http://conceptnet5.media.mit.edu/data/5.3/c/en/throat"--by default returned 50 entries for the term "throat." You can adjust the number of entries returned by modifying the URL. For example, a URL of "http://conceptnet5.media.mit.edu/data/5.3/c/en/throat?limit=100" returns 100 entries.</p>
+        <p>Multi-word searches require that the words be separated by the underscore character. For example, a search on "http://conceptnet5.media.mit.edu/data/5.3/c/en/strep_throat?limit=100" tells you what ConceptNet understands about strep throat. You'll see that, even though you set the limit to 100, only 15 entries were returned. ConceptNet "knows" only 15 things about this malady.</p>
+        
+        <p>As you can see, the top-level syntax of the JSON string returned is something like this:</p>
+<pre>
+{
+  &quot;edges&quot;: [
+    {
+        edge_1
+    },
+    (...)
+    {
+        edge_n
+    }
+  ],
+  &quot;numFound&quot;: n&lt;/n&gt;
+}
+
+n = number entries retrieved
+</pre>
+
+        <p>The edge syntax is more complicated. Instead of trying to define it, I'll simply give an example.</p>
+<pre>
+{
+      "context": "/ctx/all",
+      "dataset": "/d/umbel",
+      "end": "/c/en/strep_throat",
+      "features": [
+        "/c/en/strep_throat_infection /r/Synonym -",
+        "/c/en/strep_throat_infection - /c/en/strep_throat",
+        "- /r/Synonym /c/en/strep_throat"
+      ],
+      "id": "/e/127b5113513a5ae60a9cc2d017faf7e1ef7c3fc8",
+      "license": "/l/CC/By-SA",
+      "rel": "/r/Synonym",
+      "source_uri": "/s/umbel/2013",
+      "sources": [
+        "/s/umbel/2013"
+      ],
+      "start": "/c/en/strep_throat_infection",
+      "surfaceText": "[[strep throat infection]] is a synonym of [[strep throat]]",
+      "uri": "/a/[/r/Synonym/,/c/en/strep_throat_infection/,/c/en/strep_throat/]",
+      "weight": 1.5849625007211563
+}
+</pre>
+
+<p class="precaption">Listing </p>
+<pre class="preCodeWithCaption">
+</pre>
+
+
+		</div>
+		<div id="sidebar">
+			<div class="internalLinkBox">
+				<div class="title">
+					<h2>Internal Links</h2>
+				</div>
+				<ul class="style2">
+                    <li><a href="hashBasedTable.html">Using Guava's HashBasedTable class</a></li>
+                    <li><a href="setOperations.html">Java set operations with Guava</a></li>
+                    <li><a href="guavaMultimap.html">Guava Multimap</a></li>
+                    <li><a href="guavaMultiset.html">Guava Multiset</a></li>
+				</ul>
+			</div>
+			<div class="internalLinkBox">
+				<div class="title">
+					<h2>External ConceptNet Links</h2>
+				</div>
+				<ul class="style2">
+                    <li><a href="http://conceptnet5.media.mit.edu/">ConceptNet Home</a></li>
+                    <li><a href="https://github.com/commonsense/conceptnet5/wiki">ConceptNet Wiki/Documentation</a></li>
+                    <li><a href="http://larifari.org/_/writing/BTTJ2004-ConceptNet.pdf">Liu &amp; Singh Article</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="copyright" class="container">
+	<p>Copyright (c) 2013 jkurlandski.com. All rights reserved. | Original design by <a href="http://www.freecsstemplates.org/" rel="nofollow">FreeCSSTemplates.org</a>.</p>
+</div>
+</body>
+</html>
