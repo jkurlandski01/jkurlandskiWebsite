@@ -87,7 +87,7 @@ public class ConceptNetServiceBase implements SemanticNetworkService {
             sBuild.append("Relation: ").append(edge.getRelation().name().trim()).append(delimiter);
         }
         
-        sBuild.append("Score: ").append(edge.getScore()).append(delimiter);
+//        sBuild.append("Score: ").append(edge.getScore()).append(delimiter);
         sBuild.append("Weight: ").append(edge.getWeight()).append(delimiter);
         
         return sBuild.toString();
