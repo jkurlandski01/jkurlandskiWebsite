@@ -115,19 +115,19 @@ n = number entries retrieved
             <p>Here I give a quick list of the kinds of issues you will occasionally encounter as you work with ConceptNet. Many of the comments concern the gloss (the "surfaceText"), because that was the edge property most of my work focused on. I first discovered these issues in version 5.2, but I've checked and all of them still exist as of 5.3. Still, even if they are fixed in later versions, the problems I describe below give you a sense of what to expect if you decide to try to use ConceptNet in your own application.</p>
             
             <h4>Misinformation</h4>
-            <p>As with any database, especially one whose information is partially crowd-sourced, some "facts" are just plain wrong. For example, "Starry, Starry Night" is not a song about Picasso; in fact, Don McLean was writing about Van Gogh, who did the painting of the same name. (The song's true title is "Vincent.")</p>
+            <p>As with any database, especially one whose information is partially crowd-sourced, some "facts" are just plain wrong. For example, "Starry, Starry Night" is not a song about Picasso; in fact, Don McLean was writing about Van Gogh, who did the painting of the same name. (The song's true title is "Vincent.") To replicate this problem, remember you have to search on "starry_starry_night," with underscores. A lookup on "girl_friend" states that "A fox muffler is a metaphor of a girl friend" (fox muffler -- SymbolOf --> girl friend). Perhaps so, but not in anything I've ever read or seen or heard.</p>
 
             <h4>Typographical Errors</h4>
-            <p>Sometimes ConceptNet falls victim to the pre-computer age typographical error. I was doing look-ups on "mouth" and came across the following assertion: "Lilcs do not have a mouth." There is no such thing as a "lilc." Somebody somewhere mistyped something.</p>
+            <p>Sometimes ConceptNet falls victim to the pre-computer age typographical error. I was doing look-ups on "mouth" and came across the following assertion: "Lilcs do not have a mouth." The relation is "lilcs -- NotHasA --> mouth"."There is no such thing as a "lilc." Somebody somewhere mistyped something.</p>
 
-            <h4>Grammar Errors</h4>
-            <p>JERRY: Sometimes the gloss has an error that doesn't seem to be caused by a slip-up so much as by poor English grammar.</p>
+            <h4>SurfaceText (Gloss) Issues</h4>
+            <p>The surfaceText property of an edge cannot always be relied upon to be in error-free English. For example, a search on bus returns an edge with the gloss, "You are likely to find a bus in a bus stop." It should read "... at a bus stop." "</p>
 
             <h4>Uninteresting Information</h4>
-            <p>Sometimes ConceptNet's facts, though incontrovertible, do not seem as though they would be useful in any context. For example, a search on "mom" returns, as the surfaceText of two of its edges, "Moms can cook chicken soup." and "Moms can be great doctors." There seems to be no easy way to filter out this kind of "empty" information.</p>
+            <p>Sometimes ConceptNet's facts, though incontrovertible, do not seem as though they would be useful in any context. For example, a search on "mom" returns, for two of its edges, "Moms can cook chicken soup" (mom -- CapableOf --> cook chicken soup) and "Moms can be great doctors" (mom -- CapableOf --> great doctor). A search on "lady" returns "A lady can butter a roll" (lady -- CapableOf --> butter roll). There seems to be no easy way to filter out this kind of "empty" information.</p>
 
             <h4>Odd Formulations</h4>
-            <p>JERRY: Occasionally I notice that ConceptNet has a fact right, but its gloss phrases the fact in an odd, unnatural-sounding way. For example, a lookup on "star" will return an edge whose gloss is </p>
+            <p>JERRY: Occasionally I notice that ConceptNet has a fact right, but its gloss phrases the fact in an odd, unnatural-sounding way. ... </p>
 
             <h4>Unexpected Semantic Connections</h4>
             <p>I call this category "Unexepected Semantic Connections" for lack of a better term. Here is an example what I mean. One sense of the word "brother" is its use in a religious context; so ConceptNet, rightly, gives the term the following relation:</p>
