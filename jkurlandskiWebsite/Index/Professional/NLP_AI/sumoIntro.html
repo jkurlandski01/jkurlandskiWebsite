@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>JERRY</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="../../default.css" rel="stylesheet" type="text/css" media="all" />
+<link href="../../fonts.css" rel="stylesheet" type="text/css" media="all" />
+<!--[if IE 6]>
+<link href="default_ie6.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+</head>
+<body>
+<div id="wrapper">
+	<div id="header-wrapper">
+		<div id="menu" class="container">
+			<ul>
+				<li><a href="../index.html">Home</a></li>
+                <li><a href="../Databases/index.html">Databases</a></li>
+				<li><a href="../Java/index.html">Java</a></li>
+                <li class="current_page_item"><a href="../NLP_AI/index.html">NLP / AI</a></li>
+				<li><a href="../CSS_HTML/index.html">Int. CSS / HTML</a></li>
+				<li><a href="../WWW/index.html">WWW</a></li>
+			</ul>
+		</div>
+		<!-- end #menu -->
+		<div id="header" class="container">
+			<div id="logo">
+				<h1>Close to the</h1>
+				<h1>Machine</h1>
+				<p></p>
+				<p>Jerry Kurlandski</p>
+			</div>
+			<div id="header-image1"> <a href="#" class="image"><img src="../../images/bookshelfPanorama.jpg" alt="" /></a> </div>
+			<div id="header-image2"> <a href="#" class="image"><img src="../../images/bookshelfPanorama.jpg" alt="" /></a> </div>
+		</div>
+	</div>
+	<div id="page" class="container">
+		<div id="content">
+			<div class="title">
+				<h2></h2>
+			</div>
+			<p>wrestling with SUMO</p>
+            
+            <h4>(=> (and (instance ?REL ObjectAttitude) (?REL ?AGENT ?THING)) (instance ?THING Physical))</h4>
+            <p><ul><li>if <a href="&term=Entity">an entity</a> is an <a href="&term=instance">instance</a> of <a href="&term=ObjectAttitude">object attitude</a> and <a href="&term=Entity">the entity</a> <a href="&term=Entity">another entity</a> and <a href="&term=Entity">a third entity</a>,</li><li>then <a href="&term=Entity">the third entity</a> is an <a href="&term=instance">instance</a> of <a href="&term=Physical">physical</a></li></ul></p>
+            </br>
+            
+            <h4>(<=> (instance ?OBJ Substance) (exists (?ATTR) (and (instance ?ATTR PhysicalState) (attribute ?OBJ ?ATTR))))</h4>
+            <p><a href="&term=Entity">an entity</a> is an <a href="&term=instance">instance</a> of <a href="&term=Substance">substance</a> if and only if there exists <a href="&term=Entity">another entity</a> such that <a href="&term=Entity">the other entity</a> is an <a href="&term=instance">instance</a> of <a href="&term=PhysicalState">physical state</a> and <a href="&term=Entity">the other entity</a> is an <a href="&term=attribute">attribute</a> of <a href="&term=Entity">the entity</a></p>
+            </br>
+            
+            <h4>(domain date 1 Physical)</h4>
+            <p>the number 1 argument of <a href="&term=date">date</a> is an <a href="&term=domain">instance</a> of <a href="&term=Physical">physical</a></p>
+            </br>
+            
+            <h4>(subclass BiologicallyActiveSubstance Substance)</h4>
+            <p><a href="&term=BiologicallyActiveSubstance">biologically active substance</a> is a <a href="&term=subclass">subclass</a> of <a href="&term=Substance">substance</a></p>
+            </br>
+            
+            <h4>(partition Substance PureSubstance Mixture)</h4>
+            <p><a href="&term=Substance">substance</a> is <a href="&term=partition">exhaustively</a> <a href="&term=partition">partitioned</a> into <a href="&term=PureSubstance">pure substance</a> and <a href="&term=Mixture">mixture</a></p>
+            </br>
+            
+            <h4>(=> (and (instance ?OBJ1 Object) (partlyLocated ?OBJ1 ?OBJ2)) (exists (?SUB) (and (part ?SUB ?OBJ1) (located ?SUB ?OBJ2))))</h4>
+            <p><ul><li>if <a href="&term=Entity">an entity</a> is an <a href="&term=instance">instance</a> of <a href="&term=Object">object</a> and <a href="&term=Entity">the entity</a> is <a href="&term=partlyLocated">partly</a> located in <a href="&term=Entity">another entity</a>,</li><li>then there exists <a href="&term=Entity">a third entity</a> such that <a href="&term=Entity">the third entity</a> is a <a href="&term=part">part</a> of <a href="&term=Entity">the entity</a> and <a href="&term=Entity">the third entity</a> is <a href="&term=located">located</a> at <a href="&term=Entity">the other entity</a></li></ul></p>
+            </br>
+            
+            <h4>(<=> (instance ?PHYS Physical) (exists (?LOC ?TIME) (and (located ?PHYS ?LOC) (time ?PHYS ?TIME))))</h4>
+            <p><a href="&term=Entity">an entity</a> is an <a href="&term=instance">instance</a> of <a href="&term=Physical">physical</a> if and only if there exist <a href="&term=Entity">another entity</a> and <a href="&term=Entity">a third entity</a> such that <a href="&term=Entity">the entity</a> is <a href="&term=located">located</a> at <a href="&term=Entity">the other entity</a> and <a href="&term=Entity">the entity</a> exists <a href="&term=time">during</a> <a href="&term=Entity">the third entity</a></p>
+            </br>
+            
+            <h4></h4>
+            <p></p>
+            </br>
+            
+<p class="precaption">Listing </p>
+<pre class="preCodeWithCaption">
+</pre>
+
+
+		</div>
+		<div id="sidebar">
+			<div class="internalLinkBox">
+				<div class="title">
+					<h2>Internal Links</h2>
+				</div>
+				<ul class="style2">
+                    <li><a href="hashBasedTable.html">Using Guava's HashBasedTable class</a></li>
+                    <li><a href="setOperations.html">Java set operations with Guava</a></li>
+                    <li><a href="guavaMultimap.html">Guava Multimap</a></li>
+                    <li><a href="guavaMultiset.html">Guava Multiset</a></li>
+				</ul>
+			</div>
+			<div class="internalLinkBox">
+				<div class="title">
+					<h2>External Guava Links</h2>
+				</div>
+				<ul class="style2">
+					<li><a href="http://tomjefferys.blogspot.com/2011/09/multimaps-google-guava.html">How to use Multimaps</a></li>
+					<li><a href="http://docs.guava-libraries.googlecode.com/git/javadoc/com/google/common/collect/HashBasedTable.html">HashBasedTable Javadoc</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="copyright" class="container">
+	<p>Copyright (c) 2013 jkurlandski.com. All rights reserved. | Original design by <a href="http://www.freecsstemplates.org/" rel="nofollow">FreeCSSTemplates.org</a>.</p>
+</div>
+</body>
+</html>
