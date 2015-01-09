@@ -45,6 +45,19 @@
             <div class="singleSpacedDescription">
                 <li>Use @BeforeClass for an "expensive" method that should be run once before all tests in the class.</li>
             </div>
+            
+            <h4>Getting the location of the current unit test.</h4>
+            <p>Often a unit test requires some sort of resource such as an external file. In acquiring the resource, you need the path, but you don't want to hard-code the path, since the path on one developer's machine won't necessarily be identical to the path on another developer's machine. The solution is to locate the resource with reference to the project location on the current machine. This may differ between IDE's--Eclipse and IntelliJ get different locations--int hat case, you probably need an environment variable. Also note that if multiple tests are using the same paths, you could make them private static final data members of the test class.</p>
+
+<p class="precaption">Listing </p>
+<pre class="preCodeWithCaption">
+@Test
+public void myTest()    {
+    private static final String PARENT_PATH = (new File("")).getAbsoluteFile().getParentFile().getAbsolutePath();
+    private static final String KB_PATH = (new File(PARENT_PATH, "KBs")).getAbsolutePath();
+    
+    File resourcePath = new File(KB_PATH);
+</pre>
 
 <p>JERRY: replace entities</p>
         <p></p>
@@ -66,7 +79,18 @@ public static void read(String input)   {
 }
 </pre>
 
-<p>JERRY: Add other way.
+<p>JERRY: Add other way. Clean up entities. Change names of things--and test.</p>
+<p class="precaption">Listing </p>
+<pre class="preCodeWithCaption">
+    @Rule
+    public ExpectedException expectedEx = ExpectedException.none();
+    
+    @Test
+    public void shouldThrowRuntimeExceptionWhenEmployeeIDisNull() {
+    expectedEx.expect(RuntimeException.class);
+    expectedEx.expectMessage("Employee ID is null");
+    // do something that should throw the exception...
+    }</pre>
 
 		</div>
 		<div id="sidebar">
