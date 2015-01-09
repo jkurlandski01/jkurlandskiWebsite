@@ -47,7 +47,7 @@
 			
 			<h3>Getting Started</h3>
 			<p>Take ConceptNet out for a test drive by going to <a href="http://conceptnet5.media.mit.edu/">ConceptNet Home</a>. At the top of the page you'll see two input boxes and a Search button. Type in, for example, the word "throat," leave the Language box unchanged, and hit Search.</p>
-			<p>This brings you to the results page for your search. This will give you a good sense of the kind of information that ConceptNet provides. I won't analyze it in detail here--their documentation is good enough--but let me point out that what you are looking at shows your search term on both the left- and the right-hand side of a number of <b>relations</b>. For example:</p>
+			<p>The results page for your search will appear. This will give you a good sense of the kind of information that ConceptNet provides. I won't analyze it in detail here--their documentation is good enough--but let me point out that what you are looking at shows your search term on both the left- and the right-hand side of a number of <b>relations</b>. For example:</p>
 <p class="precaption">Partial Result of a ConceptNet Search on "throat"</p>
 <pre class="preCodeWithCaption">
 throat -- IsA --> external body part 
@@ -60,7 +60,7 @@ a throat is part of a neck.
         
         <p>At the top-right of the page you see a link labeled "Get /c/en/throat in JSON format." Clicking on that brings you to the JSON representation of what ConceptNet understands about throats. Experimentation will show that the JSON format page usually includes more entries that the normal web page version (or at least it did in the summer of 2014--perhaps the behavior is different now).</p>
         <p>Scroll to the bottom of the JSON page and you see that numFound is set to 50. This means that the query in the URL of the page--"http://conceptnet5.media.mit.edu/data/5.3/c/en/throat"--by default returned 50 entries for the term "throat." You can adjust the number of entries returned by modifying the URL. For example, a URL of "http://conceptnet5.media.mit.edu/data/5.3/c/en/throat?limit=100" returns 100 entries.</p>
-        <p>Multi-word searches require that the words be separated by the underscore character. For example, a search on "http://conceptnet5.media.mit.edu/data/5.3/c/en/strep_throat?limit=100" tells you what ConceptNet understands about strep throat. You'll see that, even though you set the limit to 100, only 15 entries were returned. ConceptNet "knows" only 15 things about this malady.</p>
+        <p>Multi-word searches require that the words be separated by the underscore character. So a search on "http://conceptnet5.media.mit.edu/data/5.3/c/en/strep_throat?limit=100" tells you what ConceptNet understands about strep throat. You'll see that, even though you set the limit to 100, only 15 entries were returned. ConceptNet "knows" only 15 things about this malady.</p>
         
         <p>As you can see, the top-level syntax of the JSON string returned is something like this:</p>
 <p class="precaption">Syntax of a ConceptNet Search Result in JSON Format</p>
@@ -108,29 +108,29 @@ n = number entries retrieved
 }
 </pre>
 
-        <p>Note that these edge properties pertain to version 5.3, the latest as of December 2014; version 5.2's are significantly different. The most useful properties are rel (relation), start (the left-hand side of the relation), end (the right-hand side of the relation), and surfaceText (the gloss).</p>
-        <p>To make effective use of ConceptNet, you will need to filter out undesirable information; how you decide what is undesirable will depend on your needs. In my own work, I have never found the weight indicative of either the usefulness or the accuracy of the information. Generally I find myself filtering out according to the relation or the dataset (that is, the source of the information--as in WordNet, DBPedia, and so on.)</p>
+        <p>Note that these edge properties pertain to version 5.3, the latest as of December 2014; version 5.2's are significantly different. The most useful properties are rel (relation), start (the left-hand side of the relation), end (the right-hand side of the relation), surfaceText (the gloss) and dataset (the source of the information--as in WordNet, DBPedia, and so on).</p>
+        <p>To make effective use of ConceptNet, you will need to filter out undesirable information; how you decide what is undesirable will depend on your needs. In my own work, I have never found the weight indicative of either the usefulness or the accuracy of the information. Generally I find myself filtering out according to the relation or the dataset.</p>
 
             <h3>ConceptNet Issues and Problems</h3>
-            <p>Here I give a quick list of the kinds of issues you will occasionally encounter as you work with ConceptNet. Many of the comments concern the gloss (the "surfaceText"), because that was the edge property most of my work focused on. I first discovered these issues in version 5.2, but I've checked and all of them still exist as of 5.3. Still, even if they are fixed in later versions, the problems I describe below give you a sense of what to expect if you decide to try to use ConceptNet in your own application.</p>
+            <p>Although I believe that ConceptNet could prove to be an invaluable resource for artificial intelligence applications, using the semantic network is not all sugar and spice. Here I give a quick list of the kinds of issues you will occasionally encounter as you work with ConceptNet. I first discovered these issues in version 5.2, but I've checked and all of them still exist as of 5.3. Still, even if they are fixed in later versions, the problems I describe below give you a sense of what to expect if you decide to try to use ConceptNet in your own application.</p>
             
             <h4>Misinformation</h4>
-            <p>As with any database, especially one whose information is partially crowd-sourced, some "facts" are just plain wrong. For example, "Starry, Starry Night" is not a song about Picasso; in fact, Don McLean was writing about Van Gogh, who did the painting of the same name. (The song's true title is "Vincent.") To replicate this problem, remember you have to search on "starry_starry_night," with underscores. A lookup on "girl_friend" states that "A fox muffler is a metaphor of a girl friend" (fox muffler -- SymbolOf --> girl friend). Perhaps so, but not in anything I've ever read or seen or heard.</p>
-
-            <h4>Typographical Errors</h4>
-            <p>Sometimes ConceptNet falls victim to the pre-computer age typographical error. I was doing look-ups on "mouth" and came across the following assertion: "Lilcs do not have a mouth." The relation is "lilcs -- NotHasA --> mouth"."There is no such thing as a "lilc." Somebody somewhere mistyped something.</p>
-
-            <h4>SurfaceText (Gloss) Issues</h4>
-            <p>The surfaceText property of an edge cannot always be relied upon to be in error-free English. For example, a search on bus returns an edge with the gloss, "You are likely to find a bus in a bus stop." It should read "... at a bus stop." "</p>
+            <p>As with any database, especially one whose information is partially crowd-sourced, some "facts" are just plain wrong. For example, "Starry, Starry Night" is not a song about Picasso; in fact, Don McLean was writing about Van Gogh, who did the painting of the same name. (The song's true title is "Vincent.") To replicate this problem, remember you have to search on "starry_starry_night," with underscores.</p>
+            <p>You can see another case of misinformation by doing a lookup on "girl_friend." One of the relations returned states that "A fox muffler is a metaphor of a girl friend" (fox muffler -- SymbolOf --> girl friend). Perhaps so, somewhere, but not in anything I've ever read or seen or heard.</p>
 
             <h4>Uninteresting Information</h4>
-            <p>Sometimes ConceptNet's facts, though incontrovertible, do not seem as though they would be useful in any context. For example, a search on "mom" returns, for two of its edges, "Moms can cook chicken soup" (mom -- CapableOf --> cook chicken soup) and "Moms can be great doctors" (mom -- CapableOf --> great doctor). A search on "lady" returns "A lady can butter a roll" (lady -- CapableOf --> butter roll). There seems to be no easy way to filter out this kind of "empty" information.</p>
+            <p>Sometimes ConceptNet's facts, though incontrovertible, do not seem as though they would be useful in any context. For example, a search on "mom" returns, for two of its edges, "Moms can cook chicken soup" (mom -- CapableOf --> cook chicken soup) and "Moms can be great doctors" (mom -- CapableOf --> great doctor). Similarly, a search on "lady" returns "A lady can butter a roll" (lady -- CapableOf --> butter roll). There seems to be no easy way to filter out this kind of "empty" information.</p>
+
+            <h4>Typographical Errors</h4>
+            <p>Sometimes ConceptNet falls victim to the pre-computer age typographical error. I was doing look-ups on "mouth" and came across the following assertion: "Lilcs do not have a mouth" (lilcs -- NotHasA --> mouth). There is no such thing as a "lilc." Somebody somewhere mistyped something.</p>
+
+            <h4>SurfaceText (Gloss) Issues</h4>
+            <p>The surfaceText property of an edge cannot always be relied upon to be in error-free English. For example, a search on bus returns an edge with the gloss, "You are likely to find a bus in a bus stop." Of course, it should read "... at a bus stop." Another example can be found when you search on "engine" and read "Aeroplane has engine"--correct English would have either "An aeroplane has an engine" or "Aeroplanes have engines."</p>
+            <p>Occasionally I notice that ConceptNet has a fact right, but its gloss phrases the fact in an odd, unnatural-sounding way. For instance, "A statement 'a ghost can be a supposed apparition of a dead person or animal.' helps answer the question 'what is a ghost?'" is what you see when you see when you search on "ghost."</p>
 
             <h4>Odd Formulations</h4>
-            <p>JERRY: Occasionally I notice that ConceptNet has a fact right, but its gloss phrases the fact in an odd, unnatural-sounding way. ... </p>
-
-            <h4>Unexpected Semantic Connections</h4>
-            <p>I call this category "Unexepected Semantic Connections" for lack of a better term. Here is an example what I mean. One sense of the word "brother" is its use in a religious context; so ConceptNet, rightly, gives the term the following relation:</p>
+            <p>I call this category "Odd Formulations" for lack of a better term. They are similar to the grammar problems in the glosses, but it's as if the error is in the relation itself. Examples include: ""[[life]] does not want to [[be sad]]" (life -- NotDesires --> be_sad) and ""If you want to [[tell a story]] then you should [[know]]" (tell_story -- HasPrerequisite --> know).</p>
+            <p>Here is one more example of a problem in this category. One sense of the word "brother" is its use in a religious context; so ConceptNet, rightly, gives the term the following relation:</p>
 
 <pre class="preCode">
 brother -- HasContext --> religion 
@@ -150,10 +150,7 @@ brother -- HasContext --> a strong belief in a supernatural power or powers that
 					<h2>Internal Links</h2>
 				</div>
 				<ul class="style2">
-                    <li><a href="hashBasedTable.html">Using Guava's HashBasedTable class</a></li>
-                    <li><a href="setOperations.html">Java set operations with Guava</a></li>
-                    <li><a href="guavaMultimap.html">Guava Multimap</a></li>
-                    <li><a href="guavaMultiset.html">Guava Multiset</a></li>
+                    <li><a href="conceptNetCode.html">ConceptNet Source Code</a></li>
 				</ul>
 			</div>
 			<div class="internalLinkBox">

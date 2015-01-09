@@ -9,15 +9,10 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.List;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
-
-import semanticnetwork.ConceptNetQueryOriginal.Edge;
-import semanticnetwork.ConceptNetQueryOriginal.Relation;
 
 import com.google.common.collect.Lists;
 
@@ -26,8 +21,6 @@ import com.google.common.collect.Lists;
  */
 public class ConceptNetQuery {
     
-    private static Log LOG = LogFactory.getLog(ConceptNetQuery.class);
-    
     protected String input;
     
     private static final String CONCEPTNET_URI = "http://conceptnet5.media.mit.edu/data/5.3/c/en/";
@@ -35,8 +28,6 @@ public class ConceptNetQuery {
     // These fields represent the JSON string returned by ConceptNet.
     private static final String EDGES = "edges";
     protected List<Edge> edges = Lists.newArrayList();
-//    private static final String MAX_SCORE = "maxScore";
-//    private double maxScore = 0.0;
     private static final String NUM_FOUND = "numFound";
 
     private static final String NBR_TO_RETRIEVE = "100";
@@ -110,8 +101,6 @@ public class ConceptNetQuery {
         private static final String RELATION = "rel";
         private String relationString = "";
         private Relation relation = Relation.Other;
-//        private static final String SCORE = "score";
-//        private double score = 0.0;
         private static final String WEIGHT = "weight";
         private double weight = 0.0;
         private static final String SURFACE_TEXT = "surfaceText";
@@ -119,40 +108,33 @@ public class ConceptNetQuery {
         private static final String DATASET = "dataset";
         private Dataset dataset;
         
-        //private static final String START = "startLemmas";
         private static final String START = "start";
         private String startNode = "";
-        //private static final String END = "endLemmas";
         private static final String END = "end";
         private String endNode = "";
         
         public Edge()   {
         }
         
-        public Edge(String lookupString, JSONObject jsonObj) throws JSONException   {
+        public Edge(String lookupString, JSONObject jsonObj)  {
             lookupStr = lookupString;
             
-            relation = setRelation(cleanRelation(jsonObj.getString(RELATION)));
-//            score = jsonObj.getDouble(SCORE);
-            weight = jsonObj.getDouble(WEIGHT);
-            startNode = jsonObj.getString(START);
-            endNode = jsonObj.getString(END);
-            dataset = Dataset.getDataset(jsonObj.getString(DATASET));
-            
             try {
+            	relation = setRelation(cleanRelation(jsonObj.getString(RELATION)));
+            	weight = jsonObj.getDouble(WEIGHT);
+            	startNode = jsonObj.getString(START);
+            	endNode = jsonObj.getString(END);
+            	dataset = Dataset.getDataset(jsonObj.getString(DATASET));       
                 surfaceText = cleanSurfaceText(jsonObj.getString(SURFACE_TEXT));
             } catch (JSONException e) {
-                // LOG.info("JSONException: Edge has no " + SURFACE_TEXT + " value: " + jsonObj.toString());
+                System.out.println("JSONException in Edge constructor for string: " + lookupString);
             }
 
         }
 
         public Edge(String relation, String score, String weight, String startNode, String endNode, String dataset, String surfaceText)   {
             this.relation = setRelation(relation);
-//            this.score = new Double(score);
             this.weight = new Double(weight);
-//            this.startNode = startNode;
-//            this.endNode = endNode;
             this.dataset = Dataset.getDataset(dataset);
             this.surfaceText = cleanSurfaceText(surfaceText);
         }
@@ -216,10 +198,6 @@ public class ConceptNetQuery {
             return retString;        	
         }
 
-//        public double getScore() {
-//           return score;
-//        }
-
         public String getText() {
             return surfaceText;
         }
@@ -246,7 +224,6 @@ public class ConceptNetQuery {
             String json = getJsonString(qStr);
             JSONTokener jsonTokener = new JSONTokener(json);
             JSONObject jsonObject = new JSONObject(jsonTokener);
-//            maxScore = jsonObject.getDouble(MAX_SCORE);
             numFound = jsonObject.getInt(NUM_FOUND);
             JSONArray resultArray = jsonObject.getJSONArray(EDGES);
             for (int i = 0; i < resultArray.length(); i++) {
@@ -257,15 +234,13 @@ public class ConceptNetQuery {
             }
 
         } catch (IOException e) {
-            LOG.warn("IOException: Can't retrieve message for: " + in);
+            System.out.println("IOException: Can't retrieve message for: " + in);
         } catch (JSONException e) {
-            LOG.warn("JSONException: Can't retrieve message for: " + in);
+            System.out.println("JSONException: Can't retrieve message for: " + in);
         }
     }
 
     public String getJsonString(String queryURI) throws IOException	{
-        //URL url = new URL(queryURI);
-        //BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
         BufferedReader reader = getReaderforQuery(queryURI);
         if(reader == null)	{
         	return "";
@@ -289,10 +264,6 @@ public class ConceptNetQuery {
     public List<Edge> getEdges() {
         return edges;
     }
-
-//    public double getMaxScore() {
-//        return maxScore;
-//    }
 
     public int getNumFound() {
         return numFound;

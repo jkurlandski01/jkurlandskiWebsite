@@ -6,7 +6,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.URL;
 import java.util.List;
 
 import semanticnetwork.ConceptNetQuery;
@@ -27,42 +26,22 @@ public class ConceptNetQueryTest {
 
 		@Override
 	    public BufferedReader getReaderforQuery(String query) throws IOException	 {
-//	        URL url = new URL(query);
-//	        BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
-			
 			if(query.contains("emptyReturn"))	{
 				return null;
 			}
 			
-//			File file = new File ("/Users/geraldkurlandski/Documents/workspace_website/jkurlandski/CodeExamples/src/semanticnetwork/strep_throat.json");
-
 			// A modified version of ConceptNet 5.3's output for "strep throat".
 			File file = new File("src/conceptnet/strep_throat.json");
 	        BufferedReader reader = new BufferedReader(new InputStreamReader(file.toURI().toURL().openStream()));
-
-//			final URL testResource = Test.class.getResource("strep_throat.json");
-//	        BufferedReader reader = new BufferedReader(new InputStreamReader(testResource.openStream()));
 
 	        return reader;
 	    }
 
 	}
 
-    /**
-     * This query returns no edges because it is in uppercase.
-     */
-//    @Test
-//    public void testEmptyReturn() {
-//    	ConceptNetQuery dict = new ConceptNetQuery("Florida");
-//        assertEquals(0.0, dict.getMaxScore(), 0.0);
-//        assertEquals(0, dict.getNumFound());
-//        assertEquals(Lists.newArrayList(), dict.getEdges());
-//    }
-    
     @Test
     public void testEmptyReturn() {
     	ConceptNetQueryMock dict = new ConceptNetQueryMock("emptyReturn");
-//        assertEquals(0.0, dict.getMaxScore(), 0.0);
         assertEquals(0, dict.getNumFound());
         assertEquals(Lists.newArrayList(), dict.getEdges());
     }
@@ -70,7 +49,6 @@ public class ConceptNetQueryTest {
     @Test
     public void testStrepThroat() {
         ConceptNetQueryMock dict = new ConceptNetQueryMock("strep_throat");
-//        assertEquals(13.6, dict.getMaxScore(), 1.0);
         assertEquals(3, dict.getNumFound());
         
         List<Edge> edges = dict.getEdges();
@@ -104,7 +82,6 @@ public class ConceptNetQueryTest {
     @Test
     public void testStarryStarryNight() {
         ConceptNetQuery dict = new ConceptNetQuery("starry_starry_night");
-//        assertEquals(13.6, dict.getMaxScore(), 1.0);
         assertEquals(4, dict.getNumFound());
         
         List<Edge> edges = dict.getEdges();
@@ -115,42 +92,13 @@ public class ConceptNetQueryTest {
         assertEquals("starry starry night", edge.getStartNode());
         assertEquals("song about picasso", edge.getEndNode());
         assertEquals("starry starry night is a song about picasso", edge.getText());
-//        assertEquals(13.6, edge.getScore(), 1.0);
         assertEquals(1.58, edge.getWeight(), 0.1);
         assertEquals(Dataset.ConceptNet, edge.getDataset());
-        
-//        edge = edges.get(1);
-//        assertEquals(Relation.IsA, edge.getRelation());
-//        assertEquals("starry starry night album", edge.getStartNode());
-//        assertEquals("album", edge.getEndNode());
-//        assertEquals("", edge.getText());
-////        assertEquals(4.88, edge.getScore(), 1.0);
-//        assertEquals(0.58, edge.getWeight(), 0.1);
-//        assertEquals(Dataset.DBPedia, edge.getDataset());
-//        
-//        edge = edges.get(2);
-//        assertEquals(Relation.IsA, edge.getRelation());
-//        assertEquals("starry starry night album", edge.getStartNode());
-//        assertEquals("musical work", edge.getEndNode());
-//        assertEquals("", edge.getText());
-////        assertEquals(4.88, edge.getScore(), 1.0);
-//        assertEquals(0.58, edge.getWeight(), 0.1);
-//        assertEquals(Dataset.DBPedia, edge.getDataset());
-//        
-//        edge = edges.get(3);
-//        assertEquals(Relation.IsA, edge.getRelation());
-//        assertEquals("starry starry night album", edge.getStartNode());
-//        assertEquals("live album", edge.getEndNode());
-//        assertEquals("", edge.getText());
-////        assertEquals(4.88, edge.getScore(), 1.0);
-//        assertEquals(0.58, edge.getWeight(), 0.1);
-//        assertEquals(Dataset.DBPedia, edge.getDataset());
     }
 
     @Test
     public void testFloridaFiltered() {
         ConceptNetQuery dict = new ConceptNetQuery("florida");
-//        assertEquals(16.3, dict.getMaxScore(), 1.0);
         assertEquals(100, dict.getNumFound());
         
         List<Edge> edges = dict.getEdges();
@@ -172,7 +120,6 @@ public class ConceptNetQueryTest {
         assertEquals("florida", edge.getStartNode());
         assertEquals("unite state", edge.getEndNode());
         assertEquals("Florida is part of the United States", edge.getText());
-//        assertEquals(11.6, edge.getScore(), 1.0);
         assertEquals(2.32, edge.getWeight(), 0.1);
     }
     
