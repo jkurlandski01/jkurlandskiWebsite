@@ -42,7 +42,117 @@
 				<h2>ConceptNet Source Code</h2>
 			</div>
 			<p>ConceptNet is an open-source database which is meant to represent real-world knowledge in a form that computers can understand. For more information, see the links in the sidebar.</p>
+            <p>If you're interested in incorporating ConceptNet into your own application, the code on this page will give you a good start. I don't claim it to be perfect, or even very good; I'm just hoping it gives you a good start. You'll find that the bulk of your code--the real "intellectual property"--will not be in these simple classes, but in the code that makes use of these classes... From this point on I assume you've already read the following: <a href="conceptNetIntro.html">ConceptNet Intro</a>.</p>
+            
+            <h4>Dataset</h4>
+            <p>We'll start with something easy--an enum which represents the dataset property of an edge.</p>
+            
+<p class="precaption">Listing 1: The Dataset Enum</p>
+<pre class="preCodeWithCaption">
+public enum Dataset {
+    ConceptNet, DBPedia, GlobalMind, JmDict, ReVerb, Verbosity, Wiktionary, WordNet, Umbel;
+    
+    public static Dataset getDataset(String input)  {
+        String tempStr = input.toLowerCase();
+        if(tempStr.matches(".*conceptnet.*"))    {
+            return Dataset.ConceptNet;
+        }
+        else if(tempStr.matches(".*dbpedia.*"))    {
+            return Dataset.DBPedia;
+        }
+        else if(tempStr.matches(".*globalmind.*"))    {
+            return Dataset.GlobalMind;
+        }
+        else if(tempStr.matches(".*jmdict.*"))    {
+            return Dataset.JmDict;
+        }
+        else if(tempStr.matches(".*reverb.*"))    {
+            return Dataset.ReVerb;
+        }
+        else if(tempStr.matches(".*verbosity.*"))    {
+            return Dataset.Verbosity;
+        }
+        else if(tempStr.matches(".*wiktionary.*"))    {
+            return Dataset.Wiktionary;
+        }
+        else if(tempStr.matches(".*wordnet.*"))    {
+            return Dataset.WordNet;
+        }
+        else if(tempStr.matches(".*umbel.*"))    {
+            return Dataset.Umbel;
+        }
+        
+        throw new IllegalArgumentException("Dataset not found for input: " + tempStr);
+    }
+}
+</pre>
+            <p>As implemented here, there are nine sources for the information contained in ConceptNet. If you try to create a Dataset object with some unknown source, an IllegalArgumentException will be thrown.</p>
+            
+            <h4>Relation</h4>
+            <p>In the next listing we present an enum class implementing the various ConceptNet relations, as found in version 5.2. The latest documentation does not list two of these, namely HasContext and SimilarTo. It's possible that these relations were removed in the latest version of ConceptNet. It's just as possible that the writers of the documentation failed to include them. In either case, this code anticipates the possibility of unexpected relations with the "Other" relation.</p>
+            
+<p class="precaption">Listing 2: The Relation Enum</p>
+<pre class="preCodeWithCaption">
+public enum Relation {Other(&quot;is somehow related to&quot;), 
+    Antonym(&quot;is the opposite of&quot;), NotAntonym(&quot;is not the opposite of&quot;), 
+    AtLocation(&quot;is at&quot;), NotAtLocation(&quot;is not at&quot;), 
+    CapableOf(&quot;is capable of&quot;), NotCapableOf(&quot;is not capable of&quot;), 
+    Causes(&quot;causes&quot;), NotCauses(&quot;does not cause&quot;), 
+    DefinedAs(&quot;is defined as&quot;), NotDefinedAs(&quot;is not defined as&quot;), 
+    DerivedFrom(&quot;is derived from&quot;), NotDerivedFrom(&quot;is not derived from&quot;),
+    HasA(&quot;has a&quot;), NotHasA(&quot;doesn&#x27;t have a&quot;), 
+    HasContext(&quot;occurs in the context of&quot;), NotHasContext(&quot;does not occur in the context of&quot;), 
+    HasPrerequisite(&quot;has a prerequisite of&quot;), NotHasPrerequisite(&quot;does not have a prerequisite of&quot;), 
+    HasProperty(&quot;has the property of&quot;), NotHasProperty(&quot;does not have the property of&quot;), 
+    HasSubevent(&quot;has a subevent of&quot;), NotHasSubevent(&quot;does not have a subevent of&quot;), 
+    IsA(&quot;is a&quot;), NotIsA(&quot;is not a&quot;), 
+    MemberOf(&quot;is a member of&quot;), NotMemberOf(&quot;is not a member of&quot;), 
+    PartOf(&quot;is part of&quot;), NotPartOf(&quot;is not part of&quot;), 
+    RelatedTo(&quot;is related to&quot;), NotRelatedTo(&quot;is not related to&quot;), 
+    SimilarTo(&quot;is similar to&quot;), NotSimilarTo(&quot;is not similar to&quot;), 
+    TranslationOf(&quot;is a translation of&quot;), NotTranslationOf(&quot;is not a translation of&quot;), 
+    UsedFor(&quot;is used for&quot;), NotUsedFor(&quot;is not used for&quot;);
 
+    private String gloss;
+
+    Relation(String str)   {
+        gloss = str;
+    }
+    
+    @Override
+    public String toString()    {
+        return gloss;
+    }
+}
+</pre>
+            <p>In the above listing, note the gloss property, which attempts to put the relation into natural-sounding English.</p>
+            <p>The next snippet shows you how to create a Relation object.</p>
+            
+<p class="precaption">Listing 3: Creating a Relation Object</p>
+<pre class="preCodeWithCaption">
+Relation rel = null;
+try {
+    rel = Relation.valueOf(relationStr);
+} catch (IllegalArgumentException e) {
+    // The relation isn't in our Relation enum. No problem--we deal with this below.
+}
+if(rel == null) {
+    rel = Relation.Other;
+}
+</pre>
+            <p>Here's how the code in Listing 2 works. Suppose you've done a query and one of the edges returned has the relation "HasProperty." In this case, Relation.valueOf("HasProperty") will return the HasProperty relation, and all is well--an exception is not thrown, and rel is not null. Now suppose your query also returns an unexpected relation, and let's say this relation is "SynonymOf." In this case, the call to Relation.valueOf("SynonymOf") throws an IllegalArgumentException, which is suppressed in the catch clause. Since the rel variable hasn't been set, rel is then set to the Other relation.</p>
+            
+                        <h4>Edge</h4>
+                        <p>Now that we've defined two critical edge properties--dataset and relation--we can define the edge itself.</p>
+            
+<p class="precaption">Listing</p>
+<pre class="preCodeWithCaption">
+</pre>
+            
+<p class="precaption">Listing</p>
+<pre class="preCodeWithCaption">
+</pre>
+            
 		</div>
 		<div id="sidebar">
 			<div class="internalLinkBox">

@@ -33,68 +33,6 @@ public class ConceptNetQuery {
     private static final String NBR_TO_RETRIEVE = "100";
     private int numFound = 0;
     
-    public enum Relation {Other("is somehow related to"), 
-        Antonym("is the opposite of"), NotAntonym("is not the opposite of"), 
-        AtLocation("is at"), NotAtLocation("is not at"), CapableOf("is capable of"), NotCapableOf("is not capable of"), 
-        Causes("causes"), NotCauses("does not cause"), DefinedAs("is defined as"), NotDefinedAs("is not defined as"), 
-        DerivedFrom("is derived from"), NotDerivedFrom("is not derived from"),
-        HasA("has a"), NotHasA("doesn't have a"), HasContext("occurs in the context of"), NotHasContext("does not occur in the context of"), 
-        HasPrerequisite("has a prerequisite of"), NotHasPrerequisite("does not have a prerequisite of"), 
-        HasProperty("has the property of"), NotHasProperty("does not have the property of"), HasSubevent("has a subevent of"), NotHasSubevent("does not have a subevent of"), 
-        IsA("is a"), NotIsA("is not a"), MemberOf("is a member of"), NotMemberOf("is not a member of"), PartOf("is part of"), NotPartOf("is not part of"), 
-        RelatedTo("is related to"), NotRelatedTo("is not related to"), SimilarTo("is similar to"), NotSimilarTo("is not similar to"), 
-        TranslationOf("is a translation of"), NotTranslationOf("is not a translation of"), 
-        UsedFor("is used for"), NotUsedFor("is not used for");
-    
-        private String gloss;
-    
-        Relation(String str)   {
-            gloss = str;
-        }
-        
-        @Override
-        public String toString()    {
-            return gloss;
-        }
-    }
-    
-    public enum Dataset {
-        ConceptNet, DBPedia, GlobalMind, JmDict, ReVerb, Verbosity, Wiktionary, WordNet, Umbel;
-        
-        public static Dataset getDataset(String input)  {
-            String tempStr = input.toLowerCase();
-            if(tempStr.matches(".*conceptnet.*"))    {
-                return Dataset.ConceptNet;
-            }
-            else if(tempStr.matches(".*dbpedia.*"))    {
-                return Dataset.DBPedia;
-            }
-            else if(tempStr.matches(".*globalmind.*"))    {
-                return Dataset.GlobalMind;
-            }
-            else if(tempStr.matches(".*jmdict.*"))    {
-                return Dataset.JmDict;
-            }
-            else if(tempStr.matches(".*reverb.*"))    {
-                return Dataset.ReVerb;
-            }
-            else if(tempStr.matches(".*verbosity.*"))    {
-                return Dataset.Verbosity;
-            }
-            else if(tempStr.matches(".*wiktionary.*"))    {
-                return Dataset.Wiktionary;
-            }
-            else if(tempStr.matches(".*wordnet.*"))    {
-                return Dataset.WordNet;
-            }
-            else if(tempStr.matches(".*umbel.*"))    {
-                return Dataset.Umbel;
-            }
-            
-            throw new IllegalArgumentException("Dataset not found for input: " + tempStr);
-        }
-    }
-    
     public class Edge {
         private String lookupStr;
         
