@@ -36,7 +36,6 @@ public class ConceptNetQueryTest {
 
 	        return reader;
 	    }
-
 	}
 
     @Test
