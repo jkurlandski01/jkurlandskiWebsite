@@ -57,7 +57,7 @@ a throat is part of a neck.
 </pre>
 
         <p>In the examples above, the two relations are IsA and PartOf. Some of the entries also provide a <b>gloss</b>, in this case the sentence "a throat is part of a neck."</p>
-        <p>ConceptNet is called a "semantic network" because the real-world information which it holds is implemented as a graph (in the mathematical or computer science sense of the word). A graph contains vertices and edges which connect the vertices. In the first example of above, "throat" and "external body part" are two vertices which are connected by the edge IsA.</p>
+        <p>ConceptNet is called a "semantic network" because the real-world information which it holds is implemented as a graph (in the mathematical or computer science sense of the word). A graph contains vertices and edges which connect the vertices. In the first example of above, "throat" and "external body part" are two vertices which are connected by the edge whose relation is IsA. The relation is just one of many properties of an edge; most if not all of ConceptNet's knowledge is contained in its edge objects.</p>
         
         <p>At the top-right of the page you see a link labeled "Get /c/en/throat in JSON format." Clicking on that brings you to the JSON representation of what ConceptNet understands about throats. Experimentation will show that the JSON format page usually includes more entries that the normal web page version (or at least it did in the summer of 2014--perhaps the behavior is different now).</p>
         <p>Scroll to the bottom of the JSON page and you see that numFound is set to 50. This means that the query in the URL of the page--"http://conceptnet5.media.mit.edu/data/5.3/c/en/throat"--by default returned 50 entries for the term "throat." You can adjust the number of entries returned by modifying the URL. For example, a URL of "http://conceptnet5.media.mit.edu/data/5.3/c/en/throat?limit=100" returns 100 entries.</p>
@@ -82,8 +82,8 @@ a throat is part of a neck.
 n = number entries retrieved
 </pre>
 
-        <p>The edge syntax is more complicated. Instead of trying to define it, I'll simply give an example.</p>
-<p class="precaption">Example of a ConceptNet Edge</p>
+        <p>The edge syntax is more complicated. Recall from the discussion above that the edge is the link between two nodes. Here is an example of a ConceptNet edge that connects "strep throat" to "painful."</p>
+<p class="precaption">ConceptNet Edge Linking "strep throat" to "painful"</p>
 <pre class="preCodeWithCaption">
 {
       "context": "/ctx/all",
@@ -126,7 +126,7 @@ n = number entries retrieved
             <p>Sometimes ConceptNet falls victim to the pre-computer age typographical error. I was doing look-ups on "mouth" and came across the following assertion: "Lilcs do not have a mouth" (lilcs -- NotHasA --> mouth). There is no such thing as a "lilc." Somebody somewhere mistyped something.</p>
 
             <h4>SurfaceText (Gloss) Issues</h4>
-            <p>The surfaceText property of an edge cannot always be relied upon to be in error-free English. For example, a search on bus returns an edge with the gloss, "You are likely to find a bus in a bus stop." Of course, it should read "... at a bus stop." Another example can be found when you search on "engine" and read "Aeroplane has engine"--correct English would have either "An aeroplane has an engine" or "Aeroplanes have engines."</p>
+            <p>The surfaceText property of an edge cannot always be relied upon to be in error-free English. For example, a search on bus returns an edge with the gloss, "You are likely to find a bus in a bus stop." Of course, it should read "at a bus stop." Another example can be found when you search on "engine" and read "Aeroplane has engine"--correct English would have either "An aeroplane has an engine" or "Aeroplanes have engines."</p>
             <p>Occasionally I notice that ConceptNet has a fact right, but its gloss phrases the fact in an odd, unnatural-sounding way. For instance, "A statement 'a ghost can be a supposed apparition of a dead person or animal.' helps answer the question 'what is a ghost?'" is what you see when you see when you search on "ghost."</p>
 
             <h4>Odd Formulations</h4>
