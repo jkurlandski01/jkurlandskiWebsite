@@ -35,24 +35,35 @@ CSS_HTML
 * floatingTable.html
 * htmlEntities.html
 * preAndCode.html
+
 Databases
+* mySqlCheatSheet.html
+
 Guava
 * guavaMutimap.html
 * guavaMultiset.html
 * hashBasedTable.html
 * setOperations.html
+
 Java
 * mapSort.html
+? regex.html
+? unitTesting.html
 ? converting from one collection type to another
+
 Misc
 * subversion-cheat-shee-v1.pdf
 * svnCheatSheet.html
 ? gitCheatSheet.html
 ? svnExamples.html
+
 NLP_AI
-? ConceptNet
+* ConceptNetIntro.html
+* conceptNetCode.html
+? sumoIntro.html
 ? GATE
 ? machine learning frameworks, comparison
+
 WWW
 ? JSoup
 ? Httrack
