@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Close to the Machine</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="../../default.css" rel="stylesheet" type="text/css" media="all" />
+<link href="../../fonts.css" rel="stylesheet" type="text/css" media="all" />
+<!--[if IE 6]>
+<link href="default_ie6.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+</head>
+<body>
+<div id="wrapper">
+	<div id="header-wrapper">
+		<div id="menu" class="container">
+			<ul>
+				<li><a href="../index.html">Home</a></li>
+				<li><a href="../Guava/index.html">Guava</a></li>
+				<li><a href="../Java/index.html">Java</a></li>
+				<li><a href="../NLP_AI/index.html">NLP / AI</a></li>
+				<li><a href="../CSS_HTML/index.html">Int. CSS / HTML</a></li>
+				<li class="current_page_item"><a href="../WWW/index.html">WWW</a></li>
+			</ul>
+		</div>
+		<!-- end #menu -->
+		<div id="header" class="container">
+			<div id="logo">
+				<h1>Close to the</h1>
+				<h1>Machine</h1>
+				<p></p>
+				<p>Jerry Kurlandski</p>
+			</div>
+			<div id="header-image1"> <a href="#" class="image"><img src="../../images/bookshelfPanorama.jpg" alt="" /></a> </div>
+			<div id="header-image2"> <a href="#" class="image"><img src="../../images/bookshelfPanorama.jpg" alt="" /></a> </div>
+		</div>
+	</div>
+	<div id="page" class="container">
+		<div id="content">
+			<div class="title">
+				<h2>httrack</h2>
+			</div>
+			<p>blah, blah</p>
+
+<p class="precaption">Listing Starting Httrack</p>
+<pre class="preCodeWithCaption">
+    Navigate to the directory where you want to extract to.
+    $ httrack http://www.genericradio.com -O /tmp/httrack -Y
+    or
+    $ httrack http://www.simplyscripts.com/ -O ~/toDelete/httrack +http://www.simplyscripts.com/ +*.pdf +*.doc -http://www.amazon.com/*.html -http://www.simplyscripts.com/2013/*
+    or
+    $ httrack http://www.imsdb.com -O ~/toDelete/httrack/seinfeld +http://www.imsdb.com/*.html -http://www.imsdb.com/TV/*.html -http://www.imsdb.com/TV%20Transcripts/*.html
+</pre>
+
+<p class="precaption">Stopping a running HTTRack process</p>
+<pre class="preCodeWithCaption">
+    $ ctrl-Z
+    $ ps -ef | grep httrack
+    $ kill -9 <processNbr>
+</pre>
+
+<p class="precaption">Listing Continuing a halted operation</p>
+<pre class="preCodeWithCaption">
+    Navigate to the directory where you've been running httrack.
+    $ httrack -i
+</pre>
+
+		</div>
+		<div id="sidebar">
+			<div class="internalLinkBox">
+				<div class="title">
+					<h2>Internal Links</h2>
+				</div>
+				<ul class="style2">
+					<li><a href="mapSort.html">Sorting on a Map key</a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="sidebar">
+			<div class="internalLinkBox">
+				<div class="title">
+					<h2>External Guava Links</h2>
+				</div>
+				<ul class="style2">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="copyright" class="container">
+	<p>Copyright (c) 2013 jkurlandski.com. All rights reserved. | Original design by <a href="http://www.freecsstemplates.org/" rel="nofollow">FreeCSSTemplates.org</a>.</p>
+</div>
+</body>
+</html>

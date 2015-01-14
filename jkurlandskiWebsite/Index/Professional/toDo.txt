@@ -56,6 +56,9 @@ Misc
 * svnCheatSheet.html
 ? gitCheatSheet.html
 ? svnExamples.html
+? shellScripts.html
+- Go through Dialog Search Notes.rtf
+- 
 
 NLP_AI
 * ConceptNetIntro.html
