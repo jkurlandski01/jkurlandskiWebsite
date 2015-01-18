@@ -1,8 +1,93 @@
 JSoup
+Rotten Tomatoes
+
 Httrack
 
-Continue a halted
+try1
+- httrack http://www.jkurlandski.com -O /Users/jkurlandski/Documents/toDelete/httrack/try1 -Y
 
-httrack -i
+try2
+- httrack http://www.jkurlandski.com -O /Users/jkurlandski/Documents/toDelete/httrack/try2 +*.txt
+Same as try1. 
 
-Rotten Tomatoes
+try3
+- httrack http://www.jkurlandski.com -O /Users/jkurlandski/Documents/toDelete/httrack/try3 +http://www.jkurlandski.com/ +*.txt 
+Same as try 1 and try 2.
+
+try4
+- httrack http://www.jkurlandski.com/Index/Professional/ -O /Users/jkurlandski/Documents/toDelete/httrack/try4 -Y +http://www.jkurlandski.com/Index/Professional/ -*.jpg 
+Follows links to other websites.
+
+try5
+- httrack http://www.jkurlandski.com/Index/Professional/ -O /Users/jkurlandski/Documents/toDelete/httrack/try5 -Y +http://www.jkurlandski.com/Index/Professional/ -*.jpg 
+Follows links to other websites occurring at first level (-Y)
+
+try 6
+- httrack “http://www.jkurlandski.com/Index/Professional/“ -O “/Users/jkurlandski/Documents/toDelete/httrack/try6” “+*.jkurlandski.com/Index/Professional/*” -*.jpg
+Not sure what happened. Scraped my local files.
+I accidentally copied over this with the next command.
+
+try 7
+- httrack “http://www.jkurlandski.com/Index/Professional/“ -O “/Users/jkurlandski/Documents/toDelete/httrack/try7” “+www.jkurlandski.com/Index/Professional/*” -*.jpg
+Not sure what happened. Path looks local.
+
+try 8
+- httrack “http://www.jkurlandski.com/Index/Professional/“ -O “/Users/jkurlandski/Documents/toDelete/httrack/try8” “+http://www.jkurlandski.com/Index/Professional/*” -*.jpg
+Path looks local.
+I accidentally copied over this with the next command.
+
+try 9
+- httrack http://www.jkurlandski.com/Index/Professional/ -O /Users/jkurlandski/Documents/toDelete/httrack/try9 +http://www.jkurlandski.com/Index/Professional/* -*.jpg
+Seems good. Did not get .jpg files. Did not get any files not linked to in the hierarchy, including the pdf linked to at SVN Cheat Sheet.
+
+try 10
+- httrack http://www.jkurlandski.com/Index/Professional/ -O /Users/jkurlandski/Documents/toDelete/httrack/try10 +http://www.jkurlandski.com/Index/Professional/* 
+Seems good. Did not get .jpg files. Did not get any files not linked to in the hierarchy, including the pdf linked to at SVN Cheat Sheet.
+? Maybe messed up by a later command?
+
+try 11
+- httrack http://www.jkurlandski.com/Index/Professional/ -O /Users/jkurlandski/Documents/toDelete/httrack/try11 +http://www.jkurlandski.com/Index/Professional/*
+Good! Gets all files.
+
+try 12
+- httrack http://www.jkurlandski.com/Index/Professional/ -O /Users/jkurlandski/Documents/toDelete/httrack/try12
+Same as try11
+
+try 13
+- httrack http://www.jkurlandski.com/Index/Professional/ -O /Users/jkurlandski/Documents/toDelete/httrack/try13 -*.jpg
+Same as try 12, but doesn’t get the .jpg files.
+
+
+
+try 
+- httrack “http://www.jkurlandski.com/Index/Professional/“ -O “/Users/jkurlandski/Documents/toDelete/httrack/tryN” +http://www.jkurlandski.com/Index/Professional/ -*.jpg
+
+
+
+
+try
+- httrack http://www.jkurlandski.com/Index/Families/Kurlandski -O /Users/jkurlandski/Documents/toDelete/httrack/try4 +http://www.jkurlandski.com/ -http://http://www.jkurlandski.com/Index/Families/Kurlandski/kurlandski.html/*
+
+
+General options:
+  O  path for mirror/logfiles+cache (-O path_mirror[,path_cache_and_logfiles]) (--path <param>)
+
+Action options:
+  w *mirror web sites (--mirror)
+  W  mirror web sites, semi-automatic (asks questions) (--mirror-wizard)
+  g  just get files (saved in the current directory) (--get-files)
+  i  continue an interrupted mirror using the cache (--continue)
+  Y   mirror ALL links located in the first level pages (mirror links) (--mirrorlinks)
+
+
+Here’s what you’ll see when you run a command:
+Jerrys-MacBook-Pro:try1 jkurlandski$ httrack http://www.jkurlandski.com -O /Users/jkurlandski/Documents/toDelete/httrack/try1 -Y
+Mirror launched on Sat, 17 Jan 2015 16:33:17 by HTTrack Website Copier/3.48-19 [XR&CO'2014]
+mirroring http://www.jkurlandski.com with the wizard help..
+* www.jkurlandski.com/Index/Families/Kurlandski/image/Antwerp,_Belgium,_from_the_left_bank_of_the_Scheldt_(ca._1890-1900).jpg (116* www.jkurlandski.com/Index/Families/Kurlandski/image/PASSENGERS_JAM_THE_INTERIOR_OF_THE_ST._LOUIS,_MISSOURI,_UNION_STATION_IN_A_C32/73: www.jkurlandski.com/Index/Families/Nawrocki/adeleNawrocki.html (20125 bytes) - OK
+
+- the last line changes according to the file currently being downloaded.
+
+
+https://www.httrack.com/html/fcguide.html
+
