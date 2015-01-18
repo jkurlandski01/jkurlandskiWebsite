@@ -39,39 +39,90 @@
 	<div id="page" class="container">
 		<div id="content">
 			<div class="title">
-				<h2>HTTrack</h2>
+				<h2>Intro to HTTrack</h2>
 			</div>
-			<p>This page will give you a starting point on how to use HTTrack for web scraping.</p>
+			<p>HTTrack is a free application that lets you copy a website to another location. I have used the tool with success, but I have to say that the documentation is not great. There is a version which comes with a GUI, which is a little easier to use, but this version offers fewer options than working with the command line. So my own work with HTTrack has involved a lot of trial-and-error at the command line, until I could finally get the application to do what I wanted it to do. This page explains what I managed to figure out and does not pretend to be complete in any way.</p>
+			<p>Please note that all of my work with HTTrack has been on a Mac. I expect almost everything you read below will transfer to a Unix-type enviroment. I have no idea what Windows users should expect.</p>
 			
-			<h4>Installing HTTrack</h4>
-			<p>Mac users should make sure they first have Homebrew or Macports installed. See the link below.</p>
-            <p><a href="http://brew.sh">Installing Homebrew</a></p>
-			<p>Now install HTTrack. Start below.</p>
-            <p><a href="http://www.httrack.com/page/2/">Installing HTTrack</a></p>
-            <p></p>
-
-<p class="precaption">Listing Starting HTTrack</p>
+			<h3>Installing HTTrack</h3>
+			<p>HTTrack is available for all the major operating systems. Mac users should make sure they first have Homebrew or Macports installed. See this link:</p>
+            <p class = "indentedCitation"><a href="http://brew.sh">Installing Homebrew</a></p>
+			<p>Now install HTTrack, using the link below.</p>
+            <p class = "indentedCitation"><a href="http://www.httrack.com/page/2/">Installing HTTrack</a></p>
+            <p>Test your install with a version check.</p>
+<p class="precaption">Listing1: Checking your HTTrack Version</p>
 <pre class="preCodeWithCaption">
-    Navigate to the directory where you want to extract to.
-    $ httrack http://www.genericradio.com -O /tmp/httrack -Y
-    or
-    $ httrack http://www.simplyscripts.com/ -O ~/toDelete/httrack +http://www.simplyscripts.com/ +*.pdf +*.doc -http://www.amazon.com/*.html -http://www.simplyscripts.com/2013/*
-    or
-    $ httrack http://www.imsdb.com -O ~/toDelete/httrack/seinfeld +http://www.imsdb.com/*.html -http://www.imsdb.com/TV/*.html -http://www.imsdb.com/TV%20Transcripts/*.html
+$ httrack --version
+HTTrack version 3.48-19
 </pre>
 
-<p class="precaption">Stopping a running HTTRack process</p>
+            </br>
+        
+            <h3>Stopping HTTrack</h3>
+            <p>HTTrack is a very eager beaver. So eager, that there's no easy way to stop it. This is why I'm explaining how to stop it here, near the beginning of this article, because as you experiment with the tool you'll surely find you did something wrong and want to stop it before your hard disk fills up.</p>
+            <p>Basically you stop the tool by getting its process number and killing it at the command line. The commands given below show you how to get to your command prompt while the app is running and printing to standard out (ctrl-Z), get the process number (ps -ef | grep httrack), and, finally, kill the process (kill -9 &lt;processID&gt;).</p>
+            
+<p class="precaption">Listing 2: Stopping a Running HTTRack process</p>
 <pre class="preCodeWithCaption">
-    $ ctrl-Z
-    $ ps -ef | grep httrack
-    $ kill -9 <processNbr>
+$ ctrl-Z
+$ ps -ef | grep httrack
+  501  8722     1   0 12:20PM ttys000    0:00.68 httrack (...)
+  501  8810  7911   0 12:20PM ttys000    0:00.00 grep httrack
+$ kill -9 8722
 </pre>
 
-<p class="precaption">Listing Continuing a halted operation</p>
+            <p>When you run "ps -ef | grep httrack", you'll usually get two responses. Make sure you find the proces ID that is NOT the ID of your grep. Use the correct process ID as the last parameter to your "kill -9" command.</p>
+
+            <h3>A Few Simple HTTrack Comands</h3>
+            <p>Here I give you a couple commands that, hopefully, will get you started as you figure out how to get the tool to satisfy your needs.</p>
+
+<p class="precaption">Listing 3: Mirror a Web Site</p>
 <pre class="preCodeWithCaption">
-    Navigate to the directory where you've been running httrack.
-    $ httrack -i
+$ httrack http://www.source.com -O /destination
 </pre>
+
+            <p>The above command mirrors the site at "http://www.source.com", copying files to the "/destination" directory on the local machine. By "mirrors the site," I mean that it follows internal links at "http://www.source.com", as well as links at these linked-to pages, creating a mirror image at the destination directory. When completed, you will be able to navigate the copy of the website just as you do the website--that is, by clicking on links in a browser.</p>
+
+<p class="precaption">Listing 4: Mirror a Web Site Excluding Files of a Certain Type</p>
+<pre class="preCodeWithCaption">
+$ httrack http://www.source.com -O /destination -*.jpg
+</pre>
+
+            <p>Listing 4 gives you the command I end up using the most. This one mirrors the source website, but does NOT copy over any .jpg files.</p>
+
+<p class="precaption">Listing 5: Mirror a Web Site and the Web Sites It Links to on the Main Page</p>
+<pre class="preCodeWithCaption">
+$ httrack http://www.source.com -O /destination -Y
+</pre>
+
+            <p>The command does the same as in Listing 3, but it also mirrors any external sites linked to at "http://www.source.com". To be honest, I haven't fully explored the behavior of this option, but I know from experience that it tends to get a lot more than what I want. Use it with caution, and be prepared to employ "kill -9" as explained above.</p>
+
+            <h3>Resuming a Halted HTTrack Operation</h3>
+            <p>Take a gander at all the files HTTrack puts into your destination directory, and you'll see some that have nothing to do with your source website. In fact, HTTrack keeps tabs on what is has copied over, as well as links it has encountered but not yet copied over. The wonderful thing about this is that you can halt an HTTrack operation and then, at some point in time later, resume the operation where you left off.</p>
+
+<p class="precaption">Listing 6: Starting, Stopping, then Resuming an HTTrack Operation</p>
+<pre class="preCodeWithCaption">
+$ httrack http://www.source.com -O /destination -*.jpg
+$ ctrl-Z
+$ ps -ef | grep httrack
+  501  8722     1   0 12:20PM ttys000    0:00.68 httrack http://www.source.com -O /destination -*.jpg
+  501  8810  7911   0 12:20PM ttys000    0:00.00 grep httrack
+$ kill -9 8722
+
+(... an indefinite period of time)
+
+$ cd /destination
+$ httrack -i
+</pre>
+
+            </br>
+        
+            <h3>Exploring Other Options with the User's Guide</h3>
+            <p>When I first came across the user's guide (see the link in the sidebar), I was excited. It looks so complete, and so clear, that I had the feeling everything I needed <i>was right here</i>. Alas, for whatever reason, the examples rarely work as the documentation suggests--and sometimes they don't seem to work at all.</p>
+
+            <p>In following the documentation, the first and most important lesson I learned was <b>Do Not Use the Double-Quotes</b>. Maybe it's a Mac issue, maybe it's an HTTrack version issue, I don't know. But nothing worked when I followed the guide's use of double-quotes for the paths.</p>
+            
+           <p>Still, the user's guide covers a lot of ground. Some of the options which seem to be available are: (1) file size limits, letting you copy, for example, only those images that do not exceed a certain size; and (2) a way to get files only of a certain types, which would allow you to, e.g., get only .pdf files but not .jpg files. Many, many other options are described on this page.</p>
 
 		</div>
 		<div id="sidebar">
@@ -90,6 +141,8 @@
 					<h2>External Guava Links</h2>
 				</div>
 				<ul class="style2">
+                    <li><a href="http://www.httrack.com">HTTrack Home Page</a></li>
+                    <li><a href="https://www.httrack.com/html/fcguide.html">HTTrack User's Guide (user beware)</a></li>
 				</ul>
 			</div>
 		</div>
