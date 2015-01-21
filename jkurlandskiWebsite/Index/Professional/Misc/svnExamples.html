@@ -49,6 +49,7 @@
             
             <h3>Task</h3>
             <h4>&gt; Update your working directory so that it has the latest version in the repository, leaving local changes untouched.</h4>
+            <h4>&gt; Then commit local changes to the repository.</h4>
 
             </br>
             <p>First check the status to see if there are any conflicts. (JERRY: conflicts are marked with )</p>
@@ -56,17 +57,17 @@
 <pre class="preCode">
 $ svn status
 ?       Misc/svnExamples.html
-?       toDo.txt
+M       toDo.txt
 
 $ svn status -u
         *       74   Misc/svnCheatSheet.html
 ?                    Misc/svnExamples.html
         *       74   Misc/svnNotes.txt
-?                    toDo.txt
+M                    toDo.txt
 Status against revision:     77
 </pre>
 
-            <p>Locally, two files are new to the file system but not added to the repository. The repository is at Revision 77, but it contains two files from Revision 74 that have not been copied locally.</p>
+            <p>Locally, toDo.txt has been modified, and svnExamples.html is new to the file system but not added to the repository. On the repository side, the repository is at Revision 77, but it contains two files from Revision 74 that have not been copied locally.</p>
             
             <p>The status checks reveal no conflicts--perform the update. Then check status again.</p>
             
@@ -79,11 +80,31 @@ Updated to revision 77.
 
 $ svn status -u
 ?                    Misc/svnExamples.html
-?                    toDo.txt
+M                    toDo.txt
 Status against revision:     77
 
 </pre>
 
+            <p>The local changes aren't ready to be committed because you haven't explicity stated you want the new file to be added to the repository. Do so now.</p>
+            
+<pre class="preCode">
+$ svn add Misc/svnExamples.html
+A                   Misc/svnExamples.html
+
+$ svn status
+A                    Misc/svnExamples.html
+M                    toDo.txt
+Status against revision:     77
+</pre>
+
+            <p>Finally you're ready to commit.</p>
+            
+<pre class="preCode">
+$ svn commit -m "New file svnExamples.html. Modified toDo.txt."
+Adding         Misc/svnExamples.html
+Adding         toDo.txt
+Transmitting file data ..
+Committed revision 78.</pre>
 
             <h3>Task</h3>
             <h4>&gt; Move one file from a subdirectory to another directory.</h4>
@@ -126,11 +147,15 @@ A  +    Misc/mySqlCheatSheet.html
 M       Misc/svnExamples.html
 </pre>
 
-                <p>Don't forget to commit your changes.</p>
+                <p>Don't forget to commit your changes, thus.</p>
 
-JERRY: need commit output
-<pre>
-    
+<pre class="preCode">
+Deleting       Databases
+Adding         Misc/mySqlCheatSheet.html
+Sending        Misc/svnExamples.html
+Sending        toDo.txt
+Transmitting file data ..
+Committed revision 138.   
 </pre>
             
 <p class="precaption">Listing X: Moving many files to a subdirectory</p>
