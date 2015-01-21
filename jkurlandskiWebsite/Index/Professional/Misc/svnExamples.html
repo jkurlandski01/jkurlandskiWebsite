@@ -40,11 +40,98 @@
 	<div id="page" class="container">
 		<div id="content">
 			<div class="title">
-				<h2>SVN Examples/Tasks</h2>
+				<h2>SVN Tasks</h2>
 			</div>
-            <p>JERRY: Red bar at top needs to point to this page's subtopic</p>
+            <p>JERRY: Red bar at top needs to point to this page's subtopic. Change filename to htmlTasks.html</p>
             <p>This page shows you how to link individual SVN commands together in order to accomplish a particular <em>task</em>.</p>
-            <p>The command line can be a little intimidating at first, but I find it becomes less so when you see the commands not in isolation but as part of a series of steps with a single aim in mind. It's kind of like the way individual words don't make sense until strung together into a coherent sentence.</p>
+            <p>The SVN command line can be a little intimidating at first, but I find it becomes less so when you see the commands not in isolation but as part of a series of steps with a single aim in mind. If the individual commands are like words, then this page shows you how to string these words together to form a coherent sentence.</p>
+            <p>This page will probably make sense even if you're not yet familiar with the SVN commands being used. In either case, for more information on each command you can refer to the internal link on SVN Commands in the sidebar.</p>
+            
+            <h3>Task</h3>
+            <h4>&gt; Update your working directory so that it has the latest version in the repository, leaving local changes untouched.</h4>
+
+            </br>
+            <p>First check the status to see if there are any conflicts. (JERRY: conflicts are marked with )</p>
+            
+<pre class="preCode">
+$ svn status
+?       Misc/svnExamples.html
+?       toDo.txt
+
+$ svn status -u
+        *       74   Misc/svnCheatSheet.html
+?                    Misc/svnExamples.html
+        *       74   Misc/svnNotes.txt
+?                    toDo.txt
+Status against revision:     77
+</pre>
+
+            <p>Locally, two files are new to the file system but not added to the repository. The repository is at Revision 77, but it contains two files from Revision 74 that have not been copied locally.</p>
+            
+            <p>The status checks reveal no conflicts--perform the update. Then check status again.</p>
+            
+<pre class="preCode">
+$ svn update
+Updating '.':
+U    Misc/svnCheatSheet.html
+U    Misc/svnNotes.txt
+Updated to revision 77.
+
+$ svn status -u
+?                    Misc/svnExamples.html
+?                    toDo.txt
+Status against revision:     77
+
+</pre>
+
+
+            <h3>Task</h3>
+            <h4>&gt; Move one file from a subdirectory to another directory.</h4>
+            <h4>&gt; Remove all other files in the original subdirectory from the repository as well as from your working copy.</h4>
+            </br>
+            <p>First perform the move and the delete commands.</p>
+
+<pre class="preCode">
+$ svn status
+
+$ ls Databases
+DatabaseNotes.txt   databaseTemplate.html   mySqlCheatSheet.html    mysqlCommandLine.txt
+
+$ svn move Databases/mySqlCheatSheet.html Misc
+A         Misc/mySqlCheatSheet.html
+D         Databases/mySqlCheatSheet.html
+
+$ svn delete Databases/DatabaseNotes.txt
+D         Databases/DatabaseNotes.txt
+
+$ ls Databases
+databaseTemplate.html   mysqlCommandLine.txt
+
+$ svn delete Databases/mysqlCommandLine.txt
+D         Databases/mysqlCommandLine.txt
+
+$ svn delete Databases/databaseTemplate.html
+D         Databases/databaseTemplate.html
+
+$ svn delete Databases
+D         Databases
+
+$ svn status
+D       Databases
+D       Databases/DatabaseNotes.txt
+D       Databases/databaseTemplate.html
+D       Databases/mySqlCheatSheet.html
+D       Databases/mysqlCommandLine.txt
+A  +    Misc/mySqlCheatSheet.html
+M       Misc/svnExamples.html
+</pre>
+
+                <p>Don't forget to commit your changes.</p>
+
+JERRY: need commit output
+<pre>
+    
+</pre>
             
 <p class="precaption">Listing X: Moving many files to a subdirectory</p>
 <pre class="preCodeWithCaption">
@@ -245,32 +332,6 @@ Jerrys-MacBook-Pro:jkurlandski jkurlandski$
 
 </pre>
 
-<p></p>
-            
-<p class="precaption">Listing X: Updating your project to the latest version in the repository; with local changes untouched</p>
-<pre class="preCodeWithCaption">
-Jerrys-MacBook-Pro:jkurlandski jkurlandski$ svn status
-?       jkurlandskiWebsite/Index/Professional/Misc/svnExamples.html
-?       jkurlandskiWebsite/Index/Professional/toDo.txt
-Jerrys-MacBook-Pro:jkurlandski jkurlandski$ svn status -u
-        *       74   jkurlandskiWebsite/Index/Professional/Misc/svnCheatSheet.html
-?                    jkurlandskiWebsite/Index/Professional/Misc/svnExamples.html
-        *       74   jkurlandskiWebsite/Index/Professional/Misc/svnNotes.txt
-?                    jkurlandskiWebsite/Index/Professional/toDo.txt
-        *       74   RemoteSystemsTempFiles
-Status against revision:     77
-Jerrys-MacBook-Pro:jkurlandski jkurlandski$ svn update
-Updating '.':
-U    jkurlandskiWebsite/Index/Professional/Misc/svnCheatSheet.html
-U    jkurlandskiWebsite/Index/Professional/Misc/svnNotes.txt
-D    RemoteSystemsTempFiles
-Updated to revision 77.
-Jerrys-MacBook-Pro:jkurlandski jkurlandski$ svn status -u
-?                    jkurlandskiWebsite/Index/Professional/Misc/svnExamples.html
-?                    jkurlandskiWebsite/Index/Professional/toDo.txt
-Status against revision:     77
-
-</pre>
             
 <p class="precaption">Listing X: </p>
 <pre class="preCodeWithCaption">

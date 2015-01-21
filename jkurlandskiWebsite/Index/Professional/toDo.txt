@@ -1,3 +1,6 @@
+SVN Examples
+- Commit latest move, and record the commit on this page (removing toDo.txt).
+
 Move to Java 1.8
 
 Guava Intro
@@ -34,49 +37,60 @@ svnCheatSheet
 - needs a main index.html page
 
 Professional pages
-* = ready, or almost ready
+* = ready
+@ - proof
+! = needs work
 ? = planned or just starting or not ready
 
+! Home Page
+
 CSS_HTML
-* aptana.html
-* floatingTable.html
-* htmlEntities.html
-* preAndCode.html
+! Main Page
+@ aptana.html
+@ floatingTable.html
+@ htmlEntities.html
+@ preAndCode.html
 
 Databases
-* mySqlCheatSheet.html
+! mySqlCheatSheet.html
 
 Guava
-* guavaMutimap.html
-* guavaMultiset.html
-* hashBasedTable.html
-* setOperations.html
+! Main Page
+@ guavaIntro.html
+@ guavaMutimap.html
+@ guavaMultiset.html
+@ hashBasedTable.html
+@ setOperations.html
 
 Java
-* mapSort.html
+! Main Page
+! mapSort.html (perhaps split)
 ? regex.html
-? unitTesting.html
+! unitTesting.html
 ? converting from one collection type to another
 
 Misc
+! Main Page
 * subversion-cheat-shee-v1.pdf
-* svnCheatSheet.html
+@ svnCheatSheet.html
+! macNotes.html
+! shellScripts.html
+- Go through Dialog Search Notes.rtf
 ? gitCheatSheet.html
 ? svnExamples.html
-? shellScripts.html
-- Go through Dialog Search Notes.rtf
-- 
+
 
 NLP_AI
-* ConceptNetIntro.html
-* conceptNetCode.html
+! Main Page
+@ ConceptNetIntro.html
+@ conceptNetCode.html
 ? sumoIntro.html
 ? GATE
 ? machine learning frameworks, comparison
 
-WWW
+WWW/Web
+! Httrack
 ? JSoup
-? Httrack
 ? Rotten Tomatoes
 
 
