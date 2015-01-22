@@ -46,6 +46,23 @@
                 <li>Use @BeforeClass for an "expensive" method that should be run once before all tests in the class.</li>
             </div>
             
+<p class="precaption">Listing </p>
+<pre class="preCodeWithCaption">
+@Test
+public void myTest()    {
+    @BeforeClass
+    public static void doSomethingOnce()  {
+	...
+}
+</pre>
+
+			<p>The access of a method marked with @Before must be public; if it isn't you'll get a runtime exception with a message like the following:
+
+<p class="precaption">Listing </p>
+<pre class="preCodeWithCaption">
+java.lang.Exception: Method doSomethingOnce() should be public
+</pre>
+
             <h4>Getting the location of the current unit test.</h4>
             <p>Often a unit test requires some sort of resource such as an external file. In acquiring the resource, you need the path, but you don't want to hard-code the path, since the path on one developer's machine won't necessarily be identical to the path on another developer's machine. The solution is to locate the resource with reference to the project location on the current machine. This may differ between IDE's--Eclipse and IntelliJ get different locations--int hat case, you probably need an environment variable. Also note that if multiple tests are using the same paths, you could make them private static final data members of the test class.</p>
 

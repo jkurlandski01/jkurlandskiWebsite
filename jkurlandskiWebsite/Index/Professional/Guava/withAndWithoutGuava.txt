@@ -1,0 +1,136 @@
+List<String>
+
+Without Guava:
+        List<String> list1 = new ArrayList<String>();
+        list1.add("Cat");
+        list1.add("Dog");
+
+With Guava:
+        List<String> list2 = Lists.newArrayList("Cat", "Dog");
+
+
+Map<String, HashSet<String>>
+
+Without Guava:
+        Map<String, Set<String>> map1 = new HashMap<String, Set<String>>();
+        Set<String> set1 = new HashSet<String>();
+        set1.add("Driving");
+        set1.add("Process");
+        map1.put("?D", set1);
+        set1 = new HashSet<String>();
+        set1.add("Man");
+        set1.add("Human");
+        map1.put("?H", set1);
+
+With Guava:
+        Map<String, HashSet<String>> map2 = Maps.newHashMap();
+        map2.put("?D", Sets.newHashSet("Driving", "Process"));
+        map2.put("?H", Sets.newHashSet("Man", "Human"));
+
+
+Multimap (instead of Map<X, List<Y>) or Map<X, Set<Y>))
+
+Initialize
+Without Guava
+        Set<String> beSet1 = new HashSet<String>();
+        beSet1.add("am");
+        beSet1.add("are");
+        beSet1.add("is");
+        Set<String> askSet1 = new HashSet<String>();
+        askSet1.add("ask");
+        askSet1.add("asks");
+
+        Map<String, Set<String>> mm1 = new HashMap<String, Set<String>>();
+        mm1.put("be", beSet1);
+        mm1.put("ask", askSet1);
+
+With Guava
+        Multimap<String, String> mm2 = HashMultimap.create();
+        mm2.putAll("be", Sets.newHashSet("am", "are", "is"));
+        mm2.putAll("ask", Sets.newHashSet("ask", "asks"));
+
+Iterate through all the key/value entries.
+Without Guava (and without for-each loop):
+        Iterator<String> it1 = mm1.keySet().iterator();
+        while (it1.hasNext()) {
+            String key = it1.next();
+
+            Iterator<String> it2 = mm1.get(key).iterator();
+            while (it1.hasNext()) {
+                String value = it1.next();
+            }
+        }
+
+With Guava (and for-each loop)
+        for(Map.Entry<String, String> mapPair : mm2.entries())  {
+            String key = mapPair.getKey();
+            String value = mapPair.getValue();
+        }
+
+Get total size of map.
+Without Guava (and without for-each loop):
+        int size = 0;
+        it1 = mm1.keySet().iterator();
+        while (it1.hasNext()) {
+            String key = it1.next();
+            size = size + mm1.get(key).size();
+        }
+        assertEquals(5, size);
+
+With Guava (no need for loop)
+        size = mm2.size();
+        assertEquals(5, size);
+
+
+Multiset (true multisets with union and intersect operations)
+
+Guava examples
+    @Test
+    public void simpleCase() {
+        List<String> input = Lists.newArrayList("aaa", "bbb", "aaa");
+        Multiset<String> multiset1 = HashMultiset.create(input);
+        multiset1.add("ddd");
+
+        assertEquals(2, multiset1.count("aaa"));
+        assertEquals(1, multiset1.count("bbb"));
+        assertEquals(0, multiset1.count("ccc"));	// Note that we don't have to first verify it's a key.
+        assertEquals(1, multiset1.count("ddd"));
+
+        assertEquals(4, multiset1.size());
+    }
+
+    @Test
+    public void setOperations() {
+        // Test union and intersection.
+        Multiset<String> multiset1 = HashMultiset.create(Lists.newArrayList("a", "b", "c", "c"));
+        Multiset<String> multiset2 = HashMultiset.create(Lists.newArrayList("c", "d", "e"));
+
+        // Union
+        Multiset<String> multisetUnion = Multisets.union(multiset1, multiset2);
+        Multiset<String> expectedMultiset1 = HashMultiset.create(Lists.newArrayList("a", "b", "c", "c", "d", "e"));
+        assertEquals(expectedMultiset1, multisetUnion);
+
+        // Intersection
+        Multiset<String> multisetIntersection = Multisets.intersection(multiset1, multiset2);
+        Multiset<String> expectedMultiset2 = HashMultiset.create(Lists.newArrayList("c"));
+        assertEquals(expectedMultiset2, multisetIntersection);
+    }
+
+
+BiMap (mapping keys to values and values back to keys)
+
+Without Guava
+	Map<String, Integer> nameToId = Maps.newHashMap();
+	Map<Integer, String> idToName = Maps.newHashMap();
+
+	nameToId.put("Bob", 42);
+	idToName.put(42, "Bob");
+	// what happens if "Bob" or 42 are already present?
+	// weird bugs can arise if we forget to keep these in sync...
+
+With Guava
+        BiMap<String, Integer> userId = HashBiMap.create();
+        userId.put("Bob", 42);
+
+        String userForId = userId.inverse().get(42);
+
