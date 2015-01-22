@@ -1,7 +1,11 @@
-SVN Examples
-- Commit latest move, and record the commit on this page (removing toDo.txt).
-
 Move to Java 1.8
+
+SVNTasks
+- decide of formatting of task lines
+- Get bullet symbol and put into entities.
+
+Put ConceptNet under Web category
+- WWW becomes Web
 
 Guava Intro
 - Format
@@ -73,11 +77,11 @@ Misc
 ! Main Page
 * subversion-cheat-shee-v1.pdf
 @ svnCheatSheet.html
+@ svnTasks.html
 ! macNotes.html
 ! shellScripts.html
 - Go through Dialog Search Notes.rtf
 ? gitCheatSheet.html
-? svnExamples.html
 
 
 NLP_AI
