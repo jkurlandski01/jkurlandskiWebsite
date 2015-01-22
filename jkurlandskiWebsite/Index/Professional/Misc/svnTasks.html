@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>SVNEgs</title>
+<title>SVN Tasks</title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <link href="../../default.css" rel="stylesheet" type="text/css" media="all" />
@@ -42,14 +42,28 @@
 			<div class="title">
 				<h2>SVN Tasks</h2>
 			</div>
-            <p>JERRY: Red bar at top needs to point to this page's subtopic. Change filename to htmlTasks.html</p>
+            <p>JERRY: Red bar at top needs to point to this page's subtopic.</p>
+            <p>JERRY: Fix sidebar</p>
             <p>This page shows you how to link individual SVN commands together in order to accomplish a particular <em>task</em>.</p>
             <p>The SVN command line can be a little intimidating at first, but I find it becomes less so when you see the commands not in isolation but as part of a series of steps with a single aim in mind. If the individual commands are like words, then this page shows you how to string these words together to form a coherent sentence.</p>
             <p>This page will probably make sense even if you're not yet familiar with the SVN commands being used. In either case, for more information on each command you can refer to the internal link on SVN Commands in the sidebar.</p>
             
             <h3>Task</h3>
-            <h4>&gt; Update your working directory so that it has the latest version in the repository, leaving local changes untouched.</h4>
-            <h4>&gt; Then commit local changes to the repository.</h4>
+            <h4>&bull; Update your working directory so that it has the latest version in the repository, leaving local changes untouched.</h4>
+            <h4>&bull; Then commit local changes to the repository.</h4>
+            <h4><li>Floating tables and images</li></h4>
+            <p><li>Floating tables and images</li></p>
+
+
+            <h3>Task</h3>
+            <h4>
+            <ul class="style3">
+                <li>Floating tables and images</li>
+                <li>Using  &lt;pre&gt; and &lt;code&gt; to display HTML and other code on a web page</li>
+                <li>The Eclipse IDE</li>
+                <li>The Aptana plug-in for Eclipse</li>
+            </ul>
+            </h4>
 
             </br>
             <p>First check the status to see if there are any conflicts. (JERRY: conflicts are marked with )</p>
@@ -85,7 +99,7 @@ Status against revision:     77
 
 </pre>
 
-            <p>The local changes aren't ready to be committed because you haven't explicity stated you want the new file to be added to the repository. Do so now.</p>
+            <p>Your working copy is now up-to-date with the repository. The local changes aren't ready to be committed because you haven't explicity stated you want the new file to be added to the repository. Do so now.</p>
             
 <pre class="preCode">
 $ svn add Misc/svnExamples.html
@@ -150,6 +164,7 @@ M       Misc/svnExamples.html
                 <p>Don't forget to commit your changes, thus.</p>
 
 <pre class="preCode">
+$ svn commit -m "Delete Databases folder. Move mySqlCheatSheet."
 Deleting       Databases
 Adding         Misc/mySqlCheatSheet.html
 Sending        Misc/svnExamples.html
@@ -160,54 +175,25 @@ Committed revision 138.
             
             <h3>Task</h3>
             <h4>&gt; Use <code>svn update</code> to reset status so that you can perform a commit</h4>
-            
-<pre class="preCode">
-After moving a directory, can't commit the change.
-Solution: do svn update, that seemingly does nothing.
+            <p>Sometimes SVN doesn't let you do a commit when it seems as though it should. I've noticed this can happen after I move or delete a file or a directory. What often fixes the problem is an SVN update that, apparently, does nothing.</p>
 
-~/Documents/workspace_website/jkurlandski$ svn commit -m "Begin Multiset page."
-Deleting       CodeExamples/src/deletable
+<pre class="preCode">
+$ svn commit -m "Begin Multiset page."
+Deleting       CodeExamples/src/table
 svn: E155011: Commit failed (details follow):
-svn: E155011: Directory '/Users/geraldkurlandski/Documents/workspace_website/jkurlandski/CodeExamples/src/deletable' is out of date
-svn: E170004: Item '/CodeExamples/src/deletable' is out of date
-~/Documents/workspace_website/jkurlandski$ svn status -u
-A                -   jkurlandskiWebsite/Index/Professional/Guava/guavaMultiset.html
-M              102   jkurlandskiWebsite/Index/Professional/Guava/guavaTemplate.html
-M              103   jkurlandskiWebsite/Index/Professional/Guava/setOperations.html
-M              103   jkurlandskiWebsite/Index/Professional/toDo.txt
-D              102   CodeExamples/src/deletable/SortHashKeysTest.java
-D              103   CodeExamples/src/deletable/MultimapTest.java
-D              103   CodeExamples/src/deletable/SetOperationsTest.java
-D              102   CodeExamples/src/deletable
-A  +             -   CodeExamples/src/guavaTests/MultimapTest.java
-A                -   CodeExamples/src/guavaTests/MultisetTest.java
-A  +             -   CodeExamples/src/guavaTests/SetOperationsTest.java
-M  +             -   CodeExamples/src/guavaTests/SortHashKeysTest.java
-A  +             -   CodeExamples/src/guavaTests
-Status against revision:    103
-~/Documents/workspace_website/jkurlandski$ svn update
+svn: E155011: Directory 'CodeExamples/src/table' is out of date
+svn: E170004: Item '/CodeExamples/src/table' is out of date
+
+$ svn update
 Updating '.':
 At revision 103.
-~/Documents/workspace_website/jkurlandski$ svn commit -m "Begin Multiset page."
+
+$ svn commit -m "Begin Multiset page."
 Deleting       CodeExamples/src/deletable
-Adding         CodeExamples/src/guavaTests
-Adding         CodeExamples/src/guavaTests/MultimapTest.java
-Adding         CodeExamples/src/guavaTests/MultisetTest.java
-Adding         CodeExamples/src/guavaTests/SetOperationsTest.java
-Sending        CodeExamples/src/guavaTests/SortHashKeysTest.java
-Adding         jkurlandskiWebsite/Index/Professional/Guava/guavaMultiset.html
-Sending        jkurlandskiWebsite/Index/Professional/Guava/guavaTemplate.html
-Sending        jkurlandskiWebsite/Index/Professional/Guava/setOperations.html
-Sending        jkurlandskiWebsite/Index/Professional/toDo.txt
 Transmitting file data ........
 Committed revision 104.
-~/Documents/workspace_website/jkurlandski$ 
-
-
-
 </pre>
             
-            <p>JERRY: Fix sidebar</p>
 		</div>
 		<div id="sidebar">
 			<div class="internalLinkBox">
