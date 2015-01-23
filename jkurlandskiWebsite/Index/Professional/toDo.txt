@@ -1,13 +1,25 @@
+Move to Java 1.7, then
 Move to Java 1.8
+https://www.java.com/en/download/help/mac_10_10.xml
+- to find where java is /usr/libexec/java_home -v 1.6
+- /usr/libexec/java_home -v 1.7 points to 1.6
+Jerrys-MacBook-Pro:jkurlandskiWebsite jkurlandski$ /usr/libexec/java_home -v 1.7
+Unable to find any JVMs matching version "1.7".
+
 
 SVNTasks
-- decide of formatting of task lines
-- Get bullet symbol and put into entities.
+- Need example of what a conflict looks like. Maybe say how I resolve conficts.
 
 Put ConceptNet under Web category
 - WWW becomes Web
 
+Change copyright from 2013 to 2015?
+
+Int CSS HTML
+- Drop "int"
+
 Guava Intro
+- Look at the txt file which has the info I wrote for Adam
 - Format
 - Finish
 
@@ -84,18 +96,21 @@ Misc
 ? gitCheatSheet.html
 
 
-NLP_AI
-! Main Page
+WWW/Web
 @ ConceptNetIntro.html
 @ conceptNetCode.html
-? sumoIntro.html
-? GATE
-? machine learning frameworks, comparison
-
-WWW/Web
 ! Httrack
 ? JSoup
 ? Rotten Tomatoes
+
+
+??? NLP_AI
+! Main Page
+[ @ ConceptNetIntro.html ]
+[ @ conceptNetCode.html ]
+? sumoIntro.html
+? GATE
+? machine learning frameworks, comparison
 
 
 Kurlandski and other tables should have a caption.
