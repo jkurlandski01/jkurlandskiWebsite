@@ -53,7 +53,7 @@
             <h4>&bull; Then commit local changes to the repository.</h4>
 
             </br>
-            <p>First check the status to see if there are any conflicts. (JERRY: conflicts are marked with )</p>
+            <p>First check the status to see if there are any conflicts. Conflicts are marked with a capital "C"--see below for an example.</p>
             
 <pre class="preCode">
 $ svn status
@@ -156,6 +156,44 @@ Adding         Misc/mySqlCheatSheet.html
 Transmitting file data ..
 Committed revision 138.   
 </pre>
+
+            </br>
+            <h3>Task</h3>
+            <h4>&bull; Use "svn update" to merge a file that has both been changed locally and been modified by another user.</h4>
+
+            </br>
+            <p>Check the status of your changes and changes in the repository.</p>
+            
+<pre class="preCode">
+$ svn status -u
+M              144   index.html
+M       *      140   Java/unitTesting.html
+        *            Java/enum.html
+Status against revision:    144
+</pre>
+            <p>The status check returns three files. One, index.html, has been changed locally. The repository has a more recent version of another, enum.html, than what is local. And unitTesting.html has been changed locally, and had its repository version updated by some other user.</p>
+            <p>Let's update just unitTesting.html.</p>
+
+<pre class="preCode">
+$ svn update Java/unitTesting.html
+Updating 'Java/unitTesting.html':
+G    Java/unitTesting.html
+Updated to revision 144.
+
+$ svn status -u
+M              144   Index/Personal/index.html
+M              144   Java/unitTesting.html
+        *            Index/Professional/Java/enum.html
+</pre>
+
+            <p>Now your local version of unitTesting.html has all the changes that the other user committed, plus your local changes: SVN was smart enough to see that the two sets of changes took place in different parts of the file.</p>
+            <p>The next two steps are to do an "svn update" to pick up the changes to enum.html; then do a commit. Since you've already seen the examples of these above, we don't need to show you how to do them now.</p>
+
+            </br>
+            <h3>Task</h3>
+            <h4>&bull; Check the repository status and find there is a conflice.</h4>
+            <h4>&bull; Optionally shoot yourself in the head.</h4>
+<p>JERRY: get example</p>
             </br>
             <h3>Task</h3>
             <h4>&bull; Use "svn update" to reset status so that you can perform a commit</h4>
