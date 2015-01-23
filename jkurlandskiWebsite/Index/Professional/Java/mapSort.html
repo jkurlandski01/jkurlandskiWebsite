@@ -70,7 +70,7 @@ map1.put(&quot;three&quot;, new Double(3.0));
 // Convert to list for convenience.
 List&lt;String&gt; keyList = new ArrayList&lt;String&gt;(map1.keySet());
 </pre>
-
+			<p>JERRY: Is "simply iterate" correct? But it's a set!
             <p>The call to keySet() returns the keys of the map sorted alphabetically. I convert it to a List of strings because, often, that's the form you need it in. If you don't need a list of strings, simply iterate through the keys returned by keySet().</p>
             <p>The above code initializes the map and the list in the traditional Java 1.6 way. If you have Guava you can do both more simply, thus:</p>
 
