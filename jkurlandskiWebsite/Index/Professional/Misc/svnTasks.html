@@ -20,9 +20,9 @@
 				<li><a href="../Guava/index.html">Guava</a></li>
 				<li><a href="../Java/index.html">Java</a></li>
 				<li><a href="../NLP_AI/index.html">NLP / AI</a></li>
-				<li class="current_page_item"><a href="../CSS_HTML/index.html">Int. CSS / HTML</a></li>
+                <li><a href="../CSS_HTML/index.html">Int. CSS / HTML</a></li>
 				<li><a href="../WWW/index.html">WWW</a></li>
-				<li><a href="../Misc/index.html">Miscellaneous</a></li>
+                <li class="current_page_item"><a href="../Misc/index.html">Miscellaneous</a></li>
 			</ul>
 		</div>
 		<!-- end #menu -->
@@ -51,19 +51,6 @@
             <h3>Task</h3>
             <h4>&bull; Update your working directory so that it has the latest version in the repository, leaving local changes untouched.</h4>
             <h4>&bull; Then commit local changes to the repository.</h4>
-            <h4><li>Floating tables and images</li></h4>
-            <p><li>Floating tables and images</li></p>
-
-
-            <h3>Task</h3>
-            <h4>
-            <ul class="style3">
-                <li>Floating tables and images</li>
-                <li>Using  &lt;pre&gt; and &lt;code&gt; to display HTML and other code on a web page</li>
-                <li>The Eclipse IDE</li>
-                <li>The Aptana plug-in for Eclipse</li>
-            </ul>
-            </h4>
 
             </br>
             <p>First check the status to see if there are any conflicts. (JERRY: conflicts are marked with )</p>
@@ -120,17 +107,21 @@ Sending        toDo.txt
 Transmitting file data .
 Committed revision 78.</pre>
 
-            <h3>Task</h3>
-            <h4>&gt; Move one file from a subdirectory to another directory.</h4>
-            <h4>&gt; Remove all other files in the original subdirectory from the repository as well as from your working copy.</h4>
             </br>
-            <p>First perform the move and the delete commands.</p>
+            <h3>Task</h3>
+            <h4>&bull; Move one file from a subdirectory to another directory.</h4>
+            <h4>&bull; Remove all other files in the original subdirectory from the repository as well as from your working copy.</h4>
+            </br>
+            <p>First perform the move and the delete commands, checking status along the way.</p>
 
 <pre class="preCode">
 $ svn status
 
+$ls 
+Databases Misc
+
 $ ls Databases
-DatabaseNotes.txt   databaseTemplate.html   mySqlCheatSheet.html    mysqlCommandLine.txt
+DatabaseNotes.txt   mySqlCheatSheet.html    mysqlCommandLine.txt
 
 $ svn move Databases/mySqlCheatSheet.html Misc
 A         Misc/mySqlCheatSheet.html
@@ -140,13 +131,10 @@ $ svn delete Databases/DatabaseNotes.txt
 D         Databases/DatabaseNotes.txt
 
 $ ls Databases
-databaseTemplate.html   mysqlCommandLine.txt
+mysqlCommandLine.txt
 
 $ svn delete Databases/mysqlCommandLine.txt
 D         Databases/mysqlCommandLine.txt
-
-$ svn delete Databases/databaseTemplate.html
-D         Databases/databaseTemplate.html
 
 $ svn delete Databases
 D         Databases
@@ -154,11 +142,9 @@ D         Databases
 $ svn status
 D       Databases
 D       Databases/DatabaseNotes.txt
-D       Databases/databaseTemplate.html
 D       Databases/mySqlCheatSheet.html
 D       Databases/mysqlCommandLine.txt
 A  +    Misc/mySqlCheatSheet.html
-M       Misc/svnExamples.html
 </pre>
 
                 <p>Don't forget to commit your changes, thus.</p>
@@ -167,14 +153,12 @@ M       Misc/svnExamples.html
 $ svn commit -m "Delete Databases folder. Move mySqlCheatSheet."
 Deleting       Databases
 Adding         Misc/mySqlCheatSheet.html
-Sending        Misc/svnExamples.html
-Sending        toDo.txt
 Transmitting file data ..
 Committed revision 138.   
 </pre>
-            
+            </br>
             <h3>Task</h3>
-            <h4>&gt; Use <code>svn update</code> to reset status so that you can perform a commit</h4>
+            <h4>&bull; Use "svn update" to reset status so that you can perform a commit</h4>
             <p>Sometimes SVN doesn't let you do a commit when it seems as though it should. I've noticed this can happen after I move or delete a file or a directory. What often fixes the problem is an SVN update that, apparently, does nothing.</p>
 
 <pre class="preCode">
@@ -189,7 +173,7 @@ Updating '.':
 At revision 103.
 
 $ svn commit -m "Begin Multiset page."
-Deleting       CodeExamples/src/deletable
+Deleting       CodeExamples/src/table
 Transmitting file data ........
 Committed revision 104.
 </pre>
