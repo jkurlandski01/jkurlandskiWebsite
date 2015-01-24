@@ -6,9 +6,17 @@ https://www.java.com/en/download/help/mac_10_10.xml
 Jerrys-MacBook-Pro:jkurlandskiWebsite jkurlandski$ /usr/libexec/java_home -v 1.7
 Unable to find any JVMs matching version "1.7".
 
+CSS floating
+- need eg of html for image
+
+Mac Notes
+- Go through Mac Notes.rtf
 
 SVNTasks
 - Need example of what a conflict looks like. Maybe say how I resolve conficts.
+
+Misc
+- working on
 
 Put ConceptNet under Web category
 - WWW becomes Web
@@ -43,9 +51,6 @@ multimap
 
 hashtable for all data types
 - specify the sort when you call sort; stores everything as a string
-
-svnExamples
-- only just started
 
 browser issues
 - In Safari with the left sidebar open, there is no left hand margin
