@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>JERRY</title>
+<title>$ help</title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <link href="../../default.css" rel="stylesheet" type="text/css" media="all" />
@@ -40,32 +40,52 @@
 	<div id="page" class="container">
 		<div id="content">
 			<div class="title">
-				<h2>Shell Commands, Etc.</h2>
+				<h2>At the Command Line</h2>
 			</div>
             <p>JERRY: Red bar at top needs to point to this page's subtopic</p>
             <p>Here's a page where I can keep a couple of shell command one-liners handy, for the next time I need them.</p>
             
+            <p>JERRY: Fix sidebar</p>
             <div class="singleSpacedDescription">
                 <li>perl -p -e 's/\t/\n/g' data.txt</li>
                 <p>Replace tab with newline in the file data.txt. Output goes to stdout.</p>
             </div>
             
             <div class="singleSpacedDescription">
-                <li>find . -name "*txt" 2>/dev/null</li>
+                <li>find . -name "*txt" 2&gt;/dev/null</li>
                 <p>Find all the txt files in this directory, recursively down the tree.</p>
             </div>
             
             <div class="singleSpacedDescription">
-                <li>find . -name "*txt" 2>/dev/null | wc -l</li>
+                <li>find . -name "*txt" 2&gt;/dev/null | wc -l</li>
                 <p>Get a count of all the txt files in this directory, recursively down the tree.</p>
             </div>
             
             <div class="singleSpacedDescription">
-                <li>unzip -qq -t <jarfile></li>
+                <li>ls -d t*</li>
+                <p>Non-recursive "ls" of all directory contents starting with "t". (Without -d you also get the contents of the items if they are directories.)</p>
+            </div>
+            
+            <div class="singleSpacedDescription">
+                <li>ls -1</li>
+                <p>Perform an "ls" on this directory, displaying each item on a separate line. (That's the digit "1" after the minus sign, not the letter "l".)</p>
+            </div>
+            
+            <div class="singleSpacedDescription">
+                <li>unzip -qq -t &lt;jarfile&gt;</li>
                 <p>Check whether a jar file is corrupt. If nothing appears, the jar file is NOT corrupt.</p>
             </div>
             
-            <p>JERRY: Fix sidebar</p>
+            <div class="singleSpacedDescription">
+                <li>Ctrl-a</li>
+                <p>Go to the start of the command at the current command line.</p>
+            </div>
+            
+            <div class="singleSpacedDescription">
+                <li>Ctrl-e</li>
+                <p>Go to the end of the command at the current command line.</p>
+            </div>
+            
 		</div>
 		<div id="sidebar">
 			<div class="internalLinkBox">
