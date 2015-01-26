@@ -6,6 +6,7 @@ Httrack
 try1
 - httrack http://www.jkurlandski.com -O /Users/jkurlandski/Documents/toDelete/httrack/try1 -Y
 
+
 try2
 - httrack http://www.jkurlandski.com -O /Users/jkurlandski/Documents/toDelete/httrack/try2 +*.txt
 Same as try1. 
