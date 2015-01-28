@@ -116,7 +116,7 @@
 			<h3>The code</h3>
 			<p>Here are the CSS definitions for the floating table and images above as well as the captions that you see beneath them.</p>
 
-<p class="precaption">Listing 1: CSS definition for floating table and its caption</p>
+<p class="precaption">Listing 1: CSS definition for a floating object and its caption</p>
 <pre class="preCodeWithCaption">
 .floatedObject  {
     float: right;
@@ -142,39 +142,19 @@
 
 			<p>Here's how you use these definitions in the HTML. The only tricky thing is that, in the HTML, the table or image comes <em>before</em> the text that you want to pair it with. What is <em>really</em> floating, then, is the text--not the table--in the sense that the text "floats" upward until it's level with the table.</p>
 
-<p class="precaption">Listing 2: Using the floating table styles in HTML</p>
+<p class="precaption">Listing 2: Using the floating object styles in HTML</p>
 <pre class="preCodeWithCaption">
 &lt;div class=&quot;floatedObject&quot;&gt;
-    &lt;table&gt;
-        &lt;tr&gt;
-        &lt;th&gt;Title&lt;/th&gt;
-        &lt;th&gt;Director&lt;/th&gt;
-        &lt;th&gt;Country&lt;/th&gt;
-        &lt;/tr&gt;
-        &lt;tr&gt;
-        &lt;td&gt;Seventh Seal&lt;/td&gt;
-        &lt;td&gt;Ingmar Bergman&lt;/td&gt;
-        &lt;td&gt;Sweden&lt;/td&gt;
-        &lt;/tr&gt;
-        &lt;tr&gt;
-        &lt;td&gt;Seven Samari&lt;/td&gt;
-        &lt;td&gt;Akira Kurosawa&lt;/td&gt;
-        &lt;td&gt;Japan&lt;/td&gt;
-        &lt;/tr&gt;
-        &lt;tr&gt;
-        &lt;td&gt;Seven&lt;/td&gt;
-        &lt;td&gt;Andy Sidaris&lt;/td&gt;
-        &lt;td&gt;United States&lt;/td&gt;
-        &lt;/tr&gt;
-    &lt;/table&gt; 
+    &lt;img src=&#x27;./image/DeathAsConfessor.jpg&#x27; alt=&#x27;missing&#x27; width=&quot;250&quot; height=&quot;185&quot;/&gt;
     &lt;div class=&quot;figcaption&quot;&gt;
-        &lt;p&gt;A floating table&lt;/p&gt;
+        &lt;p&gt;Death and the Knight in &lt;em&gt;The Seventh Seal&lt;/em&gt;&lt;/p&gt;
     &lt;/div&gt;
 &lt;/div&gt;
-&lt;p&gt;Here&#x27;s a paragraph that is paired with what they call a floating table. The table is the same--only the styling is different. I&#x27;m adding another sentence here to make the paragraph a bit longer. And another here. And one more sentence for good measure.&lt;/p&gt;
+
+&lt;p&gt;And this paragraph is paired with a floating image. The styling is the same as for the floating table above. I'm adding another sentence here to make the paragraph a bit longer. And another here. And one more sentence for good measure.&lt;/p&gt;
 </pre>
 
-			<p>If your table has too many columns, or the contents of the columns are too long, you'll want to use a traditional table. An example is the very first table at the top of this page. Here are the CSS style and the HTML that produced that.</p>
+			<p>The above example shows how to float an image. Floating a table will look exactly the same, except you'll replace the one line starting with "img" with the several lines defining your table. If your table has too many columns, or the contents of the columns are too long, you'll want to use a traditional table. An example is the very first table at the top of this page. Here are the CSS style and the HTML that produced that.</p>
 			<p class="precaption">Listing 3: CSS and HTML for a traditional table</p>
 <pre class="preCodeWithCaption">
 CSS:
