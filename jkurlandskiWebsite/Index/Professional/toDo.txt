@@ -1,3 +1,9 @@
+Start working on Web folder.
+- Put ConceptNet under Web category
+- WWW becomes Web
+
+
+Home computer:
 Move to Java 1.7, then
 Move to Java 1.8
 https://www.java.com/en/download/help/mac_10_10.xml
@@ -19,12 +25,6 @@ lrwxr-xr-x  1 root  wheel  76 Nov  4 21:43 /usr/bin/javaws -> /System/Library/Fr
 
 SVNTasks
 - Need example of what a conflict looks like. Maybe say how I resolve conficts.
-
-Misc
-- working on
-
-Put ConceptNet under Web category
-- WWW becomes Web
 
 Change copyright from 2013 to 2015?
 
@@ -99,11 +99,11 @@ Java
 Misc
 ! Main Page
 * subversion-cheat-shee-v1.pdf
-@ svnCheatSheet.html
+@ svnCommands.html
 @ svnTasks.html
-! macNotes.html
-! shellScripts.html
-- Go through Dialog Search Notes.rtf
+@ macNotes.html
+@ commandLine.html
+---
 ? gitCheatSheet.html
 
 

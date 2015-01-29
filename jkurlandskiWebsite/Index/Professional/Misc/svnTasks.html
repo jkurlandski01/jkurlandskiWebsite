@@ -42,10 +42,8 @@
 			<div class="title">
 				<h2>SVN Tasks</h2>
 			</div>
-            <p>JERRY: Red bar at top needs to point to this page's subtopic.</p>
-            <p>JERRY: Fix sidebar</p>
             <p>This page shows you how to link individual SVN commands together in order to accomplish a particular <em>task</em>.</p>
-            <p>The SVN command line can be a little intimidating at first, but I find it becomes less so when you see the commands not in isolation but as part of a series of steps with a single aim in mind. If the individual commands are like words, then this page shows you how to string these words together to form a coherent sentence.</p>
+            <p>The SVN command line can be a little intimidating at first, but it becomes less so when you think of the commands not in isolation but as part of a series of steps with a single aim in mind. If the individual commands are like words, then this page shows you how to string these words together to form a coherent sentence.</p>
             <p>This page will probably make sense even if you're not yet familiar with the SVN commands being used. In either case, for more information on each command you can refer to the internal link on SVN Commands in the sidebar.</p>
             
             <h3>Task</h3>
@@ -68,7 +66,7 @@ M                    toDo.txt
 Status against revision:     77
 </pre>
 
-            <p>Locally, toDo.txt has been modified, and svnExamples.html is new to the file system but not added to the repository. On the repository side, the repository is at Revision 77, but it contains two files from Revision 74 that have not been copied locally.</p>
+            <p>Locally, toDo.txt has been modified, and svnExamples.html is new to the file system but has not been added to the repository. On the repository side, the repository is at Revision 77, but it contains two files from Revision 74 that have not been copied locally.</p>
             
             <p>The status checks reveal no conflicts--perform the update. Then check status again.</p>
             
@@ -112,7 +110,7 @@ Committed revision 78.</pre>
             <h4>&bull; Move one file from a subdirectory to another directory.</h4>
             <h4>&bull; Remove all other files in the original subdirectory from the repository as well as from your working copy.</h4>
             </br>
-            <p>First perform the move and the delete commands, checking status along the way.</p>
+            <p>First perform the move and the delete commands, checking status along the way. In this example, we're moving mySqlCheatSheet.html out of the Databases folder and into the Misc folder. Then we'll remove all the files which remain in the Databases folder.</p>
 
 <pre class="preCode">
 $ svn status
@@ -191,9 +189,8 @@ M              144   Java/unitTesting.html
 
             </br>
             <h3>Task</h3>
-            <h4>&bull; Check the repository status and find there is a conflice.</h4>
-            <h4>&bull; Optionally shoot yourself in the head.</h4>
-<p>JERRY: get example</p>
+            <h4>&bull; Check the repository status and find there is a conflict.</h4>
+<p>JERRY: get example; I use visual diff tools in my IDE</p>
             </br>
             <h3>Task</h3>
             <h4>&bull; Use "svn update" to reset status so that you can perform a commit</h4>
@@ -225,7 +222,7 @@ Committed revision 104.
                 <ul class="style2">
                     <li><a href="commandLine.html">A Few Command Line Tricks</a></li>
                     <li><a href="macNotes.html">Mac Notes</a></li>
-                    <li><a href="svnCheatSheet.html">SVN Command Summary</a></li>
+                    <li><a href="svnCommands.html">SVN Command Summary</a></li>
                     <li><a href="svnTasks.html">SVN Tasks</a></li>
                     <li><a href="subversion-cheat-sheet-v1.pdf">SVN Cheat Sheet by AddedBytes.com</a></li>
                 </ul>
