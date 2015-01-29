@@ -42,10 +42,9 @@
 			<div class="title">
 				<h2>SVN Command Summary</h2>
 			</div>
-            <p>JERRY: conduct a move test; I think it must be followed by add/delete of what you've moved</p>
             
             <p>Here's a quick guide--for my own use as much as anyone else's--to the SVN commands I most often use.</p>
-            <p>A similar resource is the very useful "SVN Cheat Sheet" written up by AddedBytes.com. I've taken the liberty of adding their pdf to the internal links at right, rather than to the external links, because lately the document seems to have disappeared from the Internet.</p>
+            <p>A similar resource is the very useful "SVN Cheat Sheet" written up by AddedBytes.com. I've taken the liberty of adding their pdf to the internal links at right, because lately the document seems to have disappeared from the Internet.</p>
             <p>Note: in the explanations below, the term "item" refers to both files and directories.</p>
             
             <h3>SVN Status</h3>
@@ -100,7 +99,7 @@
                         </div>
                     </div>
                 <li>$ svn status</li>
-                <p>Compare local version to the base revision. Item status is represented by symbols appearing in the left-most column of the output--see the table at right.</p>
+                <p>Compare local version to the base revision--that is, to the repository version that your changes have modified, which may or may not be the same as what is currently in the repository. Item status is represented by symbols appearing in the left-most column of the output--see the table at right.</p>
             </div>
 
             <div class="singleSpacedDescription">
@@ -124,7 +123,7 @@
                         </div>
                     </div>
                 <li>$ svn status -u</li>
-                <p>Compare local version to the repository itself. Tells you what updates to the repository are not in the local version. In addition to the status of local changes given in the left-most column of the output, this command returns the repository status of items in the middle and right columns--see the table at right for these symbols. The command ends by displaying "Status against revision:" plus a revision number; this is the latest revision in the repository.</p>
+                <p>Compare local version to the version of the file in the repository itself. Tells you what updates to the repository are not in the local version. In addition to the status of local changes given in the left-most column of the output, this command returns the repository status of items in the middle and right columns--see the table at right for these symbols. The command ends by displaying "Status against revision:" plus a revision number; this is the latest revision in the repository.</p>
             </div>
 
             <div class="singleSpacedDescription">
@@ -142,7 +141,7 @@
             </div>
             
             <h3>SVN Commit</h3>
-            <p>Commits not only commit your modifications to the repository, but also commit the addition or removal of files to the repository; in other words, an "svn add" and "svn remove" must be followed by a commit.</p>
+            <p>Commits not only commit your modifications to the repository, but also commits the addition or removal of files to the repository. In other words, an "svn add", "svn remove" and "svn move" must all be followed by a commit.</p>
             
             <div class="singleSpacedDescription">
                 <li>$ svn commit -m "your message" &lt;item&gt;</li>
@@ -151,7 +150,7 @@
             
             <div class="singleSpacedDescription">
                 <li>$ svn commit -m "your message"</li>
-                <p>Recursively commit your local changes to the repository. The message becomes part of the change history.</p>
+                <p>Recursively commit your local changes to the repository, that is, commit all changes from the current directory down into the directory tree. The message becomes part of the change history.</p>
             </div>
             
             
@@ -170,18 +169,18 @@
 
             <div class="singleSpacedDescription">
                 <li>$ svn add *</li>
-                <p>Recursively add all new items to the repository. This command skips over versioned directories, i.e. it will not add unversioned files in a versioned directory (or even a non-versioned directory in a versioned directory). Note that this command will also add files/folders in the current directory which are in your ignore list!</p>
+                <p>Recursively add all new items to the repository. This command skips over versioned directories, i.e. it will not add unversioned files in a versioned directory (or even a non-versioned directory in a versioned directory). <b>Warning:</b> note that this command will also add files/folders in the current directory which are in your ignore list!</p>
             </div>
 
             <div class="singleSpacedDescription">
                 <li>$ svn add * --force</li>
-                <p>Recursively add all new items to the repository, whether their directories are versioned or unversioned. Note that this command will also add files/folders in the current directory which are in your ignore list! (See the Unix command below if this is a problem.)</p>
+                <p>Recursively add all new items to the repository, whether their directories are versioned or unversioned. Note that this command will also add files/folders in the current directory which are in your ignore list!</p>
             </div>
 
 
             <h3>SVN Move</h3>
-            <p>This set of commands moves or renames a file or directory. Moving or renaming a file through SVN is better than simply doing it through your operating system, because the file's change history will be maintained. (That is, SVN will copy the history of the old file to the new file's history.)</p>
-            <p>Note that these changes must all be followed by a commit.</p>
+            <p>This set of commands moves or renames a file or directory. Moving or renaming a file through SVN is better than simply doing it through your operating system, because the file's change history will be maintained. (That is, SVN will copy the history of the old file to the new file's history.) A second advantage of doing the move through SVN, rather than via your file system, is that it spares you the bother of having to do an SVN delete on the old file name/path, and and SVN add on the new one: SVN does that for you.</p>
+            <p>Note that SVN move commands must be followed by a commit.</p>
             <p>Also note that SVN may not at first let you do this commit. If you get the message "Item ... is out of date," don't panic. Do an svn update (see above), which will seemingly do nothing, but which in fact will let you perform the commit.</p>
 
             <div class="singleSpacedDescription">
@@ -219,7 +218,7 @@
             
             <div class="singleSpacedDescription">
                 <li>$ export SVN_EDITOR=vim</li>
-                <p>Sets your property editor to vim; useful if the command below fails because you have no property editor. Note that vi and vim are powerful but not user friendly.</p>
+                <p>Sets your property editor to vim; useful if the command below fails because you have no property editor. Note that vi and vim are powerful but not user-friendly.</p>
             </div>
 
             <div class="singleSpacedDescription">
@@ -234,6 +233,11 @@
             <div class="singleSpacedDescription">
                 <li>$ svn list</li>
                 <p>List the items in the current directory which exist in the repository.</p>
+            </div>
+
+            <div class="singleSpacedDescription">
+                <li>$ svn info</li>
+                <p>Gives basic info about this working copy. Most useful when you want the URL of the repository location.</p>
             </div>
 
             <div class="singleSpacedDescription">
