@@ -6,6 +6,19 @@ https://www.java.com/en/download/help/mac_10_10.xml
 Jerrys-MacBook-Pro:jkurlandskiWebsite jkurlandski$ /usr/libexec/java_home -v 1.7
 Unable to find any JVMs matching version "1.7".
 
+/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home/bin/java
+
+Jerrys-MacBook-Pro:~ jkurlandski$ ls -ald /usr/bin/jav*
+lrwxr-xr-x  1 root  wheel  74 Nov  4 21:43 /usr/bin/java -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/java
+lrwxr-xr-x  1 root  wheel  75 Nov  4 21:43 /usr/bin/javac -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/javac
+lrwxr-xr-x  1 root  wheel  77 Nov  4 21:43 /usr/bin/javadoc -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/javadoc
+lrwxr-xr-x  1 root  wheel  75 Nov  4 21:43 /usr/bin/javah -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/javah
+lrwxr-xr-x  1 root  wheel  75 Nov  4 21:43 /usr/bin/javap -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/javap
+lrwxr-xr-x  1 root  wheel  76 Nov  4 21:43 /usr/bin/javaws -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/javaws
+
+
+
+
 CSS floating
 - need eg of html for image
 
