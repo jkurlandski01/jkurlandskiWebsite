@@ -42,11 +42,13 @@
 			<div class="title">
 				<h2>Mac Notes</h2>
 			</div>
-            <p>JERRY: Fix sidebar</p>
-
+<p>JERRY: What if the links die? Shouldn't I keep local copies of the salient points in case this happens? Put these in a separate folder?</p>
             <p>Here I collect miscellaneous notes on the Mac, for programmers and "normal" users alike.</p>            
 
             <h4>Finder &rarr; Command Line</h4>
+                <div class="floatedObject">
+                    <img src='./image/Finder.jpg' alt='missing' width="200" height="185"/>
+                </div>
             <p>If you're in Finder and you want to get to a command prompt with the present working directory set to that directory, here's what you do.</p>
             <p><b>Setup.</b> In System Preferences choose Keyboard and then Shortcuts. On the left side, choose Services. Then on the right-hand-side, under Files and Folders, choose New Terminal at Folder and/or New Terminal Tab at Folder.</p>
             <p>Now your system is ready. In Finder, right-click or control-click on a folder and choose Services > New Terminal at Folder.</p>
@@ -55,13 +57,12 @@
             <p>On the other hand, sometimes you're at the command line, in a particular directory, and you want to open Finder at that directory. This is absurdly simple--type "open .".</p>
 
             <h4>Open Finder to a Path in Your Clipboard</h4>
-            <p>Sometimes you want to open finder to a location whose path is in your clipboard. No problem. In Finder and hit Cmd-Shift-G. Paste the contents of your clipboard into the text field and--voil&agrave;!</p>
+            <p>Sometimes you want to open finder to a location whose path is in your clipboard. No problem. In Finder hit Cmd-Shift-G. Paste the contents of your clipboard into the text field and--voil&agrave;!</p>
             
             <h4>TextMate</h4>
                 <div class="floatedObject">
-                    <img src='./image/TextMate.jpg' alt='missing' width="220" height="185"/>
+                    <img src='./image/TextMate.jpg' alt='missing' width="200" height="185"/>
                 </div>
-
             <p>After years of using Mac's TextEdit for text editing, and resorting to Xcode whenever the former's regex-search abilities were too limited, I finally discovered and installed TextMate. One thing I really like about it is the ability, once you perform the right steps, to open a text file with TextMate at the command line. See this linke:</p>
             <p class = "indentedCitation"><a href="http://blog.macromates.com/2005/textmate-shell-utility-tmmate/">TextMate Shell Utility</a></p>
 			
@@ -69,20 +70,23 @@
 
             <h4>File diff app for Mac</h4>
             <div class="floatedObject">
-                <img src='./image/FileMerge.jpg' alt='missing' width="250" height="185"/>
+                <img src='./image/FileMerge.jpg' alt='missing' width="230" height="185"/>
             </div>
-            <p>Mac's Xcode developer tools come with a pretty darn cool visual diff tool called FileMerge. The only thing is, the application is a little hard to find. Assuming you've already installed Xcode to your Applications folder, you can locate FileMerge with Finder by going to Applications and right-clicking (or Command-Clicking) on Xcode and selecting "Show Package Contents." Then navigate to Contents/Applications. If you think you'll make frequent use of FileMerge, you can now drag it to the Dock at the bottom of your screen.</p>
+            <p>Mac's Xcode developer tools come with a visual diff tool called FileMerge, and it's pretty darn good. The only thing is, the application is a little hard to find. Assuming you've already installed Xcode to your Applications folder, you can locate FileMerge with Finder by going to Applications and right-clicking (or Command-Clicking) on Xcode and selecting "Show Package Contents." Then navigate to Contents/Applications. If you think you'll make frequent use of FileMerge, you can now drag it to the Dock at the bottom of your screen.</p>
 
             <h4>Open file in default app</h4>
             <p>As you know, certain file extensions can be set up to open with certain applications by default. You can take advantage of this at the command line by typing "open &lt;fileName&gt;".</p>
             
             <h4>TextEdit</h4>
+                <div class="floatedObject">
+                    <img src='./image/TextEdit.jpg' alt='missing' width="200" height="185"/>
+                </div>
             <p>The free Mac application TextEdit is very good for a lot of things. Here are a few keystrokes and other tips I find very useful.</p>
-            <div class="singleSpacedDescription">
+            <div class="singleSpacedDescriptionFloat">
                 <li>Option-Tab (or Alt-Tab)</li>
                 <p>Inserts a new bullet.</p>
             </div>
-            <div class="singleSpacedDescription">
+            <div class="singleSpacedDescriptionFloat">
                 <li>Option-v (or Alt-v)</li>
                 <p>Inserts a check-mark at the cursor. (Actually this works generally on the Mac.)</p>
             </div>
