@@ -202,6 +202,20 @@ p = the description
 	//margin-bottom: 20px;
 }
 
+.singleSpacedDescriptionFloat	{
+	//clear: both;
+}
+.singleSpacedDescriptionFloat	li {
+	font-family: monospace;
+	font-weight: bold;
+}
+.singleSpacedDescriptionFloat	p {
+	line-height: 120%;
+	font-style: italic;
+	//margin-bottom: 0px;
+	//margin-bottom: 20px;
+}
+
 
 hr {
 	display: none;
