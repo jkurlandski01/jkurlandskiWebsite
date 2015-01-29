@@ -17,14 +17,6 @@ lrwxr-xr-x  1 root  wheel  75 Nov  4 21:43 /usr/bin/javap -> /System/Library/Fra
 lrwxr-xr-x  1 root  wheel  76 Nov  4 21:43 /usr/bin/javaws -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/javaws
 
 
-
-
-CSS floating
-- need eg of html for image
-
-Mac Notes
-- Go through Mac Notes.rtf
-
 SVNTasks
 - Need example of what a conflict looks like. Maybe say how I resolve conficts.
 
