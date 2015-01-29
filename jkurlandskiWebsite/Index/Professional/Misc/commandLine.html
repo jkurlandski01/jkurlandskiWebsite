@@ -42,7 +42,10 @@
 			<div class="title">
 				<h2>At the Command Line</h2>
 			</div>
-            <p>Here's a page where I can keep a couple of shell command one-liners handy, for the next time I need them.</p>
+            <p>Here's a page where I keep a couple of shell commands, for the next time I need them. The one-liners are first; the longer shell scripts after that.</p>
+			
+			<h3>One-Liners</h3>
+			</br>
             
             <div class="singleSpacedDescription">
                 <li>perl -p -e 's/\t/\n/g' data.txt</li>
@@ -84,6 +87,17 @@
                 <p>Go to the end of the command at the current command line.</p>
             </div>
             
+			</br>
+			<h3>Multi-line Scripts</h3>
+            
+			<p>Rename all the files in a particular directory. Specifically, insert the same prefix into each file's name.</p>
+<pre class="preCodeWithCaption">
+for i in movie_*.txt
+do
+	mv "$i" "`echo $i | sed 's/movie_//'`"
+done
+</pre>
+
 		</div>
 		<div id="sidebar">
 			<div class="internalLinkBox">
