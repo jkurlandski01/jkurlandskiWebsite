@@ -1,6 +1,6 @@
 Start working on Web folder.
 - Put ConceptNet under Web category
-- WWW becomes Web
+- Web becomes Web
 
 
 Home computer:
@@ -78,9 +78,6 @@ CSS_HTML
 @ htmlEntities.html
 @ preAndCode.html
 
-Databases
-! mySqlCheatSheet.html
-
 Guava
 ! Main Page
 @ guavaIntro.html
@@ -107,15 +104,21 @@ Misc
 ? gitCheatSheet.html
 
 
-WWW/Web
+Web
+! Main Page
 @ ConceptNetIntro.html
 @ conceptNetCode.html
-! Httrack
+@ Httrack
+---
 ? JSoup
 ? Rotten Tomatoes
 
 
-??? NLP_AI
+No: Databases
+! mySqlCheatSheet.html
+
+
+No: NLP_AI
 ! Main Page
 [ @ ConceptNetIntro.html ]
 [ @ conceptNetCode.html ]
