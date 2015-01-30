@@ -1,6 +1,6 @@
-Start working on Web folder.
-- Put ConceptNet under Web category
-- Web becomes Web
+Int. CSS HTML
+- Drop "int"
+
 
 
 Home computer:
@@ -27,9 +27,6 @@ SVNTasks
 - Need example of what a conflict looks like. Maybe say how I resolve conficts.
 
 Change copyright from 2013 to 2015?
-
-Int CSS HTML
-- Drop "int"
 
 Guava Intro
 - Look at the txt file which has the info I wrote for Adam
