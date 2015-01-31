@@ -1,6 +1,3 @@
-Int. CSS HTML
-- Drop "int"
-
 Guava Intro
 - Look at the txt file which has the info I wrote for Adam (withAndWithout).
    - Improve GuavaIntro page with it.

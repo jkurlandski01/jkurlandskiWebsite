@@ -98,7 +98,7 @@ public void initializeMapToHashSet() {
         </br>
 
             <h3>Why the Guava Way is the One True Way</h3>
-            <p>This section is only for those of you who need a little more persuading that Guava, really, is the one true way. In order to make the argument crystal clear, I'm going to repeat some of the examples already given above.</p>
+            <p>This section is only for those of you who need a little more persuading that Guava, really, is <b>the one true way</b>. In order to make the argument crystal clear, I'm going to repeat some of the examples already given above.</p>
             <p>Let's first compare ArrayList initialization under Java 1.7 with and without Guava.</p>
             
 <p class="precaption">Listing 5: Initializing an ArrayList under Java 1.7 without and with Guava</p>
@@ -128,20 +128,31 @@ public void initializeMapToHashSet() {
     
     assertEquals(3, java1_8List.size());
 </pre>
+            <p>Creating a HashSet without and with Guava follows the same pattern as ArrayList.</p>
+            
+            <p>Now let's create a Map&lt;String, HashSet&lt;String&gt;>, both without and with.</p>
 
-<p>JERRY: stopped here; perhaps delete example below--to hard to follow</p>
-            <p>Creating a HashSet under Java versions 1.7 and 1.8 follows the same pattern as ArrayList. In fact, only the Map creation is NOT significantly better with Guava, as compared to Java 1.8. Compare the next listing below with Listing 3 above, and you'll see that there's no real difference.</p>
-
-<p class="precaption">Listing 7: Instantiating and Initializing a HashMap under Java 1.8</p>
+<p class="precaption">Listing 7: Instantiating a Map&lt;String, HashSet&lt;String&gt;> without and with Guava</p>
 <pre class="preCodeWithCaption">
-    Map&lt;Integer, String&gt; hashMap1_8 = new HashMap&lt;&gt;();
-    hashMap1_8.put(Integer.valueOf(1), &quot;one&quot;);
-    hashMap1_8.put(Integer.valueOf(2), &quot;two&quot;);
-    
-    assertEquals(2, hashMap1_8.size());
+    // Without Guava
+    Map&lt;String, Set&lt;String&gt;&gt; map1 = new HashMap&lt;String, Set&lt;String&gt;&gt;();
+    Set&lt;String&gt; set1 = new HashSet&lt;String&gt;();
+    set1.add(&quot;London&quot;);
+    set1.add(&quot;Tokyo&quot;);
+    map1.put(&quot;city&quot;, set1);
+    set1 = new HashSet&lt;String&gt;();
+    set1.add(&quot;Great Britain&quot;);
+    set1.add(&quot;Japan&quot;);
+    map1.put(&quot;country&quot;, set1);
+
+    // With Guava
+    Map&lt;String, HashSet&lt;String&gt;&gt; map2 = Maps.newHashMap();
+    map2.put(&quot;city&quot;, Sets.newHashSet(&quot;London&quot;, &quot;Tokyo&quot;));
+    map2.put(&quot;country&quot;, Sets.newHashSet(&quot;Great Britain&quot;, &quot;Japan&quot;));
 </pre>
 
             <h3>Less Common, but Still Useful Implementations</h3>
+            <p>JERRY: when to use a linked list?</p>
             <p>ArrayList tends to suit most of my List needs, but in case your needs are different, Guava lets you create other types of List collections--for example a LinkedList. A linked list lets you insert items into, and remove items from, the middle of your list with less cost. In the example below, I'm imagining you have a linked list of body parts where each list element is a node representing a "part of" the node to its left. (This is probably not the best example of when you would use a LinkedList, but my point here is simply to illustrate <b>how</b> to create one, not <b>when</b> to use one.)</p>
             
  <p class="precaption">Listing 8: Instantiating and Initializing a LinkedList with Guava, ver. 1</p>
@@ -173,7 +184,9 @@ public void initializeLinkedList()  {
 </pre>
             <p>I suppose initializing a LinkedList with an ArrayList which was initialized with a single line of code is an example of having your cake and eating it, too.</p>
 
-            <p>We'll pass over the alternate Sets instantiation methods (since I have never had a need for them), and move directly to TreeMap.</p>
+<p>JERRY: stopped here</p>
+            <p>There are alternate Sets instantiation methods, for instance, </p>
+            <p>Now let's move to TreeMap.</p>
            
  <p class="precaption">Listing 10: Instantiating and Initializing a TreeMap with Guava</p>
 <pre class="preCodeWithCaption">
@@ -187,7 +200,7 @@ public void initializeTreeMap() {
 }
 </pre>
 
-            <p>As we saw with Maps.newHashMap( ), the method does not let you pass in values so that instantiation and initialization can both take place in the same line of code. For this reason, in the case of TreeMap, Guava does not have much more to offer than Java 1.8. </p>
+            <p>JERRY: delete?      As we saw with Maps.newHashMap( ), the method does not let you pass in values so that instantiation and initialization can both take place in the same line of code. For this reason, in the case of TreeMap, Guava does not have much more to offer than Java 1.8. </p>
            
 		</div>
 		<div id="sidebar">
