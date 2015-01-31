@@ -1,6 +1,13 @@
 Int. CSS HTML
 - Drop "int"
 
+Guava Intro
+- Look at the txt file which has the info I wrote for Adam (withAndWithout).
+   - Improve GuavaIntro page with it.
+- Maybe add Immutable collects (https://code.google.com/p/guava-libraries/wiki/ImmutableCollectionsExplained)
+- Format
+- Finish
+
 
 
 Home computer:
@@ -27,12 +34,6 @@ SVNTasks
 - Need example of what a conflict looks like. Maybe say how I resolve conficts.
 
 Change copyright from 2013 to 2015?
-
-Guava Intro
-- Look at the txt file which has the info I wrote for Adam
-- Maybe add Immutable collects (https://code.google.com/p/guava-libraries/wiki/ImmutableCollectionsExplained)
-- Format
-- Finish
 
 Java MapSort
 - start with summary section, like setOperations
