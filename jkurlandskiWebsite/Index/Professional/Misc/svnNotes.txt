@@ -1,4 +1,49 @@
 SVN
+
+~/Documents/workspace_website/jkurlandski$ svn update 
+Updating '.':
+Conflict discovered in '/Users/geraldkurlandski/Documents/workspace_website/jkurlandski/jkurlandskiWebsite/Index/Professional/Java/index.html'.
+Select: (p) postpone, (df) diff-full, (e) edit,
+        (mc) mine-conflict, (tc) theirs-conflict,
+        (s) show all options: p
+C    jkurlandskiWebsite/Index/Professional/Java/index.html
+Conflict discovered in '/Users/geraldkurlandski/Documents/workspace_website/jkurlandski/CodeExamples/src/utils/DialogUtility.java'.
+Select: (p) postpone, (df) diff-full, (e) edit,
+        (mc) mine-conflict, (tc) theirs-conflict,
+        (s) show all options: (p)
+Select: (p) postpone, (df) diff-full, (e) edit,
+        (mc) mine-conflict, (tc) theirs-conflict,
+        (s) show all options: postpone
+Select: (p) postpone, (df) diff-full, (e) edit,
+        (mc) mine-conflict, (tc) theirs-conflict,
+        (s) show all options: p
+C    CodeExamples/src/utils/DialogUtility.java
+Updated to revision 165.
+Summary of conflicts:
+  Text conflicts: 2
+
+
+~/Documents/workspace_website/jkurlandski$ svn status
+C       CodeExamples/src/utils/DialogUtility.java
+?       CodeExamples/src/utils/DialogUtility.java.mine
+?       CodeExamples/src/utils/DialogUtility.java.r155
+?       CodeExamples/src/utils/DialogUtility.java.r165
+C       jkurlandskiWebsite/Index/Professional/Java/index.html
+?       jkurlandskiWebsite/Index/Professional/Java/index.html.mine
+?       jkurlandskiWebsite/Index/Professional/Java/index.html.r161
+?       jkurlandskiWebsite/Index/Professional/Java/index.html.r165
+M       jkurlandskiWebsite/Index/Professional/Misc/svnNotes.txt
+M       jkurlandskiWebsite/Index/Professional/Misc/svnTasks.html
+Summary of conflicts:
+  Text conflicts: 2
+
+
+
+
+
+
+
+
 Ignoring more than one item in a directory.
 export SVN_EDITOR=vim
 svn propedit svn:ignore .
