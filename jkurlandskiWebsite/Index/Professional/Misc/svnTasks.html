@@ -66,9 +66,10 @@ M                    toDo.txt
 Status against revision:     77
 </pre>
 
-            <p>Locally, toDo.txt has been modified, and svnExamples.html is new to the file system but has not been added to the repository. On the repository side, the repository is at Revision 77, but it contains two files from Revision 74 that have not been copied locally.</p>
+            <p>Locally, toDo.txt has been modified, and svnExamples.html is new to the file system but has not been added to the repository. On the repository side, the repository is at Revision 77, but it contains two files--svnCheatSheet.html and svnNotes.html--from Revision 74 that have not been copied locally.</p>
             
-            <p>The status checks reveal no conflicts--perform the update. Then check status again.</p>
+            <p>The status checks reveal no conflicts, meaning that you have not locally changed a file that has been changed and committed by someone else. How can you tell? The "svn status -u" uses the leftmost column to mark local changes, and the second column to mark remote changes. You see that none of the four files is marked in both columns. (See another task below for an example of exactly what this looks like.)</p>
+            <p>Since there are no conflicts, perform the update. Then check status again.</p>
             
 <pre class="preCode">
 $ svn update
@@ -157,42 +158,6 @@ Committed revision 138.
 
             </br>
             <h3>Task</h3>
-            <h4>&bull; Use "svn update" to merge a file that has both been changed locally and been modified by another user.</h4>
-
-            </br>
-            <p>Check the status of your changes and changes in the repository.</p>
-            
-<pre class="preCode">
-$ svn status -u
-M              144   index.html
-M       *      140   Java/unitTesting.html
-        *            Java/enum.html
-Status against revision:    144
-</pre>
-            <p>The status check returns three files. One, index.html, has been changed locally. The repository has a more recent version of another, enum.html, than what is local. And unitTesting.html has been changed locally, and had its repository version updated by some other user.</p>
-            <p>Let's update just unitTesting.html.</p>
-
-<pre class="preCode">
-$ svn update Java/unitTesting.html
-Updating 'Java/unitTesting.html':
-G    Java/unitTesting.html
-Updated to revision 144.
-
-$ svn status -u
-M              144   Index/Personal/index.html
-M              144   Java/unitTesting.html
-        *            Index/Professional/Java/enum.html
-</pre>
-
-            <p>Now your local version of unitTesting.html has all the changes that the other user committed, plus your local changes: SVN was smart enough to see that the two sets of changes took place in different parts of the file.</p>
-            <p>The next two steps are to do an "svn update" to pick up the changes to enum.html; then do a commit. Since you've already seen the examples of these above, we don't need to show you how to do them now.</p>
-
-            </br>
-            <h3>Task</h3>
-            <h4>&bull; Check the repository status and find there is a conflict.</h4>
-<p>JERRY: get example; I use visual diff tools in my IDE</p>
-            </br>
-            <h3>Task</h3>
             <h4>&bull; Use "svn update" to reset status so that you can perform a commit</h4>
             <p>Sometimes SVN doesn't let you do a commit when it seems as though it should. I've noticed this can happen after I move or delete a file or a directory. What often fixes the problem is an SVN update that, apparently, does nothing.</p>
 
@@ -213,6 +178,98 @@ Transmitting file data ........
 Committed revision 104.
 </pre>
             
+            </br>
+            <h3>Task</h3>
+            <h4>&bull; Use "svn update" to merge a file that has both been changed locally and been modified by another user.</h4>
+
+            </br>
+            <p>(This task shows you how to let SVN merge files that have been changed both locally and by another user, though, in fact, I don't recommend doing so. To me, any chance that SVN won't do the merge correctly is not a risk worth taking. Read on to find out what I think is a better way.)</p>
+            <p>Check the status of both your changes and recent changes to the repository.</p>
+            
+<pre class="preCode">
+$ svn status -u
+M              144   index.html
+M       *      140   Java/unitTesting.html
+        *            Java/enum.html
+Status against revision:    144
+</pre>
+            <p>The status check returns information on three files. One file, index.html, has been changed locally--the "M" in the leftmost column tells you this. The second file, enum.html has been changed by someone else and this change has been committed to the repository--as indicated by the asterisk in the second column. And the third file, unitTesting.html has been changed locally, and had its repository version updated by some other user--the output of the status check indicates this by leaving items in both the first and the second columns.</p>
+            <p>Let's update just unitTesting.html.</p>
+
+<pre class="preCode">
+$ svn update Java/unitTesting.html
+Updating 'Java/unitTesting.html':
+G    Java/unitTesting.html
+Updated to revision 144.
+
+$ svn status -u
+M              144   Index/Personal/index.html
+M              144   Java/unitTesting.html
+        *            Index/Professional/Java/enum.html
+</pre>
+
+            <p>Now your local version of unitTesting.html has all the changes that the other user committed, plus your local changes: SVN was smart enough to see that the two sets of changes took place in different parts of the file. SVN indicates that the merge has taken place by putting a "G" in the leftmost column.</p>
+            <p>Or at least that's how it works in theory. You should not be so trustworthy of this, though--you really should carefully review the result of this automatic merge. And I have to say that, in my experience, you should never let this automatic merge take place, since any possibility of your code being lost, or changed for the worse, is to me unacceptable. Instead, when you see that a file you've changed has been modified and committed by someone else, you should perform the merge yourself.</p>
+            <p>And sometimes SVN realizes it can't do the merge automatically. The case, called a conflict, is described in the next task below.</p>
+            <p>To sum up, then: anytime you do an "svn status -u," and the first and second columns tell you that both you and someone else have modified a file, I suggest you NOT do an update on that file. Instead, perform the merge manually yourself. How? There are ways to do this from the command line, but that's one task I have never done from the command line. Whenever I find myself in this situation, I always go to my IDE, whether it's Eclipse or IntelliJ. Because for the sometimes-confusing and always-risky task of merging, you can't beat the visual diff tools that an IDE can offer.</p>
+            <p>In the scenario described at the start of this task, the next two steps are to do an "svn update" to pick up the changes to enum.html; then do a commit. Since you've already seen the examples of these above, we don't need to show you how to do them now.</p>
+
+            </br>
+            <h3>Task</h3>
+            <h4>&bull; Perform an update on a file that has been changed both locally and by someone else.</h4>
+            <h4>&bull; See what happens when SVN marks the file as a conflict.</h4>
+            </br>
+            
+            <p>Do an "svn status -u," and see that a file needs to be merged.</p>
+
+<pre class="preCode">
+$ svn status -u
+M       *      155   utils/DialogUtility.java
+</pre>
+
+            <p>Perform an update, and see that--<em>zut alors!</em>--SVN can't do an automatic merge. Hit "p" to postpone the merge and deal with it later.</p>
+
+<pre class="preCode">
+Conflict discovered in 'utils/DialogUtility.java'.
+Select: (p) postpone, (df) diff-full, (e) edit,
+        (mc) mine-conflict, (tc) theirs-conflict,
+        (s) show all options: p
+C    utils/DialogUtility.java
+Updated to revision 165.
+Summary of conflicts:
+Text conflicts: 1
+</pre>
+
+            <p>Do an "svn status" to see what the situation is, and discover new files that you never created.</p>
+            <p>Wish that you'd taken my advice (see above), and performed the merge manually.</p>
+
+<pre class="preCode">
+$ svn status
+C       utils/DialogUtility.java
+?       utils/DialogUtility.java.mine
+?       utils/DialogUtility.java.r155
+?       utils/DialogUtility.java.r165
+Summary of conflicts:
+  Text conflicts: 1
+</pre>
+
+            <p>Note the "C," which of course stands for "confilct." SVN has left you with three new files, and a new version of DialogUtility.java. DialogUtility.java.r155 is the version of the file that you last obtained from the repository; this is the version that you did your work in. DialogUtility.java.r165 is the latest version in the repository. DialogUtility.java.mine is not "mine"--it's yours. It's the version of the file you had before you did the ill-fated update.... So if DialogUtility.java.mine has all your recent modifications to the file, then what is in DialogUtility.java?</p>
+            <p>The answer is, nothing pretty. And nothing that will compile. Here's the kind of thing you'll see there.</p>
+
+<pre class="preCode">
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; .mine
+=======
+    public static List&lt;String&gt; COMMON_VERBS = ImmutableList.of(
+    &quot;ask&quot;, &quot;be&quot;, &quot;call&quot;, &quot;come&quot;, &quot;do&quot;, &quot;find&quot;, &quot;get&quot;, &quot;give&quot;, &quot;go&quot;, &quot;have&quot;, &quot;know&quot;, &quot;let&quot;, &quot;look&quot;, &quot;make&quot;, &quot;mean&quot;, &quot;need&quot;, &quot;put&quot;, &quot;say&quot;, &quot;take&quot;, &quot;tell&quot;, &quot;think&quot;, &quot;want&quot;);
+    
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; .r165
+</pre>
+
+            <p>What this is telling you is that your latest version of DialogUtilty.java doesn't have a static field called COMMON_VERBS, and that someone else changed this same field in some way, maybe by adding a new element to the list.</p>
+            <p>You have a couple of options. You could decide which of the three new files you want to keep, and rename it to "DialogUtility.java." In this case you would delete the two remaining files. But probably what you want is to keep both your changes and the changes of the last person who committed the file to the repository. This means going through DialogUtility.java, searching for "=====", and for each diff figuring out which version you want. (Once finished, you'll need to use the "svn resolve" command.)</p>
+            <p>Does this seem a pain? Well, you can't say I didn't tell you so. (See above.) Despite the fact that I'm repeating myself, the morale of this story is:</p>
+            <p><strong>Anytime you do an "svn status -u," and the first and second columns tell you that both you and someone else have modified a file, I suggest you NOT do an update on that file. Instead, perform the merge manually yourself. How? That's up to you, but for myself, I always go to my IDE, because for the sometimes-confusing and always-risky task of merging, you can't beat the visual diff tools that an IDE can offer.</strong></p>
+
 		</div>
 		<div id="sidebar">
 			<div class="internalLinkBox">

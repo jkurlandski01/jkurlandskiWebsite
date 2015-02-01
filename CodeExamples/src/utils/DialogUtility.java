@@ -22,7 +22,7 @@ public class DialogUtility {
     private Log LOG = LogFactory.getLog(DialogUtility.class);
 
     public static List<String> COMMON_VERBS_1_TO_22 = ImmutableList.of(
-    "toDelete", "ask", "be", "call", "come", "do", "find", "get", "give", "go", "have", "know", "let", "look", "make", "mean", "need", "put", "say", "take", "tell", "think", "want");
+    "ask", "be", "call", "come", "do", "find", "get", "give", "go", "have", "know", "let", "look", "make", "mean", "need", "put", "say", "take", "tell", "think", "want");
     
     /**
      * A list of common words which cause problems at different points in the process.
