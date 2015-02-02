@@ -50,6 +50,14 @@ public class CollectionsInstantiatingTest {
 	}
 
 	@Test
+	public void initializet()	{
+		Set<String> diveForms1 = Sets.newHashSet("dive", "dives", "dived", "dived");
+		Set<String> diveForms2 = Sets.newTreeSet(diveForms1);
+		
+		assertEquals(3, diveForms2.size());
+	}
+
+	@Test
 	public void initializeArrayList()	{
 		List<String> diveForms = Lists.newArrayList("dive", "dives", "dived", "dived");
 		

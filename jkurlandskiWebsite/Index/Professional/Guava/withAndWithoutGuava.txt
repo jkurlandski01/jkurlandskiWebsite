@@ -1,13 +1,4 @@
-List<String>
-
-Without Guava:
-        List<String> list1 = new ArrayList<String>();
-        list1.add("Cat");
-        list1.add("Dog");
-
-With Guava:
-        List<String> list2 = Lists.newArrayList("Cat", "Dog");
-
+Make sure the below are somewhere in my Guava stuff.
 
 Map<String, HashSet<String>>
 
