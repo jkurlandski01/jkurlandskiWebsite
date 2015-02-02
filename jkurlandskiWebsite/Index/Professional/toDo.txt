@@ -1,10 +1,5 @@
 Guava Intro
-- Look at the txt file which has the info I wrote for Adam (withAndWithout).
-   - Improve GuavaIntro page with it.
-- Maybe add Immutable collects (https://code.google.com/p/guava-libraries/wiki/ImmutableCollectionsExplained)
-- Format
-- Finish
-
+- when to use a linked list?
 
 
 Home computer:
@@ -26,9 +21,6 @@ lrwxr-xr-x  1 root  wheel  75 Nov  4 21:43 /usr/bin/javah -> /System/Library/Fra
 lrwxr-xr-x  1 root  wheel  75 Nov  4 21:43 /usr/bin/javap -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/javap
 lrwxr-xr-x  1 root  wheel  76 Nov  4 21:43 /usr/bin/javaws -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/javaws
 
-
-SVNTasks
-- Need example of what a conflict looks like. Maybe say how I resolve conficts.
 
 Change copyright from 2013 to 2015?
 
