@@ -39,8 +39,9 @@
 	<div id="page" class="container">
 		<div id="content">
             <div class="title">
-                <h2>JUnit Cheat Sheet</h2>
+                <h2>JUnit Tricks</h2>
             </div>
+            <p>JERRY: short intro; rethink title</p>
             
             <div class="singleSpacedDescription">
                 <li>Use @BeforeClass for an "expensive" method that should be run once before all tests in the class.</li>
@@ -48,12 +49,10 @@
             
 <p class="precaption">Listing </p>
 <pre class="preCodeWithCaption">
-@Test
-public void myTest()    {
     @BeforeClass
     public static void doSomethingOnce()  {
 	...
-}
+    }
 </pre>
 
 			<p>The access of a method marked with @Before must be public; if it isn't you'll get a runtime exception with a message like the following:
@@ -63,50 +62,94 @@ public void myTest()    {
 java.lang.Exception: Method doSomethingOnce() should be public
 </pre>
 
-            <h4>Getting the location of the current unit test.</h4>
-            <p>Often a unit test requires some sort of resource such as an external file. In acquiring the resource, you need the path, but you don't want to hard-code the path, since the path on one developer's machine won't necessarily be identical to the path on another developer's machine. The solution is to locate the resource with reference to the project location on the current machine. This may differ between IDE's--Eclipse and IntelliJ get different locations--int hat case, you probably need an environment variable. Also note that if multiple tests are using the same paths, you could make them private static final data members of the test class.</p>
+            <h4>StringReader</h4>
+            <p>Often you want to unit test some functionality that relies on a BufferedReader. BufferedReaders are easy to open with a file path, or a File object, but for unit testing sometimes you easily vary or control the contents of the file being read. In other words, you want to work with a string instead of with a file. But how to you test a method that is expecting a file? Enter StringReader. Instead of using BufferedReader, use string reader.</p>
+			<p>JERRY: verify all the claims above; need to more clearly illustrate the problem and the solution; test the code; alternatively, just leave one line of code and a very short explanation, and do the detailed explanation on another page, another time
 
 <p class="precaption">Listing </p>
 <pre class="preCodeWithCaption">
-@Test
-public void myTest()    {
+    BufferedReader reader3 = new BufferedReader(new StringReader("hi"));
+</pre>
+
+            <h4>Getting the location of the current unit test.</h4>
+            <p>Often a unit test requires some sort of resource such as an external file. In acquiring the resource, you need the path, but you don't want to hard-code the path, since the path on one developer's machine won't necessarily be identical to the path on another developer's machine. The solution is to locate the resource with reference to the project location on the current machine. This may differ between IDE's--Eclipse and IntelliJ get different locations--in that case, you probably need an environment variable. Also note that if multiple tests are using the same paths, you could make them private static final data members of the test class.</p>
+
+<p class="precaption">Listing </p>
+<pre class="preCodeWithCaption">
     private static final String PARENT_PATH = (new File("")).getAbsoluteFile().getParentFile().getAbsolutePath();
     private static final String KB_PATH = (new File(PARENT_PATH, "KBs")).getAbsolutePath();
     
     File resourcePath = new File(KB_PATH);
 </pre>
 
-<p>JERRY: replace entities</p>
+        <p>If you don't like behavior which is dependent on the IDE, you can use getResourceAsStream( ) or getResource( ). The next listing shows how to get a BufferedReader for a unit test resource. Ninety percent of the verbosity involves printing out an understandable error message if the path to the resource is bad. If that doesn't matter to you (though I think it should), much of this code can be eliminated.</p>
 
 <p class="precaption">Listing </p>
 <pre class="preCodeWithCaption">
-@Test(expected=IllegalArgumentException.class)
-public void testNull() {
-    SomeClass.read(null);
-}
+public class UnitTestBase {
+    private static final String CONFIG_FILE_PATH = "resources/config.xml";
+    private static final Class CLASS = UnitTestBase.class;
 
+    // Write out a meaningful error message if the config file path is bad.
+    private static BufferedReader xmlReader;
+    static  {
+        try {
+            xmlReader = new BufferedReader(new InputStreamReader(CLASS.getResourceAsStream(CONFIG_FILE_PATH)));
+        }
+        catch (Exception ex)  {
+            try {
+                URI uri = CLASS.getResource(".").toURI();
+                String msg = "Could not find " + CONFIG_FILE_PATH + " in " + uri.toString();
+                throw new IllegalStateException((msg));
+            } catch (URISyntaxException e) {
+                e.printStackTrace();
+            }
+
+        }
+    }
+    
+    // ...
+</pre>
+
+
+            <h4>Writing a Unit Test that Expects an Exception</h4>
+            <p></p>
+
+<p class="precaption">Listing </p>
+<pre class="preCodeWithCaption">
+// Here's a method that will throw an exception if its parameter is null.
 public static void read(String input)   {
     if(input == null || input.isEmpty())    {
         throw new IllegalArgumentException("Parameter input is null or empty.");
     }
     
     // ...
+}
 
+// Here's a unit test that verifies the behavior of the method.
+@Test(expected=IllegalArgumentException.class)
+public void testNull() {
+    SomeClass.read(null);
 }
 </pre>
 
-<p>JERRY: Add other way. Clean up entities. Change names of things--and test.</p>
+
+<p>JERRY: Add other way. Give general background. Change names of things--and test.</p>
 <p class="precaption">Listing </p>
 <pre class="preCodeWithCaption">
-    @Rule
-    public ExpectedException expectedEx = ExpectedException.none();
+@Rule
+public ExpectedException expectedEx = ExpectedException.none();
     
-    @Test
-    public void shouldThrowRuntimeExceptionWhenEmployeeIDisNull() {
-    expectedEx.expect(RuntimeException.class);
-    expectedEx.expectMessage("Employee ID is null");
-    // do something that should throw the exception...
-    }</pre>
+@Test
+public void testNull() {
+    expectedEx.expect(IllegalArgumentException.class);
+    expectedEx.expectMessage("Parameter input is null or empty.");
+    
+    SomeClass.read(null);
+}
+</pre>
+
+        <p>It is often debated about which is "better," using @Test(expected=) or the @Rule annotation approach. I would say that it depends. @Test(expected=) is short and sweet. The @Rule annotation approach is more verbose, but it lets you specify a particular exception message, which can be useful, for instance, if a parameter is passed in and tested for a number of properties, and a failure to meet any of those throws an IllegalArgumentException with a different message. Also, the @Rule annotation approach lets you specify exactly what line should throw the expected exception. Both of these aspects of the more verbose approach can sometimes be useful.</p>
 
 		</div>
 		<div id="sidebar">
