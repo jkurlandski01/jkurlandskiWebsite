@@ -2,27 +2,7 @@ Guava Intro
 - when to use a linked list?
 
 
-Home computer:
-Move to Java 1.7, then
-Move to Java 1.8
-https://www.java.com/en/download/help/mac_10_10.xml
-- to find where java is /usr/libexec/java_home -v 1.6
-- /usr/libexec/java_home -v 1.7 points to 1.6
-Jerrys-MacBook-Pro:jkurlandskiWebsite jkurlandski$ /usr/libexec/java_home -v 1.7
-Unable to find any JVMs matching version "1.7".
-
-/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home/bin/java
-
-Jerrys-MacBook-Pro:~ jkurlandski$ ls -ald /usr/bin/jav*
-lrwxr-xr-x  1 root  wheel  74 Nov  4 21:43 /usr/bin/java -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/java
-lrwxr-xr-x  1 root  wheel  75 Nov  4 21:43 /usr/bin/javac -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/javac
-lrwxr-xr-x  1 root  wheel  77 Nov  4 21:43 /usr/bin/javadoc -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/javadoc
-lrwxr-xr-x  1 root  wheel  75 Nov  4 21:43 /usr/bin/javah -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/javah
-lrwxr-xr-x  1 root  wheel  75 Nov  4 21:43 /usr/bin/javap -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/javap
-lrwxr-xr-x  1 root  wheel  76 Nov  4 21:43 /usr/bin/javaws -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/javaws
-
-
-Change copyright from 2013 to 2015?
+Change copyright from 2013 to 2015 ?
 
 Java MapSort
 - start with summary section, like setOperations
