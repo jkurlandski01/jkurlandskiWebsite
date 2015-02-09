@@ -1,46 +1,7 @@
 Make sure the below are somewhere in my Guava stuff.
 
-Not sure I need the below. On the Multimap page, I'm discussing Multimap--not trying to sell Guava vs. non-Guava.
-Multimap (instead of Map<X, List<Y>) or Map<X, Set<Y>))
 
-Initialize
-Without Guava
-        Set<String> beSet1 = new HashSet<String>();
-        beSet1.add("am");
-        beSet1.add("are");
-        beSet1.add("is");
-        Set<String> askSet1 = new HashSet<String>();
-        askSet1.add("ask");
-        askSet1.add("asks");
-
-        Map<String, Set<String>> mm1 = new HashMap<String, Set<String>>();
-        mm1.put("be", beSet1);
-        mm1.put("ask", askSet1);
-
-With Guava
-        Multimap<String, String> mm2 = HashMultimap.create();
-        mm2.putAll("be", Sets.newHashSet("am", "are", "is"));
-        mm2.putAll("ask", Sets.newHashSet("ask", "asks"));
-
-Iterate through all the key/value entries.
-Without Guava (and without for-each loop):
-        Iterator<String> it1 = mm1.keySet().iterator();
-        while (it1.hasNext()) {
-            String key = it1.next();
-
-            Iterator<String> it2 = mm1.get(key).iterator();
-            while (it1.hasNext()) {
-                String value = it1.next();
-            }
-        }
-
-With Guava (and for-each loop)
-        for(Map.Entry<String, String> mapPair : mm2.entries())  {
-            String key = mapPair.getKey();
-            String value = mapPair.getValue();
-        }
-
-Get total size of map.
+Get total size of Multimap.
 Without Guava (and without for-each loop):
         int size = 0;
         it1 = mm1.keySet().iterator();
