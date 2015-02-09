@@ -1,4 +1,9 @@
+Make sure withAndWithoutGuava notes have been incorporated.
+- Need to insert mm.size() with and without into new snippet.
+
 Change copyright from 2013 to 2015 ?
+
+Call the summary sections "Quick View" or "Snapshot"?
 
 Java MapSort
 - start with summary section, like setOperations
