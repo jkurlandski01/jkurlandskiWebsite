@@ -1,7 +1,3 @@
-Guava Intro
-- when to use a linked list?
-
-
 Change copyright from 2013 to 2015 ?
 
 Java MapSort

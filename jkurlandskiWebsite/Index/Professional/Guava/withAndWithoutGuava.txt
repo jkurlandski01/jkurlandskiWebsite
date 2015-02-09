@@ -1,24 +1,6 @@
 Make sure the below are somewhere in my Guava stuff.
 
-Map<String, HashSet<String>>
-
-Without Guava:
-        Map<String, Set<String>> map1 = new HashMap<String, Set<String>>();
-        Set<String> set1 = new HashSet<String>();
-        set1.add("Driving");
-        set1.add("Process");
-        map1.put("?D", set1);
-        set1 = new HashSet<String>();
-        set1.add("Man");
-        set1.add("Human");
-        map1.put("?H", set1);
-
-With Guava:
-        Map<String, HashSet<String>> map2 = Maps.newHashMap();
-        map2.put("?D", Sets.newHashSet("Driving", "Process"));
-        map2.put("?H", Sets.newHashSet("Man", "Human"));
-
-
+Not sure I need the below. On the Multimap page, I'm discussing Multimap--not trying to sell Guava vs. non-Guava.
 Multimap (instead of Map<X, List<Y>) or Map<X, Set<Y>))
 
 Initialize

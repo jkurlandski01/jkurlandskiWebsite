@@ -88,21 +88,25 @@ public class CollectionsInstantiatingTest {
 	
 	@Test
 	public void initializeLinkedList()	{
-		List<Part> partList = Lists.newLinkedList();
-		partList.add(new Part("head"));
-		partList.add(new Part("nose"));
-		partList.add(new Part("nostril"));
+		List<String> partList = Lists.newLinkedList();
+		partList.add("body");
+		partList.add("head");
+		partList.add("nostril");
 		
-		assertEquals(3, partList.size());
+		partList.add(2, "nose");
+		
+		List<String> expected = Lists.newArrayList("body", "head", "nose", "nostril");		
+		assertEquals(expected, partList);
 	}
 
 	@Test
 	public void initializeLinkedListWithCollection()	{
-		List<Part> tempList = Lists.newArrayList(new Part("head"), new Part("nose"), new Part("nostril"));
-		List<Part> partList = Lists.newLinkedList(tempList);
+		List<String> tempList = Lists.newArrayList("body", "head", "nose", "nostril");
+		List<String> partList = Lists.newLinkedList(tempList);
 		
-		assertEquals(3, partList.size());
+		assertEquals(4, partList.size());
 	}
+
 
 
 }

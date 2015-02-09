@@ -41,7 +41,6 @@
 			<div class="title">
 				<h2>Guava Intro</h2>
 			</div>
-            <p>JERRY: when to use a linked list?</p>
 			<p>Google's Guava tools offer Java developers a wide range of very useful Collection utilities. One of the easiest ways to introduce yourself to these tools is to start with the interface methods that let you quickly create and initialize your garden variety Java collections. Here I'll give a quick introduction to this aspect of Guava. See the sidebar for other ways in which Guava will make your Java programming easier.</p>
 			
 			<h3>Summary: Creating and Initializing Basic Lists, Sets and Maps</h3>
@@ -83,7 +82,7 @@ public void initializeHashMap() {
 }
 </pre>
 
-            <p>So although, as we've seen, map initialization cannot be done in a single line, you can leverage single-line Set (and List) creation to make map initialization very easy nonetheless. Check out the listing below.</p>
+            <p>Although map initialization cannot be done in a single line, you can leverage single-line Set (and List) creation to make map initialization very easy nonetheless. Check out the listing below.</p>
 
 <p class="precaption">Listing 4: Instantiating and Initializing a Map&lt;X, HashSet&lt;Y&gt;&gt; with Guava</p>
 <pre class="preCodeWithCaption">
@@ -96,6 +95,7 @@ public void initializeMapToHashSet() {
     assertEquals(2, map2.size());
 }
 </pre>
+            <p><em>Nota bene</em>, though: in the case of Map&lt;X, HashSet&lt;Y&gt;&gt;, you're probably better off with a Multimap. See the sidebar.</p>
         </br>
 
             <h3>Why the Guava Way is the One True Way</h3>
@@ -152,25 +152,26 @@ public void initializeMapToHashSet() {
     map2.put(&quot;country&quot;, Sets.newHashSet(&quot;Great Britain&quot;, &quot;Japan&quot;));
 </pre>
         </br>
+            <p>Even better than the convenience of using Guava to initialize a Map&lt;String, HashSet&lt;String&gt;> is Guava's Multimap interface. See the link in the sidebar, and maybe you'll never again use Map&lt;String, HashSet&lt;String&gt;> or Map&lt;String, ArrayList&lt;String&gt;>.</p>
+
 
             <h3>Less Common, but Still Useful Implementations</h3>
-            <p><b>Lists.</b> ArrayList tends to suit most of my List needs, but in case your needs are different, Guava lets you create other types of List implementations--for example a LinkedList. A linked list lets you insert items into, and remove items from, the middle of your list with less cost. In the example below, I'm imagining you have a linked list of body parts where each list element is a node representing a "part of" the node which precedes it. So, for example, a nose is part of a head, and a nostril is part of a nose. (This is probably not the best example of when you would use a LinkedList, but my point here is simply to illustrate <b>how</b> to create one, not <b>when</b> to use one.)</p>
+            <p><b>Lists.</b> ArrayList tends to suit most of my List needs, but in case your needs are different, Guava lets you create other types of List implementations--for example a LinkedList. A linked list lets you insert items into, and remove items from, the middle of your list with less cost than an ArrayList. In the somewhat silly example below, I'm imagining you have a linked list of body parts.</p>
             
  <p class="precaption">Listing 8: Instantiating and Initializing a LinkedList with Guava, ver. 1</p>
 <pre class="preCodeWithCaption">
 public class Part   {
-    String name;
-    public Part(String part)    { name = part; }
-}
-
 @Test
 public void initializeLinkedList()  {
-    List&lt;Part&gt; partList = Lists.newLinkedList();
-    partList.add(new Part(&quot;head&quot;));
-    partList.add(new Part(&quot;nose&quot;));
-    partList.add(new Part(&quot;nostril&quot;));
+    List&lt;String&gt; partList = Lists.newLinkedList();
+    partList.add(&quot;body&quot;);
+    partList.add(&quot;head&quot;);
+    partList.add(&quot;nostril&quot;);
     
-    assertEquals(3, partList.size());
+    partList.add(2, &quot;nose&quot;);
+    
+    List&lt;String&gt; expected = Lists.newArrayList(&quot;body&quot;, &quot;head&quot;, &quot;nose&quot;, &quot;nostril&quot;);      
+    assertEquals(expected, partList);
 }
 </pre>
 
@@ -178,10 +179,10 @@ public void initializeLinkedList()  {
            
  <p class="precaption">Listing 9: Instantiating and Initializing a LinkedList with Guava, ver. 2</p>
 <pre class="preCodeWithCaption">
-    List&lt;Part&gt; tempList = Lists.newArrayList(new Part(&quot;head&quot;), new Part(&quot;nose&quot;), new Part(&quot;nostril&quot;));
-    List&lt;Part&gt; partList = Lists.newLinkedList(tempList);
+    List&lt;String&gt; tempList = Lists.newArrayList(&quot;body&quot;, &quot;head&quot;, &quot;nose&quot;, &quot;nostril&quot;);
+    List&lt;String&gt; partList = Lists.newLinkedList(tempList);
     
-    assertEquals(3, partList.size());
+    assertEquals(4, partList.size());
 </pre>
             <p>I suppose initializing a LinkedList with an ArrayList which was initialized with a single line of code is an example of having your cake and eating it, too.</p>
 

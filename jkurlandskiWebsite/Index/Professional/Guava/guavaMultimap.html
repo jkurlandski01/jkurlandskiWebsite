@@ -41,9 +41,9 @@
 			<div class="title">
 				<h2>Guava's Multimap</h2>
 			</div>
-            <p>JERRY: Need links at right.</p>
+            <p>JERRY: Need external links at right.</p>
             <p>JERRY: Work on summary. Call all summaries "Quick View"?</p>
-            <p>Guava's Multimap interface and its implementations give Java developers a new tool. It replaces Map&lt;X, List&lt;Y&gt;&gt;, which is a little awkward and sometimes risky. In case you don't know what I'm talking about, see the separate section below on the deficiencies of Map&lt;X, List&lt;Y&gt;&gt;.</p>
+            <p>Guava's Multimap interface and its implementations give Java developers a new tool. It replaces Map&lt;X, List&lt;Y&gt;&gt; (as well as Map&lt;X, Set&lt;Y&gt;&gt;), which can be a little awkward and sometimes risky. In case you don't know what I'm talking about, see the separate section below on the deficiencies of Map&lt;X, List&lt;Y&gt;&gt;.</p>
             
             <h3>Multimap Summary</h3>
             <p>For those in a hurry, here's a quick view on how to use a multimap.</p>
@@ -52,8 +52,11 @@
 <pre class="preCodeWithCaption">
 // Initializing
 Multimap&lt;String, String&gt; mm = HashMultimap.create();
+// Initialize in a fell swoop.
 Set&lt;String&gt; beList = Sets.newHashSet(&quot;am&quot;, &quot;are&quot;, &quot;is&quot;, &quot;was&quot;, &quot;were&quot;);
 mm.putAll(&quot;be&quot;, beList);
+
+// Add items individually.
 mm.put("ask", "ask");
 mm.put("ask", "asks");
 mm.put("ask", "asked");
@@ -68,11 +71,12 @@ for(Entry&lt;String, String&gt; mapPair : mm.entries())  {
     String value = mapPair.getValue();
 }
 </pre>
+            <p>That's the summary. The next sections explore Multimaps in the detail they deserve.</p>
 
             </br>
 
             <h3>Multimap Functionality</h3>
-            <p>For the sake of illustration, suppose we want to associate a number of simple forms of an English verb with their infinitive form. Before the Multimap, you would probably use a Map&lt;String, Set&lt;String&gt;&gt;, where the key was the infinitive form, and the set associated with each key consisted of all the infinitive's forms. </p>
+            <p>For the sake of illustration, suppose we want to associate a number of simple forms of an English verb with their infinitive form. Before the Multimap, you would probably use a Map&lt;String, Set&lt;String&gt;&gt;, where the key was the infinitive form, and the set associated with each key consisted of all the various forms for that verb. </p>
             <p>With Guava, you would use a Multimap&lt;String, String&gt; instead. The lines below show you how to create the multimap and load it with the forms for two verbs, <em>ask</em> and <em>be</em>.</p>
 
 <p class="precaption">Listing 2: Creating and populating a Multimap</p>
@@ -99,6 +103,7 @@ assertEquals(0, mm.get(&quot;do&quot;).size());
 </pre>
 
             <p>Listing 3 uses unit tests to show how to get the Multimap values for a given key. First we verify that calling <code>get(&quot;be&quot;)</code> on the multimap we created in the previous listing returns the expected forms of the verb "be." The second assertEquals( ) statement sees how many entries the multimap contains for the key "do." In this case, there are none. Here we see a significant advantage that multimap has over Map&lt;X, List&lt;Y&gt;&gt;, where <code>get(&quot;do&quot;)</code> would return null, and calling size( ) on that would give you nothing but a lousy NullPointerException.</p>
+            <p>Let's move on now to iteration.</p>
 
 <p class="precaption">Listing 4: Iterating through all Multimap entries</p>
 <pre class="preCodeWithCaption">
