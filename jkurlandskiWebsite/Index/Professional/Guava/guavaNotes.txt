@@ -42,3 +42,21 @@ See:
 Lists.asList(int ...)
 Longs.asList(long ...)
 Guava Explained / Primitives
+
+
+BiMap (mapping keys to values and values back to keys)
+
+Without Guava
+	Map<String, Integer> nameToId = Maps.newHashMap();
+	Map<Integer, String> idToName = Maps.newHashMap();
+
+	nameToId.put("Bob", 42);
+	idToName.put(42, "Bob");
+	// what happens if "Bob" or 42 are already present?
+	// weird bugs can arise if we forget to keep these in sync...
+
+With Guava
+        BiMap<String, Integer> userId = HashBiMap.create();
+        userId.put("Bob", 42);
+
+        String userForId = userId.inverse().get(42);
