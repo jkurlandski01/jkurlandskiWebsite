@@ -2,6 +2,8 @@ Java MapSort
 - split into map sorting and converting pages
 	- created new collectionConverting page; working on this
 	- need to test the code
+	- how hard is list to set?
+	- list to array?
 - start with summary section, like setOperations
 - Reference Guava intro page?
 
