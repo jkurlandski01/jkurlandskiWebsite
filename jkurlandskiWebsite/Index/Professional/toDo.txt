@@ -1,26 +1,21 @@
-Make sure withAndWithoutGuava notes have been incorporated.
-- Need to insert mm.size() with and without into new snippet.
+Java MapSort
+- split into map sorting and converting pages
+	- created new collectionConverting page; working on this
+	- need to test the code
+- start with summary section, like setOperations
+- Reference Guava intro page?
 
 Change copyright from 2013 to 2015 ?
 
 Call the summary sections "Quick View" or "Snapshot"?
 
-Java MapSort
-- start with summary section, like setOperations
-- split into map sorting and converting pages
-- Reference Guava intro page?
+Guava internal links are messed up.
+- I thought I'd fixed these!
 
 Multiset
 - reference online, internal, and on the page
 - Multisets union returns a SetView? See Java Interviews book.
 - proofread
-
-multimap
-- See my local copy of GuavaCollectionTypes
-- Multimap.get(key) always returns a non-null, possibly empty collection.
-- old way section: NPE if you forget to check for null
-- Summary section: instantation eg., get eg. iterate e.g.
-- Proofread
 
 hashtable for all data types
 - specify the sort when you call sort; stores everything as a string

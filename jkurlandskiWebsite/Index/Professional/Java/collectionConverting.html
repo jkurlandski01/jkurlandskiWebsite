@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Converting</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="../../default.css" rel="stylesheet" type="text/css" media="all" />
+<link href="../../fonts.css" rel="stylesheet" type="text/css" media="all" />
+<!--[if IE 6]>
+<link href="default_ie6.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+</head>
+<body>
+<div id="wrapper">
+	<div id="header-wrapper">
+		<div id="menu" class="container">
+			<ul>
+				<li><a href="../index.html">Home</a></li>
+				<li><a href="../Guava/index.html">Guava</a></li>
+				<li class="current_page_item"><a href="../Java/index.html">Java</a></li>
+				<li><a href="../NLP_AI/index.html">NLP / AIL</a></li>
+				<li><a href="../CSS_HTML/index.html">CSS / HTML</a></li>
+				<li><a href="../Web/index.html">Web</a></li>
+			</ul>
+		</div>
+		<!-- end #menu -->
+		<div id="header" class="container">
+			<div id="logo">
+				<h1>Close to the</h1>
+				<h1>Machine</h1>
+				<p></p>
+				<p>Jerry Kurlandski</p>
+			</div>
+			<div id="header-image1"> <a href="#" class="image"><img src="../../images/bookshelfPanorama.jpg" alt="" /></a> </div>
+			<div id="header-image2"> <a href="#" class="image"><img src="../../images/bookshelfPanorama.jpg" alt="" /></a> </div>
+		</div>
+	</div>
+	<div id="page" class="container">
+		<div id="content">
+			<div class="title">
+                <div class="noTextTransform">
+                    <h2>Converting Collections: Arrays to Lists, Sets to Arrays and Lists</h2>
+				</div>
+			</div>
+            <p>JERRY: improve title</p>
+            <p>JERRY: start with summary ?</p>
+			<p>The code on this page is pretty basic, but sometimes I forget exactly how to convert one type of Java collection to another. I wrote this page to serve as a quick reference, mostly for myself.</p>
+			
+			<h3>Converting a Set to a List</h3>
+			<p>Converting a Java Set to a List is so easy it's hardly worth discussing. But I thought I might as well be complete.</p>
+
+<p class="precaption">Listing 1: Converting a Java Set to a List</p>
+<pre class="preCodeWithCaption">
+    // With Guava.
+    Set&lt;String&gt; set1 = Sets.newHashSet("London", "Tokyo", "Warsaw"));
+    List&lt;String&gt; list1 = Lists.newArrayList(set2);
+    
+    
+    // In case Guava isn't available.
+    Set&lt;String&gt; set2 = new HashSet&lt;String&gt;();
+    set2.add(&quot;London&quot;);
+    set2.add(&quot;Tokyo&quot;);
+        
+    List&lt;String&gt; list2 = new ArrayList&lt;String&gt;(set2);
+</pre>
+        </br>
+        
+            <h3>Converting a Set to an array</h3>
+            <p>Converting a Java Set to an array has a tricky syntax that I can never remember. Note that my example here assumes you are using Guava.</p>
+
+<p class="precaption">Listing 2: Converting a Java Set to an array</p>
+<pre class="preCodeWithCaption">
+    Set&lt;String&gt; set1 = Sets.newHashSet("London", "Tokyo", "Warsaw"));
+    String[] keysArray = set1.toArray((new String[set1.size()]));
+</pre>
+
+            <h3>Converting an array to a List</h3>
+            <p></p>
+
+<p class="precaption">Listing 3: Converting an array to a Java List</p>
+<pre class="preCodeWithCaption">
+    String[] keysArray = {"Prague", "Minsk", "Barcelona"};
+
+    List<String> keysList = Arrays.asList(keysArray);
+</pre>
+
+            <p></p>
+		</div>
+
+		<div id="sidebar">
+			<div class="internalLinkBox">
+				<div class="title">
+                    <h2>Internal Java Links</h2>
+				</div>
+				<ul class="style2">
+					<li><a href="mapSort.html">Sorting on a Map key</a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="sidebar">
+			<div class="internalLinkBox">
+				<div class="title">
+					<h2>External Guava Links</h2>
+				</div>
+				<ul class="style2">
+					<li><a href="http://tomjefferys.blogspot.com/2011/09/multimaps-google-guava.html">How to use Multimaps</a></li>
+					<li><a href="http://docs.guava-libraries.googlecode.com/git/javadoc/com/google/common/collect/HashBasedTable.html">HashBasedTable Javadoc</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="copyright" class="container">
+	<p>Copyright (c) 2013 jkurlandski.com. All rights reserved. | Original design by <a href="http://www.freecsstemplates.org/" rel="nofollow">FreeCSSTemplates.org</a>.</p>
+</div>
+</body>
+</html>

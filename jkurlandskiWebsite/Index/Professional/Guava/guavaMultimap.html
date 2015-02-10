@@ -42,8 +42,7 @@
 				<h2>Guava's Multimap</h2>
 			</div>
             <p>JERRY: Need external links at right.</p>
-            <p>JERRY: Skip the section explaining the risk? If so, edit the par below.</p>
-            <p>Guava's Multimap interface and its implementations give Java developers a new tool. It replaces Map&lt;X, List&lt;Y&gt;&gt; (as well as Map&lt;X, Set&lt;Y&gt;&gt;), which can be a little awkward and sometimes risky. In case you don't know what I'm talking about, see the separate section below on the deficiencies of Map&lt;X, List&lt;Y&gt;&gt;.</p>
+            <p>Guava's Multimap interface and its implementations give Java developers a new tool. It replaces Map&lt;X, List&lt;Y&gt;&gt; (as well as Map&lt;X, Set&lt;Y&gt;&gt;), both of which can be a little awkward and a little verbose.</p>
             
             <h3>Multimap Summary</h3>
             <p>For those in a hurry, here's a quick view on how to use a multimap.</p>
@@ -72,11 +71,11 @@ for(Entry&lt;String, String&gt; mapPair : mm.entries())  {
 }
 </pre>
             <p>That's the summary. The next sections explore Multimaps in the detail they deserve.</p>
-
             </br>
 
             <h3>Multimap Functionality</h3>
-            <p>For the sake of illustration, suppose we want to associate a number of simple forms of an English verb with their infinitive form. Before the Multimap, you would probably use a Map&lt;String, Set&lt;String&gt;&gt;, where the key was the infinitive form, and the set associated with each key consisted of all the various forms for that verb. </p>
+            <p>JERRY: section too long and hard to follow: use h4 or at least bold titles at start of each par</p>
+            <p><b>Creating and populating.</b> For the sake of illustration, suppose we want to associate a number of simple forms of an English verb with their infinitive form. Before the Multimap, you would probably use a Map&lt;String, Set&lt;String&gt;&gt;, where the key was the infinitive form, and the set associated with each key consisted of all the various forms for that verb. </p>
             <p>With Guava, you would use a Multimap&lt;String, String&gt; instead. The lines below show you how to create the multimap and load it with the forms for two verbs, <em>ask</em> and <em>be</em>.</p>
 
 <p class="precaption">Listing 2: Creating and populating a Multimap</p>
@@ -100,8 +99,8 @@ mm.putAll(&quot;have&quot;, Sets.newHashSet(&quot;have&quot;, &quot;has&quot;, &
 </pre>
         
             <p>Listing 2 shows that you can load each list element individually, with put( ), or collectively, with putAll( ). Significantly, in neither case do you have to worry about whether the key's list has already been instantiated, or whether it already contains some verb forms that you don't want to lose.</p>
-            <p>Note the commented-out line at the end, which shows how to instantiate a Multimap that allows repeated values that behave like an ArrayList, rather than values that have HashSet-like behavior.</p>
-            <p>Now suppose you've populated your map and you want to do something useful with it.</p>
+            <p><b>Using Multimap with arrays instead of sets.</b> Note the commented-out line at the end, which shows how to instantiate a Multimap that allows repeated values that behave like an ArrayList, rather than values that have HashSet-like behavior.</p>
+            <p><b>Multimap get( ).</b> Now suppose you've populated your map and you want to do something useful with it.</p>
 
 <p class="precaption">Listing 3: Getting particular Multimap values</p>
 <pre class="preCodeWithCaption">
@@ -112,7 +111,7 @@ assertEquals(0, mm.get(&quot;do&quot;).size());
 </pre>
 
             <p>Listing 3 uses unit tests to show how to get the Multimap values for a given key. First we verify that calling <code>get(&quot;be&quot;)</code> on the multimap we created in the previous listing returns the expected forms of the verb "be." The second assertEquals( ) statement sees how many entries the multimap contains for the key "do." In this case, there are none. Here we see a significant advantage that multimap has over Map&lt;X, List&lt;Y&gt;&gt;, where <code>get(&quot;do&quot;)</code> would return null, and calling size( ) on that would give you nothing but a lousy NullPointerException.</p>
-            <p>Let's move on now to iteration.</p>
+            <p><b>Iterating.</b> Let's move on now to iteration.</p>
 
 <p class="precaption">Listing 4: Iterating through multimap entries</p>
 <pre class="preCodeWithCaption">
@@ -136,7 +135,7 @@ key = be; value = were
 
         <p>The above code snippet shows that, to iterate through a multimap, you don't have to retrieve every key separately, and then iterate through all the elements of its list. The entries( ) method does this work for you.</p>
         
-        <p>The next listing shows the multimap's toString( ) override, which allows you to see all the keys and their values without doing any iteration yourself.</p>
+        <p><b>The useful toString( ) override.</b> The next listing shows the multimap's toString( ) override, which allows you to see all the keys and their values without doing any iteration yourself.</p>
 
 <p class="precaption">Listing 5: Multimap's toString( )</p>
 <pre class="preCodeWithCaption">
@@ -148,12 +147,14 @@ Write using toString():
 {ask=[ask, asks, asked], be=[am, are, is, was, were]}
 </pre>
 
-        <p>Perhaps you're completely indifferent about the keys, and all you want is the elements of all the lists. The next example gets all the elements with a method call to values( ); then, just for the fun of it, the code snippet goes on to sort those entries and write out the result.</p>
+        <p><b>Getting the just the values, without the keys.</b> Perhaps you're completely indifferent about the keys, and all you want is the elements of all the lists. The next example gets all the elements with a method call to values( ); then, just for the fun of it, the code snippet goes on to sort those entries and write out the result.</p>
             
 <p class="precaption">Listing 6: Getting just the entries with Multimap.values( )</p>
 <pre class="preCodeWithCaption">
 // Getting all entries when you don't care about the key.
 Collection&lt;String&gt; valuesAsCollection = mm.values();
+
+// Sort the values.
 List&lt;String&gt; valuesAsList = Lists.newArrayList(valuesAsCollection);
 Collections.sort(valuesAsList);
 System.out.println(valuesAsList);
@@ -162,15 +163,23 @@ Output:
 [am, are, ask, asked, asks, is, was, were]
 </pre>
 
-<p>JERRY: working on the below</p>
-
-        <p>Suppose you want a count of all the entries in your multimap. The snippet below shows you, first, how to do this with Multimap; then it shows you how you would have to do this if you used the traditional Map&lt;X, Set&lt;Y&gt;&gt;.</p>
-<p class="precaption">Listing 7: </p>
+        <p><b>Getting the count of all entries.</b> Suppose you want a count of all the entries in your multimap. The snippet below shows you, first, how to do this with Multimap; then it shows you how you would have to do this if you used the traditional Map&lt;X, Set&lt;Y&gt;&gt;.</p>
+<p class="precaption">Listing 7: Getting a count of all the entries in the Multimap--with and without Guava</p>
 <pre class="preCodeWithCaption">
+    // With Guava
+    size = mm2.size();
+    assertEquals(5, size);
+    
+    // Without Guava, using a Map&lt;X, Set&lt;Y&gt;&gt;, requires a loop
+    int size = 0;
+    for(String key : mm1.keySet()) {
+        size = size + mm1.get(key).size();
+    }
+    assertEquals(5, size);
 </pre>
 
 
-        <p>Of course, the Multimap interface offers you the same methods you expect from an ordinary map. The next listing demonstrates these with unit test assertions.</p>
+        <p><b>Other map-like methods.</b> In addition to size( ), which is shown above, the Multimap interface offers you other methods you expect from an ordinary map. The next listing demonstrates some of these.</p>
             
 <p class="precaption">Listing 8: Other useful Multimap methods</p>
 <pre class="preCodeWithCaption">
@@ -190,7 +199,7 @@ Set&lt;String&gt; keys = mm.keySet();
 assertEquals(2, keys.size());
 </pre>
 
-        <p>Finally, the keys( ) method returns another Guava interface called <em>Multiset</em>. The next listing gives you just a taste of what a Multiset can do for you. See the link at right for more.</p>
+        <p><b>Multimap to Multiset.</b> Finally, the keys( ) method returns another Guava interface called <em>Multiset</em>. The next listing gives you just a taste of what a Multiset can do for you. See the link at right for more.</p>
             
 <p class="precaption">Listing 9: Getting a Multiset from Multimap.keys( )</p>
 <pre class="preCodeWithCaption">
@@ -201,74 +210,6 @@ assertEquals(5, multiset.count(&quot;be&quot;));
 assertEquals(3, multiset.count(&quot;ask&quot;));
 </pre>
         <br/>
-
-        <h3>The old way, using Map&lt;X, List&lt;Y&gt;&gt;</h3>
-        <p>Just in case you're not personally familiar with the problems associated with a Map&lt;X, List&lt;Y&gt;&gt;, let me lay a few on you now.</p>
-        <p>The deficiencies of the old way, I think, are most apparent when you haven't loaded the map with its contents yourself, and, consequently, you aren't sure what it contains. The next listing shows the invocation of a method called getHashMap() that returns a Map&lt;String, List&lt;String&gt;&gt;.</p>
-
-<p class="precaption">Listing 10: Adding new values to a Map&lt;String, List&lt;String&gt;&gt; (WARNING: Do not use this code)</p>
-<pre class="preCodeWithCaption">
-    private Map&lt;String, List&lt;String&gt;&gt; getHashMap() {
-        Map&lt;String, List&lt;String&gt;&gt; map = Maps.newHashMap();
-        List&lt;String&gt; diveForms = Lists.newArrayList(&quot;dive&quot;, &quot;dives&quot;, &quot;dived&quot;);
-        map.put(&quot;dive&quot;, diveForms);
-        return map;
-    }
-
-    @Test
-    public void testOldWay() {
-        // Get the map.
-        Map&lt;String, List&lt;String&gt;&gt; map = getHashMap();
-        
-        // Carefully add a new value to the list.
-        List&lt;String&gt; diveForms = map.get(&quot;dive&quot;);
-        diveForms.add(&quot;dove&quot;);
-        // Put not necessary, since we modified a reference. But invoking put( ) will not cause anything to break.
-        // map.put(&quot;dive&quot;, diveForms);
-        
-        // Test passes.
-        assertEquals(4, map.get(&quot;dive&quot;).size());
-        
-        // Oops! Overwriting the old list because you forgot to update the list instead of the map.
-        List&lt;String&gt; moreDiveForms = Lists.newArrayList(&quot;diveth&quot;);
-        map.put(&quot;dive&quot;, moreDiveForms);
-        
-        // Test fails.
-        assertEquals(5, map.get(&quot;dive&quot;).size());        
-    }
-    
-
-Test error output:
-java.lang.AssertionError: expected:&lt;5&gt; but was:&lt;1&gt;
-</pre>
-        <p>Let's quickly trace the method testOldWay( ). First it gets the Map&lt;String, List&lt;String&gt;&gt; object. Then it calls get() with the key "dive"; then it adds a new old-fashioned version of the verb into the list. At that point we're done, but a nubie may make the innocuous mistake of putting the modified list into the map. </p>
-        <p>All is well so far, but testOldWay( ) goes on to show how a user of the map could unintentionally overwrite existing data. This could happen if he or she is either forgetful or completely unaware that the map may have already been populated for this verb. The user could do this by creating a new list with the new value (in this case the verb form "diveth"), and then putting that into the list. The unit test output catches the problem.</p>
-        <p>Achieving the same end with a Multimap is not only slightly less verbose, but also less likely to incur any risks. See below.</p>
-<p class="precaption">Listing 11: Adding new values to a Multimap&lt;String, String&gt;</p>
-<pre class="preCodeWithCaption">
-    private Multimap&lt;String, String&gt; getMultimap() {
-        Multimap&lt;String, String&gt; mm = ArrayListMultimap.create();
-        List&lt;String&gt; diveForms = Lists.newArrayList(&quot;dive&quot;, &quot;dives&quot;, &quot;dived&quot;);
-        mm.putAll(&quot;dive&quot;, diveForms);
-        return mm;
-    }
-
-    @Test
-    public void testNewWay() {
-        Multimap&lt;String, String&gt; mm = getMultimap();
-        mm.put(&quot;dive&quot;, &quot;dove&quot;);
-        
-        // Test passes.
-        assertEquals(4, mm.get(&quot;dive&quot;).size());
-        
-        // Add a new value to the list.
-        mm.put(&quot;dive&quot;, &quot;diveth&quot;);
-        
-        // Test passes.
-        assertEquals(5, mm.get(&quot;dive&quot;).size());
-    }
-</pre>
-
 
 		</div>
 		
