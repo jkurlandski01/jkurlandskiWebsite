@@ -40,29 +40,21 @@
 		<div id="content">
 			<div class="title">
                 <div class="noTextTransform">
-                    <h2>Converting Collections: Arrays to Lists, Sets to Arrays and Lists</h2>
+                    <h2>Converting Java Collections</h2>
 				</div>
 			</div>
-            <p>JERRY: improve title</p>
             <p>JERRY: start with summary ?</p>
-			<p>The code on this page is pretty basic, but sometimes I forget exactly how to convert one type of Java collection to another. I wrote this page to serve as a quick reference, mostly for myself.</p>
+			<p>The code on this page is pretty basic, but sometimes I forget exactly how to convert one type of collection to another--especially when it comes to arrays. I wrote this page to serve as a quick reference, mostly for myself.</p>
 			
-			<h3>Converting a Set to a List</h3>
-			<p>Converting a Java Set to a List is so easy it's hardly worth discussing. But I thought I might as well be complete.</p>
+            <h3>Converting an array to a List</h3>
+            <p>Converting an array to a Java List uses the handy Arrays.asList( ) method. In this as well as the rest of my examples, I use a unit test to illustrate and verify the functionality.</p>
 
-<p class="precaption">Listing 1: Converting a Java Set to a List</p>
+<p class="precaption">Listing 1: Converting an array to a Java List</p>
 <pre class="preCodeWithCaption">
-    // With Guava.
-    Set&lt;String&gt; set1 = Sets.newHashSet("London", "Tokyo", "Warsaw"));
-    List&lt;String&gt; list1 = Lists.newArrayList(set2);
+    String[] cityArray = {&quot;Prague&quot;, &quot;Minsk&quot;, &quot;Barcelona&quot;};
+    List&lt;String&gt; cityList = Arrays.asList(cityArray);
     
-    
-    // In case Guava isn't available.
-    Set&lt;String&gt; set2 = new HashSet&lt;String&gt;();
-    set2.add(&quot;London&quot;);
-    set2.add(&quot;Tokyo&quot;);
-        
-    List&lt;String&gt; list2 = new ArrayList&lt;String&gt;(set2);
+    assertEquals(3, cityList.size());
 </pre>
         </br>
         
@@ -74,19 +66,30 @@
     Set&lt;String&gt; set1 = Sets.newHashSet("London", "Tokyo", "Warsaw"));
     String[] keysArray = set1.toArray((new String[set1.size()]));
 </pre>
+    </br>
+    
+            <h3>Converting a Set to a List and a List to a Set</h3>
+            <p>Converting a Java Set to a List and vice versa are so easy they're hardly worth mentioning. But I thought I might as well be complete.</p>
 
-            <h3>Converting an array to a List</h3>
-            <p></p>
-
-<p class="precaption">Listing 3: Converting an array to a Java List</p>
+<p class="precaption">Listing JERRY: Converting a Java Set to a List</p>
 <pre class="preCodeWithCaption">
-    String[] keysArray = {"Prague", "Minsk", "Barcelona"};
-
-    List<String> keysList = Arrays.asList(keysArray);
+    // With Guava.
+    Set&lt;String&gt; set1 = Sets.newHashSet(&quot;London&quot;, &quot;Tokyo&quot;, &quot;Warsaw&quot;);
+    List&lt;String&gt; list1 = Lists.newArrayList(set1);
+    assertEquals(3, list1.size());
+    
+    
+    // In case Guava isn&#x27;t available. Under Java 1.8.
+    Set&lt;String&gt; set2 = new HashSet&lt;&gt;();
+    set2.add(&quot;London&quot;);
+    set2.add(&quot;Tokyo&quot;);
+    set2.add(&quot;Warsaw&quot;);
+        
+    List&lt;String&gt; list2 = new ArrayList&lt;&gt;(set2);
+    assertEquals(3, list2.size());
 </pre>
-
-            <p></p>
-		</div>
+        </br>
+        		</div>
 
 		<div id="sidebar">
 			<div class="internalLinkBox">
