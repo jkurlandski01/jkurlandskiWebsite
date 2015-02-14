@@ -11,8 +11,8 @@ Change copyright from 2013 to 2015 ?
 
 Call the summary sections "Quick View" or "Snapshot"?
 
-Guava internal links are messed up.
-- I thought I'd fixed these!
+Java internal links are messed up.
+- Also look at Tab Titles
 
 Multiset
 - reference online, internal, and on the page
@@ -25,7 +25,7 @@ hashtable for all data types
 browser issues
 - In Safari with the left sidebar open, there is no left hand margin
 
-svnCheatSheet
+Misc
 - needs a main index.html page
 
 Professional pages
