@@ -40,25 +40,16 @@
 		<div id="content">
 			<div class="title">
                 <div class="noTextTransform">
-                    <h2>Sorting: Arrays, Collections and TreeMap</h2>
-                    <h2>Converting: Arrays to Lists, Sets to Arrays and Lists</h2>
+                    <h2>Sorting Java Collections</h2>
 				</div>
 			</div>
-            <p>JERRY: improve title</p>
             <p>JERRY: start with summary</p>
-			<p>There are a couple of ways to sort on the keys of a map. You could: (1) use Java's TreeMap, or (2) get the key set and sort that. If your requirements are as simple as that, this page will help you out. If your requirements are more complicated, you might want to explore Guava's Table interface and its various implementations. I have a few pages dedicated to making use of Guave to implement a table data structure that can be sorted on any of its various columns. See the links at right.</p>
-            <p>This page is probably intended for the fairly novice programmer, since the Java code here is not complicated. But sometimes I forget exactly how to use the sorting techniques outlined here. Or sometimes I forget exactly how to convert a Set to an array. I wrote this page to serve as a quick reference for myself and others. Here is a pretty comprehensive list of the things this page covers:</p>
-            <ul class="style3">
-                <li>Using TreeMap</li>
-                <li>Sorting with Collections.sort() and Arrays.sort()</li>
-                <li>Converting a Set to arrays and Lists</li>
-                <li>Why developers often prefer a List to an array</li>
-                <li>An introduction to initializing with Guava</li>
-                <li>A few tips to get you started on sorting on custom classes</li>
-            </ul>
-			
-			<h3>Using TreeMap</h3>
-			<p>The listing below shows you how to use a TreeMap, which is a specialized Java map that returns the keys in sorted order.</p>
+            <p>JERRY: guava link at right</p>
+            <p>This page provides a quick How-To on sorting various Java collections--Maps, Sets and Lists.</p>
+
+			<h3>Using TreeMap for Sorted Keys</h3>
+            <p>There are a couple of ways to sort on the keys of a map. You could: (1) use Java's TreeMap, or (2) get the key set and sort that. If your requirements are as simple as that, this page will help you out. If your requirements are more complicated, you might want to explore Guava's Table interface and its various implementations. I have a few pages dedicated to making use of Guave to implement a table data structure that can be sorted on any of its various columns. See the links at right.</p>
+			<p>The listing below shows you how to use a TreeMap, which is a specialized Java Map that returns the keys in sorted order.</p>
 
 <p class="precaption">Listing 1: Using TreeMap to get the keys of a map in sorted order</p>
 <pre class="preCodeWithCaption">
@@ -69,26 +60,40 @@ map1.put(&quot;three&quot;, new Double(3.0));
         
 // Convert to list for convenience.
 List&lt;String&gt; keyList = new ArrayList&lt;String&gt;(map1.keySet());
-</pre>
-			<p>JERRY: Is "simply iterate" correct? But it's a set!
-            <p>The call to keySet() returns the keys of the map sorted alphabetically. I convert it to a List of strings because, often, that's the form you need it in. If you don't need a list of strings, simply iterate through the keys returned by keySet().</p>
-            <p>The above code initializes the map and the list in the traditional Java 1.6 way. If you have Guava you can do both more simply, thus:</p>
 
-<p class="precaption">Listing 2: Using TreeMap, initializing with Guava</p>
+assertEquals("one", keyList.get(0));
+assertEquals("three", keyList.get(1));
+assertEquals("two", keyList.get(2));
+</pre>
+            <p>The call to keySet() returns the keys of the map sorted alphabetically. I convert it to a List of strings because an ordered set is really a list. (Of course, if you don't like converting your sorted key set to a list, you could always iterate through it with an Iterator object.) Then I use JUnit asserts to verify that the keys are truly sorted alphabetically.</p>
+            <p>Heads up on using a TreeMap or any other sorted collection with an enum. I've been caught off-guard by the "sorted" order; hopefully this warning will prevent the same from happening to you. Listing 2 illustrates the problem.</p>
+
+<p class="precaption">Listing 2: Using TreeMap with an Enum</p>
 <pre class="preCodeWithCaption">
-TreeMap&lt;String, Double&gt; map1 = Maps.newTreeMap();
-map1.put(&quot;one&quot;, new Double(1.0));
-map1.put(&quot;two&quot;, new Double(2.0));
-map1.put(&quot;three&quot;, new Double(3.0));
-        
-// Convert to list for convenience.
-List&lt;String&gt; keyList = Lists.newArrayList(map1.keySet());
+public enum CAR_MODEL  {OUTBACK, HIGHLANDER, MUSTANG, THUNDERBIRD}
+
+@Test
+public void testSortEnum()  {
+    TreeMap&lt;CAR_MODEL, Float&gt; map1 = new TreeMap&lt;CAR_MODEL, Float&gt;();
+    map1.put(CAR_MODEL.HIGHLANDER, new Float(33000));
+    map1.put(CAR_MODEL.MUSTANG, new Float(28000));
+    map1.put(CAR_MODEL.OUTBACK, new Float(26000));
+    map1.put(CAR_MODEL.THUNDERBIRD, new Float(31000));
+    
+    List&lt;CAR_MODEL&gt; keyList = new ArrayList&lt;CAR_MODEL&gt;(map1.keySet());
+    assertEquals(CAR_MODEL.HIGHLANDER, keyList.get(1));
+    assertEquals(CAR_MODEL.MUSTANG, keyList.get(2));
+    assertEquals(CAR_MODEL.OUTBACK, keyList.get(0));
+    assertEquals(CAR_MODEL.THUNDERBIRD, keyList.get(3));
+}
 </pre>
 
-            <p>One more note on Guava. Notice that it took us four lines to initialize and load the map. Wouldn't it be nice if we could do it more succinctly? As far as I've been able to figure out, you can't with a TreeMap. But with other data structures the Guava libraries offer initializers that let you instantiate and initialize in a single line of code--you'll one example below with a HashMap in Listing 3, and you'll see other examples of this on other pages of this website.</p>
+            <p>The asserts in the test method all pass. Can you see how the enum values are being sorted?</p>
+            <p>A gold star if you noticed that the sort order is not alphabetical, but rather the order in which the enum values are declared. It seems obvious in the cold light of day, I know, but if you don't keep this little lesson in mind,  the way in which an Enum is sorted may come back to bite you one day. It has me.</p>
             <p>Finally, a caution about runtime. Don't be cavalier in your use of TreeMap. Its various operations--get, put, containsKey and remove--are O(log n), which is very good in the sorting sphere but not so good for hashmaps in general. In other words, if you don't need to sort, use the HashMap implementation, whose get and put operations are O(1).</p>
             
             <h3>Using Arrays.sort() and Collections.sort()</h3>
+            <p>JERRY: don't refer to maps; simply start with a set or list and show both ways of sorting; probably skip the whole array vs. list toString() bit</p>
             <p>If you know in advance that an essential part of a map's usage will be sorting on its keys, you can decide to use a TreeMap. Other times, you don't know until its too late, or you're using someone else's map, and this map is a HashMap or some other implementation that does not offer sorted keys. In these cases you have to do the sorting yourself.</p>
             <p>The listings below show you how to sort the keys of a map in two ways--with either Arrays.sort() or Collections.sort(). Note that I'm dispensing with the normal Java initialization of the map, and using Guava instead.</p>
 
@@ -137,6 +142,17 @@ Printing the sorted key list.
 
             <p></p>
             <p><strong>When your key is a custom class.</strong> If your key is a custom value class instead of String, Double, Integer and so on, don't forget to override the necessary methods for safe sorting and the insertion of your class objects into containers. For example, instead of sorting on movie title, maybe you have a Movie class that wraps the movie data into a single object. There are three methods you'll need to override: in the Object class, you'll want to override equals() and hashCode(); and you'll want to declare your class as implementing Comparable and override compareTo(). Chances are you should consider overriding Object.toString() as well. All of this is covered beautifully in Chapter 3 of Joshua Bloch's <em>Effective Java</em>.</p>
+            
+            <p>JERRY: leftovers below: delete?</p>
+                        <p>This page is probably intended for the fairly novice programmer, since the Java code here is not complicated. But sometimes I forget exactly how to use the sorting techniques outlined here. Or sometimes I forget exactly how to convert a Set to an array. I wrote this page to serve as a quick reference for myself and others. Here is a pretty comprehensive list of the things this page covers:</p>
+            <ul class="style3">
+                <li>Using TreeMap</li>
+                <li>Sorting with Collections.sort() and Arrays.sort()</li>
+                <li>Converting a Set to arrays and Lists</li>
+                <li>Why developers often prefer a List to an array</li>
+                <li>An introduction to initializing with Guava</li>
+                <li>A few tips to get you started on sorting on custom classes</li>
+            </ul>
 		</div>
 		<div id="sidebar">
 			<div class="internalLinkBox">
