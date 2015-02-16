@@ -17,6 +17,23 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
 public class SortHashKeysTest {
+	
+	public enum CAR_MODEL  {OUTBACK, HIGHLANDER, MUSTANG, THUNDERBIRD}
+	
+	@Test
+	public void testSortEnum()	{
+		TreeMap<CAR_MODEL, Float> map1 = new TreeMap<CAR_MODEL, Float>();
+		map1.put(CAR_MODEL.HIGHLANDER, new Float(33000));
+		map1.put(CAR_MODEL.MUSTANG, new Float(28000));
+		map1.put(CAR_MODEL.OUTBACK, new Float(26000));
+		map1.put(CAR_MODEL.THUNDERBIRD, new Float(21000));
+		
+		List<CAR_MODEL> keyList = new ArrayList<CAR_MODEL>(map1.keySet());
+		assertEquals(CAR_MODEL.HIGHLANDER, keyList.get(1));
+		assertEquals(CAR_MODEL.MUSTANG, keyList.get(2));
+		assertEquals(CAR_MODEL.OUTBACK, keyList.get(0));
+		assertEquals(CAR_MODEL.THUNDERBIRD, keyList.get(3));
+	}
 
 	@Test
 	public void testTreeMap() {
@@ -29,6 +46,10 @@ public class SortHashKeysTest {
 		// Convert to list for convenience.
 		//List<String> keyList = Lists.newArrayList(map1.keySet());
 		List<String> keyList = new ArrayList<String>(map1.keySet());
+		
+		assertEquals("one", keyList.get(0));
+		assertEquals("three", keyList.get(1));
+		assertEquals("two", keyList.get(2));
 		
 		Double actual = map1.get(keyList.get(0));
 		assertEquals(1.0, actual, 0.0);

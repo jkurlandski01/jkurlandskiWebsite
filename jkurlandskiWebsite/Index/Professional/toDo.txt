@@ -9,6 +9,9 @@ Java MapSort
 
 Change copyright from 2013 to 2015 ?
 
+Move contact, etc. to professional page.
+- Keep at home page, probably. Remove from Geneology.
+
 Call the summary sections "Quick View" or "Snapshot"?
 
 Java internal links are messed up.
