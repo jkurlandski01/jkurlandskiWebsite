@@ -1,4 +1,4 @@
-package guavaTests;
+package javaTests;
 
 import static org.junit.Assert.*;
 

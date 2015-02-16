@@ -45,7 +45,32 @@
 			</div>
             <p>JERRY: start with summary</p>
             <p>JERRY: guava link at right</p>
-            <p>This page provides a quick How-To on sorting various Java collections--Maps, Sets and Lists.</p>
+            <p>This page provides a How-To on sorting various Java collections--Maps, Sets and Lists.</p>
+
+            <h3>Summary</h3>
+            <p>For those in a hurry, here's a precis of what is covered in greater detail below. We start with how to use a TreeMap.</p>
+<p class="precaption">Listing 1: Using TreeMap to get the keys of a map in sorted order</p>
+<pre class="preCodeWithCaption">
+TreeMap&lt;String, Double&gt; map1 = new TreeMap&lt;String, Double&gt;();
+map1.put(&quot;one&quot;, new Double(1.0));
+map1.put(&quot;two&quot;, new Double(2.0));
+map1.put(&quot;three&quot;, new Double(3.0));
+        
+// Convert to list for convenience.
+List&lt;String&gt; keyList = new ArrayList&lt;String&gt;(map1.keySet());
+</pre>
+
+            <p>Now we cover </p>
+<p class="precaption">Listing 1: Using TreeMap to get the keys of a map in sorted order</p>
+<pre class="preCodeWithCaption">
+TreeMap&lt;String, Double&gt; map1 = new TreeMap&lt;String, Double&gt;();
+map1.put(&quot;one&quot;, new Double(1.0));
+map1.put(&quot;two&quot;, new Double(2.0));
+map1.put(&quot;three&quot;, new Double(3.0));
+        
+// Convert to list for convenience.
+List&lt;String&gt; keyList = new ArrayList&lt;String&gt;(map1.keySet());
+</pre>
 
 			<h3>Using TreeMap for Sorted Keys</h3>
             <p>There are a couple of ways to sort on the keys of a map. You could: (1) use Java's TreeMap, or (2) get the key set and sort that. If your requirements are as simple as that, this page will help you out. If your requirements are more complicated, you might want to explore Guava's Table interface and its various implementations. I have a few pages dedicated to making use of Guave to implement a table data structure that can be sorted on any of its various columns. See the links at right.</p>
@@ -122,6 +147,8 @@ Printing the sorted keys array after converting it to a list.
             <p>After initializing our map and getting the key set, we use the tricky toArray() method to convert the Set to an array. (I always forget how to do that!) Arrays.sort() does the heavy lifting for us, and we write out the result.</p>
             <p>Only calling toString() on an array doesn't quite give you what you want. Sure, the elements are sorted--it's just that you can't easily display them. (Also, they're not type safe!) So I convert the array to a list, and then write out the contents.</p>
             <p>For the reasons given in the above paragraph, I often prefer a List over and array. The next listing shows you how to get the map's keys into a sorted list.</p>
+            
+            <p>JERRY: do we always have to initialize with ImmutableMap? This MUST go into Guava intro page</p>
 
 <p class="precaption">Listing 4: Using Collections.sort() to sort the keys of a map</p>
 <pre class="preCodeWithCaption">
