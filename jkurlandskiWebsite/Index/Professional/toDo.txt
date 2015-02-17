@@ -8,6 +8,12 @@ Java MapSort
 - Reference Guava intro page?
 
 
+Map initialization
+- I've figured out how to do it in one line.
+- testMapInitialize() in CollectionInstantiatingTest.java (not complete--shows that your map is NOT immutable)
+- Put into Guava intro.
+- Instantiate with an ImmutableMap, but your map is NOT immutable.
+
 Change copyright from 2013 to 2015 ?
 
 Move contact, etc. to professional page.
