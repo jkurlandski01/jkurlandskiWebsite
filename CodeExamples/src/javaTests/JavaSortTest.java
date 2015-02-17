@@ -123,10 +123,10 @@ public class JavaSortTest {
 		System.out.println(list.toString());
 		
 		Collections.sort(list);
-
+	
 		System.out.println("Printing the sorted list.");
 		System.out.println(list.toString());
-
+	
 		// Test the sorted keys.
 		assertEquals(8, list.get(0).intValue());
 		assertEquals(14, list.get(1).intValue());
@@ -143,10 +143,10 @@ public class JavaSortTest {
 		
 		List<Integer> list = Lists.newArrayList(set);
 		Collections.sort(list);
-
+	
 		System.out.println("Printing the sorted list.");
-		System.out.println(set.toString());
-
+		System.out.println(list.toString());
+	
 		// Test the sorted keys.
 		assertEquals(8, list.get(0).intValue());
 		assertEquals(14, list.get(1).intValue());
