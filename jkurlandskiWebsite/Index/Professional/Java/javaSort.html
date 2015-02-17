@@ -75,14 +75,13 @@ Set&lt;Integer&gt; set = Sets.newHashSet(new Integer(23), new Integer(8), new In
 List&lt;Integer&gt; list = Lists.newArrayList(set);
 Collections.sort(list);
 </pre>
-
-<p>JERRY: stopped here</p>
+            </br>
 
 			<h3>Using TreeMap for Sorted Keys</h3>
-            <p>There are a couple of ways to sort on the keys of a map. You could: (1) use Java's TreeMap, or (2) get the key set and sort that. If your requirements are as simple as that, this page will help you out. If your requirements are more complicated, you might want to explore Guava's Table interface and its various implementations. I have a few pages dedicated to making use of Guave to implement a table data structure that can be sorted on any of its various columns. See the links at right.</p>
+            <p>There are a couple of ways to sort on the keys of a map. You could: (1) use Java's TreeMap, or (2) get the key set and sort that. If your requirements are as simple as that, this page will help you out. If your requirements are more complicated--for example, if you want to sort on the values as well as the keys--you might want to explore Guava's Table interface and its various implementations.</p>
 			<p>The listing below shows you how to use a TreeMap, which is a specialized Java Map that returns the keys in sorted order.</p>
 
-<p class="precaption">Listing 1: Using TreeMap to get the keys of a map in sorted order</p>
+<p class="precaption">Listing 4: Using TreeMap to get the keys of a map in sorted order</p>
 <pre class="preCodeWithCaption">
 TreeMap&lt;String, Double&gt; map1 = new TreeMap&lt;String, Double&gt;();
 map1.put(&quot;one&quot;, new Double(1.0));
@@ -96,10 +95,10 @@ assertEquals("one", keyList.get(0));
 assertEquals("three", keyList.get(1));
 assertEquals("two", keyList.get(2));
 </pre>
-            <p>The call to keySet() returns the keys of the map sorted alphabetically. I convert it to a List of strings because an ordered set is really a list. (Of course, if you don't like converting your sorted key set to a list, you could always iterate through it with an Iterator object.) Then I use JUnit asserts to verify that the keys are truly sorted alphabetically.</p>
+            <p>The call to keySet() returns the keys of the map sorted alphabetically. I convert it to a List of strings because an ordered set is really a list. (However, if you don't like converting your sorted key set to a list, you could always iterate through it with an Iterator object.) Then I use JUnit asserts to verify that the keys are truly sorted alphabetically.</p>
             <p>Heads up on using a TreeMap or any other sorted collection with an enum. I've been caught off-guard by the "sorted" order; hopefully this warning will prevent the same from happening to you. Listing 2 illustrates the problem.</p>
 
-<p class="precaption">Listing 2: Using TreeMap with an Enum</p>
+<p class="precaption">Listing 5: Using TreeMap with an Enum</p>
 <pre class="preCodeWithCaption">
 public enum CAR_MODEL  {OUTBACK, HIGHLANDER, MUSTANG, THUNDERBIRD}
 
@@ -120,41 +119,80 @@ public void testSortEnum()  {
 </pre>
 
             <p>The asserts in the test method all pass. Can you see how the enum values are being sorted?</p>
-            <p>A gold star if you noticed that the sort order is not alphabetical, but rather the order in which the enum values are declared. It seems obvious in the cold light of day, I know, but if you don't keep this little lesson in mind,  the way in which an Enum is sorted may come back to bite you one day. It has me.</p>
+            <p>A gold star if you noticed that the sort order is not alphabetical, but rather the order in which the enum values are declared. It seems obvious in the cold light of day, I know, but if you don't keep this little lesson in mind,  the way in which an enum is sorted may come back to bite you one day. It has me.</p>
             <p>Finally, a caution about runtime. Don't be cavalier in your use of TreeMap. Its various operations--get, put, containsKey and remove--are O(log n), which is very good in the sorting sphere but not so good for hashmaps in general. In other words, if you don't need to sort, use the HashMap implementation, whose get and put operations are O(1).</p>
             
-            <h3>Using Arrays.sort() and Collections.sort()</h3>
-            <p>JERRY: don't refer to maps; simply start with a set or list and show both ways of sorting; probably skip the whole array vs. list toString() bit</p>
-            <p>If you know in advance that an essential part of a map's usage will be sorting on its keys, you can decide to use a TreeMap. Other times, you don't know until its too late, or you're using someone else's map, and this map is a HashMap or some other implementation that does not offer sorted keys. In these cases you have to do the sorting yourself.</p>
-            <p>The listings below show you how to sort the keys of a map in two ways--with either Arrays.sort() or Collections.sort(). Note that I'm dispensing with the normal Java initialization of the map, and using Guava instead.</p>
+            <h3>Using Collections.sort()</h3>
+            <p>The listings below show you how to sort a Java List object with the handy Collections.sort( ) method. (Note that I'm using Guava to initialize the list.)</p>
 
-<p class="precaption">Listing 3: Using Arrays.sort() to sort the keys of a map</p>
+<p class="precaption">Listing 6: Using Collections.sort() on a List</p>
 <pre class="preCodeWithCaption">
-Map&lt;String, Double&gt; map = Maps.newHashMap(ImmutableMap.of(&quot;one&quot;, new Double(1), &quot;two&quot;, 
-                new Double(2), &quot;three&quot;, new Double(3), &quot;four&quot;, new Double(4)));
-        
-Set&lt;String&gt; keys = map.keySet();
-String[] keysArray = keys.toArray((new String[keys.size()]));
-Arrays.sort(keysArray);
+@Test
+public void testCollectionsSortOnList() {
+    List<Integer> list = Lists.newArrayList(new Integer(23), new Integer(8), new Integer(14), new Integer(67));
+    
+    System.out.println("Printing the unsorted list.");
+    System.out.println(list.toString());
+    
+    Collections.sort(list);
 
-System.out.println(&quot;Printing the sorted keys array.&quot;);
-System.out.println(keysArray.toString());
-System.out.println(&quot;Printing the sorted keys array after converting it to a list.&quot;);
-List&lt;String&gt; keysList = Arrays.asList(keysArray);
-System.out.println(keysList);
+    System.out.println("Printing the sorted list.");
+    System.out.println(list.toString());
+
+    // Test the sorted keys.
+    assertEquals(8, list.get(0).intValue());
+    assertEquals(14, list.get(1).intValue());
+    assertEquals(23, list.get(2).intValue());
+    assertEquals(67, list.get(3).intValue());
+}
 
 Output:
-Printing the sorted keys array.
-[Ljava.lang.String;@513bd574
-Printing the sorted keys array after converting it to a list.
-[four, one, three, two]
+Printing the unsorted list.
+[23, 8, 14, 67]
+Printing the sorted list.
+[8, 14, 23, 67]
 </pre>
 
+            <p>Note that Collections.sort( ) sorts the list itself--that is, the method does not return the list in sorted order, leaving the original list untouched.</p>
+            <p>If you have a set instead of a list, you first have to put your set into a List--Collections.sort( ) doesn't operate on a Set object.. </p>
+<p class="precaption">Listing 7: Using Collections.sort() on a Set</p>
+<pre class="preCodeWithCaption">
+@Test
+public void testCollectionsSortOnSet() {
+    Set&lt;Integer&gt; set = Sets.newHashSet(new Integer(23), new Integer(8), new Integer(14), new Integer(67));
+    
+    System.out.println(&quot;Printing the unsorted set.&quot;);
+    System.out.println(set.toString());
+    
+    List&lt;Integer&gt; list = Lists.newArrayList(set);
+    Collections.sort(list);
+
+    System.out.println(&quot;Printing the sorted list.&quot;);
+    System.out.println(list.toString());
+
+    // Test the sorted keys.
+    assertEquals(8, list.get(0).intValue());
+    assertEquals(14, list.get(1).intValue());
+    assertEquals(23, list.get(2).intValue());
+    assertEquals(67, list.get(3).intValue());
+}
+
+Output:
+Printing the unsorted set.
+[8, 67, 14, 23]
+Printing the sorted list.
+[8, 14, 23, 67]
+</pre>
+            </br>
+
+            <h3>Using Arrays.sort()</h3>
+            
+<p>JERRY: stopped here</p>
+            <p>I find myself using the Arrays sort( ) method much less often than Collections. That's because, generally, I find array objects less useful. For one thing, their toString( ) method is no good.....</p>
             <p>After initializing our map and getting the key set, we use the tricky toArray() method to convert the Set to an array. (I always forget how to do that!) Arrays.sort() does the heavy lifting for us, and we write out the result.</p>
             <p>Only calling toString() on an array doesn't quite give you what you want. Sure, the elements are sorted--it's just that you can't easily display them. (Also, they're not type safe!) So I convert the array to a list, and then write out the contents.</p>
             <p>For the reasons given in the above paragraph, I often prefer a List over and array. The next listing shows you how to get the map's keys into a sorted list.</p>
-            <p>JERRY: You can sort a Java List or Set with the handy Collections.sort( ) method. ? If you have a Set, you first have to put it into a List. </p>
-            
+
 <p class="precaption">Listing 4: Using Collections.sort() to sort the keys of a map</p>
 <pre class="preCodeWithCaption">
 Map&lt;String, Double&gt; map = Maps.newHashMap(ImmutableMap.of(&quot;one&quot;, new Double(1), &quot;two&quot;, 
