@@ -15,8 +15,9 @@ import org.junit.Test;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
 
-public class SortHashKeysTest {
+public class JavaSortTest {
 	
 	public enum CAR_MODEL  {OUTBACK, HIGHLANDER, MUSTANG, THUNDERBIRD}
 	
@@ -112,5 +113,44 @@ public class SortHashKeysTest {
 		assertEquals("three", actual);
 		actual = keyList.get(3);
 		assertEquals("two", actual);
+	}
+
+	@Test
+	public void testCollectionsSortOnList() {
+		List<Integer> list = Lists.newArrayList(new Integer(23), new Integer(8), new Integer(14), new Integer(67));
+		
+		System.out.println("Printing the unsorted list.");
+		System.out.println(list.toString());
+		
+		Collections.sort(list);
+
+		System.out.println("Printing the sorted list.");
+		System.out.println(list.toString());
+
+		// Test the sorted keys.
+		assertEquals(8, list.get(0).intValue());
+		assertEquals(14, list.get(1).intValue());
+		assertEquals(23, list.get(2).intValue());
+		assertEquals(67, list.get(3).intValue());
+	}
+
+	@Test
+	public void testCollectionsSortOnSet() {
+		Set<Integer> set = Sets.newHashSet(new Integer(23), new Integer(8), new Integer(14), new Integer(67));
+		
+		System.out.println("Printing the unsorted set.");
+		System.out.println(set.toString());
+		
+		List<Integer> list = Lists.newArrayList(set);
+		Collections.sort(list);
+
+		System.out.println("Printing the sorted list.");
+		System.out.println(set.toString());
+
+		// Test the sorted keys.
+		assertEquals(8, list.get(0).intValue());
+		assertEquals(14, list.get(1).intValue());
+		assertEquals(23, list.get(2).intValue());
+		assertEquals(67, list.get(3).intValue());
 	}
 }
