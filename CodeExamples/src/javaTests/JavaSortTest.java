@@ -63,30 +63,24 @@ public class JavaSortTest {
 
 	@Test
 	public void testArraysSort() {
-    	Map<String, Double> map = Maps.newHashMap(ImmutableMap.of("one", new Double(1), "two", 
-    			new Double(2), "three", new Double(3), "four", new Double(4)));
-    	
-    	Set<String> keys = map.keySet();
-		String[] keysArray = keys.toArray((new String[keys.size()]));
-		Arrays.sort(keysArray);
-
-		System.out.println("Printing the sorted keys array.");
-		System.out.println(keysArray.toString());
-		System.out.println("Printing the sorted keys array after converting it to a list.");
-		List<String> keysList = Arrays.asList(keysArray);
-		System.out.println(keysList);
-		System.out.println("Printing the original map's keys.");
-		System.out.println(map.keySet());
-
+//		Set<String> set = Sets.newHashSet("one", "two", "three", "four");
+//		String[] setArray = set.toArray((new String[set.size()]));
+		
+		String[] array = {"one", "two", "three", "four"};
+		Arrays.sort(array);
+	
 		// Test the sorted keys.
-		String actual = keysArray[0];
-		assertEquals("four", actual);
-		actual = keysArray[1];
-		assertEquals("one", actual);
-		actual = keysArray[2];
-		assertEquals("three", actual);
-		actual = keysArray[3];
-		assertEquals("two", actual);
+		assertEquals("four", array[0]);
+		assertEquals("one", array[1]);
+		assertEquals("three", array[2]);
+		assertEquals("two", array[3]);
+	
+		System.out.println("Printing the sorted array.");
+		System.out.println(array.toString());
+		
+		List<String> list = Arrays.asList(array);
+		System.out.println("Printing the sorted array after converting it to a list.");
+		System.out.println(list);
 	}
 
 
