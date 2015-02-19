@@ -68,21 +68,25 @@ public void initializeHashSet() {
 }
 </pre>
 
-            <p>Guava's Map creation isn't quite so convenient as that of the List and Set implementations. You can't do it all in a single line.</p>
+            <p>Guava's Map creation can be almost as convenient as that of the List and Set implementations. If you want to initialize in a single line--rather than loading your Map with a number of "put" statements--you have to first instantiate another Guava collection called an ImmutableMap. (Note that this does not make your map immutable; you are simply creating a temporary ImmutableMap to initialize your map.)</p>
 
 <p class="precaption">Listing 3: Instantiating and Initializing a HashMap with Guava</p>
 <pre class="preCodeWithCaption">
 @Test
 public void initializeHashMap() {
-    Map&lt;Integer, String&gt; map = Maps.newHashMap();
-    map.put(Integer.valueOf(1), &quot;one&quot;);
-    map.put(Integer.valueOf(2), &quot;two&quot;);
+    Map&lt;String, Integer&gt; map = Maps.newHashMap(ImmutableMap.of(&quot;one&quot;, new Integer(1), &quot;two&quot;, 
+            new Integer(2), &quot;three&quot;, new Integer(3), &quot;four&quot;, new Integer(4)));
+
+    assertEquals(4, map.size());
     
-    assertEquals(2, map.size());
+    assertEquals(1, map.get("one").intValue());
+    assertEquals(2, map.get("two").intValue());
+    assertEquals(3, map.get("three").intValue());
+    assertEquals(4, map.get("four").intValue());
 }
 </pre>
 
-            <p>Although map initialization cannot be done in a single line, you can leverage single-line Set (and List) creation to make map initialization very easy nonetheless. Check out the listing below.</p>
+            <p>You can leverage single-line Set creation to make loading a Map&lt;X, HashSet&lt;Y&gt;&gt; very easy. Check out the listing below, and keep in mind that the same could be done with a Map&lt;X, ArrayList&lt;Y&gt;&gt;.</p>
 
 <p class="precaption">Listing 4: Instantiating and Initializing a Map&lt;X, HashSet&lt;Y&gt;&gt; with Guava</p>
 <pre class="preCodeWithCaption">
@@ -95,7 +99,7 @@ public void initializeMapToHashSet() {
     assertEquals(2, map2.size());
 }
 </pre>
-            <p><em>Nota bene</em>, though: in the case of Map&lt;X, HashSet&lt;Y&gt;&gt;, you're probably better off with a Multimap. See the sidebar.</p>
+            <p><em>Nota bene</em>, though: in the case of Map&lt;X, HashSet&lt;Y&gt;&gt;, you may be better off with a Multimap. See the sidebar.</p>
         </br>
 
             <h3>Why the Guava Way is the One True Way</h3>
