@@ -74,13 +74,21 @@ Set&lt;Integer&gt; set = Sets.newHashSet(new Integer(23), new Integer(8), new In
 List&lt;Integer&gt; list = Lists.newArrayList(set);
 Collections.sort(list);
 </pre>
-            </br>
+
+            <p>And finally, sometimes you have an array and you've got to sort it. Here's how you do that.</p>
+
+<p class="precaption">Listing 4: Sorting an array</p>
+<pre class="preCodeWithCaption">
+String[] array = {"one", "two", "three", "four"};
+
+Arrays.sort(array);
+</pre>
 
 			<h3>Using TreeMap for Sorted Keys</h3>
             <p>There are a couple of ways to sort on the keys of a map. You could: (1) use Java's TreeMap, or (2) get the key set and sort that. If your requirements are as simple as that, this page will help you out. If your requirements are more complicated--for example, if you want to be able to sort on the values as well as the keys--you might want to explore Guava's Table interface and its various implementations.</p>
 			<p>The listing below shows you how to use a TreeMap, which is a specialized Java Map that returns the keys in sorted order.</p>
 
-<p class="precaption">Listing 4: Using TreeMap to get the keys of a map in sorted order</p>
+<p class="precaption">Listing 5: Using TreeMap to get the keys of a map in sorted order</p>
 <pre class="preCodeWithCaption">
 TreeMap&lt;String, Double&gt; map1 = new TreeMap&lt;String, Double&gt;();
 map1.put(&quot;one&quot;, new Double(1.0));
@@ -97,7 +105,7 @@ assertEquals("two", keyList.get(2));
             <p>The call to keySet() returns the keys of the map sorted alphabetically. I convert it to a List of strings because an ordered set is really a list. (However, if you don't like converting your sorted key set to a list, you could always iterate through it with an Iterator object.) Then I use JUnit asserts to verify that the keys are truly sorted alphabetically.</p>
             <p>Heads up on using a TreeMap or any other sorted collection with an enum. I've been caught off-guard by the "sorted" order; hopefully this warning will prevent the same from happening to you. The next listing illustrates the problem.</p>
 
-<p class="precaption">Listing 5: Using TreeMap with an Enum</p>
+<p class="precaption">Listing 6: Using TreeMap with an Enum</p>
 <pre class="preCodeWithCaption">
 public enum CAR_MODEL  {OUTBACK, HIGHLANDER, MUSTANG, THUNDERBIRD}
 
@@ -124,7 +132,7 @@ public void testSortEnum()  {
             <h3>Using Collections.sort()</h3>
             <p>The listings below show you how to sort a Java List object with the handy Collections.sort( ) method. (Note that I'm using Guava to initialize the list. You can learn more about using this library for initialization at the following location: <a href="../Guava/guavaIntro.html">Guava Intro</a>.)</p>
 
-<p class="precaption">Listing 6: Using Collections.sort() on a List</p>
+<p class="precaption">Listing 7: Using Collections.sort() on a List</p>
 <pre class="preCodeWithCaption">
 @Test
 public void testCollectionsSortOnList() {
@@ -153,8 +161,9 @@ Printing the sorted list.
 </pre>
 
             <p>Note that Collections.sort( ) sorts the list itself--that is, the method does not return the list in sorted order, leaving the original list untouched.</p>
-            <p>If you have a set instead of a list, you first have to put your set into a List--Collections.sort( ) doesn't operate on a Set object.. </p>
-<p class="precaption">Listing 7: Using Collections.sort() on a Set</p>
+            <p>If you have a set instead of a list, you first have to put your set into a List--Collections.sort( ) doesn't operate on a Set object.</p>
+            
+<p class="precaption">Listing 8: Using Collections.sort() on a Set</p>
 <pre class="preCodeWithCaption">
 @Test
 public void testCollectionsSortOnSet() {
@@ -188,7 +197,7 @@ Printing the sorted list.
             
             <p>I find myself using the Arrays sort( ) method much less often than the Collections sort( ) method. That's because, generally, I find array objects less convenient than List and Set objects. But sometimes you're on the receiving end of a collection, and it's an array, and you need to sort it. The listing below shows you how.</p>
             
-<p class="precaption">Listing 8: Using Arrays.sort()</p>
+<p class="precaption">Listing 9: Using Arrays.sort()</p>
 <pre class="preCodeWithCaption">
 @Test
 public void testArraysSort() {
