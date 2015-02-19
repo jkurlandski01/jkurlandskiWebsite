@@ -3,7 +3,6 @@ package guavaTests;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -112,34 +111,23 @@ public class CollectionsInstantiatingTest {
 
 	@Test
 	public void testMapInitialize() {
-    	Map<String, Double> map = Maps.newHashMap(ImmutableMap.of("one", new Double(1), "two", 
-    			new Double(2), "three", new Double(3), "four", new Double(4)));
-    	map.put("five", new Double(5));
-    	map.put("one", new Double(4));
+		Map<String, Integer> map = Maps.newHashMap(ImmutableMap.of("one", new Integer(1), "two", 
+				new Integer(2), "three", new Integer(3), "four", new Integer(4)));
+		
+		assertEquals(4, map.size());
+		
+//    	map.put("five", new Integer(5));
+//    	map.put("one", new Integer(-1));
     	
-//    	Map<String, Double> map1 = Maps. .newHashMap("one", new Double(1), "two", 
-//    			new Double(2), "three", new Double(3), "four", new Double(3));
-    	
-    	Set<String> keys = map.keySet();
-    	List<String> keyList = Lists.newArrayList(keys);
-		Collections.sort(keyList);
-
-		System.out.println("Printing the sorted key list.");
-		System.out.println(keyList.toString());
 		System.out.println("Printing the original map's keys.");
-		System.out.println(map.keySet());
+		System.out.println(map.toString());
 
 		// Test the sorted keys.
-		String actual = keyList.get(0);
-		assertEquals("five", actual);
-		actual = keyList.get(1);
-		assertEquals("four", actual);
-		actual = keyList.get(2);
-		assertEquals("one", actual);
-		actual = keyList.get(3);
-		assertEquals("three", actual);
-		actual = keyList.get(4);
-		assertEquals("two", actual);
+		assertEquals(1, map.get("one").intValue());
+		assertEquals(2, map.get("two").intValue());
+		assertEquals(3, map.get("three").intValue());
+		assertEquals(4, map.get("four").intValue());
+//		assertEquals(5, map.get("five").intValue());
 	}
 
 
