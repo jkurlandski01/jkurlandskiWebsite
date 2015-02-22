@@ -23,4 +23,15 @@ public enum Relation {Other("is somehow related to"),
     public String toString()    {
         return gloss;
     }
+    
+	// Note that this method is case-sensitive.
+	public static boolean isRelation(String input)    {
+	    try {
+	        Relation.valueOf(input);
+	    } catch (IllegalArgumentException e) {
+	        // The relation isn't in our enum.
+	        return false;
+	    }
+	    return true;
+	}
 }
