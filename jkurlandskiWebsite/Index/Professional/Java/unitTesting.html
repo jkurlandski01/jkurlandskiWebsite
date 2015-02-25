@@ -50,7 +50,15 @@
 <p class="precaption">Listing </p>
 <pre class="preCodeWithCaption">
     @BeforeClass
-    public static void doSomethingOnce()  {
+    public static void doSomethingOnceBeforeEachTestClass()  {
+	...
+    }
+</pre>
+
+<p class="precaption">Listing </p>
+<pre class="preCodeWithCaption">
+    @Before
+    public void doSomethingOnceBeforeEachTestMethod()  {
 	...
     }
 </pre>
