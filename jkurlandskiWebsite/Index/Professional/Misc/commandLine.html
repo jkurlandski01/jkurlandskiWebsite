@@ -98,6 +98,35 @@ do
 done
 </pre>
 
+			</br>
+			<h3>Performing grep on Multiple Patterns</h3>
+            
+			<p>grep is great. The very useful command follows this syntax:</p>
+<pre class="preCodeWithCaption">
+grep [options] pattern [files]
+</pre>
+			<p>You see from the syntax that multiple options and multiple files are allowed. Indeed, using multiple options and files are routine. A command of <code>grep -i -v "hi" *.txt</code> would look for all the .txt files where "hi" does NOT occur (-v), no matter what case "hi" is in (-i). ... But what if you want to grep on multiple patterns? The syntax doesn't seem to allow for that.</p>
+			<p>egrep, or "grep -e", lets you separate multiple patterns with a pipe. Thus, the following will find all .txt files containing "cat" or "dog".
+<pre class="preCodeWithCaption">
+$ egrep "cat|dog" *.txt
+</pre>
+			<p>But if your list is long, or if it's in a file, egrep isn't much help. Fortunately, fgrep (or grep -F) can save the day. There are two ways to use fgrep: (1) by setting an command-line variable to your list of patterns, and then using the variable in your fgrep; or (2) by telling fgrep to read a file for the list of patterns.</p>
+			<p>First we'll do it the command-line variable way. Suppose your patterns are "aaa", "bbb", ... "zzz", and you have a list of them in a file, each pattern on a separate line. Select the list and copy it into your clipboard. Then go to the command line and type <code>"patterns="</code> (including the double quotes). Then paste in the patterns from your clipboard. Now run the fgrep command. The entire process looks like this:</p>
+<pre class="preCodeWithCaption">
+$ patterns="
+aaa
+bbb
+...
+zzz"
+
+$ fgrep "${patterns}" *.txt
+</pre>
+
+			<p>Now for the other way, which involves invoking the file from fgrep. Put your list of patterns into a file where every pattern is on a separate line. Let's call the file patterns.txt. Then run the following command:
+<pre class="preCodeWithCaption">
+$ fgrep -F -f patterns.txt *.txt
+</pre>
+
 		</div>
 		<div id="sidebar">
 			<div class="internalLinkBox">
