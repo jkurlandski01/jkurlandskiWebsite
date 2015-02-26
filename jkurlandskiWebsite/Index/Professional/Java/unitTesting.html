@@ -39,7 +39,7 @@
 	<div id="page" class="container">
 		<div id="content">
             <div class="title">
-                <h2>JUnit Tricks</h2>
+                <h2>Unit Testing Techniques</h2>
             </div>
             <p>JERRY: short intro; rethink title</p>
             
@@ -192,25 +192,21 @@ public void testNull() {
         <p>It is often debated about which is "better," using @Test(expected=) or the @Rule annotation approach. I would say that it depends. @Test(expected=) is short and sweet. The @Rule annotation approach is more verbose, but it lets you specify a particular exception message, which can be useful, for instance, if a parameter is passed in and tested for a number of properties, and a failure to meet any of those throws an IllegalArgumentException with a different message. Also, the @Rule annotation approach lets you specify exactly what line should throw the expected exception. Both of these aspects of the more verbose approach can sometimes be useful.</p>
 
 		</div>
-		<div id="sidebar">
-			<div class="internalLinkBox">
-				<div class="title">
+		
+        <div id="sidebar">
+            <div class="internalLinkBox">
+                <div class="title">
                     <h2>Internal Java Links</h2>
-				</div>
-				<ul class="style2">
-					<li><a href="mapSort.html">Sorting on a Map key</a></li>
-				</ul>
-			</div>
-		</div>
-		<div id="sidebar">
-			<div class="internalLinkBox">
-				<div class="title">
-					<h2>External Guava Links</h2>
-				</div>
-				<ul class="style2">
-				</ul>
-			</div>
-		</div>
+                </div>
+                <ul class="style2">
+                    <li><a href="convertingCollections.html">Converting Between Java Collections</a></li>
+                    <li><a href="enum.html">Java Enums</a></li>
+                    <li><a href="javaSort.html">Sorting in Java</a></li>
+                    <li><a href="unitTesting.html">Unit Testing Techniques</a></li>
+                </ul>
+            </div>
+        </div>
+
 	</div>
 </div>
 <div id="copyright" class="container">

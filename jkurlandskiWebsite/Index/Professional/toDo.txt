@@ -1,18 +1,5 @@
 Java enum section
-- add the warning on the other page about sorting through--not alphabetical
-- EnumSet
-       if (stackArgs != null && ! stackArgs.isEmpty()) {
-            boolean isComplete = true;
-            for (FormulaArg fArg : stackArgs) {
-                EnumSet enumSet = EnumSet.of(StackState.PROCESSED, StackState.TRANSLATED, StackState.QUANTIFIED_VARS);
-                if (! enumSet.contains(fArg.state)) {
-                    isComplete = false;
-                    break;
-                }
-            }
-            retVal = isComplete;
-        }
-
+- What's the proper term for a "shared enum method"?
 
 Java
 ! Main Page
@@ -112,6 +99,8 @@ No: NLP_AI
 
 
 Kurlandski and other tables should have a caption.
+
+Java section needs a page on Comparison and Sort.
 
 Forvo API 
 The Forvo API allows users to integrate the functionality of Forvo into their websites or applications. Forvo is the largest pronunciation guide in the world, the place where you will find millions of words pronounced in their original languages. Ask for that word or name, and another user will pronounce it for you. You can also help 
