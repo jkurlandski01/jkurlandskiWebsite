@@ -41,9 +41,9 @@
 			<div class="title">
 				<h2>Java Enums</h2>
 			</div>
-			<p>This page is focused on the <i>syntax</i> of enums. Apart from the short introduction below, here we do not delve into when you should use the enum type, and we do not at all consider its advantages over regular classes. For the latter, see Chapter 6 of <i>Effective Java</i>, Joshua Bloch's Java-programming bible.</p>
+			<p>This page is largely focused on the <i>syntax</i> of enums. Apart from the short introduction below, here we do not delve into when you should use the enum type, and we do not at all consider its advantages over regular classes. For the latter, see Chapter 6 of <i>Effective Java</i>, Joshua Bloch's Java-programming bible.</p>
 			<p>I find that the enum type is one of the most useful tools modern programming languages have to offer. Whenever you find yourself creating a class which has a limited number of pre-defined instances, you should ask yourself whether an enum wouldn't be a better implementation. For instance, in the first listing below I show an enum for parts of speech--noun, verb, adjective and so on. Since there are a small number of pre-defined types of this class, it is a perfect candidate for an enum. In fact, any non-enum implementation would throw off red warning flags in my head, and in my opinion would need to be justified.</p>
-			<p>Here's Listing 1, showing the simplest usage of an enum, in this case serving mainly as a way of implementing a pre-determined set of related objects.</p>
+			<p><b>Basic enums.</b> Here's Listing 1, showing the simplest usage of an enum, in this case serving mainly as a way of implementing a pre-determined set of related objects.</p>
 			
 <p class="precaption">Listing 1: Creating a simple enum</p>
 <pre class="preCodeWithCaption">
@@ -51,8 +51,9 @@ public enum PartOfSpeech {
     NOUN, VERB, ADJECTIVE, ADVERB, PREPOSITION, DETERMINER
 }
 </pre>
-
-            <p>But enums can serve as more than just a list of subtypes. An enum can be a proper class in Java, with fields. In another part of this web site I discuss ConceptNet, a database of world knowledge, and I offer some basic code that can be used to retrieve information from this online resource. In the code which I provide there I have a Relation enum. Here is an abbreviated version of the Relation type, to serve as an example of an enum implementation more complicated than the basic one given in Listing 1.</p>
+        </br>
+        
+            <p><b>Enums with fields.</b> But enums can serve as more than just a list of subtypes. An enum can be a proper class in Java, with fields. In another part of this web site I discuss ConceptNet, a database of world knowledge, and I offer some basic code that can be used to retrieve information from this online resource. In the code which I provide there I have a Relation enum. Here is an abbreviated version of the Relation type, to serve as an example of an enum implementation more complicated than the basic one given in Listing 1.</p>
 <p class="precaption">Listing 2: An enum with instance fields</p>
 <pre class="preCodeWithCaption">
 public enum Relation {Antonym(&quot;is the opposite of&quot;), AtLocation(&quot;is at&quot;),  
@@ -74,7 +75,7 @@ public enum Relation {Antonym(&quot;is the opposite of&quot;), AtLocation(&quot;
 
         <p>In the curly braces following the enum keyword and the name of the enum, you see seven types of Relations, each one associated with a string. We'll get to the string in a moment, but first I want to discuss the use of "Pascal case" in the names of the Relation types. Traditionally in Java instances of enums are put into all-uppercase, as I did for the parts of speech in Listing 1. However, there are times when I think readability prefers "Pascal case," that is, starting with a capital letter and using mixed case to signal separate words in the name. Had I adhered to the uppercase naming convention for enums, in Listing 2 I would have had to assign the AtLocation type either the name ATLOCATION or AT_LOCATION--both of which are an eyesore, in my humble opinion.</p>
         <p>Moving on to other aspects of Listing 2, we see that the Relation enum is looks like a class. It even has a constructor method bearing the Relation name--just like a class. As a matter of fact, in Java enums really are classes--a special kind of class that provides a singleton object for each enum type. In other words, every Relation.AtLocation reference points to exactly the same object. In Listing 2 we see that each type has a field called <code>gloss</code>, which "translates" the meaning of the relation into natural-sounding English. Because it's a singleton, every Relation.PartOf reference has exactly the same gloss.</p>
-        <p>You can write getters for the fields of an enum; and I could have done so for my Relation class. I chose to override the Object toString( ) method, and have that return the gloss instead. See the next listing, which demonstrates the use of our overridden toString( ) method using a unit test.</p>
+        <p><b>Enums with methods.</b> You can write getters for the fields of an enum; and I could have done so for my Relation class. I chose to override the Object toString( ) method, and have that return the gloss instead. See the next listing, which demonstrates the use of our overridden toString( ) method using a unit test.</p>
 
 <p class="precaption">Listing 3: Using name( ) and other enum methods</p>
 <pre class="preCodeWithCaption">
@@ -84,8 +85,9 @@ public void testToString() {
     assertEquals("is at", atLocation.toString());
 }
 </pre>
+        </br>
 
-        <p>Every enum comes with a name( ) method, which you can use when you need the actual name of your enum type.</p>
+        <p><b>Shared enum methods.</b> Every enum comes with a name( ) method, which you can use when you need the actual name of your enum type.</p>
 
 <p class="precaption">Listing 4: Using an enum's name( ) method</p>
 <pre class="preCodeWithCaption">
@@ -142,26 +144,72 @@ public static boolean isRelation(String input)    {
 </pre>
         <p>Alternately, you might instead implement a <code>public Relation getRelation(String)</code> method that returns a valid Relation instance if valueOf( ) succeeds, or null if it fails. But in this case you have to make sure you remember to check for null--few things are uglier than a runtime NullPointerException.</p>
 
+        <p><b>The "natural order" of an enum.</b> Be careful when you try to sort on an enum type. You might expect that using Collections.sort( ) on a list of enums would sort them alphabetically. Not so.</p>
+        <p>In the example below, I put four enum objects into a List. Then I sort them. Then I use unit test assert statements to verify the sorted order.</p>
+
+<p class="precaption">Listing 7: Sorting enums</p>
+<pre class="preCodeWithCaption">
+public enum CAR_MODEL  {OUTBACK, HIGHLANDER, MUSTANG, THUNDERBIRD}
+
+@Test
+public void testSimpleEnumSort()    {
+    List&lt;CAR_MODEL&gt; carList = Lists.newArrayList();
+    carList.add(CAR_MODEL.MUSTANG);
+    carList.add(CAR_MODEL.THUNDERBIRD);
+    carList.add(CAR_MODEL.OUTBACK);
+    carList.add(CAR_MODEL.HIGHLANDER);
+    
+    Collections.sort(carList);
+    
+    assertEquals(CAR_MODEL.OUTBACK, carList.get(0));
+    assertEquals(CAR_MODEL.HIGHLANDER, carList.get(1));
+    assertEquals(CAR_MODEL.MUSTANG, carList.get(2));
+    assertEquals(CAR_MODEL.THUNDERBIRD, carList.get(3));
+}
+</pre>
+
+            <p>The asserts in the test method all pass. A careful look shows that the objects are not sorted alphabetically by enum type, but rather by the order in which I declared the enum--first Outback, then Highlander, then Mustang, and finally Thunderbird.</p>
+            
+            <p><b>EnumSet.</b> Often you have an enum, and a subset of enum types, and you want to test whether a particular instance of the enum falls into your subset of enum types. For example, in the listing below I create two sets based on the four car models created in the previous listing. In the "domestic" subset we find Mustang and Thunderbird; in the "imported" subset we have Outback and Highlander. Then I create two particular instances--"myCar" and "myWifesCar". Then I want to verify that myCar is dometic, and myWifesCar is imported.</p>
+        
+<p class="precaption">Listing 8: Using an EnumSet</p>
+<pre class="preCodeWithCaption">
+public enum CAR_MODEL  {OUTBACK, HIGHLANDER, MUSTANG, THUNDERBIRD}
+
+@Test
+public void testEnumSet()   {
+    EnumSet&lt;CAR_MODEL&gt; imported = EnumSet.of(CAR_MODEL.OUTBACK, CAR_MODEL.HIGHLANDER);
+    EnumSet&lt;CAR_MODEL&gt; domestic = EnumSet.of(CAR_MODEL.MUSTANG, CAR_MODEL.THUNDERBIRD);
+    
+    CAR_MODEL myCar = CAR_MODEL.MUSTANG;
+    CAR_MODEL myWifesCar = CAR_MODEL.OUTBACK;
+    
+    assertTrue(imported.contains(myWifesCar));
+    assertFalse(imported.contains(myCar));
+        
+    assertTrue(domestic.contains(myCar));
+    assertFalse(domestic.contains(myWifesCar));
+}
+</pre>
+
+        <p>It's true that instead of an EnumSet I dould have used a plain old Java Set. But the point is that the EnumSet has been optimized to perform certain opertions very fast. For example, contains( ) for ordinary Set collections may take O(n) time; but for EnumSets they can generally be performed in O(1). Exactly how this is done, and when these optimizations are beneficial, is optional reading--but the upshot is: use EnumSet when creating subsets of an enum.</p>
+
 		</div>
-		<div id="sidebar">
-			<div class="internalLinkBox">
-				<div class="title">
-					<h2>Internal Java Links</h2>
-				</div>
-				<ul class="style2">
-					<li><a href="mapSort.html">Sorting on a Map key</a></li>
-				</ul>
-			</div>
-		</div>
-		<div id="sidebar">
-			<div class="internalLinkBox">
-				<div class="title">
-					<h2>External Guava Links</h2>
-				</div>
-				<ul class="style2">
-				</ul>
-			</div>
-		</div>
+
+        <div id="sidebar">
+            <div class="internalLinkBox">
+                <div class="title">
+                    <h2>Internal Java Links</h2>
+                </div>
+                <ul class="style2">
+                    <li><a href="convertingCollections.html">Converting Between Java Collections</a></li>
+                    <li><a href="enum.html">Java Enums</a></li>
+                    <li><a href="javaSort.html">Sorting in Java</a></li>
+                    <li><a href="unitTesting.html">Unit Testing Techniques</a></li>
+                </ul>
+            </div>
+        </div>
+
 	</div>
 </div>
 <div id="copyright" class="container">

@@ -82,6 +82,7 @@ String[] array = {"one", "two", "three", "four"};
 
 Arrays.sort(array);
 </pre>
+            </br>
 
 			<h3>Using TreeMap for Sorted Keys</h3>
             <p>There are a couple of ways to sort on the keys of a map. You could: (1) use Java's TreeMap, or (2) get the key set and sort that. If your requirements are as simple as that, this page will help you out. If your requirements are more complicated--for example, if you want to be able to sort on the values as well as the keys--you might want to explore Guava's Table interface and its various implementations.</p>
@@ -102,7 +103,7 @@ assertEquals("three", keyList.get(1));
 assertEquals("two", keyList.get(2));
 </pre>
             <p>The call to keySet() returns the keys of the map sorted alphabetically. I convert it to a List of strings because an ordered set is really a list. (However, if you don't like converting your sorted key set to a list, you could always iterate through it with an Iterator object.) Then I use JUnit asserts to verify that the keys are truly sorted alphabetically.</p>
-            <p>Heads up on using a TreeMap or any other sorted collection with an enum. I've been caught off-guard by the "sorted" order; hopefully this warning will prevent the same from happening to you. The next listing illustrates the problem.</p>
+            <p>Heads up on using a TreeMap or any other sorted collection with an enum. I've been caught off-guard by the "natural order" of an enum; hopefully this warning will prevent the same from happening to you. The next listing illustrates the problem.</p>
 
 <p class="precaption">Listing 6: Using TreeMap with an Enum</p>
 <pre class="preCodeWithCaption">
@@ -233,27 +234,20 @@ Printing the sorted array after converting it to a list.
             <p>All of this is covered beautifully in Chapter 3 of Joshua Bloch's <em>Effective Java</em>.</p>
         </div>
 		
-		<div id="sidebar">
-			<div class="internalLinkBox">
-				<div class="title">
+        <div id="sidebar">
+            <div class="internalLinkBox">
+                <div class="title">
                     <h2>Internal Java Links</h2>
-				</div>
-				<ul class="style2">
-					<li><a href="mapSort.html">Sorting on a Map key</a></li>
-				</ul>
-			</div>
-		</div>
-		<div id="sidebar">
-			<div class="internalLinkBox">
-				<div class="title">
-					<h2>External Guava Links</h2>
-				</div>
-				<ul class="style2">
-					<li><a href="http://tomjefferys.blogspot.com/2011/09/multimaps-google-guava.html">How to use Multimaps</a></li>
-					<li><a href="http://docs.guava-libraries.googlecode.com/git/javadoc/com/google/common/collect/HashBasedTable.html">HashBasedTable Javadoc</a></li>
-				</ul>
-			</div>
-		</div>
+                </div>
+                <ul class="style2">
+                    <li><a href="convertingCollections.html">Converting Between Java Collections</a></li>
+                    <li><a href="enum.html">Java Enums</a></li>
+                    <li><a href="javaSort.html">Sorting in Java</a></li>
+                     <li><a href="unitTesting.html">Unit Testing Techniques</a></li>
+               </ul>
+            </div>
+        </div>
+
 	</div>
 </div>
 <div id="copyright" class="container">
