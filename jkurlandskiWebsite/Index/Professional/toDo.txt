@@ -4,7 +4,7 @@ Java enum section
 Java
 ! Main Page
 @ convertingCollections
-! !enum
+@ !enum
 @ javaSort
 ! !unitTesting
 ---------
