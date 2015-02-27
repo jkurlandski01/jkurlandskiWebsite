@@ -41,42 +41,59 @@
             <div class="title">
                 <h2>Unit Testing Techniques</h2>
             </div>
-            <p>JERRY: short intro; rethink title</p>
+            <p>If there's one rock on which I've learned to build my software development, it's the unit test. Or rather, it's a large collection of unit tests, covering many different parts of the application. With that you can be pretty confident when it comes to refactoring and bug fixing. And when you need to add new functionality, unit testing gives you a chance to methodically verify both normal and boundary conditions.</p>
+            <p>But every good thing comes with a price (or so they say), and when it comes to unit testing "they" are right. On this page I offer a few techniques that over the years have helped me  make sure I have a nice suite of unit tests I can depend on.</p>
+            <p>Note: Sometimes below I assume you are using Junit (specifically version 4), but every other testing framework I've come across has complimentary functions.</p>
             
-            <div class="singleSpacedDescription">
-                <li>Use @BeforeClass for an "expensive" method that should be run once before all tests in the class.</li>
-            </div>
-            
-<p class="precaption">Listing </p>
+            <h3>@Before and @BeforeClass</h3>
+            <p>The Junit annotations @Before and @BeforeClass differ both in functionality and syntax. (Generally, what applies to @Before applies also to @After; and the same goes for @BeforeClass and @AfterClass.)</p>
+            <p><b>@BeforeClass and @AfterClass.</b> Use @BeforeClass for an "expensive" method that should be run once before all tests in the class. By "expensive" I mean costly in terms of time or memory--for instance, reading a configuration file. The @BeforeClass method is run once before every test class; if what it sets up is so expensive that this cost is too high, you will have to explore setting up test suites--a set of test classes that are run in unison. Use @AfterClass to "tear down" something you've "set up" in the @BeforeClass method--but note that, in my experience, at least, very often this is not necessary.</p>
+<p class="precaption">Listing 1: An example of @BeforeClass</p>
 <pre class="preCodeWithCaption">
-    @BeforeClass
-    public static void doSomethingOnceBeforeEachTestClass()  {
-	...
-    }
+@BeforeClass
+public static void doSomethingOnceBeforeEachTestClass()  {
+    SomeClass.readConfigFile();
+}
 </pre>
 
-<p class="precaption">Listing </p>
+            <p>Note that, as Listing 1 illustrates, @BeforeClass can be used only for <b>public static void</b> methods, which means they are called before anything in your test class is instantiated, as well as before your @Before methods are invoked. Keep this in mind when you're trying to figure out why your unit tests aren't working. I've been bitten by that bug a few times.</p>
+            <p><b>@Before and @After.</b> Use @Before to set up something one time before each individual test method. Reinitializing an instance field is a good example of this.</p>    
+            
+<p class="precaption">Listing 2: An example of @Before</p>
 <pre class="preCodeWithCaption">
+public SomeTest {
+    private ClassBeingTested inputClass;
+    
     @Before
-    public void doSomethingOnceBeforeEachTestMethod()  {
-	...
+    public void doSomethingOnceBeforeEachTestMethod( )  {
+	   inputClass = new ClassBeingTested( );
     }
+    
+    @Test
+    public void test()  {
+        String output = inputClassdoSomething( );
+        // ...
+    }
+}
 </pre>
 
 			<p>The access of a method marked with @Before must be public; if it isn't you'll get a runtime exception with a message like the following:
 
-<p class="precaption">Listing </p>
+<p class="precaption">Listing 3: Exception message if @Before method is not public</p>
 <pre class="preCodeWithCaption">
 java.lang.Exception: Method doSomethingOnce() should be public
 </pre>
+            <p>Use @After to undo anything performed during a test. I rarely have a need for this annaotation.</p>
 
-            <h4>StringReader</h4>
-            <p>Often you want to unit test some functionality that relies on a BufferedReader. BufferedReaders are easy to open with a file path, or a File object, but for unit testing sometimes you easily vary or control the contents of the file being read. In other words, you want to work with a string instead of with a file. But how to you test a method that is expecting a file? Enter StringReader. Instead of using BufferedReader, use string reader.</p>
+            <h3>StringReader</h3>
+            <p>Frequently I want to verify the functionality of a method that reads a file. Often such a method takes a BufferedReader which points to the file. In these circumstances I usually have three choices: (1) create a test file and in my test method open the file with a BufferedReader, passing that object to the method I'm testing; (2) change the method to take a String object, which contains the contents of the file, and modify all callers of the method accordingly; or (3) in my unit test, insert the test file contents into a String object, create a BufferedReader which points to this String object, and invoke the method I'm testing with that.</p>
+            <p>Now, it might be interesting to consider when each of these options is the best course of action. Yet I'm not going to do that. I'm simply going to tell you <b>how</b> to implement Option 3, if you decide that is the best option for your situation.</p>
+            <p>To sum up, the problem is this: you have a String, and you want a BufferedReader. How do you do that? Enter StringReader.</p>
 			<p>JERRY: verify all the claims above; need to more clearly illustrate the problem and the solution; test the code; alternatively, just leave one line of code and a very short explanation, and do the detailed explanation on another page, another time
 
-<p class="precaption">Listing </p>
+<p class="precaption">Listing 4: Creating a BufferedReader from a String</p>
 <pre class="preCodeWithCaption">
-    BufferedReader reader3 = new BufferedReader(new StringReader("hi"));
+    BufferedReader reader = new BufferedReader(new StringReader("hi"));
 </pre>
 
             <h4>Getting the location of the current unit test.</h4>
