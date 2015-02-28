@@ -42,8 +42,62 @@
                 <h2>Unit Testing Techniques</h2>
             </div>
             <p>If there's one rock on which I've learned to build my software development, it's the unit test. Or rather, it's a large collection of unit tests, covering many different parts of the application. With that you can be pretty confident when it comes to refactoring and bug fixing. And when you need to add new functionality, unit testing gives you a chance to methodically verify both normal and boundary conditions.</p>
-            <p>But every good thing comes with a price (or so they say), and when it comes to unit testing "they" are right. On this page I offer a few techniques that over the years have helped me  make sure I have a nice suite of unit tests I can depend on.</p>
+            <p>But every good thing comes with a price (or so they say), and when it comes to unit testing "they" are right. What I mean is that writing good unit tests is not always easy. It's a skill you learn over time, and, over time, I've learned a few things about unit testing. On this page I offer some of the techniques that over the years have helped me make sure I have a nice suite of unit tests I can depend on.</p>
             <p>Note: Sometimes below I assume you are using Junit (specifically version 4), but every other testing framework I've come across has complimentary functions.</p>
+
+            <h3>Always Make Sure Your Unit Test Fails</h3>
+            <p>Imagine you're testing a drug that is supposed to prevent the flu. You have a sample of the drug, a person who has volunteered to test your drug, and a sample of a flu virus. You expose the person to the flu virus, you administer the drug to this selfless person, and you see that the person doesn't get the flu. You conclude that your drug works and you start selling the drug.</p>
+            <p>Good for you. But suppose people buying your drug get the flu? You'd have to figure out what went wrong in your testing. One aspect of this overly-simplistic scenario that might have gone wrong is that maybe the flu virus you tested with was dead when you exposed your volunteer to it. That's why your volunteer didn't get the flu.</p>
+            <p>One way to avoid this error in the future would be to expose some other even more selfless person to your flu virus, making sure this volunteer <b>does</b> get the flu. Only in this case could you conclude that your first volunteer didn't get the flu thanks to your drug.</p>
+            <p>The same with unit testing. So often, in my own work as well as in others', I've seen unit tests that don't actually test what their authors think they're testing. The tests were written with some kind of error, so that the test always passes. You can avoid this trap by following the advice in this heading--always make sure your unit test fails. Only once it has failed should you modify the test, or your code, so that it passes.</p>
+            <p>Just off the top of my head I can think of three easy ways to fall into this trap. I'll share those three ways with you now.</p>
+            <p>For all of these situations, let's imagine that you've written some code with a slight bug in it.</p>
+<p class="precaption">Listing 1: Some bad code</p>
+<pre class="preCodeWithCaption">
+public boolean isAThing(Object thing)  {
+    if(thing instanceof Thing)  {
+        return false;
+    }
+    return true;
+}
+</pre>
+            <p>Contrary to its name and intention, the method returns false when the input is a Thing, and true when it is not a Thing.</p>
+            <p>It's a dumb mistake, I agree, but if you think it's not one <i>you</i> would ever make, please substitute for it some other bug you've made at some point in your career. (And if you think you've never written a bug in your life, please retire now--I'm tired of having to clean up after you.)</p>
+            
+            <h4>Trap 1: Forgetting @Test</h4>
+            <p>Suppose you have a pre-existing test class. You run the unit tests and they all pass. You write the unit test below, you run the tests, they all pass, and you commit the code and head for home after such a good day's work.</p>
+            
+<p class="precaption">Listing 2: A test missing its @Test</p>
+<pre class="preCodeWithCaption">
+public void forgotTestAnnotation()  {
+    String input = "";
+    boolean actual = isAThing(input);
+    assertFalse(actual);
+}
+</pre>
+            <p>Obviously a String is not a Thing object. Why did your unit tests all pass? Because the test you've just written is not a unit test! The test wasn't even run.</p>
+            <p>However, if you'd written your assert as "assertTrue(actual)" instead of "assertFalse(actual)", and expected your new unit test to fail, you would have noticed that it did not fail and investigated. You wouldn't have been able to leave work early, but at least you would have avoided committing buggy code.</p>
+
+            <h4>Trap 2: Using Java assert( ) instead of JUnit assertTrue( )</h4>
+            <p>The following unit test compiles and passes without error. In Eclipse you get the pretty green stripe that tells you to go, go, go ahead and commit that code. But you're more than likely to end up with egg on your face if you do.</p>
+            
+<p class="precaption">Listing 2: The wrong assert( )</p>
+<pre class="preCodeWithCaption">
+@Test
+public void testAssertInsteadOfUnitAssert() {
+    Thing input = new Thing();
+    boolean actual = isAThing(input);
+    assert(actual);
+}
+</pre>
+            <p>Don't tell me this can't happen. I've seen it. In our application, months after the code was written and submitted with its "unit tests," I noticed a major difference between what the class was supposed to do and what it was actually doing. I had a quick look at all the unit tests, saw what they were trying to test, and couldn't believe that they weren't failing. Why were they passing? Answer: The asserts were failing, but our testing framework wasn't paying attention to those. Since no Junit assertions were being thrown, the framework assumed everything was hunky-dory.</p>
+
+            <h4>Trap 3: Cutting-and-Pasting from an existing test</h4>
+            <p></p>
+            
+<p class="precaption">Listing 3: Cut-and-paste error</p>
+<pre class="preCodeWithCaption">
+</pre>
             
             <h3>@Before and @BeforeClass</h3>
             <p>The Junit annotations @Before and @BeforeClass differ both in functionality and syntax. (Generally, what applies to @Before applies also to @After; and the same goes for @BeforeClass and @AfterClass.)</p>
