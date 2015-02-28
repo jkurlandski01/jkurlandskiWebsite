@@ -1,5 +1,16 @@
+Unit testing
+- Make sure tests fail
+- forgetting @Test will make it seem to pass; ? using assert instead of assertTrue?
+- Good work habits
+	- always run tests and verify they pass before doing an update; otherwise you don't know whether you broke the tests or someone else
+	- make sure tests fail
+
 Java enum section
 - What's the proper term for a "shared enum method"?
+- Enum is the common base class of all Java language enumeration types
+	- base class methods include name( ), toString( ) and valueOf( )
+- Note that when using an enumeration type as the type of a set or as the type of the keys in a map, specialized and efficient set and map implementations are available.
+
 
 Java
 ! Main Page
