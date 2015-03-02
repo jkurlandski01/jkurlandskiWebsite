@@ -41,9 +41,9 @@
             <div class="title">
                 <h2>Unit Testing Techniques</h2>
             </div>
-            <p style="line-height: 1.2; margin-right: 150px;"><b>Introduction.</b> This page is much more verbose than most pages on this website. Usually I limit myself to the "how-to" rather than the "why." But unit testing is something I feel passionate about and, despite all the talk about it which has long been going on in the software development community, I keep running into buggy code which has not properly been unit tested. While I'm not quite the whole-hearted advocate of test-<b>driven</b> development, I will say that in my own experience I don't see enough test-<b>certified</b> development.</p>
+            <p style="line-height: 1.2; margin-right: 150px;"><b>Introduction.</b> This page is much more verbose than most pages on this website. Usually I limit myself to the "how-to" rather than the "why." But unit testing is something I feel passionate about and, despite all the talk about it which has long been going on in the software development community, I keep running into buggy code which has not properly been unit tested. While I'm not quite a whole-hearted advocate of <b>test-driven</b> development, I will say that in my own experience I don't see enough <b>test-certified</b> development.</p>
             <p>If there's one rock on which I've learned to build my software development, it's the unit test. Or rather, it's a large collection of unit tests, covering many different parts of the application. With that you can be pretty confident when it comes to refactoring and bug fixing. And when you need to add new functionality, unit testing gives you a chance to methodically verify both normal and boundary conditions.</p>
-            <p>But every good thing comes with a price (or so they say), and when it comes to unit testing "they" are right. What I mean is that writing good unit tests is not always easy. It's a skill you learn over time, and, over time, I've learned a few things about unit testing. On this page I offer some of the techniques that over the years have helped me make sure I have a nice suite of unit tests I can depend on.</p>
+            <p>But every good thing comes with a price (or so they say), and when it comes to unit testing "they" are right. What I mean is that writing good unit tests is not always easy. Sometimes it's hard, and it's a skill you learn over time. Over time, I've learned a few things about unit testing. On this page I offer some of the techniques that over the years have helped me make sure I have a nice suite of unit tests I can depend on.</p>
             <p>Note: Sometimes below I assume you are using Junit (specifically version 4), but every other testing framework I've come across has complimentary functions.</p>
 
             <h3>Always Make Sure Your Unit Test Fails</h3>
@@ -137,18 +137,18 @@ java.lang.Exception: Method doSomethingOnce() should be public
 </pre>
             <p>Use @After to undo anything performed during a test. I rarely have a need for this annaotation.</p>
 
-            <h3>StringReader</h3>
+            <h3>Using StringReader to Avoid Writing File Input for Testing</h3>
             <p>Frequently I want to verify the functionality of a method that reads a file. Often such a method takes a BufferedReader which points to the file. In these circumstances I usually have three choices: (1) create a test file and in my test method open the file with a BufferedReader, passing that object to the method I'm testing; (2) change the method to take a String object, which contains the contents of the file, and modify all callers of the method accordingly; or (3) in my unit test, insert the test file contents into a String object, create a BufferedReader which points to this String object, and invoke the method I'm testing with that.</p>
-            <p>Now, it might be interesting to consider when each of these options is the best course of action. Yet I'm not going to do that. I'm simply going to tell you <b>how</b> to implement Option 3, if you decide that is the best option for your situation.</p>
+            <p>Now, it might be interesting to consider when each of these options is the best course of action. Yet I'm not going to do that--this page is already too wordy as it is. I'm simply going to tell you <b>how</b> to implement Option 3, if you decide that is the best option for your situation. (You'll find discussion of Option 1 in the next section below.)</p>
             <p>To sum up, the problem is this: you have a String, and you want a BufferedReader. How do you do that? Enter StringReader.</p>
-			<p>JERRY: verify all the claims above; need to more clearly illustrate the problem and the solution; test the code; alternatively, just leave one line of code and a very short explanation, and do the detailed explanation on another page, another time
 
 <p class="precaption">Listing 6: Creating a BufferedReader from a String</p>
 <pre class="preCodeWithCaption">
     BufferedReader reader = new BufferedReader(new StringReader("hi"));
 </pre>
+        </br>
 
-            <h4>Getting the location of the current unit test.</h4>
+            <h3>Getting the Location of a Test Resource or File</h3>
             <p>Often a unit test requires some sort of resource such as an external file. In acquiring the resource, you need the path, but you don't want to hard-code the path, since the path on one developer's machine won't necessarily be identical to the path on another developer's machine. The solution is to locate the resource with reference to the project location on the current machine. This may differ between IDE's--Eclipse and IntelliJ get different locations--in that case, you probably need an environment variable. Also note that if multiple tests are using the same paths, you could make them private static final data members of the test class.</p>
 
 <p class="precaption">Listing 7: xxx</p>

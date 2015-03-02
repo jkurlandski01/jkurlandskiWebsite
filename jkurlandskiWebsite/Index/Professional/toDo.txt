@@ -1,9 +1,5 @@
 Unit testing
-- Make sure tests fail
-- forgetting @Test will make it seem to pass; ? using assert instead of assertTrue?
-- Good work habits
-	- always run tests and verify they pass before doing an update; otherwise you don't know whether you broke the tests or someone else
-	- make sure tests fail
+- Perhap put BufferedReader code in, so that I have a reference.
 
 Java enum section
 - What's the proper term for a "shared enum method"?
