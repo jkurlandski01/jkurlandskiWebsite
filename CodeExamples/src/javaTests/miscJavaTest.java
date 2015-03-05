@@ -10,9 +10,12 @@ import java.io.StringReader;
 import org.junit.Test;
 
 public class miscJavaTest {
-    private static final String PARENT_PATH = (new File("")).getAbsoluteFile().getParentFile().getAbsolutePath();
+    final String PARENT_PATH = (new File("")).getAbsoluteFile().getParentFile().getAbsolutePath();
     private static final String PROJECT_PATH = (new File("")).getAbsoluteFile().getAbsolutePath();
     private static final File RESOURCE_FILE = new File(PROJECT_PATH, "resources");
+    
+    static final String SIGMA_HOME = System.getenv("SIGMA_HOME");
+
 
 	public class Thing {}
 	
@@ -63,10 +66,20 @@ public class miscJavaTest {
 		String actual = readFileThing(reader);
 		assertEquals(input, actual);
 	}
+	
 	@Test
-	public void testResourcePath()	{
-		
+	public void testProjectPath()	{		
+		assertEquals("hi", PROJECT_PATH);
+	}
+	
+	@Test
+	public void testResourcePath()	{		
 		assertTrue(RESOURCE_FILE.exists());
+	}
+	
+	@Test
+	public void testEnvironmentVariable()	{		
+		assertEquals("hi", SIGMA_HOME);
 	}
 	
 }

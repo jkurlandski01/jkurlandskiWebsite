@@ -150,7 +150,8 @@ java.lang.Exception: Method doSomethingOnce() should be public
 
             <h3>Getting the Location of a Test File or Other Resource</h3>
             <p>Often a unit test requires some sort of resource such as an external file--input for a method that you're testing, for example. In acquiring the resource, you need the path, but you don't want to hard-code the path, since the path on one developer's machine won't necessarily be identical to the path on another developer's machine.</p>
-            <p>The simplest solution is to locate the resource relative to the project location on the current machine.</p>
+            <p>For most of this discussion I'm assuming you run your tests from within an IDE such as Eclipse or IntelliJ Idea, rather than from the command line.</p>
+            <p>The simplest solution to this problem is to locate the resource relative to the project location on the current machine.</p>
 
 <p class="precaption">Listing 7: Locating resource by location relative to the project</p>
 <pre class="preCodeWithCaption">
@@ -166,10 +167,11 @@ public class miscJavaTest {
 </pre>
 
             <p>The code above will find a folder (or a file) called "resources" in the project directory. The snippet <code>new File("")</code> serves as the idiom for finding the project's "present working directory." </p>
-            <p>JERRY: stopped here</p>
-            <p>JERRY: verify the IDE diff</p>
             <p>JERRY: perhaps a table listing the solutions and downsides</p>
-            <p>This may differ between IDE's--Eclipse and IntelliJ get different locations--in that case, you probably need an environment variable. Also note that if multiple tests are using the same paths, you could make them protected static final data members of a base class that your unit tests extend--or private if only one test class. Usually extend.</p>
+            <p>JERRY: verify the IDE diff</p>
+            <p>The problem is that the "present working directory" may differ between IDE's--Eclipse and IntelliJ get different locations. This may not be a problem if you are working solo, or if everyone on your team is using the same IDE.</p>
+            <p>JERRY: stopped here</p>
+            <p>If you are not working solo, and if you want your unit tests to work on different IDEs, you might think of using an environment variable. Maybe you're thinking that every developer on the team could have a $PROJECT_HOME variable, and the unit tests could get that variable via something like <code>static final String SIGMA_HOME = System.getenv("SIGMA_HOME")</code>. But that's a pain--in Eclipse, for example, you need to set that environment variable for every test configuration. Also note that if multiple tests are using the same paths, you could make them protected static final data members of a base class that your unit tests extend--or private if only one test class. Usually extend.</p>
         <p>If you don't like behavior which is dependent on the IDE, you can use getResourceAsStream( ) or getResource( ). The next listing shows how to get a BufferedReader for a unit test resource. Ninety percent of the verbosity involves printing out an understandable error message if the path to the resource is bad. If that doesn't matter to you (though I think it should), much of this code can be eliminated.</p>
 
 <p class="precaption">Listing </p>
