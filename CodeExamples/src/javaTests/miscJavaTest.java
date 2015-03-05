@@ -3,25 +3,17 @@ package javaTests;
 import static org.junit.Assert.*;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.StringReader;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
 
 import org.junit.Test;
 
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-
 public class miscJavaTest {
-	
+    private static final String PARENT_PATH = (new File("")).getAbsoluteFile().getParentFile().getAbsolutePath();
+    private static final String PROJECT_PATH = (new File("")).getAbsoluteFile().getAbsolutePath();
+    private static final File RESOURCE_FILE = new File(PROJECT_PATH, "resources");
+
 	public class Thing {}
 	
 	public boolean isAThing(Object thing)  {
@@ -70,6 +62,11 @@ public class miscJavaTest {
 		BufferedReader reader = new BufferedReader(new StringReader(input));
 		String actual = readFileThing(reader);
 		assertEquals(input, actual);
+	}
+	@Test
+	public void testResourcePath()	{
+		
+		assertTrue(RESOURCE_FILE.exists());
 	}
 	
 }
