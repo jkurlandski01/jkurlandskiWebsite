@@ -1,5 +1,13 @@
-Unit testing
-- Perhap put BufferedReader code in, so that I have a reference.
+Unit testing page
+- Compare eclipse and intellij behavior of
+private static final String PARENT_PATH = (new File("")).getAbsoluteFile().getParentFile().getAbsolutePath();
+	- eclipse: /Users/geraldkurlandski/Documents/workspace_website/jkurlandski
+	- intellij idea: 
+
+
+New stream page
+- Perhap put BufferedReader code on some page, so that I have a reference.
+- and test page's StringReader
 
 Java enum section
 - What's the proper term for a "shared enum method"?

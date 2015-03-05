@@ -148,17 +148,28 @@ java.lang.Exception: Method doSomethingOnce() should be public
 </pre>
         </br>
 
-            <h3>Getting the Location of a Test Resource or File</h3>
-            <p>Often a unit test requires some sort of resource such as an external file. In acquiring the resource, you need the path, but you don't want to hard-code the path, since the path on one developer's machine won't necessarily be identical to the path on another developer's machine. The solution is to locate the resource with reference to the project location on the current machine. This may differ between IDE's--Eclipse and IntelliJ get different locations--in that case, you probably need an environment variable. Also note that if multiple tests are using the same paths, you could make them private static final data members of the test class.</p>
+            <h3>Getting the Location of a Test File or Other Resource</h3>
+            <p>Often a unit test requires some sort of resource such as an external file--input for a method that you're testing, for example. In acquiring the resource, you need the path, but you don't want to hard-code the path, since the path on one developer's machine won't necessarily be identical to the path on another developer's machine.</p>
+            <p>The simplest solution is to locate the resource relative to the project location on the current machine.</p>
 
-<p class="precaption">Listing 7: xxx</p>
+<p class="precaption">Listing 7: Locating resource by location relative to the project</p>
 <pre class="preCodeWithCaption">
-    private static final String PARENT_PATH = (new File("")).getAbsoluteFile().getParentFile().getAbsolutePath();
-    private static final String KB_PATH = (new File(PARENT_PATH, "KBs")).getAbsolutePath();
-    
-    File resourcePath = new File(KB_PATH);
+public class miscJavaTest {
+    private static final String PROJECT_PATH = (new File("")).getAbsoluteFile().getAbsolutePath();
+    private static final File RESOURCE_FILE = new File(PROJECT_PATH, "resources");
+
+    @Test
+    public void testResourcePath()  {       
+        assertTrue(RESOURCE_FILE.exists());
+    }
+}
 </pre>
 
+            <p>The code above will find a folder (or a file) called "resources" in the project directory. The snippet <code>new File("")</code> serves as the idiom for finding the project's "present working directory." </p>
+            <p>JERRY: stopped here</p>
+            <p>JERRY: verify the IDE diff</p>
+            <p>JERRY: perhaps a table listing the solutions and downsides</p>
+            <p>This may differ between IDE's--Eclipse and IntelliJ get different locations--in that case, you probably need an environment variable. Also note that if multiple tests are using the same paths, you could make them protected static final data members of a base class that your unit tests extend--or private if only one test class. Usually extend.</p>
         <p>If you don't like behavior which is dependent on the IDE, you can use getResourceAsStream( ) or getResource( ). The next listing shows how to get a BufferedReader for a unit test resource. Ninety percent of the verbosity involves printing out an understandable error message if the path to the resource is bad. If that doesn't matter to you (though I think it should), much of this code can be eliminated.</p>
 
 <p class="precaption">Listing </p>
