@@ -23,7 +23,7 @@ public class MiscJavaTest {
 	private static final Class<MiscJavaTest> CLASS = MiscJavaTest.class;
 	
 	@Test
-	public void testGetResourcesThrowsNPE()	{	
+	public void testGetResourcesWithBadExceptionOutput()	{	
 		String contents = null;
 		try {
 			URI uri = CLASS.getClassLoader().getResource(INPUT_FILE_PATH).toURI();
@@ -39,7 +39,7 @@ public class MiscJavaTest {
 	}
 	
 	@Test
-	public void testGetResourcesThrowsNPEWithUsefulOutput()	{	
+	public void testGetResourcesThrowsNPEWithUsefulExceptionOutput()	{	
 		String contents = null;
 		try {
 			URI uri = CLASS.getClassLoader().getResource(INPUT_FILE_PATH).toURI();

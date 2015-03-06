@@ -1,10 +1,6 @@
-Separate page for a bunch of collection conversions.
-- Converting among Arrays, Sets and Lists
+New stream/reader page
+- Getting BufferedReader from file.
+- Converting BufferedReader to String
+- and UnitTesting.html has use of StringReader
 
-Convert array to set
-Set<T> mySet = new HashSet<T>(Arrays.asList(someArray));
-http://stackoverflow.com/questions/3064423/java-easily-convert-array-to-set
-
-Conversions in general
-http://java67.blogspot.com/2013/05/how-to-convert-array-to-collection-set-list-java.html
 
