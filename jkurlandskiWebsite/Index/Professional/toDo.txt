@@ -8,6 +8,7 @@ private static final String PROJECT_PATH = (new File("")).getAbsoluteFile().getA
 	- Eclipse: pwd is PROJECT
 	- IntelliJ IDEA: pwd is PROJECT/test/unit/java
 
+java.lang.IllegalStateException: Could not find resources/input.txt in file:/Users/geraldkurlandski/Documents/workspace_website/jkurlandski/CodeExamples/bin/javaTests/
 
 New stream page
 - Perhap put BufferedReader code on some page, so that I have a reference.

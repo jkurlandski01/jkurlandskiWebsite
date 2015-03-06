@@ -41,7 +41,7 @@
             <div class="title">
                 <h2>Unit Testing Techniques</h2>
             </div>
-            <p style="line-height: 1.2; margin-right: 150px;"><b>Introduction.</b> This page is much more verbose than most pages on this website. Usually I limit myself to the "how-to" rather than the "why." But unit testing is something I feel passionate about and, despite all the talk about it which has long been going on in the software development community, I keep running into buggy code which has not properly been unit tested. While I'm not quite a whole-hearted advocate of <b>test-driven</b> development, I will say that in my own experience I don't see enough <b>test-certified</b> development.</p>
+            <p style="line-height: 1.2; margin-right: 150px;"><b>Introduction.</b> This page is much more verbose than most pages on this website. Usually I limit myself to the final result rather than the "figuring-it-out." But unit testing is something I feel passionate about and, despite all the talk about it which has long been going on in the software development community, I keep running into buggy code which has not properly been unit tested. While I'm not quite a whole-hearted advocate of <b>test-driven</b> development, I will say that in my own experience I don't see enough <b>test-certified</b> development. Hopefully this page will help others work out some of the problems they've encountered as they try to write good unit tests.</p>
             <p>If there's one rock on which I've learned to build my software development, it's the unit test. Or rather, it's a large collection of unit tests, covering many different parts of the application. With that you can be pretty confident when it comes to refactoring and bug fixing. And when you need to add new functionality, unit testing gives you a chance to methodically verify both normal and boundary conditions.</p>
             <p>But every good thing comes with a price (or so they say), and when it comes to unit testing "they" are right. What I mean is that writing good unit tests is not always easy. Sometimes it's hard, and it's a skill you learn over time. Over time, I've learned a few things about unit testing. On this page I offer some of the techniques that over the years have helped me make sure I have a nice suite of unit tests I can depend on.</p>
             <p>Note: Sometimes below I assume you are using Junit (specifically version 4), but every other testing framework I've come across has complimentary functions.</p>
@@ -168,11 +168,88 @@ public class miscJavaTest {
 
             <p>The code above will find a folder (or a file) called "resources" in the project directory. The snippet <code>new File("")</code> serves as the idiom for finding the project's "present working directory." </p>
             <p>JERRY: perhaps a table listing the solutions and downsides</p>
-            <p>JERRY: verify the IDE diff</p>
-            <p>The problem is that the "present working directory" may differ between IDE's--Eclipse and IntelliJ get different locations. This may not be a problem if you are working solo, or if everyone on your team is using the same IDE.</p>
+            <p>The problem is that the "present working directory" may differ between IDE's--Eclipse and IntelliJ get different locations. This may not be a problem if you are working solo, or if everyone on your team is using the same IDE. But, otherwise, you'll need to find another solution.</p>
+            
+            <p>If you want your unit tests to work on different IDEs, it might occur to you to try using an environment variable. Maybe you're thinking that every developer on the team could have a $PROJECT_HOME variable, and the unit tests could get that variable via something like <code>static final String SIGMA_HOME = System.getenv("SIGMA_HOME")</code>. It sounds as though that should work, but it doesn't, really. In Eclipse, for example, you need to set that environment variable for every test configuration.</p> 
+            
+            <p>If you don't like behavior which is dependent on the IDE, you can use getResourceAsStream( ) or getResource( ). This approach isn't perfect, but it's the best one that I've been able to find.</p>
+
+<p class="precaption">Listing 8: Weak implementation of getResource( ) for locating test resources</p>
+<pre class="preCodeWithCaption">
+public class MiscJavaTest {
+    private static final String INPUT_FILE_PATH = &quot;resources/input.txt&quot;;
+    private static final Class&lt;MiscJavaTest&gt; CLASS = MiscJavaTest.class;
+    
+    @Test
+    public void testGetResourcesThrowsNPE() {   
+        String contents = null;
+        try {
+            URI uri = CLASS.getClassLoader().getResource(INPUT_FILE_PATH).toURI();
+            File file = new File(uri);
+            // Using org.apache.commons.io.FileUtils
+            contents = FileUtils.readFileToString(file);
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();    
+        };
+    
+        assertEquals(&quot;Got it!!&quot;, contents);
+    }
+}
+
+// Exception output:
+java.lang.NullPointerException
+    at javaTests.MiscJavaTest.testGetResourcesThrowsNPE(MiscJavaTest.java:29)
+    at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+
+</pre>
+        <p>A little verbosity can give you exception output which is a little more useful, as the next listing demonstrates.</p>
+            
+<p class="precaption">Listing 8: A better implementation of getResource( ) for locating test resources</p>
+<pre class="preCodeWithCaption">
+public class MiscJavaTest {
+    private static final String INPUT_FILE_PATH = &quot;resources/input.txt&quot;;
+    private static final Class&lt;MiscJavaTest&gt; CLASS = MiscJavaTest.class;
+    
+    @Test
+    public void testGetResourcesThrowsNPEWithUsefulOutput() {   
+        String contents = null;
+        try {
+            URI uri = CLASS.getClassLoader().getResource(INPUT_FILE_PATH).toURI();
+            File file = new File(uri);
+            // Using org.apache.commons.io.FileUtils
+            contents = FileUtils.readFileToString(file);
+        } catch (Exception ex1) {
+            try {
+                URI uri = CLASS.getClassLoader().getResource("").toURI();
+                String msg = "Could not find " + INPUT_FILE_PATH + " in " + uri.toString();
+                throw new IllegalStateException((msg));
+            } catch (URISyntaxException eURI) {
+                eURI.printStackTrace();
+            }
+        };
+    
+        assertEquals("Got it!!", contents);
+    }
+}
+
+// Exception output:
+java.lang.IllegalStateException: Could not find resources/input.txt in file:/(full path deleted>/CodeExamples/bin/
+    at javaTests.MiscJavaTest.testGetResourcesThrowsNPEWithUsefulOutput(MiscJavaTest.java:53)
+</pre>
+            <p>The only difference between this listing and the previous one occurs in the catch block. What the modified catch block is doing is something like this: "Okay, the unit test couldn't find resource X in directory path Y, so I'll print out exactly what X and Y are so that hopefully the stupid programmer can figure out how he or she messed up."</p>
+            <p>Taking a close look at the exception output in the listing above gives us a chance to briefly explain how getResource( ) works. It assumes the compilation has copied the resources folder to your "out" directory--that is, to the same location where the build puts your .class files. Then it looks for this resources folder relative to the root of this "out" directory.</p>
+            <p>Thanks to this message I was able to verify that the directory wasn't in the path given. Then I looked at the location of the resources directory in my workspace, and I saw it should actually go under the source directory, like everything else in "bin." I moved the folder and its contents there, reran the test and ...</p>
+            <p>... And the test failed again with the same message. Which brings us to the one and only downside of using getResource( )--the resource must be copied over to the build directory. Every once in a while, to get things to work correctly, you may have to rebuild the project. I did this, reran the test and ... </p>
+            <img src='./image/successfulJunitTest.jpg' alt='missing' width="760" height="185"/>
+            <p>Hallelujah. Time to take a break.</p>
+<p class="precaption">Listing </p>
+<pre class="preCodeWithCaption">
+</pre>
             <p>JERRY: stopped here</p>
-            <p>If you are not working solo, and if you want your unit tests to work on different IDEs, you might think of using an environment variable. Maybe you're thinking that every developer on the team could have a $PROJECT_HOME variable, and the unit tests could get that variable via something like <code>static final String SIGMA_HOME = System.getenv("SIGMA_HOME")</code>. But that's a pain--in Eclipse, for example, you need to set that environment variable for every test configuration. Also note that if multiple tests are using the same paths, you could make them protected static final data members of a base class that your unit tests extend--or private if only one test class. Usually extend.</p>
-        <p>If you don't like behavior which is dependent on the IDE, you can use getResourceAsStream( ) or getResource( ). The next listing shows how to get a BufferedReader for a unit test resource. Ninety percent of the verbosity involves printing out an understandable error message if the path to the resource is bad. If that doesn't matter to you (though I think it should), much of this code can be eliminated.</p>
+            <p>The next listing shows how to get a BufferedReader for a unit test resource. Ninety percent of the verbosity involves printing out an understandable error message if the path to the resource is bad. If that doesn't matter to you (though I think it should), much of this code can be eliminated.</p>
+            
+            <p>Also note that if multiple tests are using the same paths, you could make them protected static final data members of a base class that your unit tests extend--or private if only one test class. Usually extend.</p>
 
 <p class="precaption">Listing </p>
 <pre class="preCodeWithCaption">
@@ -235,7 +312,7 @@ protected static BufferedReader getXmlReader(String path, Class theClass)  {
 
 
             <h4>Writing a Unit Test that Expects an Exception</h4>
-            <p></p>
+            <p>And now for something completely different.</p>
 
 <p class="precaption">Listing </p>
 <pre class="preCodeWithCaption">
