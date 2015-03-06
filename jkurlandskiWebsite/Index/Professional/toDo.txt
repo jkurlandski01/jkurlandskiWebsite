@@ -1,20 +1,8 @@
 Unit testing page
-- Compare eclipse and intellij behavior of
-private static final String PARENT_PATH = (new File("")).getAbsoluteFile().getParentFile().getAbsolutePath();
-	- eclipse: /Users/geraldkurlandski/Documents/workspace_website/jkurlandski
-	- IntelliJ IDEA: /Users/geraldkurlandski/Documents/workspace_Sigma/cvs/sigma/test/unit
-		
-private static final String PROJECT_PATH = (new File("")).getAbsoluteFile().getAbsolutePath();
-	- Eclipse: pwd is PROJECT
-	- IntelliJ IDEA: pwd is PROJECT/test/unit/java
-
-java.lang.IllegalStateException: Could not find resources/input.txt in file:/Users/geraldkurlandski/Documents/workspace_website/jkurlandski/CodeExamples/bin/javaTests/
-
-New stream page
-- Perhap put BufferedReader code on some page, so that I have a reference.
-- and test page's StringReader
+- Need names for the two approaches.
 
 Java enum section
+I think I've done all this
 - What's the proper term for a "shared enum method"?
 - Enum is the common base class of all Java language enumeration types
 	- base class methods include name( ), toString( ) and valueOf( )

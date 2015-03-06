@@ -167,10 +167,10 @@ public class miscJavaTest {
 </pre>
 
             <p>The code above will find a folder (or a file) called "resources" in the project directory. The snippet <code>new File("")</code> serves as the idiom for finding the project's "present working directory." </p>
-            <p>JERRY: perhaps a table listing the solutions and downsides</p>
+            
             <p>The problem is that the "present working directory" may differ between IDE's--Eclipse and IntelliJ get different locations. This may not be a problem if you are working solo, or if everyone on your team is using the same IDE. But, otherwise, you'll need to find another solution.</p>
             
-            <p>If you want your unit tests to work on different IDEs, it might occur to you to try using an environment variable. Maybe you're thinking that every developer on the team could have a $PROJECT_HOME variable, and the unit tests could get that variable via something like <code>static final String SIGMA_HOME = System.getenv("SIGMA_HOME")</code>. It sounds as though that should work, but it doesn't, really. In Eclipse, for example, you need to set that environment variable for every test configuration.</p> 
+            <p>If you want your unit tests to work on different IDEs, it might occur to you to try using an environment variable. Maybe you're thinking that every developer on the team could have a $PROJECT_HOME variable, and the unit tests could get that variable via something like <code>static final String PROJECT_HOME = System.getenv("PROJECT_HOME")</code>. It sounds as though that should work, but it doesn't, really. In Eclipse, for example, you need to set that environment variable for every test configuration.</p> 
             
             <p>If you don't like behavior which is dependent on the IDE, you can use getResourceAsStream( ) or getResource( ). This approach isn't perfect, but it's the best one that I've been able to find.</p>
 
@@ -181,7 +181,7 @@ public class MiscJavaTest {
     private static final Class&lt;MiscJavaTest&gt; CLASS = MiscJavaTest.class;
     
     @Test
-    public void testGetResourcesThrowsNPE() {   
+    public void testGetResourcesWithBadExceptionOutput()    {   
         String contents = null;
         try {
             URI uri = CLASS.getClassLoader().getResource(INPUT_FILE_PATH).toURI();
@@ -193,7 +193,7 @@ public class MiscJavaTest {
             e.printStackTrace();    
         };
     
-        assertEquals(&quot;Got it!!&quot;, contents);
+        assertEquals(&quot;Got it!&quot;, contents);
     }
 }
 
@@ -203,16 +203,16 @@ java.lang.NullPointerException
     at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 
 </pre>
-        <p>A little verbosity can give you exception output which is a little more useful, as the next listing demonstrates.</p>
+        <p>A little verbosity can give you exception output which is a considerably more useful, as the next listing demonstrates.</p>
             
-<p class="precaption">Listing 8: A better implementation of getResource( ) for locating test resources</p>
+<p class="precaption">Listing 9: A better implementation of getResource( ) for locating test resources</p>
 <pre class="preCodeWithCaption">
 public class MiscJavaTest {
     private static final String INPUT_FILE_PATH = &quot;resources/input.txt&quot;;
     private static final Class&lt;MiscJavaTest&gt; CLASS = MiscJavaTest.class;
     
     @Test
-    public void testGetResourcesThrowsNPEWithUsefulOutput() {   
+    public void testGetResourcesThrowsNPEWithUsefulExceptionOutput()    {   
         String contents = null;
         try {
             URI uri = CLASS.getClassLoader().getResource(INPUT_FILE_PATH).toURI();
@@ -221,15 +221,15 @@ public class MiscJavaTest {
             contents = FileUtils.readFileToString(file);
         } catch (Exception ex1) {
             try {
-                URI uri = CLASS.getClassLoader().getResource("").toURI();
-                String msg = "Could not find " + INPUT_FILE_PATH + " in " + uri.toString();
+                URI uri = CLASS.getClassLoader().getResource(&quot;&quot;).toURI();
+                String msg = &quot;Could not find &quot; + INPUT_FILE_PATH + &quot; in &quot; + uri.toString();
                 throw new IllegalStateException((msg));
             } catch (URISyntaxException eURI) {
                 eURI.printStackTrace();
             }
         };
     
-        assertEquals("Got it!!", contents);
+        assertEquals(&quot;Got it!&quot;, contents);
     }
 }
 
@@ -243,78 +243,12 @@ java.lang.IllegalStateException: Could not find resources/input.txt in file:/(fu
             <p>... And the test failed again with the same message. Which brings us to the one and only downside of using getResource( )--the resource must be copied over to the build directory. Every once in a while, to get things to work correctly, you may have to rebuild the project. I did this, reran the test and ... </p>
             <img src='./image/successfulJunitTest.jpg' alt='missing' width="760" height="185"/>
             <p>Hallelujah. Time to take a break.</p>
-<p class="precaption">Listing </p>
-<pre class="preCodeWithCaption">
-</pre>
-            <p>JERRY: stopped here</p>
-            <p>The next listing shows how to get a BufferedReader for a unit test resource. Ninety percent of the verbosity involves printing out an understandable error message if the path to the resource is bad. If that doesn't matter to you (though I think it should), much of this code can be eliminated.</p>
             
-            <p>Also note that if multiple tests are using the same paths, you could make them protected static final data members of a base class that your unit tests extend--or private if only one test class. Usually extend.</p>
-
-<p class="precaption">Listing </p>
-<pre class="preCodeWithCaption">
-public class UnitTestBase {
-    private static final String CONFIG_FILE_PATH = "resources/config.xml";
-    private static final Class CLASS = UnitTestBase.class;
-
-    // Write out a meaningful error message if the config file path is bad.
-    private static BufferedReader xmlReader;
-    static  {
-        try {
-            xmlReader = new BufferedReader(new InputStreamReader(CLASS.getResourceAsStream(CONFIG_FILE_PATH)));
-        }
-        catch (Exception ex)  {
-            try {
-                URI uri = CLASS.getResource(".").toURI();
-                String msg = "Could not find " + CONFIG_FILE_PATH + " in " + uri.toString();
-                throw new IllegalStateException((msg));
-            } catch (URISyntaxException e) {
-                e.printStackTrace();
-            }
-
-        }
-    }
-    
-    // ...
-</pre>
-
-
-<h4>Modifying a test config file with machine-local values</h4>
-<p>This snippet reads a config file, replaces a $XXX value in the config file to the same value of the environment variable, and then turns the modified string into a BufferedReader for a method.</p>
-
-<p class="precaption">Listing </p>
-<pre class="preCodeWithCaption">
-protected static BufferedReader getXmlReader(String path, Class theClass)  {
-    BufferedReader xmlReader = null;
-    try {
-        URI uri = theClass.getResource(path).toURI();
-        File configFile = new File(uri);
-        String contents = ReadWriteTextFile.getContents(configFile);
-        contents = contents.replaceAll("\\$SIGMA_HOME", SIGMA_HOME);
-        xmlReader = new BufferedReader(new StringReader(contents));
-    
-    }
-    catch (Exception ex)  {
-        try {
-            URI uri = theClass.getResource(".").toURI();
-                String msg = "Could not find " + path + " in " + uri.toString();
-                throw new IllegalStateException(msg);
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        }
-    }
-    return xmlReader;
-}
-</pre>
-
-
-
-
-
-            <h4>Writing a Unit Test that Expects an Exception</h4>
+            <h3>Writing a Unit Test that Expects an Exception</h3>
             <p>And now for something completely different.</p>
+            <p>It is always smart to verify that a method throws an exception when it's supposed to. Nowadays most every unit testing framework gives you the facility to do this. This section shows two ways to do it in JUnit. Both are useful in different circumstances.</p>
 
-<p class="precaption">Listing </p>
+<p class="precaption">Listing 10: A method which throws an exception</p>
 <pre class="preCodeWithCaption">
 // Here's a method that will throw an exception if its parameter is null.
 public static void read(String input)   {
@@ -324,6 +258,11 @@ public static void read(String input)   {
     
     // ...
 }
+</pre>
+
+
+<p class="precaption">Listing 11: A unit test verifying a method throws an exception</p>
+<pre class="preCodeWithCaption">
 
 // Here's a unit test that verifies the behavior of the method.
 @Test(expected=IllegalArgumentException.class)
