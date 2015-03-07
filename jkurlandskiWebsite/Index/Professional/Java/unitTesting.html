@@ -46,7 +46,7 @@
             <p>But every good thing comes with a price (or so they say), and when it comes to unit testing "they" are right. What I mean is that writing good unit tests is not always easy. Sometimes it's hard, and it's a skill you learn over time. Over time, I've learned a few things about unit testing. On this page I offer some of the techniques that over the years have helped me make sure I have a nice suite of unit tests I can depend on.</p>
             <p>Note: Sometimes below I assume you are using Junit (specifically version 4), but every other testing framework I've come across has complimentary functions.</p>
 
-            <h3>Always Make Sure Your Unit Test Fails</h3>
+            <h3><a id="Fails">Always Make Sure Your Unit Test Fails</a></h3>
             <p>Imagine you're testing a drug that is supposed to prevent the flu. You have a sample of the drug, a person who has volunteered to help you test your drug, and a sample of a flu virus. You expose the person to the flu virus, you administer the drug to this selfless person, and you see that the person doesn't get the flu. You conclude that your drug works and you start selling the drug.</p>
             <p>Good for you. But suppose people buying your drug get the flu? You'd have to figure out what went wrong in your testing. In this overly-simplistic scenario, one part of the process that might have gone wrong is that maybe the flu virus you used for the test was dead when you exposed your volunteer to it. That's why your volunteer didn't get the flu--not because of your experimental drug.</p>
             <p>One way to avoid this error in the future would be to expose some other even more selfless person to your flu virus, making sure this volunteer <b>does</b> get the flu. Only in this case could you conclude that your first volunteer didn't get the flu thanks to your drug.</p>
@@ -97,7 +97,7 @@ public void testAssertInsteadOfUnitAssert() {
             <h4>Trap 3: Cutting-and-Pasting from an existing test</h4>
             <p>I won't take up your time with a detailed example of this mistake. If you're an experienced developer, you know the dangers of cut-and-paste. I myself have written many a bad unit test by copying a pre-existing unit test in the same class, giving the new test a new name, and then forgetting something important, such as changing the expected value, or forgetting to change the method actually being tested. Fortunately, I can always catch this mistake by insisting that all my tests fail first, then making the appropriate changes so that they pass.</p>
             
-            <h3>@Before and @BeforeClass</h3>
+            <h3><a id="@Before">@Before and @BeforeClass</a></h3>
             <p>The Junit annotations @Before and @BeforeClass differ both in functionality and syntax. (Generally, what applies to @Before applies also to @After; and the same goes for @BeforeClass and @AfterClass.)</p>
             <p><b>@BeforeClass and @AfterClass.</b> Use @BeforeClass for an "expensive" method that should be run once before all tests in the class. By "expensive" I mean costly in terms of time or memory--for instance, reading a configuration file. The @BeforeClass method is run once before every test class; if what it sets up is so expensive that this cost is too high, you will have to explore setting up test suites--a set of test classes that are run in unison. Use @AfterClass to "tear down" something you've "set up" in the @BeforeClass method--but note that, in my experience, at least, very often this is not necessary.</p>
 <p class="precaption">Listing 3: An example of @BeforeClass</p>
@@ -137,7 +137,7 @@ java.lang.Exception: Method doSomethingOnce() should be public
 </pre>
             <p>Use @After to undo anything performed during a test. I rarely have a need for this annaotation.</p>
 
-            <h3>Using StringReader to Avoid Writing File Input for Testing</h3>
+            <h3><a id="StringReader">Using StringReader to Avoid Writing File Input for Testing</a></h3>
             <p>Frequently I want to verify the functionality of a method that reads a file. Often such a method takes a BufferedReader which points to the file. In these circumstances I usually have three choices: (1) create a test file and in my test method open the file with a BufferedReader, passing that object to the method I'm testing; (2) change the method to take a String object, which contains the contents of the file, and modify all callers of the method accordingly; or (3) in my unit test, insert the test file contents into a String object, create a BufferedReader which points to this String object, and invoke the method I'm testing with that.</p>
             <p>Now, it might be interesting to consider when each of these options is the best course of action. Yet I'm not going to do that--this page is already too wordy as it is. I'm simply going to tell you <b>how</b> to implement Option 3, if you decide that is the best option for your situation. (You'll find discussion of Option 1 in the next section below.)</p>
             <p>To sum up, the problem is this: you have a String, and you want a BufferedReader. How do you do that? Enter StringReader.</p>
@@ -148,7 +148,7 @@ java.lang.Exception: Method doSomethingOnce() should be public
 </pre>
         </br>
 
-            <h3>Getting the Location of a Test File or Other Resource</h3>
+            <h3><a id="Resource">Getting the Location of a Test File or Other Resource</a></h3>
             <p>Often a unit test requires some sort of resource such as an external file--input for a method that you're testing, for example. In acquiring the resource, you need the path, but you don't want to hard-code the path, since the path on one developer's machine won't necessarily be identical to the path on another developer's machine.</p>
             <p>For most of this discussion I'm assuming you run your tests from within an IDE such as Eclipse or IntelliJ Idea, rather than from the command line.</p>
             <p>The simplest solution to this problem is to locate the resource relative to the project location on the current machine.</p>
@@ -237,20 +237,21 @@ public class MiscJavaTest {
 java.lang.IllegalStateException: Could not find resources/input.txt in file:/(full path deleted>/CodeExamples/bin/
     at javaTests.MiscJavaTest.testGetResourcesThrowsNPEWithUsefulOutput(MiscJavaTest.java:53)
 </pre>
+
             <p>The only difference between this listing and the previous one occurs in the catch block. What the modified catch block is doing is something like this: "Okay, the unit test couldn't find resource X in directory path Y, so I'll print out exactly what X and Y are so that hopefully the stupid programmer can figure out how he or she messed up."</p>
             <p>Taking a close look at the exception output in the listing above gives us a chance to briefly explain how getResource( ) works. It assumes the compilation has copied the resources folder to your "out" directory--that is, to the same location where the build puts your .class files. Then it looks for this resources folder relative to the root of this "out" directory.</p>
             <p>Thanks to this message I was able to verify that the directory wasn't in the path given. Then I looked at the location of the resources directory in my workspace, and I saw it should actually go under the source directory, like everything else in "bin." I moved the folder and its contents there, reran the test and ...</p>
             <p>... And the test failed again with the same message. Which brings us to the one and only downside of using getResource( )--the resource must be copied over to the build directory. Every once in a while, to get things to work correctly, you may have to rebuild the project. I did this, reran the test and ... </p>
-            <img src='./image/successfulJunitTest.jpg' alt='missing' width="760" height="185"/>
+            <img src='./image/successfulJunitTest.jpg' alt='missing' width="760" height="220"/>
             <p>Hallelujah. Time to take a break.</p>
             
-            <h3>Writing a Unit Test that Expects an Exception</h3>
+            <h3><a id="ExpectingExceptions">Writing a Unit Test that Expects an Exception</a></h3>
             <p>And now for something completely different.</p>
             <p>It is always smart to verify that a method throws an exception when it's supposed to. Nowadays most every unit testing framework gives you the facility to do this. This section shows two ways to do it in JUnit. Both are useful in different circumstances.</p>
+            <p>Both examples expect the following method to throw an IllegalArgumentException if called with a null parameter.</p>
 
 <p class="precaption">Listing 10: A method which throws an exception</p>
 <pre class="preCodeWithCaption">
-// Here's a method that will throw an exception if its parameter is null.
 public static void read(String input)   {
     if(input == null || input.isEmpty())    {
         throw new IllegalArgumentException("Parameter input is null or empty.");
@@ -259,39 +260,68 @@ public static void read(String input)   {
     // ...
 }
 </pre>
+        <p>One way to verify this method's behavior is to declare the expected exception in the unit test's @Test annotation.</p>
 
-
-<p class="precaption">Listing 11: A unit test verifying a method throws an exception</p>
+<p class="precaption">Listing 11: Declaring an expected exception in the @Test annotation</p>
 <pre class="preCodeWithCaption">
 
 // Here's a unit test that verifies the behavior of the method.
 @Test(expected=IllegalArgumentException.class)
 public void testNull() {
-    SomeClass.read(null);
+    read(null);
 }
+
+// You see this output if the correct exception is NOT thrown.
+java.lang.AssertionError: Expected exception: java.lang.IllegalArgumentException
 </pre>
+        <p>Notice that the unit test has no asserts. Indeed, given that the invocation of read( ) is expected to throw an exception, any code after that point would be redundant.</p>
+        <p>This approach is clear, concise, and good enough about 90 percent of the time. It has two drawbacks, which occur: (1) when the unit test itself is much more complicated than in this example; and (2) when the method being tested might throw the same exception but with a different message.</p>
+        <p>JUnit's ExpectedException class is the solution in both of these situations.</p>
 
-
-<p>JERRY: Add other way. Give general background. Change names of things--and test.</p>
-<p class="precaption">Listing </p>
+<p class="precaption">Listing 12: Specifying the exact location of the exception and its message</p>
 <pre class="preCodeWithCaption">
 @Rule
 public ExpectedException expectedEx = ExpectedException.none();
     
 @Test
-public void testNull() {
-    expectedEx.expect(IllegalArgumentException.class);
-    expectedEx.expectMessage("Parameter input is null or empty.");
+public void testNullSpecific() {
+    read("hi!");
+    read("what's new, pussycat?");
     
-    SomeClass.read(null);
+    expectedEx.expect(IllegalArgumentException.class);
+    expectedEx.expectMessage("Parameter input is incorrect.");
+    
+    read(null);
 }
+
+// You see this output if the correct exception is NOT thrown
+java.lang.AssertionError: Expected test to throw (an instance of java.lang.IllegalArgumentException 
+and exception with message a string containing "Parameter input is null or empty.")
+
+// You see this output if the correct exception is thrown, but it has the wrong message.
+java.lang.AssertionError: 
+Expected: (an instance of java.lang.IllegalArgumentException and exception with message 
+a string containing "Parameter input is incorrect.")
+     but: exception with message a string containing "Parameter input is incorrect." message was 
+     "Parameter input is null or empty."
 </pre>
-
-        <p>It is often debated about which is "better," using @Test(expected=) or the @Rule annotation approach. I would say that it depends. @Test(expected=) is short and sweet. The @Rule annotation approach is more verbose, but it lets you specify a particular exception message, which can be useful, for instance, if a parameter is passed in and tested for a number of properties, and a failure to meet any of those throws an IllegalArgumentException with a different message. Also, the @Rule annotation approach lets you specify exactly what line should throw the expected exception. Both of these aspects of the more verbose approach can sometimes be useful.</p>
-
+        <p>In the listing above, the test method (for reason's of its own) calls read( ) three times, but only the third time is expected to throw an IllegalArgumentException. The unit test uses JUnit's ExpectedException class to verify that the right exception with the right message is thrown at the correct point in the program execution.</p>
+        <p>The fact that this latter approach allows you to specify the message is very useful if you are testing a method which takes more than one parameter, and you want to throw an IllegalArgumentException if any one of them is invalid. In this case, your exception message would be slightly different, depending on which parameter is invalid. In situations such as this, the ExpectedException approach, while more verbose and hence harder to read, really shines.</p>
 		</div>
 		
         <div id="sidebar">
+            <div class="internalLinkBox">
+                <div class="title">
+                    <h2>Links on this Page</h2>
+                </div>
+                <ul class="style2">
+                    <li><a href="#Fails">Make Sure the Test Fails</a></li>
+                    <li><a href="#@Before">@Before and @BeforeClass</a></li>
+                    <li><a href="#StringReader">Using StringReader</a></li>
+                    <li><a href="#Resource">Using a Test Resource</a></li>
+                    <li><a href="#ExpectingExceptions">Expecting an Exception</a></li>
+                </ul>
+            </div>
             <div class="internalLinkBox">
                 <div class="title">
                     <h2>Internal Java Links</h2>
