@@ -10,7 +10,9 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 import org.apache.commons.io.FileUtils;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 public class MiscJavaTest {
 	    final String PARENT_PATH = (new File("")).getAbsoluteFile().getParentFile().getAbsolutePath();
@@ -21,6 +23,34 @@ public class MiscJavaTest {
 	
 	private static final String INPUT_FILE_PATH = "resources/input.txt";
 	private static final Class<MiscJavaTest> CLASS = MiscJavaTest.class;
+	
+	public static void read(String input)   {
+	    if(input == null || input.isEmpty())    {
+	        throw new IllegalArgumentException("Parameter input is null or empty.");
+	    }
+	    
+	    // ...
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testNull() {
+	    read(null);
+	}
+	
+	@Rule
+	public ExpectedException expectedEx = ExpectedException.none();
+	    
+	@Test
+	public void testNullSpecific() {
+		read("hi!");
+		read("what's new, pussycat?");
+		
+	    expectedEx.expect(IllegalArgumentException.class);
+	    expectedEx.expectMessage("Parameter input is incorrect.");
+	    
+	    read(null);
+	}
+
 	
 	@Test
 	public void testGetResourcesWithBadExceptionOutput()	{	
