@@ -1,46 +1,26 @@
-Unit testing page
-- Need names for the two approaches.
-
-Java enum section
-I think I've done all this
-- What's the proper term for a "shared enum method"?
-- Enum is the common base class of all Java language enumeration types
-	- base class methods include name( ), toString( ) and valueOf( )
-- Note that when using an enumeration type as the type of a set or as the type of the keys in a map, specialized and efficient set and map implementations are available.
-
-
-Java
-! Main Page
-@ convertingCollections
-@ !enum
-@ javaSort
-! !unitTesting
----------
-? regex
-
-Change copyright from 2013 to 2015 ?
+Do every section's index page.
 
 Move contact, etc. to professional page.
 - Keep at home page, probably. Remove from Geneology.
 
 Call the summary sections "Quick View" or "Snapshot"?
 
-Java internal links are messed up.
-- Also look at Tab Titles
-
-Multiset
-- reference online, internal, and on the page
-- Multisets union returns a SetView? See Java Interviews book.
-- proofread
-
 hashtable for all data types
 - specify the sort when you call sort; stores everything as a string
 
 browser issues
+- Check with different browsers, different operatin systems
 - In Safari with the left sidebar open, there is no left hand margin
 
-Misc
-- needs a main index.html page
+In every section:
+- Remove unused pages.
+- Go through the notes/to do page.
+
+Proof all pages.
+
+Search for JERRY comments.
+
+Change copyright from 2013 to 2015 ?
 
 Professional pages
 * = ready
@@ -67,10 +47,12 @@ Guava
 
 Java
 ! Main Page
-! mapSort.html (perhaps split)
-? regex.html
-! unitTesting.html
-? converting from one collection type to another
+@ convertingCollections
+@ !enum
+@ javaSort
+@ unitTesting
+---------
+? regex
 
 Misc
 ! Main Page
@@ -104,21 +86,3 @@ No: NLP_AI
 ? sumoIntro.html
 ? GATE
 ? machine learning frameworks, comparison
-
-
-Kurlandski and other tables should have a caption.
-
-Java section needs a page on Comparison and Sort.
-
-Forvo API 
-The Forvo API allows users to integrate the functionality of Forvo into their websites or applications. Forvo is the largest pronunciation guide in the world, the place where you will find millions of words pronounced in their original languages. Ask for that word or name, and another user will pronounce it for you. You can also help 
-- Could use for pronunciation of Uncle and Aunt.
-
-uClassify
-The uClassify API allows you to classify text. You might use it to create a spam filter, categorize web pages, automate e-mail support, detect languages, classify a batch of blog posts, and more....
-
-Dipity
-Timelines
-- Could use for two persons on whom we have some dated information, e.g. two people who would eventually get married.
-- http://www.dipity.com
-

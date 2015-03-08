@@ -5,5 +5,9 @@ ConceptNet
 ConceptNetQueryService is the new version of ConceptNetQuery.
 - Parts also sent to Relation class.
 
-
 GATE
+
+uClassify
+The uClassify API allows you to classify text. You might use it to create a spam filter, categorize web pages, automate e-mail support, detect languages, classify a batch of blog posts, and more....
+
+
