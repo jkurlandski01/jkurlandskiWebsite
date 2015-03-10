@@ -183,6 +183,17 @@ figcaption p {
 	    padding: 5px;
 	 }
 	
+	pre.preProse
+	{
+		font-family: 'FontAwesome';
+		font-size: 1em;
+	    #background: #E8E8E8;
+	    overflow: auto;
+	    white-space: pre-wrap;
+	    padding: 5px;
+	    margin-right: 140;
+	 }
+	
 
 /* Section allowing for a series of descriptions of things. Floating is allowed, but turned off between descriptions. 
 li = thing being described (for time being that is an SVN command, hence the monospace font;
