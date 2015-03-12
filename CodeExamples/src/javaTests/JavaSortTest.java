@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.EnumSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -20,6 +21,36 @@ import com.google.common.collect.Sets;
 public class JavaSortTest {
 	
 	public enum CAR_MODEL  {OUTBACK, HIGHLANDER, MUSTANG, THUNDERBIRD}
+	
+	@Test
+	public void testEnumSet()	{
+		EnumSet<CAR_MODEL> imported = EnumSet.of(CAR_MODEL.OUTBACK, CAR_MODEL.HIGHLANDER);
+		EnumSet<CAR_MODEL> domestic = EnumSet.of(CAR_MODEL.MUSTANG, CAR_MODEL.THUNDERBIRD);
+		
+		CAR_MODEL myCar = CAR_MODEL.MUSTANG;
+		CAR_MODEL myWifesCar = CAR_MODEL.OUTBACK;
+		
+		assertTrue(imported.contains(myWifesCar));
+		assertFalse(imported.contains(myCar));
+	    
+	    assertTrue(domestic.contains(myCar));
+	    assertFalse(domestic.contains(myWifesCar));
+	}
+	
+	@Test
+	public void testSimpleEnumSort()	{
+		List<CAR_MODEL> carList = Lists.newArrayList();
+		carList.add(CAR_MODEL.MUSTANG);
+		carList.add(CAR_MODEL.THUNDERBIRD);
+		carList.add(CAR_MODEL.OUTBACK);
+		carList.add(CAR_MODEL.HIGHLANDER);
+		Collections.sort(carList);
+		
+		assertEquals(CAR_MODEL.OUTBACK, carList.get(0));
+		assertEquals(CAR_MODEL.HIGHLANDER, carList.get(1));
+		assertEquals(CAR_MODEL.MUSTANG, carList.get(2));
+		assertEquals(CAR_MODEL.THUNDERBIRD, carList.get(3));
+	}
 	
 	@Test
 	public void testSortEnum()	{
