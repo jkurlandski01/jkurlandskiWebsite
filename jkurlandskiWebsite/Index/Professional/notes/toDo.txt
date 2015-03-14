@@ -31,14 +31,14 @@ Professional pages
 ! Home Page
 
 CSS_HTML
-! Main Page
+* Main Page
 @ aptana.html
 @ floatingTable.html
 @ htmlEntities.html
 @ preAndCode.html
 
 Guava
-! Main Page
+* Main Page
 @ guavaIntro.html
 @ guavaMutimap.html
 @ guavaMultiset.html
@@ -46,7 +46,7 @@ Guava
 @ setOperations.html
 
 Java
-! Main Page
+* Main Page
 @ convertingCollections
 @ !enum
 @ javaSort
