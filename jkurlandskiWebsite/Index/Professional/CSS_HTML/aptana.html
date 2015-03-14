@@ -46,7 +46,6 @@
             <ul class="style3">
                 <li>Wraps lines (especially useful on a laptop)</li>
                 <li>Automatically inserts matching &lt;/p&gt; tags</li>
-                <li>Has a command that converts angle brackets and ampersands to "HTML entities"</li>
                 <li>Allows remote system synchronization</li>
             </ul>
             <p>This page will first discuss Aptana's advantages, then how to plug it into Eclipse, and then address a couple of the plug-in's more annoying features.</p>
@@ -68,8 +67,7 @@
             <br></br>
             <h4>Aptana automatically inserts matching &lt;/p&gt; tags.</h4>
             <p>Let's be honest: the string "&lt;/p&gt;" forms a very unpleasant, if not literally painful, sequence of characters to type. So Aptana is being very helpful when it fills in the closing &lt;/p&gt; for you. The plug-in is supposed to fill in matching end tags generally, not just for the paragraph tag, but I have not yet been able to get that to work. (Not that I've tried very hard.) Control of this option has been placed in the Content Assist box, reached via Preferences > Aptana Studio > Editors > HTML. In Screenshot 3 above, the <strong>left-most</strong> arrow is pointing toward the HTML node.</p>
-            <h4>Aptana can automatically convert angle brackets to HTML entities</h4>
-            <p>Because angle brackets indicate a tag in HTML, if you want to display a bracket you have to tell the browser not to read the angle bracket as the start of a tag. You do this by replacing the characters with what are called <em>HTML entities</em>. So, to display &lt;p&gt;, you must type in this: &amp;lt;p&amp;gt;  I discuss this more thoroughly on the "Using &lt;pre&gt; and &lt;code&gt;" page in this section of the website. The point here is that Aptana offers an extremely useful tool that will do this for you. To use the tool click on the Commands menu item at top and go to HTML > Entities > Convert Character / Selection to Entities. You can also get there by right-clicking. Note that, the first time you use it, the command might take several seconds to perform the conversion.</p>
+
             <h4>Aptana allows remote system synchronization.</h4>
             <p>Suppose you're like me: you first make changes to your website on your computer; you test those changes locally; and only when everything looks right do you export the changes to your live website. The question is--how do you get those changes to your website? You don't want to upload all your files. Depending on the number of files contained in your website, this could take a very long time. As I see it, there are two options. The better option is to upload your changes to a respository in the Cloud somewhere, and at your website synch up with the repository.</p>
             <p>But if you're not comfortable with using a respository like Subversion--or if your website is in an early stage and you're just not there yet--a second option is to use a tool like Aptana's. In Eclipse, this functionality is put into a view. Go to Window > Show View > Remote Systems. If the "Remote" option isn't visible, go to Window > Show View > Other > Studio > Remote.</p>
