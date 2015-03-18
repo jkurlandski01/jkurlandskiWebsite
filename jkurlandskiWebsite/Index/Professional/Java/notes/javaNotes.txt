@@ -4,3 +4,8 @@ New stream/reader page
 - and UnitTesting.html has use of StringReader
 
 
+Inner classes
+- diff types.
+- instantiating with object of outer class:
+                StackElement element = theStack.getCurrStackElement();
+                StackElement.ProcessEntityProperty property = element.new ProcessEntityProperty("attribute", f.cdr());
