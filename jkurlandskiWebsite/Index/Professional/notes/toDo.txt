@@ -1,3 +1,8 @@
+Do main professional index page
+- Check Verity Stobbs and other links
+
+Why is Guava table stuff now failing?
+
 Do every section's index page.
 
 Move contact, etc. to professional page.
