@@ -2,11 +2,13 @@ Do main professional index page
 - Check Verity Stobbs and other links
 
 Why is Guava table stuff now failing?
+- Description	Resource	Path	Location	Type
+The type new Ordering<Table.Cell<String,MovieTable.Column,String>>(){} must implement the inherited abstract method Comparator<Table.Cell<String,MovieTable.Column,String>>.thenComparingDouble(ToDoubleFunction<? super Table.Cell<String,MovieTable.Column,String>>)	Utils.java	/CodeExamples/src/guavatable	line 11	Java Problem
 
-Do every section's index page.
 
-Move contact, etc. to professional page.
-- Keep at home page, probably. Remove from Geneology.
+Contact page
+- Keep at home page, probably. 
+- Remove from Geneology?
 
 Call the summary sections "Quick View" or "Snapshot"?
 
@@ -16,10 +18,6 @@ hashtable for all data types
 browser issues
 - Check with different browsers, different operatin systems
 - In Safari with the left sidebar open, there is no left hand margin
-
-In every section:
-- Remove unused pages.
-- Go through the notes/to do page.
 
 Proof all pages.
 
