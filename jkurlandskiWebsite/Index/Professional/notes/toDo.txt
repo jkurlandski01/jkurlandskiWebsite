@@ -4,7 +4,13 @@ Do main professional index page
 Why is Guava table stuff now failing?
 - Description	Resource	Path	Location	Type
 The type new Ordering<Table.Cell<String,MovieTable.Column,String>>(){} must implement the inherited abstract method Comparator<Table.Cell<String,MovieTable.Column,String>>.thenComparingDouble(ToDoubleFunction<? super Table.Cell<String,MovieTable.Column,String>>)	Utils.java	/CodeExamples/src/guavatable	line 11	Java Problem
-
+- Changed to Java 1.8: now buids w/o error.
+- Run unit tests when you have an internet connection
+	- guavatable: pairElementsTestFails - expected to fail
+	- guavatests: testOldWayFails - expected
+		- testListAddAllFails
+		- testListRetainAllFails
+		
 
 Contact page
 - Keep at home page, probably. 
@@ -16,7 +22,7 @@ hashtable for all data types
 - specify the sort when you call sort; stores everything as a string
 
 browser issues
-- Check with different browsers, different operatin systems
+- Check with different browsers, different operating systems
 - In Safari with the left sidebar open, there is no left hand margin
 
 Proof all pages.
