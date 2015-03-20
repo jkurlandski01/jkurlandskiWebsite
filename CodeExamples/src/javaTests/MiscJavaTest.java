@@ -46,7 +46,7 @@ public class MiscJavaTest {
 		read("what's new, pussycat?");
 		
 	    expectedEx.expect(IllegalArgumentException.class);
-	    expectedEx.expectMessage("Parameter input is incorrect.");
+	    expectedEx.expectMessage("Parameter input is null or empty.");
 	    
 	    read(null);
 	}
