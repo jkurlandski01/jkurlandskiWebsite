@@ -37,7 +37,7 @@ public class ConceptNetQueryTest {
 //			File file = new File ("/Users/geraldkurlandski/Documents/workspace_website/jkurlandski/CodeExamples/src/semanticnetwork/strep_throat.json");
 
 			// A modified version of ConceptNet 5.3's output for "strep throat".
-			File file = new File("src/semanticNetwork/strep_throat.json");
+			File file = new File("src/conceptnet/strep_throat.json");
 	        BufferedReader reader = new BufferedReader(new InputStreamReader(file.toURI().toURL().openStream()));
 
 //			final URL testResource = Test.class.getResource("strep_throat.json");
