@@ -43,7 +43,7 @@
 				<h2>Floating Tables and Images</h2>
 				<h2>In CSS / HTML</h2>
 			</div>
-			<p>While building up my website I've learned a thing or two about floating tables and images. Floating lets you put text and images alongside of each other, letting you use the space on your page more wisely. Used well, it can also get your message across more effectively.</p>
+			<p>While building up my website I've learned a thing or two about floating tables and images. By making it possible to put text and images alongside of each other, floating lets you use the space on your page more wisely. Used well, it will get your message across more effectively.</p>
 
 			<h3>Two examples</h3>
 			<p>Here's a paragraph that is followed by a table. I'm adding another sentence here to make the paragraph a bit longer. And another sentence here. And another here. And one more sentence for good measure.</p>
@@ -75,7 +75,7 @@
 			</div>
 			<br />
 			
-			<p>While sometimes empty space can be a powerful tool for capturing and holding the reader's attention, often it just looks ... clumsy and wasteful, I suppose.</p>
+			<p>While sometimes empty space can be a useful tool for capturing and holding the reader's attention, often it just looks ... clumsy and wasteful, I suppose.</p>
 			<br />
 			<div class="floatedObject">
 				<table>
@@ -104,7 +104,7 @@
 			        <p>A floating table</p>
 			    </div>
 			</div>
-			<p>Here's a paragraph that is paired with what they call a floating table. The table is the same as the table above--only the styling is different. I'm adding another sentence here to make the paragraph a bit longer. And another here. And one more sentence for good measure.</p>
+			<p>Here's a paragraph that is paired with what they call a floating table. The table is the same as the table above--only the CSS styling is different. I'm adding another sentence here to make the paragraph a bit longer. And another here. And one more sentence for good measure.</p>
 			
             <div class="floatedObject">
                 <img src='./image/DeathAsConfessor.jpg' alt='missing' width="250" height="185"/>
@@ -141,7 +141,7 @@
 }
 </pre>
 
-			<p>Here's how you use these definitions in the HTML. The only tricky thing is that, in the HTML, the table or image comes <em>before</em> the text that you want to pair it with. What is <em>really</em> floating, then, is the text--not the table--in the sense that the text "floats" upward until it's level with the table.</p>
+			<p>Listing 2 shows how to use these definitions in the HTML. The only tricky thing is that, in the HTML, the table or image comes <em>before</em> the text that you want to pair it with. What is <em>really</em> floating, then, is the text--not the table--in the sense that the text "floats" upward until it's level with the table.</p>
 
 <p class="precaption">Listing 2: Using the floating object styles in HTML</p>
 <pre class="preCodeWithCaption">
@@ -155,9 +155,28 @@
 &lt;p&gt;And this paragraph is paired with a floating image. The styling is the same as for the floating table above. I'm adding another sentence here to make the paragraph a bit longer. And another here. And one more sentence for good measure.&lt;/p&gt;
 </pre>
 
-			<p>The above example shows how to float an image. Floating a table will look exactly the same, except you'll replace the one line starting with "img" with the several lines defining your table. If your table has too many columns, or the contents of the columns are too long, you'll want to use a traditional table. An example is the very first table at the top of this page. Here are the CSS style and the HTML that produced that.</p>
-			<p class="precaption">Listing 3: CSS and HTML for a traditional table</p>
+			<p>The above example shows how to float an image. Floating a table will look exactly the same, except you'll replace the one line starting with "img" with the several lines defining your table. Listing 3 below shows this, giving just the first two rows of the table for the sake of brevity.</p>
+			<p class="precaption">Listing 3: HTML for a floating table; CSS for any table, floated or not</p>
 <pre class="preCodeWithCaption">
+HTML:
+&lt;div class=&quot;floatedObject&quot;&gt;
+    &lt;table&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Title&lt;/th&gt;
+            &lt;th&gt;Director&lt;/th&gt;
+            &lt;th&gt;Country&lt;/th&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Seventh Seal&lt;/td&gt;
+            &lt;td&gt;Ingmar Bergman&lt;/td&gt;
+            &lt;td&gt;Sweden&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/table&gt; 
+    &lt;div class=&quot;figcaption&quot;&gt;
+        &lt;p&gt;A floating table&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
 CSS:
 table   {
     padding: 0px;
@@ -168,37 +187,12 @@ th, td  {
     padding: 4px;
     border: 1px solid black;
 }
-
-HTML:
-&lt;table&gt;
-	&lt;tr&gt;
-		&lt;th&gt;Title&lt;/th&gt;
-		&lt;th&gt;Director&lt;/th&gt;
-		&lt;th&gt;Country&lt;/th&gt;
-	&lt;/tr&gt;
-	&lt;tr&gt;
-		&lt;td&gt;Seventh Seal&lt;/td&gt;
-		&lt;td&gt;Ingmar Bergman&lt;/td&gt;
-		&lt;td&gt;Sweden&lt;/td&gt;
-	&lt;/tr&gt;
-	&lt;tr&gt;
-		&lt;td&gt;Seven Samari&lt;/td&gt;
-		&lt;td&gt;Akira Kurosawa&lt;/td&gt;
-		&lt;td&gt;Japan&lt;/td&gt;
-	&lt;/tr&gt;
-	&lt;tr&gt;
-		&lt;td&gt;Seven&lt;/td&gt;
-		&lt;td&gt;Andy Sidaris&lt;/td&gt;
-		&lt;td&gt;United States&lt;/td&gt;
-	&lt;/tr&gt;
-&lt;/table&gt; 
-&lt;div class=&quot;figcaption&quot;&gt;
-	&lt;p&gt;This table is styled normally.&lt;/p&gt;
-&lt;/div&gt;
 </pre>
+            <p>If your table has too many columns, or the contents of the columns are too long, you'll want to use a traditional table. Listing 3 also provides the CSS for a table, which you can use whether you float it or not.</p>
+
         			
 			<h3>But what if you DON't want to float?</h3>
-			<p>If you don't want text alongside your table, simply don't float the table--use the normal table html given above. But suppose you have two small tables, or two thumbnail images, and you want them to appear side-by-side? In this case you would float them both. The problem is that, if you float the two tables or images, then any text that follows them will be placed next to them.</p>
+			<p>If you don't want text alongside your table or image, simply don't surround it with the floatedObject div that you see in Listings 2 and 3. But suppose you have two small tables, or two thumbnail images, and you want them to appear side-by-side? In this case you would float them both. The problem is that, if you float the two tables or images, then any text that follows them will be placed next to them.</p>
 			<p>Here is an illustration of the problem I'm describing.</p>
 <!-- 			<div class="floatedObject"> -->
 <!-- 				<table> -->
