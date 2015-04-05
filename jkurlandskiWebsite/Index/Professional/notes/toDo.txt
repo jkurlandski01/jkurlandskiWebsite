@@ -1,14 +1,14 @@
 Should be using <br/> instead of </br>.
-- Search and replace.
+- Search and replace? Hunt through, looking for warnings?
 
 Do main professional index page
-- Check Verity Stobbs and other links
+- √ Check Verity Stobbs and other links
 
-Run unit tests when you have an internet connection
-	- guavatable: pairElementsTestFails - expected to fail
-	- guavatests: testOldWayFails - expected
-		- testListAddAllFails
-		- testListRetainAllFails
+Four unit tests fail:
+	- guavatable: pairElementsTestFails
+	- guavatests: testOldWayFails
+	- testListAddAllFails
+	- testListRetainAllFails
 		
 Contact page
 - Keep at home page, probably. 
@@ -39,8 +39,7 @@ Professional pages
 
 CSS_HTML
 * Main Page
-@ aptana.html
-- in progress
+* aptana.html
 @ floatingTable.html
 @ htmlEntities.html
 @ preAndCode.html
