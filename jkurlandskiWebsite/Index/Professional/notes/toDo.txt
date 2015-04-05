@@ -40,7 +40,7 @@ Professional pages
 CSS_HTML
 * Main Page
 * aptana.html
-@ floatingTable.html
+* floatingTable.html
 @ htmlEntities.html
 @ preAndCode.html
 
