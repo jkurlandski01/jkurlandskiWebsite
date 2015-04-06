@@ -41,7 +41,7 @@ CSS_HTML
 * Main Page
 * aptana.html
 * floatingTable.html
-@ htmlEntities.html
+* htmlEntities.html
 @ preAndCode.html
 
 Guava
