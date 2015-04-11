@@ -5,7 +5,8 @@ package interviews.facetoface;
  * A valid IP address has 4 parts separated by a period. Each part can contain 0-255. The first part can't 
  * start with 0.
  */
-public class LongestPalindromicSubString {
+// This implementation has a complexity of O(n).
+public class LongestPalindromicSubString_O_n {
 
     char[] sChar;
     int[] p;
@@ -56,7 +57,7 @@ public class LongestPalindromicSubString {
     }
 
     public static void main(String[] args) {
-        String result = new LongestPalindromicSubString().longestPalindrome("abab");
+        String result = new LongestPalindromicSubString_O_n().longestPalindrome("abab");
         //String result = new LongestPalindromicSubString().longestPalindrome("ababa aba");
         System.out.println(result);
     }

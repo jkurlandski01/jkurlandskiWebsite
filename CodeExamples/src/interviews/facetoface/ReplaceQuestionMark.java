@@ -2,22 +2,15 @@ package interviews.facetoface;
 
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
-import java.util.regex.Pattern;
 
 import org.junit.Test;
 
-import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
 public class ReplaceQuestionMark {
 
     public static void main(String[] args) {
-//    	ReplaceQuestionMark replaceQuestionMark = new ReplaceQuestionMark();
-//    	List<String> result = replaceQuestionMark.replaceQuestionMarks("25525511135");
-//        System.out.println(result);
     }
     
     @Test
@@ -37,7 +30,7 @@ public class ReplaceQuestionMark {
 		depthFirstSearch(input, 0, new StringBuilder(), permutations);
 		return permutations;
 	}
-
+	
 	private void depthFirstSearch(String input, int idx, StringBuilder stringThusFar, Set<String> list) {
 		if(idx >= input.length())	{
 			list.add(stringThusFar.toString());
