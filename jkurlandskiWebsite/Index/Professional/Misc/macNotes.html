@@ -45,6 +45,19 @@
 <p>JERRY: What if the links die? Shouldn't I keep local copies of the salient points in case this happens? Put these in a separate folder?</p>
             <p>Here I collect miscellaneous notes on the Mac, for programmers and "normal" users alike.</p>            
 
+            <h4>Command Line Issues on the Mac</h4>
+            <p>Some Unix commands don't work as expected on the Mac. In my experience, <code>sed</code> seems to be the primary culprit. Here I've begun keeping track of these issues, and how you might fix them.</p>
+
+           <div class="singleSpacedDescription">
+                <li>sed -i</li>
+                <p>The command <code>sed -i</code> replaces the contents of the input file with the result of the change. In the Unix world, the command has an optional parameter which allows you to specify the extension of the backup of the file you're about to replace. The full syntax of the command goes something like this:</p>
+               <li>sed -i [&#x27;.backupext&#x27;] &lt;expression&gt; &lt;inputFile&gt;</li>
+                <p>In the Mac world, this parameter is not optional. So, to serve as an example, to change "hi" to "hello" in a file named "greetings," to to back up the original file as "greetings.bk," you would type this:</p>
+               <li>sed -i '.bk' "s/hi/hello/g" greetings</li>
+             </div>
+             <br/>
+             <br/>
+
             <h4>Finder &rarr; Command Line</h4>
                 <div class="floatedObject">
                     <img src='./image/Finder.jpg' alt='missing' width="200" height="185"/>

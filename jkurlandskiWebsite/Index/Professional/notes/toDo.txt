@@ -58,6 +58,7 @@ Java
 @ !enum
 @ javaSort
 @ unitTesting
+? onePointEight
 ---------
 ? regex
 
