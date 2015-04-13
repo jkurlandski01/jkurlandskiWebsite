@@ -43,14 +43,12 @@
 				<h2>Using  &lt;pre&gt; and &lt;code&gt;</h2>
 				<h2>to display code</h2>
 			</div>
-			<p>JERRY: On Chrome and Safari (on my work computer) my name above appears below the gray box.</p>
-			<p>JERRY: perhaps add a new section at bottom "additional reading and issues"; if you use the guy with the detailed example extensively, then reference him; add to sidebar</p>
 			<p>Sometimes website developers want to share a technique that they've discovered or found useful. Sometimes they simply want to set a few lines apart from the rest of the text on a web page. The &lt;pre&gt; and &lt;code&gt; tags are useful for this purpose.</p>
+			<p><b>If you're in a hurry (or if you don't like to read):</b> Jump to the last two listings on this page.</p>
 			
 			<h3>Converting reserved HTML characters</h3>
-			<p>JERRY: I need a separate page with the basics; just a quick run-through here and a reference to that page</p>
-			<p>When trying to display HTML and other programming code on a web page, one of the first obstacles that has to be overcome is the fact that certain characters, particularly angle brackets, are <em>reserved</em>. This means that browsers interpret these characters different from other characters, and will <strong>not</strong> display them on the web page. To get these characters to display correctly, you have to type into your HTML not the character itself, but its <em>entity equivalent</em>.</p>
-			<p>I explain this in greater detail on a separate page in this section of <strong>Close to the Machine</strong>. See the link at right. For the purposes of this page, what you need to do to display HTML on your web page is the following:</p>
+			<p>When trying to display HTML and other programming code on a web page, one of the first obstacles that has to be overcome is the fact that certain characters, particularly angle brackets, are <em>reserved</em>. This means that browsers interpret these characters differently from other characters, and will <strong>not</strong> display them on the web page. To get these characters to display correctly, you have to type into your HTML not the character itself, but its <em>entity equivalent</em>.</p>
+			<p>I explain HTML entities in greater detail on a separate page--see the link in the sidebar. On this page, we're concerned exclusively with those characters that you find in computer code. What you need to do to display HTML and most computer code on your web page is the following:</p>
             <ul class="style3">
                 <li>replace the "&lt;" symbol with "&amp;lt;" (think "less than");</li>
                 <li>replace the "&gt;" symbol with "&amp;gt;" (think "greater than"); </li>
@@ -68,7 +66,7 @@ someTag {
 }
 </pre>
 
-		<p>Each browser has its own default version of this tag. Since &lt;pre&gt; is not defined in my CSS stylesheet, the snippet of code above illustrates how your browser's default setting for rendering text surrounded by the pre tag. Most browswers will assign a monospace type to text wrapped by this tag.</p>
+		<p>Each browser has its own default version of this tag. Since &lt;pre&gt; is not defined in my CSS stylesheet, the snippet of code above illustrates your browser's default setting for rendering text surrounded by the pre tag. Most browswers will assign a monospace type to text wrapped by this tag.</p>
 		<p>The next snippet contains the exactly the same text, but wrapped in the &lt;code&gt; tag instead.</p>
         
 <p class="precaption">Listing 2: Your browser's default settings for &lt;code&gt;.</p>
@@ -82,7 +80,7 @@ someTag {
 </p>
 		
 		<p>You see that the &lt;code&gt; tag also assigns a monospace font, but it seems less useful, if only because browsers typically ignore the contents' newlines and collapse the whitespace. If whitespace is important in your display of code (and usually it is to the reader, if not the compiler), then you need &lt;pre&gt;. The &lt;code&gt; tag can be used for inline elements, like the following: <code>public static int HUNDRED = 100; </code></p>
-		<p>Some will say that you should present blocks of code with both &lt;pre&gt; and &lt;code&gt;. But I don't see the point of the code tag for blocks of text; incuding it just seems like extra work to me.</p>
+		<p>Some will say that you should present blocks of code with both &lt;pre&gt; and &lt;code&gt;. But, so far, for blocks of HTML or other code, I am unpersuaded; incuding it just seems like extra work to me.</p>
 		
 		<h3>A pretty good pre tag styling</h3>
 		<p>After some experimenting I finally found a style for &lt;pre&gt; that suits my needs. My first decision was whether to define the pre tag's styling, or to create my own class. Had I decided on the former, then all usages of the tag would have been determined by that style, making it impossible for me to use the default stylings. In other words, Listing 1 on this page would have been styled in exactly the same wasy as Listing 3. I decided I did not want that. So I created a new class, calling it "preCode," because its general behavior is like that of &lt;pre&gt;, and because its primary usage is to display code like HTML.</p>
