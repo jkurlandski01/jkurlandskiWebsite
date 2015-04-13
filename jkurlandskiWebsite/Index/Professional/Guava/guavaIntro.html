@@ -42,10 +42,10 @@
 			<div class="title">
 				<h2>Guava Intro</h2>
 			</div>
-			<p>Google's Guava tools offer Java developers a wide range of very useful Collection utilities. One of the easiest ways to introduce yourself to these tools is to start with the interface methods that let you quickly create and initialize your garden variety Java collections. Here I'll give a quick introduction to this aspect of Guava. See the sidebar for other ways in which Guava will make your Java programming easier.</p>
+			<p>Google's Guava tools offer Java developers a wide range of very useful Collection utilities. One of the easiest ways to introduce yourself to these tools is to start with the methods that let you quickly create and initialize your garden variety Java collections. Here I'll give a quick introduction to this aspect of Guava. See the sidebar for other ways in which Guava will make your Java programming easier.</p>
 			
 			<h3>Summary: Creating and Initializing Basic Lists, Sets and Maps</h3>
-            <p>Let's jump right in. The first example below shows what is my most common usage of Guava--initializing an ArrayList.</p>
+            <p>Let's jump right in. The first example below shows what is my most common usage of Guava--initializing an ArrayList. In this and most other examples, I use unit test assertions to illustrate the state of the collection after initialization.</p>
 
 <p class="precaption">Listing 1: Instantiating and Initializing an ArrayList with Guava</p>
 <pre class="preCodeWithCaption">
@@ -191,7 +191,7 @@ public void initializeLinkedList()  {
 </pre>
             <p>I suppose initializing a LinkedList with an ArrayList which was initialized with a single line of code is an example of having your cake and eating it, too.</p>
 
-            <p><b>Sets.</b> Guava offers alternate Set implementations as well, for instance, Sets.newTreeSet( ) and Sets.newConcurrentHashSet( ) create a TreeSet and a ConcurrentHashSet, respectively.</p>
+            <p><b>Sets.</b> Guava offers alternate Set implementations as well. For instance, Sets.newTreeSet( ) and Sets.newConcurrentHashSet( ) create a TreeSet and a ConcurrentHashSet, respectively.</p>
             <p><b>Maps.</b> In the same vein, Maps.newTreeMap() will create a TreeMap, rather than a HashMap, if you want an iteration through the key/value pairs to be both sorted and economical.</p>
            
 

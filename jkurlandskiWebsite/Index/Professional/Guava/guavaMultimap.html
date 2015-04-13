@@ -42,8 +42,7 @@
 			<div class="title">
 				<h2>Guava's Multimap</h2>
 			</div>
-            <p>JERRY: Need external links at right.</p>
-            <p>Guava's Multimap interface and its implementations give Java developers a new tool. It replaces Map&lt;X, List&lt;Y&gt;&gt; (as well as Map&lt;X, Set&lt;Y&gt;&gt;), both of which can be a little awkward and a little verbose.</p>
+            <p>Guava's Multimap interface and its implementations give Java developers a new tool. It replaces Map&lt;X, List&lt;Y&gt;&gt;, as well as Map&lt;X, Set&lt;Y&gt;&gt;, both of which can be a little awkward and a little verbose.</p>
             
             <h3>Multimap Summary</h3>
             <p>For those in a hurry, here's a quick view on how to use a multimap.</p>
@@ -71,11 +70,19 @@ for(Entry&lt;String, String&gt; mapPair : mm.entries())  {
     String value = mapPair.getValue();
 }
 </pre>
-            <p>That's the summary. The next sections explore Multimaps in the detail they deserve.</p>
-            </br>
+            <p><b>Advantages of Multimap.</b> Here are some of the advantages a multimap has over, for example, Map&lt;X, List&lt;Y&gt;&gt;.</p>
+            <ul class="style3">
+                <li>You don't have to test whether the key exists in the map before inserting new values.</li>
+                <li>You can query on a non-existent map key without worrying about a null pointer exception.</li>
+                <li>You can iterate through all values without first obtaining the list assiciated with each key.</li>
+                <li>With one method call, in O(1) time, you can get the number of all entries in the map.</li>
+            </ul>
+
+            <p>That's the summary. The next sections explore Multimaps in the detail they deserve, expanding on the examples given above.</p>
+            <br/>
 
             <h3>Multimap Functionality</h3>
-            <p>JERRY: section too long and hard to follow: use h4 or at least bold titles at start of each par</p>
+            
             <p><b>Creating and populating.</b> For the sake of illustration, suppose we want to associate a number of simple forms of an English verb with their infinitive form. Before the Multimap, you would probably use a Map&lt;String, Set&lt;String&gt;&gt;, where the key was the infinitive form, and the set associated with each key consisted of all the various forms for that verb. </p>
             <p>With Guava, you would use a Multimap&lt;String, String&gt; instead. The lines below show you how to create the multimap and load it with the forms for two verbs, <em>ask</em> and <em>be</em>.</p>
 
@@ -99,8 +106,10 @@ mm.putAll(&quot;have&quot;, Sets.newHashSet(&quot;have&quot;, &quot;has&quot;, &
 // Or allow duplicate values with: Multimap&lt;String, String&gt; mm2 = ArrayListMultimap.create();
 </pre>
         
-            <p>Listing 2 shows that you can load each list element individually, with put( ), or collectively, with putAll( ). Significantly, in neither case do you have to worry about whether the key's list has already been instantiated, or whether it already contains some verb forms that you don't want to lose.</p>
+            <p>Listing 2 shows that you can load each list element individually, with put( ), or collectively, with putAll( ). Significantly, in neither case do you have to worry about whether the map already contains some verb forms that you don't want to lose.</p>
+            
             <p><b>Using Multimap with arrays instead of sets.</b> Note the commented-out line at the end, which shows how to instantiate a Multimap that allows repeated values that behave like an ArrayList, rather than values that have HashSet-like behavior.</p>
+            
             <p><b>Multimap get( ).</b> Now suppose you've populated your map and you want to do something useful with it.</p>
 
 <p class="precaption">Listing 3: Getting particular Multimap values</p>
@@ -148,7 +157,7 @@ Write using toString():
 {ask=[ask, asks, asked], be=[am, are, is, was, were]}
 </pre>
 
-        <p><b>Getting the just the values, without the keys.</b> Perhaps you're completely indifferent about the keys, and all you want is the elements of all the lists. The next example gets all the elements with a method call to values( ); then, just for the fun of it, the code snippet goes on to sort those entries and write out the result.</p>
+        <p><b>Getting just the values, without the keys.</b> Perhaps you're completely indifferent about the keys, and all you want is the elements of all the lists. The next example gets all the elements with a method call to values( ); then, just for the fun of it, the code snippet goes on to sort those entries and write out the result.</p>
             
 <p class="precaption">Listing 6: Getting just the entries with Multimap.values( )</p>
 <pre class="preCodeWithCaption">

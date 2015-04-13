@@ -1,5 +1,14 @@
+In progress:
+hashBasedTable.html
+
 Should be using <br/> instead of </br>.
 - Search and replace? Hunt through, looking for warnings?
+
+Standardize the "Jerry Kurlandski" on each web page.
+- See how it's rendered in Windows Explorer when you make your decision.
+
+In Windows my pages seem to be washed out.
+- Or is it just my screen? Compare to laptop screen, kids', Titia's.
 
 Do main professional index page
 - √ Check Verity Stobbs and other links
@@ -35,22 +44,23 @@ Professional pages
 ! = needs work
 ? = planned or just starting or not ready
 
-@ Home Page
+* Home Page
 
 CSS_HTML
 * Main Page
 * aptana.html
 * floatingTable.html
 * htmlEntities.html
-@ preAndCode.html
+* preAndCode.html
 
 Guava
 * Main Page
-@ guavaIntro.html
-@ guavaMutimap.html
-@ guavaMultiset.html
-@ hashBasedTable.html
-@ setOperations.html
+* guavaIntro.html
+* guavaMutimap.html
+* guavaMultiset.html
+* hashBasedTable.html
+* setOperations.html
+---------
 
 Java
 * Main Page
