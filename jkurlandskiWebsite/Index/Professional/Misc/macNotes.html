@@ -51,9 +51,9 @@
            <div class="singleSpacedDescription">
                 <li>sed -i</li>
                 <p>The command <code>sed -i</code> replaces the contents of the input file with the result of the change. In the Unix world, the command has an optional parameter which allows you to specify the extension of the backup of the file you're about to replace. The full syntax of the command goes something like this:</p>
-               <li>sed -i [&#x27;.backupext&#x27;] &lt;expression&gt; &lt;inputFile&gt;</li>
+               <li>sed -i[.backupext] &lt;expression&gt; &lt;inputFile&gt;</li>
                 <p>In the Mac world, this parameter is not optional. So, to serve as an example, to change "hi" to "hello" in a file named "greetings," to to back up the original file as "greetings.bk," you would type this:</p>
-               <li>sed -i '.bk' "s/hi/hello/g" greetings</li>
+               <li>sed -i.bk "s/hi/hello/g" greetings</li>
              </div>
              <br/>
              <br/>

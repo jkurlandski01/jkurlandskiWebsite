@@ -60,6 +60,7 @@ public class FindNonRepeatedNumber {
     	throw new IllegalStateException("No non-repeated int found.");
     }
 
+    
     // Try another approach which is still O(n), but reduces runtime by half--no second loop through each element.
     
     @Test
