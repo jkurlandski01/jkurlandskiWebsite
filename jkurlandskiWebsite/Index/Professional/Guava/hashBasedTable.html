@@ -94,9 +94,9 @@ table.put(&quot;Seven&quot;, &quot;Director&quot;, &quot;Andy Sidaris&quot;);
 table.put(&quot;Seven&quot;, &quot;Country&quot;, &quot;United States&quot;);
 </pre>
 
-			<p>Initialization seems quite verbose: you feel as though you should be able to insert into the Table in the same way you insert into a database table--with a single SQL-like insert statement. But when you remember that we're dealing with, at bottom, a hash, it makes perfect sense. <i>TODO: Create a layer of abstraction that let's the user insert rows into the table more succintly.</i></p>
+			<p>Initialization seems quite verbose: you feel as though you should be able to insert into the Table in the same way you insert into a database table--with a single SQL-like insert statement. But when you remember that we're dealing with, at bottom, a hash, it makes perfect sense. <i>TODO: Create a layer of abstraction that lets the user insert rows into the table more succinctly.</i></p>
 			<p>An attentive reader will also note that the second parameter of the put() method is dying for an enum. <i>TODO: Use an enum to define the column names.</i></p>
-			<p>Note that I wrote in the paragraph above that the HashBasedTable "helps" satisfy our sorting requirement. It doesn't actually give us the sorting facility. That, we have to implement ourselves. But what it does is give us a view of the table's values for any one column, while retaining a link between the values in that column and the other values in each row. What this means is that, once you have a view on a column, and once you sort on the cells in that column, you have in effect sorted all the rows.</p>
+			<p>Note that I wrote above that the HashBasedTable "helps" satisfy our sorting requirement. It doesn't actually give us the sorting facility. That, we have to implement ourselves. But what it does is give us a view of the table's values for any one column, while retaining a link between the values in that column and the other values in each row. What this means is that, once you have a view on a column, and once you sort on the cells in that column, you have in effect sorted all the rows.</p>
 			<p>Here is some code to illustrate what I mean.</p>
 
 <p class="precaption">Listing 2: Sorting on the director column</p>
@@ -105,7 +105,9 @@ table.put(&quot;Seven&quot;, &quot;Country&quot;, &quot;United States&quot;);
 // O(nbrRows X nbrColumns)
 // Elements of table.cellSet() include:
 // (Seven Samari,Country)=Japan; (Seven Samari,Title)=Seven Samari; (Seven Samari,Director)=Akira Kurosawa
+
 List&lt;Cell&lt;String, String, String&gt;&gt; filteredList = Lists.newArrayList();
+
 Set&lt;Cell&lt;String, String, String&gt;&gt; cells = table.cellSet();
 for(Cell&lt;String, String, String&gt; cell : cells)  {
     if(cell.getColumnKey().equals(&quot;Director&quot;))    {
@@ -122,6 +124,7 @@ for(Cell&lt;String, String, String&gt; cell : cells)  {
 <pre class="preCodeWithCaption">
 // Sort the filtered Director cells.
 // O(nbrRows)
+
 Collections.sort(filteredList, stringComparator);
 </pre>
 
@@ -131,6 +134,7 @@ Collections.sort(filteredList, stringComparator);
 <pre class="preCodeWithCaption">
 public static Ordering&lt;Table.Cell&lt;String, String, String&gt;&gt; stringComparator =
         new Ordering&lt;Table.Cell&lt;String, String, String&gt;&gt;() {
+            
     @Override
     public int compare(
         Table.Cell&lt;String, String, String&gt; cell1, 
@@ -150,6 +154,7 @@ public static Ordering&lt;Table.Cell&lt;String, String, String&gt;&gt; stringCom
 <pre class="preCodeWithCaption">
 // Put the data into a list of strings.
 // O(nbrRows)
+
 List&lt;String&gt; rowList = Lists.newArrayList();
 for(Cell&lt;String, String, String&gt; cell : filteredList)   {
     Map&lt;String, String&gt; row = table.row(cell.getRowKey());
@@ -159,6 +164,7 @@ for(Cell&lt;String, String, String&gt; cell : filteredList)   {
         .append(row.get(&quot;Country&quot;)).append(&quot;\n&quot;);
     rowList.add(builder.toString());
 }
+
 System.out.println(rowList.toString());
 
 Output:
@@ -175,20 +181,22 @@ Output:
 <pre class="preCodeWithCaption">
 // Put the data into a List of Map&lt;String, String&gt; where key is column name.
 // O(nbrRows)
+
 List&lt;Map&lt;String, String&gt;&gt; rowMapList = Lists.newArrayList();
 for(Cell&lt;String, String, String&gt; cell : filteredList)   {
     Map&lt;String, String&gt; row = table.row(cell.getRowKey());
     rowMapList.add(row);
 }
+
 System.out.println(rowMapList.toString());
 
 Output:
 [{Country=Japan, Title=Seven Samari, Director=Akira Kurosawa}, {Country=United States, Title=Seven, Director=Andy Sidaris}, {Country=Sweden, Title=Seventh Seal, Director=Ingmar Bergman}]
 </pre>
 
-			<p>The list produced by the snippet above contains three elements, one for each row of our table structure. The first row gives us the data on Kurosawa's "Seven Samari" in the form of a Map&lt;String, String&gt. Each row's map contains three keys: "Title", "Director" and "Country."</p>
-			<p>This is all well and good, but it would be a pain to write specialized code every time you need a table structure that can be sorted by any column. <i>TODO: Encapsulate and abstract this behavior into a useful class?</i></p>
-			<p>Another issue has to do with the awkward fact that all of our columns contain string date. Guava's Table interface does not allow the values of different columns to be different types. <i>TODO: Verify this assertion.</i> Despite this, it is possible to represent int's, double's and so on in the table as strings, and create special sorting routines for these types. In fact, I have done this. But I'm not wholly pleased with this code, because the user has to pay attention to which column he or she wants sorted, and invoke the correct sorting routine for that column's type. A better way to deal with the problem of correctly sorting on different column types is to declare on instantiation how each column out to be sorted--as a string or as a numeric. <i>TODO: Implement the above.</i></p>
+			<p>The list produced by the snippet above contains three elements, one for each row of our table structure. The first row gives us the data on Kurosawa's "Seven Samari" in the form of a Map&lt;String, String&gt;. Each row's map contains three keys: "Title", "Director" and "Country."</p>
+			<p>This is all well and good, but it would be a pain to write specialized code every time you need a table structure that can be sorted by any column. <i>TODO: Encapsulate and abstract this behavior into a useful class.</i></p>
+			<p>Another issue has to do with the awkward fact that all of our columns contain string date. Guava's Table interface does not allow the values of different columns to be different types. <i>TODO: Verify this assertion.</i> Despite this, it is possible to represent int's, double's and so on in the table as strings, and create special sorting routines for these types. In fact, I have done this. But I'm not wholly pleased with this code, because the user has to pay attention to which column he or she wants sorted, and invoke the correct sorting routine for that column's type. A better way to deal with the problem of correctly sorting on different column types is to declare on instantiation how each column ought to be sorted--as a string or as a numeric. <i>TODO: Implement the above.</i></p>
 		</div>
 		<div id="sidebar">
 			<div class="internalLinkBox">

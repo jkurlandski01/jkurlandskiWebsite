@@ -86,7 +86,7 @@ Arrays.sort(array);
             </br>
 
 			<h3>Using TreeMap for Sorted Keys</h3>
-            <p>There are a couple of ways to sort on the keys of a map. You could: (1) use Java's TreeMap, or (2) get the key set and sort that. If your requirements are as simple as that, this page will help you out. If your requirements are more complicated--for example, if you want to be able to sort on the values as well as the keys--you might want to explore Guava's Table interface and its various implementations.</p>
+            <p>There are a couple of ways to sort on the keys of a map. You could: (1) use Java's TreeMap, or (2) get the key set and sort that. If your requirements are as simple as that, this page will help you out. If your requirements are more complicated--for example, if you want to be able to sort on the values as well as the keys of a map--you might want to explore Guava's Table interface and its various implementations. I have a separate Guava page that will help you get started.</p>
 			<p>The listing below shows you how to use a TreeMap, which is a specialized Java Map that returns the keys in sorted order.</p>
 
 <p class="precaption">Listing 5: Using TreeMap to get the keys of a map in sorted order</p>
@@ -231,7 +231,7 @@ Printing the sorted array after converting it to a list.
 
             <h3>When the object you are sorting on is a custom class</h3>
             <p>If the objects in your collection consist of your own class rather than Java classes like String, Double, Integer and so on, don't forget to override the necessary methods for safe sorting and the insertion of your class objects into containers. For example, maybe you have a Movie class which contains two fields, title and release date, and you want to sort Movie objects first on title, then on release date if there is a tie. There are three methods you'll need to write in the Movie class: you'll have to override the Object methods equals( ) and hashCode( ); and you'll want to declare your class as implementing Comparable and implement compareTo( ).</p>
-            <p>Chances are you should consider overriding Object.toString( ) as well. That way, you'll get readable output when the method is called. (Remember how nice List.toString( )'s output was compared to Array.toString( )'s in the listing above.)</p>
+            <p>Chances are you should consider overriding Object.toString( ) as well. That way, you'll get readable output when the method is called. (Remember how nice List.toString( )'s output was compared to Array.toString( )'s in Listing 9 above.)</p>
             <p>All of this is covered beautifully in Chapter 3 of Joshua Bloch's <em>Effective Java</em>.</p>
         </div>
 		
