@@ -74,9 +74,9 @@ public enum Relation {Antonym(&quot;is the opposite of&quot;), AtLocation(&quot;
 }
 </pre>
 
-        <p>In the curly braces following the enum keyword and the name of the enum, you see seven types of Relations, each one associated with a string. We'll get to the string in a moment, but first I want to discuss the use of "Pascal case" in the names of the Relation types. Traditionally in Java instances of enums are put into all-uppercase, as I did for the parts of speech in Listing 1. However, there are times when I think readability prefers "Pascal case," that is, starting with a capital letter and using mixed case to signal separate words in the name. Had I adhered to the uppercase naming convention for enums, in Listing 2 I would have had to assign the AtLocation type either the name ATLOCATION or AT_LOCATION--both of which are an eyesore, in my humble opinion.</p>
+        <p>Within the curly braces following the enum keyword and the name of the enum, you see seven types of Relations, each one associated with a string. We'll get to the string in a moment, but first I want to discuss the use of "Pascal case" in the names of the Relation types. Traditionally in Java, instances of enums are put into all-uppercase, as I did for the parts of speech in Listing 1. However, there are times when I think readability prefers "Pascal case," that is, starting with a capital letter and using mixed case to signal separate words in the name. Had I adhered to the uppercase naming convention for enums, in Listing 2 I would have had to assign the AtLocation type either the name ATLOCATION or AT_LOCATION--both of which are an eyesore, in my opinion.</p>
         <p>Moving on to other aspects of Listing 2, note the semicolon which ends the Relation enum types. What follows that, you'll notice, looks like a class. It even has a constructor method bearing the Relation name--just like a class. As a matter of fact, in Java enums really are classes--a special kind of class that provides a singleton object for each enum type. In other words, every Relation.AtLocation reference points to exactly the same object. In Listing 2 we see that each type has a field called <code>gloss</code>, which "translates" the meaning of the relation into natural-sounding English. Because it's a singleton, every Relation.PartOf reference has exactly the same gloss.</p>
-        <p><b>Enums and methods.</b> All enums share a common base class called Enum. Base class methods include name( ), toString( ) and valueOf( ). You can write getters for the fields of an enum; and I could have done so for my Relation class. Instead, I chose to override the Object toString( ) method, and have that return the gloss. See the next listing, which demonstrates the use of our overridden toString( ) method using a unit test.</p>
+        <p><b>Enums and methods.</b> All enums share a common base class called Enum. Base class methods include name( ), toString( ) and valueOf( ). You can write getters for the fields of an enum, and I could have done so for my Relation class. Instead, I chose to override the Object toString( ) method, and have that return the gloss. See the next listing, which demonstrates the use of our overridden toString( ) method using a unit test.</p>
 
 <p class="precaption">Listing 3: Using name( ) and other enum methods</p>
 <pre class="preCodeWithCaption">
@@ -110,6 +110,7 @@ public void testValueOfMatch() {
         assertEquals(Relation.AtLocation, relation);
     } catch (IllegalArgumentException e) {
         System.out.println("Not a recognized Relation type.");
+        fail();
     }
 }
 
@@ -193,7 +194,7 @@ public void testEnumSet()   {
 }
 </pre>
 
-        <p>It's true that instead of an EnumSet I dould have used a plain old Java Set. But the point is that the EnumSet has been optimized to perform certain opertions very fast. For example, contains( ) for ordinary Set collections may take O(n) time; but for EnumSets they can generally be performed in O(1). Exactly how this is done, and when these optimizations are beneficial, is optional reading--but the upshot is: use EnumSet when creating subsets of an enum.</p>
+        <p>It's true that instead of an EnumSet I could have used a plain old Java Set. But the point is that the EnumSet has been optimized to perform certain opertions very fast. For example, contains( ) for ordinary Set collections may take O(n) time; but for EnumSets they can generally be performed in O(1). Exactly how this is done, and when these optimizations are beneficial, is optional reading--but the upshot is: use EnumSet when creating subsets of an enum.</p>
 
 		</div>
 

@@ -1,8 +1,18 @@
 In progress:
-hashBasedTable.html
+- 
+
+√ Proof all pages.
+
+Change copyright from 2013 to 2015 on professional pages.
+
+Search for JERRY comments.
+
+Replace "--" with &mdash;
 
 Should be using <br/> instead of </br>.
 - Search and replace? Hunt through, looking for warnings?
+
+Check out all warnings
 
 Standardize the "Jerry Kurlandski" on each web page.
 - See how it's rendered in Windows Explorer when you make your decision.
@@ -10,8 +20,26 @@ Standardize the "Jerry Kurlandski" on each web page.
 In Windows my pages seem to be washed out.
 - Or is it just my screen? Compare to laptop screen, kids', Titia's.
 
+Figure out how to use www.closeToTheMachine.net.
+
 Do main professional index page
 - √ Check Verity Stobbs and other links
+
+Editing Tasks
+- Comment on website title "Close to the Machine."
+- Research how best to edit a website: printed copies vs. Word documents
+- Research and consider how worthwhile it would be to change the copyright date on each page
+- Check presentation on multiple Windows browsers
+- Check load-time of pages/images with wired and wireless connections
+- Verify all links, internal and external
+- Low-level proofreading, including spell-checking
+- Low-level editing of page layout
+- Low-level editing of figure, table and image titles
+- Low-level verification of "tab titles" for each page
+- Edit with regard to "professionalism"; ? both professional and non-professional sites
+- High-level edit with regard to standard Internet "practices"
+- High-level edit with regard to consistency across the website as a whole, e.g. use of capitalization in titles and subtitles
+- ? After checking with me, edit the HTML yourself
 
 Four unit tests fail:
 	- guavatable: pairElementsTestFails
@@ -24,19 +52,6 @@ Contact page
 - Remove from Geneology?
 
 Call the summary sections "Quick View" or "Snapshot"?
-
-hashtable for all data types
-- specify the sort when you call sort; stores everything as a string
-
-browser issues
-- Check with different browsers, different operating systems
-- In Safari with the left sidebar open, there is no left hand margin
-
-Proof all pages.
-
-Search for JERRY comments.
-
-Change copyright from 2013 to 2015 ?
 
 Professional pages
 * = ready
@@ -64,30 +79,30 @@ Guava
 
 Java
 * Main Page
-@ convertingCollections
-@ !enum
-@ javaSort
-@ unitTesting
-? onePointEight
+* convertingCollections
+* enum
+* javaSort
+* unitTesting
 ---------
+? onePointEight
 ? regex
 
 Misc
-! Main Page
+* Main Page
 * subversion-cheat-shee-v1.pdf
-@ svnCommands.html
-@ svnTasks.html
-@ macNotes.html
-@ commandLine.html
+* svnCommands.html
+* svnTasks.html
+* macNotes.html
+* commandLine.html
 ---
 ? gitCheatSheet.html
 
 
 Web
-! Main Page
-@ ConceptNetIntro.html
-@ conceptNetCode.html
-@ Httrack
+* Main Page
+* ConceptNetIntro.html
+* conceptNetCode.html
+* Httrack
 ---
 ? JSoup
 ? Rotten Tomatoes
