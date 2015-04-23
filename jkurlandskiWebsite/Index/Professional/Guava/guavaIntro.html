@@ -30,7 +30,7 @@
 			<div id="logo">
 				<h1>Close to the</h1>
 				<h1>Machine</h1>
-				<p></p>
+				<br/>
 				<p>Jerry Kurlandski</p>
 			</div>
 			<div id="header-image1"> <a href="#" class="image"><img src="../../images/bookshelfPanorama.jpg" alt="" /></a> </div>
@@ -101,7 +101,7 @@ public void initializeMapToHashSet() {
 }
 </pre>
             <p><em>Nota bene</em>, though: in the case of Map&lt;X, HashSet&lt;Y&gt;&gt;, you may be better off with a Multimap. See the sidebar.</p>
-        </br>
+        <br/>
 
             <h3>Why the Guava Way is the One True Way</h3>
             <p>This section is for those who need a little more persuading that Guava, really, is <b>the one true way</b>. In order to make the argument crystal clear, I'm going to repeat some of the examples already given above.</p>
@@ -136,9 +136,9 @@ public void initializeMapToHashSet() {
 </pre>
             <p>Creating a HashSet without and with Guava follows the same pattern as ArrayList.</p>
             
-            <p>Now let's create a Map&lt;String, HashSet&lt;String&gt;>, both without and with.</p>
+            <p>Now let's create a Map&lt;String, HashSet&lt;String&gt;&gt;, both without and with.</p>
 
-<p class="precaption">Listing 7: Instantiating a Map&lt;String, HashSet&lt;String&gt;> without and with Guava</p>
+<p class="precaption">Listing 7: Instantiating a Map&lt;String, HashSet&lt;String&gt;&gt; without and with Guava</p>
 <pre class="preCodeWithCaption">
     // Without Guava
     Map&lt;String, Set&lt;String&gt;&gt; map1 = new HashMap&lt;String, Set&lt;String&gt;&gt;();
@@ -156,8 +156,8 @@ public void initializeMapToHashSet() {
     map2.put(&quot;city&quot;, Sets.newHashSet(&quot;London&quot;, &quot;Tokyo&quot;));
     map2.put(&quot;country&quot;, Sets.newHashSet(&quot;Great Britain&quot;, &quot;Japan&quot;));
 </pre>
-        </br>
-            <p>Even better than the convenience of using Guava to initialize a Map&lt;String, HashSet&lt;String&gt;> is Guava's Multimap interface. See the link in the sidebar, and maybe you'll never again use Map&lt;String, HashSet&lt;String&gt;> or Map&lt;String, ArrayList&lt;String&gt;>.</p>
+        <br/>
+            <p>Even better than the convenience of using Guava to initialize a Map&lt;String, HashSet&lt;String&gt;&gt; is Guava's Multimap interface. See the link in the sidebar, and maybe you'll never again use Map&lt;String, HashSet&lt;String&gt;&gt; or Map&lt;String, ArrayList&lt;String&gt;&gt;.</p>
 
 
             <h3>Less Common, but Still Useful Implementations</h3>

@@ -30,7 +30,7 @@
 			<div id="logo">
 				<h1>Close to the</h1>
 				<h1>Machine</h1>
-				<p></p>
+				<br/>
 				<p>Jerry Kurlandski</p>
 			</div>
 			<div id="header-image1"> <a href="#" class="image"><img src="../../images/bookshelfPanorama.jpg" alt="" /></a> </div>
@@ -217,7 +217,7 @@ public void testListAddAll() {
 }
 
 // Test fails with the following output:
-java.lang.AssertionError: expected:<[a, b, c, c, d, e]> but was:<[a, b, c, c, c, d, e]>
+java.lang.AssertionError: expected:&lt;[a, b, c, c, d, e]&gt; but was:&lt;[a, b, c, c, c, d, e]&gt;
 </pre>
 
             <p>In the listing, first we create our two multisets as lists. Then we use addAll( ) to get the "union." Then a couple steps are necessary before we can do the assertEquals( ) of the unit tests. We have to take these steps because a multiset is, by definition, unordered, whereas this particular implementation of a multiset using a List is ordered. We create our expected list, which is what the union of the two multisets <i>should</i> be. Then we sort both the expected list and the union list. Now order will no longer be the difference between the two lists, and we are testing only on their contents. And the contents are found to be incorrect.</p>

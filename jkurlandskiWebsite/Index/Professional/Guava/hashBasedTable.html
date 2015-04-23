@@ -30,7 +30,7 @@
 			<div id="logo">
 				<h1>Close to the</h1>
 				<h1>Machine</h1>
-                <br>
+                <br/>
 				<p>Jerry Kurlandski</p>
 			</div>
 			<div id="header-image1"> <a href="#" class="image"><img src="../../images/bookshelfPanorama.jpg" alt="" /></a> </div>
@@ -69,9 +69,6 @@
 					<td>United States</td>
 					</tr>
 				</table> 
-			    <div class="figcaption">
-			        <p></p>
-			    </div>
 			</div>
 			<p>To make things more concrete, suppose we have an in-memory Movie table like the one at right. Let's say for the sake of argument that the title column is unique, so it can be used as an index into the entire row of values. What I often need to do in code is implement this table so that the rows returned can optionally, and efficiently, be sorted by title, director or country of origin. Right now they are not sorted at all.</p>
             <p><b>Note:</b> This page is different from other pages on this site because it is incomplete--incomplete in the sense that the examples here aren't quite ready for prime-time. A number of issues remain unfixed, indicated by "TODO" statements. One day, soon I hope, I will resolve these issues and replace this work-in-progress with a fully-realized solution to the requirement articulated above.</p>
@@ -117,7 +114,7 @@ for(Cell&lt;String, String, String&gt; cell : cells)  {
 </pre>
 
 			<p>By the time we leave the for loop in Listing 2, which takes O(nbrRows X nrbColumns) time, we have a list that contains the Cell&lt;String, String, String&gt;&#x27;s for the Director column. In other words, for our example, the result of this code snippet is a list that contains these three elements: [(Seventh Seal,Director)=Ingmar Bergman, (Seven Samari,Director)=Akira Kurosawa, (Seven,Director)=Andy Sidaris]. Once we sort this list on the director's name, we'll have everything we need to return a list of table rows sorted correctly.</p>
-			<p>So, how do we sort? We'll let Collections do the work for us, by passing in a Comparator devised just for a Cell<String, String, String> object.</p>
+			<p>So, how do we sort? We'll let Collections do the work for us, by passing in a Comparator devised just for a Cell&lt;String, String, String&gt; object.</p>
 			<p>Here's the one-line call to Collections.sort(), whose runtime is O(nbrRows).</p>
 
 <p class="precaption">Listing 3: Letting Collections.sort() do the work</p>

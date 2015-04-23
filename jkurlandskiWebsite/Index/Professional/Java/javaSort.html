@@ -30,7 +30,7 @@
 			<div id="logo">
 				<h1>Close to the</h1>
 				<h1>Machine</h1>
-				<p></p>
+				<br/>
 				<p>Jerry Kurlandski</p>
 			</div>
 			<div id="header-image1"> <a href="#" class="image"><img src="../../images/bookshelfPanorama.jpg" alt="" /></a> </div>
@@ -83,7 +83,7 @@ String[] array = {"one", "two", "three", "four"};
 
 Arrays.sort(array);
 </pre>
-            </br>
+                <br/>
 
 			<h3>Using TreeMap for Sorted Keys</h3>
             <p>There are a couple of ways to sort on the keys of a map. You could: (1) use Java's TreeMap, or (2) get the key set and sort that. If your requirements are as simple as that, this page will help you out. If your requirements are more complicated--for example, if you want to be able to sort on the values as well as the keys of a map--you might want to explore Guava's Table interface and its various implementations. I have a separate Guava page that will help you get started.</p>
@@ -137,14 +137,14 @@ public void testSortEnum()  {
 <pre class="preCodeWithCaption">
 @Test
 public void testCollectionsSortOnList() {
-    List<Integer> list = Lists.newArrayList(new Integer(23), new Integer(8), new Integer(14), new Integer(67));
+    List&lt;Integer&gt; list = Lists.newArrayList(new Integer(23), new Integer(8), new Integer(14), new Integer(67));
     
-    System.out.println("Printing the unsorted list.");
+    System.out.println(&quot;Printing the unsorted list.&quot;);
     System.out.println(list.toString());
     
     Collections.sort(list);
 
-    System.out.println("Printing the sorted list.");
+    System.out.println(&quot;Printing the sorted list.&quot;);
     System.out.println(list.toString());
 
     // Test the sorted keys.
@@ -192,7 +192,7 @@ Printing the unsorted set.
 Printing the sorted list.
 [8, 14, 23, 67]
 </pre>
-            </br>
+                <br/>
 
             <h3>Using Arrays.sort()</h3>
             

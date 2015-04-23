@@ -30,7 +30,7 @@
 			<div id="logo">
 				<h1>Close to the</h1>
 				<h1>Machine</h1>
-				<br>
+				<br/>
 				<p>Jerry Kurlandski</p>
 			</div>
             <div id="header-image1"> <a href="#" class="image"><img src="../../images/bookshelfPanorama.jpg" alt="" /></a> </div>
@@ -51,47 +51,47 @@
 			<br/>
             
             <div class="singleSpacedDescription">
-                <li>perl -p -e 's/\t/\n/g' data.txt</li>
+                <h4>perl -p -e 's/\t/\n/g' data.txt</h4>
                 <p>Replace tab with newline in the file data.txt. Output goes to stdout.</p>
             </div>
-            
+                        
             <div class="singleSpacedDescription">
-                <li>perl -pi -e 's/\t/\n/g' data.txt</li>
+                <h4>perl -pi -e 's/\t/\n/g' data.txt</h4>
                 <p>Replace tab with newline in the file data.txt. The file itself is changed.</p>
             </div>
             
             <div class="singleSpacedDescription">
-                <li>find . -name "*txt" 2&gt;/dev/null</li>
+                <h4>find . -name "*txt" 2&gt;/dev/null</h4>
                 <p>Find all the txt files in this directory, recursively down the tree.</p>
             </div>
             
             <div class="singleSpacedDescription">
-                <li>find . -name "*txt" 2&gt;/dev/null | wc -l</li>
+                <h4>find . -name "*txt" 2&gt;/dev/null | wc -l</h4>
                 <p>Get a count of all the txt files in this directory, recursively down the tree.</p>
             </div>
             
             <div class="singleSpacedDescription">
-                <li>ls -d t*</li>
+                <h4>ls -d t*</h4>
                 <p>Non-recursive "ls" of all directory contents starting with "t". (Without -d you also get the contents of the items if they are directories.)</p>
             </div>
             
             <div class="singleSpacedDescription">
-                <li>ls -1</li>
+                <h4>ls -1</h4>
                 <p>Perform an "ls" on this directory, displaying each item on a separate line. (That's the digit "1" after the minus sign, not the letter "l".)</p>
             </div>
             
             <div class="singleSpacedDescription">
-                <li>unzip -qq -t &lt;jarfile&gt;</li>
+                <h4>unzip -qq -t &lt;jarfile&gt;</h4>
                 <p>Check whether a jar file is corrupt. If nothing appears, the jar file is NOT corrupt.</p>
             </div>
             
             <div class="singleSpacedDescription">
-                <li>Ctrl-a</li>
+                <h4>Ctrl-a</h4>
                 <p>Go to the start of the command at the current command line.</p>
             </div>
             
             <div class="singleSpacedDescription">
-                <li>Ctrl-e</li>
+                <h4>Ctrl-e</h4>
                 <p>Go to the end of the command at the current command line.</p>
             </div>
             
@@ -114,7 +114,7 @@ done
 grep [options] pattern [files]
 </pre>
 			<p>You see from the syntax that multiple options and multiple files are allowed. Indeed, using multiple options and files are routine. A command of <code>grep -i -v "hi" *.txt</code> would look for all the .txt files where "hi" does NOT occur (-v), no matter what case "hi" is in (-i). ... But what if you want to grep on multiple patterns? The syntax doesn't seem to allow for that.</p>
-			<p>egrep, or "grep -e", lets you separate multiple patterns with a pipe. Thus, the following will find all .txt files containing "cat" or "dog".
+			<p>egrep, or "grep -e", lets you separate multiple patterns with a pipe. Thus, the following will find all .txt files containing "cat" or "dog".</p>
 <pre class="preCodeWithCaption">
 $ egrep "cat|dog" *.txt
 </pre>
@@ -130,7 +130,7 @@ zzz"
 $ fgrep "${patterns}" *.txt
 </pre>
 
-			<p>Now for the other way, which involves invoking the file from fgrep. Put your list of patterns into a file where every pattern is on a separate line. Let's call the file patterns.txt. Then run the following command:
+			<p>Now for the other way, which involves invoking the file from fgrep. Put your list of patterns into a file where every pattern is on a separate line. Let's call the file patterns.txt. Then run the following command:</p>
 <pre class="preCodeWithCaption">
 $ fgrep -F -f patterns.txt *.txt
 </pre>

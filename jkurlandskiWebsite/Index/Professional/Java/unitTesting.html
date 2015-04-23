@@ -30,7 +30,7 @@
 			<div id="logo">
 				<h1>Close to the</h1>
 				<h1>Machine</h1>
-				<p></p>
+				<br/>
 				<p>Jerry Kurlandski</p>
 			</div>
 			<div id="header-image1"> <a href="#" class="image"><img src="../../images/bookshelfPanorama.jpg" alt="" /></a> </div>
@@ -130,7 +130,7 @@ public SomeTest {
 }
 </pre>
 
-			<p>The access of a method marked with @Before must be public; if it isn't you'll get a runtime exception with a message like the following:
+			<p>The access of a method marked with @Before must be public; if it isn't you'll get a runtime exception with a message like the following:</p>
 
 <p class="precaption">Listing 5: Exception message if @Before method is not public</p>
 <pre class="preCodeWithCaption">
@@ -147,7 +147,7 @@ java.lang.Exception: Method doSomethingOnce() should be public
 <pre class="preCodeWithCaption">
     BufferedReader reader = new BufferedReader(new StringReader("hi"));
 </pre>
-        </br>
+                <br/>
 
             <h3><a id="Resource">Getting the Location of a Test File or Other Resource</a></h3>
             <p>Often a unit test requires some sort of resource such as an external file--input for a method that you're testing, for example. In acquiring the resource, you need the path, but you don't want to hard-code the path, since the path on one developer's machine won't necessarily be identical to the path on another developer's machine.</p>
@@ -235,7 +235,7 @@ public class MiscJavaTest {
 }
 
 // Exception output:
-java.lang.IllegalStateException: Could not find resources/input.txt in file:/(full path deleted>/CodeExamples/bin/
+java.lang.IllegalStateException: Could not find resources/input.txt in file:/(full path deleted)/CodeExamples/bin/
     at javaTests.MiscJavaTest.testGetResourcesThrowsNPEWithUsefulOutput(MiscJavaTest.java:53)
 </pre>
 

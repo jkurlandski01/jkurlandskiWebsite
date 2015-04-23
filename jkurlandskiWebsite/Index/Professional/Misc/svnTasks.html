@@ -30,7 +30,7 @@
 			<div id="logo">
 				<h1>Close to the</h1>
 				<h1>Machine</h1>
-				<br>
+				<br/>
 				<p>Jerry Kurlandski</p>
 			</div>
             <div id="header-image1"> <a href="#" class="image"><img src="../../images/bookshelfPanorama.jpg" alt="" /></a> </div>
@@ -106,11 +106,11 @@ Sending        toDo.txt
 Transmitting file data .
 Committed revision 78.</pre>
 
-            </br>
+            <br/>
             <h3>Task</h3>
             <h4>&bull; Move one file from a subdirectory to another directory.</h4>
             <h4>&bull; Remove all other files in the original subdirectory from the repository as well as from your working copy.</h4>
-            </br>
+            <br/>
             <p>First perform the move and the delete commands, checking status along the way. In this example, we're moving mySqlCheatSheet.html out of the Databases folder and into the Misc folder. Then we'll remove all the files which remain in the Databases folder.</p>
 
 <pre class="preCode">
@@ -156,7 +156,7 @@ Transmitting file data ..
 Committed revision 138.   
 </pre>
 
-            </br>
+            <br/>
             <h3>Task</h3>
             <h4>&bull; Use "svn update" to reset status so that you can perform a commit</h4>
             <p>Sometimes SVN doesn't let you do a commit when it seems as though it should. I've noticed this can happen after I move or delete a file or a directory. What often fixes the problem is an SVN update that, apparently, does nothing.</p>
@@ -178,11 +178,11 @@ Transmitting file data ........
 Committed revision 104.
 </pre>
             
-            </br>
+            <br/>
             <h3>Task</h3>
             <h4>&bull; Use "svn update" to merge a file that has both been changed locally and been modified by another user.</h4>
 
-            </br>
+            <br/>
             <p>(This task shows you how to let SVN merge files that have been changed both locally and by another user, though, in fact, I don't recommend doing so. To me, any chance that SVN won't do the merge correctly is not a risk worth taking. Read on to find out what I think is a better way.)</p>
             <p>Check the status of both your changes and recent changes to the repository.</p>
             
@@ -214,11 +214,11 @@ M              144   Java/unitTesting.html
             <p>To sum up, then: anytime you do an "svn status -u," and the first and second columns tell you that both you and someone else have modified a file, I suggest you NOT do an update on that file. Instead, perform the merge manually yourself. How? There are ways to do this from the command line, but that's one task I have never done from the command line. Whenever I find myself in this situation, I always go to my IDE, whether it's Eclipse or IntelliJ IDEA. Because for the sometimes-confusing and always-risky task of merging, you can't beat the visual diff tools that an IDE can offer.</p>
             <p>In the scenario described at the start of this task, the next two steps are to do an "svn update" to pick up the changes to enum.html; then do a commit. Since you've already seen the examples of these above, we don't need to show you how to do them now.</p>
 
-            </br>
+            <br/>
             <h3>Task</h3>
             <h4>&bull; Perform an update on a file that has been changed both locally and by someone else.</h4>
             <h4>&bull; See what happens when SVN marks the file as a conflict.</h4>
-            </br>
+            <br/>
             
             <p>In this scenario, you first do an "svn status -u," and see that a file needs to be merged.</p>
 

@@ -25,12 +25,12 @@
                 <li><a href="../professionalContact.html">Contact</a></li>
 			</ul>
 		</div>
-		<!-- end #menu -->
+
 		<div id="header" class="container">
 			<div id="logo">
 				<h1>Close to the</h1>
 				<h1>Machine</h1>
-				<br>
+				<br/>
 				<p>Jerry Kurlandski</p>
 			</div>
 			<div id="header-image1"> <a href="#" class="image"><img src="../../images/bookshelfPanorama.jpg" alt="" /></a> </div>
@@ -104,7 +104,7 @@
 			        <p>A floating table</p>
 			    </div>
 			</div>
-			<p>Here's a paragraph that is paired with what they call a floating table. The table is the same as the table above--only the CSS styling is different. I'm adding another sentence here to make the paragraph a bit longer. And another here. And one more sentence for good measure.</p>
+			<p>Here's a paragraph that is paired with what they call a floating table. The table is the same as the table above&mdash;only the CSS styling is different. I'm adding another sentence here to make the paragraph a bit longer. And another here. And one more sentence for good measure.</p>
 			
             <div class="floatedObject">
                 <img src='./image/DeathAsConfessor.jpg' alt='missing' width="250" height="185"/>
@@ -113,7 +113,7 @@
                 </div>
             </div>
             <p>And this paragraph is paired with a floating image. The styling is the same as for the floating table above. I'm adding another sentence here to make the paragraph a bit longer. And another here. And one more sentence for good measure.</p>
-			<br>
+			<br/>
 			<h3>The code</h3>
 			<p>Here are the CSS definitions for the floating table and images above as well as the captions that you see beneath them.</p>
 
@@ -141,7 +141,7 @@
 }
 </pre>
 
-			<p>Listing 2 shows how to use these definitions in the HTML. The only tricky thing is that, in the HTML, the table or image comes <em>before</em> the text that you want to pair it with. What is <em>really</em> floating, then, is the text--not the table--in the sense that the text "floats" upward until it's level with the table.</p>
+			<p>Listing 2 shows how to use these definitions in the HTML. The only tricky thing is that, in the HTML, the table or image comes <em>before</em> the text that you want to pair it with. What is <em>really</em> floating, then, is the text&mdash;not the table&mdash;in the sense that the text "floats" upward until it's level with the table.</p>
 
 <p class="precaption">Listing 2: Using the floating object styles in HTML</p>
 <pre class="preCodeWithCaption">
@@ -194,64 +194,18 @@ th, td  {
 			<h3>But what if you DON't want to float?</h3>
 			<p>If you don't want text alongside your table or image, simply don't surround it with the floatedObject div that you see in Listings 2 and 3. But suppose you have two small tables, or two thumbnail images, and you want them to appear side-by-side? In this case you would float them both. The problem is that, if you float the two tables or images, then any text that follows them will be placed next to them.</p>
 			<p>Here is an illustration of the problem I'm describing.</p>
-<!-- 			<div class="floatedObject"> -->
-<!-- 				<table> -->
-<!-- 					<tr> -->
-<!-- 					<th>Title</th> -->
-<!-- 					<th>Director</th> -->
-<!-- 					</tr> -->
-<!-- 					<tr> -->
-<!-- 					<td>Seventh Seal</td> -->
-<!-- 					<td>Ingmar Bergman</td> -->
-<!-- 					</tr> -->
-<!-- 					<tr> -->
-<!-- 					<td>Seven Samari</td> -->
-<!-- 					<td>Akira Kurosawa</td> -->
-<!-- 					</tr> -->
-<!-- 					<tr> -->
-<!-- 					<td>Seven</td> -->
-<!-- 					<td>Andy Sidaris</td> -->
-<!-- 					</tr> -->
-<!-- 				</table>  -->
-<!-- 			    <div class="figcaption"> -->
-<!-- 			        <p>Another floating table</p> -->
-<!-- 			    </div> -->
-<!-- 			</div> -->
             <div class="floatedObject">
                 <img src='./image/the-seventh-seal_dance.jpg' alt='missing' width="177" height="132"/>
                 <div class="figcaption">
                     <p>The Dance of Death.</p>
                 </div>
             </div>
-			<div class="floatedObject">
             <div class="floatedObject">
                 <img src='./image/Ingmar_Bergman-The_Seventh_Seal-DeathAndKnight.jpg' alt='missing' width="177" height="132"/>
                 <div class="figcaption">
                     <p>At the chessboard.</p>
                 </div>
             </div>
-<!-- 				<table> -->
-<!-- 					<tr> -->
-<!-- 					<th>Title</th> -->
-<!-- 					<th>Country</th> -->
-<!-- 					</tr> -->
-<!-- 					<tr> -->
-<!-- 					<td>Seventh Seal</td> -->
-<!-- 					<td>Sweden</td> -->
-<!-- 					</tr> -->
-<!-- 					<tr> -->
-<!-- 					<td>Seven Samari</td> -->
-<!-- 					<td>Japan</td> -->
-<!-- 					</tr> -->
-<!-- 					<tr> -->
-<!-- 					<td>Seven</td> -->
-<!-- 					<td>United States</td> -->
-<!-- 					</tr> -->
-<!-- 				</table>  -->
-<!-- 			    <div class="figcaption"> -->
-<!-- 			        <p>A floating table</p> -->
-<!-- 			    </div> -->
-			</div>
 			<p>Here's some text I DON'T want to appear alongside the objects which, much to my annoyance, are floating right next to it.</p>
 			<div class="nonFloatingPar">
 				<p>To get around this, you need to <em>clear</em> the floating style. A simple way to do this is to use a CSS style for the paragraph which you don't want to float.</p>
@@ -270,7 +224,7 @@ th, td  {
 <p class="precaption">Listing 5: Using the non-floating paragraph style in HTML</p>
 <pre class="preCodeWithCaption">
 &lt;div class=&quot;nonFloatingPar&quot;&gt;
-	&lt;p&gtHere's some text I DON'T want to appear alongside the tables.&lt;/p&gt;
+	&lt;p&gt;Here's some text I DON'T want to appear alongside the tables.&lt;/p&gt;
 &lt;/div&gt;
 </pre>
 
@@ -279,7 +233,7 @@ th, td  {
 <p class="precaption">Listing 6: Using the non-floating paragraph style to stop floating <em>from this point on the page, down</em>.</p>
 <pre class="preCodeWithCaption">
 &lt;div class=&quot;nonFloatingPar&quot;&gt;
-	&lt;p&gt&lt;/p&gt;
+	&lt;p&gt;&lt;/p&gt;
 &lt;/div&gt;
 </pre>
 
@@ -294,6 +248,7 @@ th, td  {
                     <li><a href="preAndCode.html">Using  &lt;pre&gt; and &lt;code&gt; to Display Code</a></li>
                     <li><a href="htmlEntities.html">HTML Entities and Reserved Characters</a></li>
                     <li><a href="aptana.html">Useful tools in the Aptana Eclipse Plug-in</a></li>
+                </ul>
 			</div>
 		</div>
 	</div>

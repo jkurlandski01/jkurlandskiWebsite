@@ -30,7 +30,7 @@
 			<div id="logo">
 				<h1>Close to the</h1>
 				<h1>Machine</h1>
-				<p></p>
+				<br/>
 				<p>Jerry Kurlandski</p>
 			</div>
 			<div id="header-image1"> <a href="#" class="image"><img src="../../images/bookshelfPanorama.jpg" alt="" /></a> </div>
@@ -48,10 +48,10 @@
             <p>JERRY: make the column and table names "generic"</p>
             
             <h3>Select those rows which have the same column value.</h3>
-            <p><code>select response_pool_id, count(*) from response_pool_entry group by response_pool_id having count(*) > 1;</code></p>
+            <p><code>select response_pool_id, count(*) from response_pool_entry group by response_pool_id having count(*) &gt; 1;</code></p>
             
             <h3>Select those rows which have the same column values.</h3>
-            <p>select response_pool_id, response_template, count(*) from response_pool_entry group by response_pool_id, response_template having count(*) > 1;</p>
+            <p>select response_pool_id, response_template, count(*) from response_pool_entry group by response_pool_id, response_template having count(*) &gt; 1;</p>
             
             <h3>Show all the tables</h3>
             <p>show tables;</p>
@@ -82,37 +82,32 @@
             
             <h3>Deleting rows on a table with foreign key constraints</h3>
             <pre>
-                mysql> truncate conversation;
+                mysql&gt; truncate conversation;
                 ERROR 1701 (42000): Cannot truncate a table referenced in a foreign key constraint (`eliza`.`conversation_non_volatile`, CONSTRAINT `conversation_non_volatile_ibfk_1` FOREIGN KEY (`conversation_id`) REFERENCES `eliza`.`conversation` (`conversation_id`))
-                mysql> select * from conversation_non_volatile;
+                mysql&gt; select * from conversation_non_volatile;
                 Empty set (0.00 sec)
                 
                 
-                mysql> SET FOREIGN_KEY_CHECKS=0;
+                mysql&gt; SET FOREIGN_KEY_CHECKS=0;
                 Query OK, 0 rows affected (0.00 sec)
                 
-                mysql> truncate conversation;
+                mysql&gt; truncate conversation;
                 Query OK, 0 rows affected (0.00 sec)
                 
-                mysql> SET FOREIGN_KEY_CHECKS=1;
+                mysql&gt; SET FOREIGN_KEY_CHECKS=1;
                 Query OK, 0 rows affected (0.00 sec)
                 
-                mysql> select * from conversation;
+                mysql&gt; select * from conversation;
                 Empty set (0.00 sec)
             </pre>
             
             <h3>Dumping tables to a .sql file</h3>
             <p>JERRY: convert entities</p>
-            <p>mysqldump -u<user> -p<password> <schema> table1 table2 table3 > tables.sql</p>
+            <p>mysqldump -u&lt;user&gt; -p&lt;password&gt; &lt;schema&gt; table1 table2 table3 &gt; tables.sql</p>
             
             <h3>Loading tables from a .sql file</h3>
-            <p>mysql -u<user> -p<password> <schema> < tables.sql </p>
+            <p>mysql -u&lt;user&gt; -p&lt;password&gt; &lt;schema&gt; &lt; tables.sql </p>
             
-            <h3></h3>
-            <p></p>
-            
-            <h3></h3>
-            <p></p>
             
 <p class="precaption">Listing </p>
 <pre class="preCodeWithCaption">
