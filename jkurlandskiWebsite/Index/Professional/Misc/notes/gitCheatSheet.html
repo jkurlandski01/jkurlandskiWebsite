@@ -30,7 +30,7 @@
 			<div id="logo">
 				<h1>Close to the</h1>
 				<h1>Machine</h1>
-				<br>
+				<br/>
 				<p>Jerry Kurlandski</p>
 			</div>
             <div id="header-image1"> <a href="#" class="image"><img src="../../images/bookshelfPanorama.jpg" alt="" /></a> </div>
@@ -48,57 +48,57 @@
             <p>blah, blah</p>
             
             <div class="singleSpacedDescription">
-                <li>$ git status</li>
+                <p>$ git status</p>
                 <p>Get status.</p>
                 
-                <li>$ git add</li>
+                <p>$ git add</p>
                 <p>Performs several tasks, depending on the context. If a file has not been added, the command can be used to begin tracking the file. The command can also be used to stage files/directories--that is, to commit them to the local branch.</p>
 
                 <p>JERRY: I can't make the below work.</p>
-                <li>$ git diff --staged</li>
+                <p>$ git diff --staged</p>
                 <p>(Same as "git diff --cached".) Shows what you've staged that will go into your next commit. This is useful because "git diff" by itself will return nothing if you've already staged all your changes--that is, it only displays changes that are still unstaged.</p>
 
-<li>$ git difftool --tool-help</li>
+<p>$ git difftool --tool-help</p>
 <p>Shows tools on your system that are available for viewing the diffs.</p>
 
-<li>$ git commit</li>
+<p>$ git commit</p>
 <p>Note that all the "git commit" commands operate only on items that have already been staged.</p>
-<li>$ git commit</li>
+<p>$ git commit</p>
 <p>This command launches an editor of your choice where you can see what you're committing and insert a message to go with the commit.</p>
-<li>$ git commit -m "<your message>"</li>
+<p>$ git commit -m "&lt;your message&gt;"</p>
 <p>Commits with your message, not opening up an editor.</p>
 
-<li>$ git commit -a -m "<your message>"</li>
-<p>The "-a" option lets you skip the staging area altogether, and commit directory to the repository. Note that it applies only to files currently being tracked--that is, if the file is new, you must first add it to begin tracking on the file; only then can you commit it to the repository with the "commit -a " option.</p>
+<p>$ git commit -a -m "&lt;your message&gt;&quot;&lt;/p&gt;
+&lt;p&gt;The &quot;-a&quot; option lets you skip the staging area altogether, and commit directory to the repository. Note that it applies only to files currently being tracked--that is, if the file is new, you must first add it to begin tracking on the file; only then can you commit it to the repository with the "commit -a " option.</p>
 
-<li>$ git rm item</li>
+<p>$ git rm item</p>
 <p>Removes an item from git tracking, and also removes it from your file system.</p>
 
-<li>$ git rm --cached item</li>
+<p>$ git rm --cached item</p>
 <p>Removes an item from git tracking, but retains it in your file system.</p>
 
-<li>$ git mv <oldItemName> <newItemName></li>
+<p>$ git mv &lt;oldItemName&gt; &lt;newItemName&gt;</p>
 <p>Renames an item, retaining file history. But note that git is capable of recognizing file renames performed via the operating system. In other words, use of the mv command is the same as the following three-step process.</p>
 <pre>
-mv <oldItemName> <newItemName>
-git rm <oldItemName>
-git add <newItemName>
+mv &lt;oldItemName&gt; &lt;newItemName&gt;
+git rm &lt;oldItemName&gt;
+git add &lt;newItemName&gt;
 </pre>
 
 <h4>File-glob patterns</h4>
-<li>$ git rm log/\*.log</li>
+<p>$ git rm log/\*.log</p>
 <p>Removes all files ending in .log from the log directory.</p>
 
 <h4>Undoing Actions</h4>
 
-<li>$ git commit -amend</li>
+<p>$ git commit -amend</p>
 <p>(Assuming you've made no changes since your last commit; e.g. you run it just after a commit.) Launches your text editor with the message of your last commit, allowing you to edit the message.</p>
 <p>(Assuming you've committed, realized you forgot to include a file, and have since added the file to staging.) Launches your text editor with the message of your last commit, allowing you to edit the message--and includes the missing file in the same commit as the previously-committed files.</p>
 
-<li>$ git reset HEAD &lt;item&gt;</li>
+<p>$ git reset HEAD &lt;item&gt;</p>
 <p>Removes an item added to staging--e.g. so that you can commit something else added at the same time.</p>
 
-<li>$ git checkout -- &lt;item&gt;</li>
+<p>$ git checkout -- &lt;item&gt;</p>
 <p>Reverts changes to the item. Dangerous in the sense that there is no way to recover your changes to the file.</p>
 
 

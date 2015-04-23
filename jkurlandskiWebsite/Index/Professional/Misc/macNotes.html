@@ -30,7 +30,7 @@
 			<div id="logo">
 				<h1>Close to the</h1>
 				<h1>Machine</h1>
-				<br>
+				<br/>
 				<p>Jerry Kurlandski</p>
 			</div>
             <div id="header-image1"> <a href="#" class="image"><img src="../../images/bookshelfPanorama.jpg" alt="" /></a> </div>
@@ -48,12 +48,12 @@
             <p>Some Unix commands don't work as expected on the Mac. In my experience, <code>sed</code> seems to be the primary culprit. Here I've begun keeping track of these issues, and how you might fix them.</p>
 
            <div class="singleSpacedDescription">
-                <li>sed -i</li>
+                <h4>sed -i</h4>
                 <p>The command <code>sed -i</code> replaces the contents of the input file with the result of the change. In the Unix world, the command has an optional parameter which allows you to specify the extension of the backup of the file you're about to replace. The full syntax of the command goes something like this:</p>
-               <li>sed -i[.backupext] &lt;expression&gt; &lt;inputFile&gt;</li>
+               <h4>sed -i[.backupext] &lt;expression&gt; &lt;inputFile&gt;</h4>
                <br/>
                 <p>In the Mac world, this parameter is not optional. So, to serve as an example, to change "hi" to "hello" in a file named "greetings," and to back up the original file as "greetings.bk," you would type this:</p>
-               <li>sed -i.bk "s/hi/hello/g" greetings</li>
+               <h4>sed -i.bk "s/hi/hello/g" greetings</h4>
              </div>
              <br/>
              <p>But <code>sed</code> is trouble in other ways on the Mac, especially, I've noticed, when it comes to regular expressions and tabs. You might be better off with a perl one-liner. See my separate page, "At the Command Line," for examples.</p>
@@ -64,7 +64,7 @@
                 </div>
             <p>If you're in Finder and you want to get to a command prompt with the present working directory set to that directory, here's what you do.</p>
             <p><b>Setup.</b> In System Preferences choose Keyboard and then Shortcuts. On the left side, choose Services. Then on the right-hand-side, under Files and Folders, choose New Terminal at Folder and/or New Terminal Tab at Folder.</p>
-            <p>Now your system is ready. In Finder, right-click or control-click on a folder and choose Services > New Terminal at Folder.</p>
+            <p>Now your system is ready. In Finder, right-click or control-click on a folder and choose Services &gt; New Terminal at Folder.</p>
 
             <h4>Command Line &rarr; Finder</h4>
             <p>On the other hand, sometimes you're at the command line, in a particular directory, and you want to open Finder at that directory. This is absurdly simple--type "open .". (That's the word "open" followed by a period.)</p>
@@ -79,7 +79,7 @@
             <p>After years of using Mac's TextEdit for text editing, and resorting to Xcode whenever the former's regex-search abilities were too limited, I finally discovered and installed TextMate. One thing I really like about it is the ability, once you perform the right steps, to open a text file with TextMate at the command line. See this link:</p>
             <p class = "indentedCitation"><a href="http://blog.macromates.com/2005/textmate-shell-utility-tmmate/">TextMate Shell Utility</a></p>
 			
-			<p>Once you've done the set up, simply type "mate <filename>" at the command line.</p>
+			<p>Once you've done the set up, simply type "mate &lt;filename&gt;" at the command line.</p>
 
             <h4>File diff app for Mac</h4>
             <div class="floatedObject">
@@ -96,19 +96,19 @@
                 </div>
             <p>The free Mac application TextEdit is very good for a lot of things. Here are a few keystrokes and other tips I find very useful.</p>
             <div class="singleSpacedDescriptionFloat">
-                <li>Option-Tab (or Alt-Tab)</li>
+                <h4>Option-Tab (or Alt-Tab)</h4>
                 <p>Inserts a new bullet.</p>
             </div>
             <div class="singleSpacedDescriptionFloat">
-                <li>Clean up all bullets</li>
+                <h4>Clean up all bullets</h4>
                 <p>I use TextEdit for note-taking. As the above tip suggests, when taking notes I find myself using an awful lot of bullets. From time to time, however, I find that bullets are automatically applied where I don't want them. To "clean up" a part of your document, simply select it, then click on the "List bullets and numbering" item in the toolbar, and select None.</p>
             </div>
             <div class="singleSpacedDescriptionFloat">
-                <li>Option-v (or Alt-v)</li>
+                <h4>Option-v (or Alt-v)</h4>
                 <p>Inserts a check-mark at the cursor. (Actually this works generally on the Mac.)</p>
             </div>
             
-            </br>
+            <br/>
             <h4>Maverick upgrade breaks Homebrew</h4>
             <p>I upgraded to Maverick a while back and just now found the process broke Homebrew. Here's the best page I found on how to fix the problem.</p>
             <p class = "indentedCitation"><a href="http://apple.stackexchange.com/questions/153790/how-to-fix-brew-after-its-upgrade-to-yosemite">AskDifferent on Homebrew fix after Maverick Upgrade</a></p>

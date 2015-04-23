@@ -30,7 +30,7 @@
 			<div id="logo">
 				<h1>Close to the</h1>
 				<h1>Machine</h1>
-				<br>
+				<br/>
 				<p>Jerry Kurlandski</p>
 			</div>
             <div id="header-image1"> <a href="#" class="image"><img src="../../images/bookshelfPanorama.jpg" alt="" /></a> </div>
@@ -42,7 +42,7 @@
 			<div class="title">
 				<h2>The Aptana Eclipse Plug-In</h2>
 			</div>
-			<p>Aptana's Eclipse plug-in offers a few very useful tools. This page will give you a quick run-down on how to get them and how to use them. The Aptana website boasts that the plug-in is useful for development with Javascript, Ruby on Rails, PHP and Python--in addition to CSS and HTML. I have not used it with any of the former. For working with HTML, the tool is a big help in that it:</p>
+			<p>Aptana's Eclipse plug-in offers a few very useful tools. This page will give you a quick run-down on how to get them and how to use them. The Aptana website boasts that the plug-in is useful for development with Javascript, Ruby on Rails, PHP and Python&mdash;in addition to CSS and HTML. I have not used it with any of the former. For working with HTML, the tool is a big help in that it:</p>
             <ul class="style3">
                 <li>Wraps lines (especially useful on a laptop)</li>
                 <li>Automatically inserts matching &lt;/p&gt; tags</li>
@@ -66,7 +66,7 @@
             <br/>
             <br/>
             
-            <p>To turn on line wrapping, go to Preferences > Aptana Studio > Editors, and check the "Enable word wrap" box. See the <strong>bottom</strong> red arrow in the screenshot below.</p>
+            <p>To turn on line wrapping, go to Preferences &gt; Aptana Studio &gt; Editors, and check the "Enable word wrap" box. See the <strong>bottom</strong> red arrow in the screenshot below.</p>
 
             <p class="precaption">Screenshot 3: Aptana preferences page</p>
             <img src="./image/aptanaPreferences.jpg" />
@@ -74,11 +74,11 @@
             <br/>
             
             <h4>Aptana automatically inserts <i>some</i> matching tags.</h4>
-            <p>Let's be honest: the string "&lt;/p&gt;" forms a very unpleasant, if not literally painful, sequence of characters to type. So Aptana is being very helpful when it fills in the closing &lt;/p&gt; for you. The plug-in is supposed to fill in matching end tags generally, not just the paragraph tag, but I have not yet been able to get that to work consistently. (Though it does work consistently for &lt;b&gt;&lt;/b&gt; and &lt;i&gt;&lt;/i&gt;.) Control of this option has been placed in the Content Assist box, reached via Preferences > Aptana Studio > Editors > HTML. In Screenshot 3 above, the <strong>left-most</strong> arrow is pointing toward the HTML node.</p>
+            <p>Let's be honest: the string "&lt;/p&gt;" forms a very unpleasant, if not literally painful, sequence of characters to type. So Aptana is being very helpful when it fills in the closing &lt;/p&gt; for you. The plug-in is supposed to fill in matching end tags generally, not just the paragraph tag, but I have not yet been able to get that to work consistently. (Though it does work consistently for &lt;b&gt;&lt;/b&gt; and &lt;i&gt;&lt;/i&gt;.) Control of this option has been placed in the Content Assist box, reached via Preferences &gt; Aptana Studio &gt; Editors &gt; HTML. In Screenshot 3 above, the <strong>left-most</strong> arrow is pointing toward the HTML node.</p>
 
             <h4>Aptana allows remote system synchronization.</h4>
-            <p>Suppose you're like me: you first make changes to your website on your computer; you test those changes locally; and only when everything looks right do you export the changes to your live website. The question is--how do you get those changes to your website? You don't want to upload all your files, since, depending on the number of files contained in your website, this could take a very long time. As I see it, there are two options. The better option is to upload your changes to a respository in the Cloud somewhere, and at your website synch up with the repository.</p>
-            <p>But if you're not comfortable with using a respository like Subversion--or if your website is in an early stage and you're just not there yet--a second option is to use a tool like Aptana's. In Eclipse, this functionality is put into a view. Go to Window > Show View > Remote Systems. If the "Remote" option isn't visible, go to Window > Show View > Other > Studio > Remote.</p>
+            <p>Suppose you're like me: you first make changes to your website on your computer; you test those changes locally; and only when everything looks right do you export the changes to your live website. The question is&mdash;how do you get those changes to your website? You don't want to upload all your files, since, depending on the number of files contained in your website, this could take a very long time. As I see it, there are two options. The better option is to upload your changes to a respository in the Cloud somewhere, and at your website synch up with the repository.</p>
+            <p>But if you're not comfortable with using a respository like Subversion&mdash;or if your website is in an early stage and you're just not there yet&mdash;a second option is to use a tool like Aptana's. In Eclipse, this functionality is put into a view. Go to Window &gt; Show View &gt; Remote Systems. If the &quot;Remote&quot; option isn&#x27;t visible, go to Window &gt; Show View &gt; Other &gt; Studio &gt; Remote.</p>
             <p>Here is what you'll need before you can set up a connection to your website: (1) an FTP address at your host provider where your files reside; (2) your user ID for FTP at your host provider; and (3) your password.</p>
             <p>Here is how you set up a new connection. In the Remote System Details window, right click on Local and select New Connection. You will probably see several panels, but the one you're looking for is a tab, usually at the bottom, that looks like this.</p>
 
@@ -120,9 +120,9 @@
             <br/>
             <br/>
 
-            <p><strong>The most important thing is that the left and right panels be looking at the same "level" in their respective file systems.</strong> In the screenshot above, the two file systems--local on the left, remote on the right--are looking at the same level. Compare this to Screenshot 6, where they are not looking at the same level. Once you've managed this, you're ready to synchronize. Although, maybe not: one time I had trouble synchronizing immediately after setting up the connection. The Eclipse windows were suffering from refresh issues. But after I closed and reponend Eclipse everything was fine.</p>
+            <p><strong>The most important thing is that the left and right panels be looking at the same "level" in their respective file systems.</strong> In the screenshot above, the two file systems&mdash;local on the left, remote on the right&mdash;are looking at the same level. Compare this to Screenshot 6, where they are not looking at the same level. Once you've managed this, you're ready to synchronize. Although, maybe not: one time I had trouble synchronizing immediately after setting up the connection. The Eclipse windows were suffering from refresh issues. But after I closed and reponend Eclipse everything was fine.</p>
 
-            <p>Here is how you synchronize. Let's assume that you are starting from Eclipse's Java view. Go to View  > Other > Studio > Remote. The Remote tab may now appear in a location that you've never seen it in--maybe on the left if you're used to seeing it on the bottom. They're just trying to blow your mind. Don't let them. In the Remote tab, wherever it might be, select your website connection. Right-click and go to Transfer Files. What should now appear are the two panels you see in the screenshot above. In between the left and right panels are a vertical series of buttons. Click on the blue one--whose tip reads "Synchronizes all the files between the two end points." </p>
+            <p>Here is how you synchronize. Let's assume that you are starting from Eclipse's Java view. Go to View  &gt; Other &gt; Studio &gt; Remote. The Remote tab may now appear in a location that you've never seen it in&mdash;maybe on the left if you're used to seeing it on the bottom. They're just trying to blow your mind. Don't let them. In the Remote tab, wherever it might be, select your website connection. Right-click and go to Transfer Files. What should now appear are the two panels you see in the screenshot above. In between the left and right panels are a vertical series of buttons. Click on the blue one&mdash;whose tip reads "Synchronizes all the files between the two end points." </p>
             <p>A new dialog box pops up, looking like the screenshot below.</p>
 
             <p class="precaption">Screenshot 9: You're ready to synchronize</p>
@@ -130,12 +130,12 @@
             <br/>
             <br/>
 
-            <p>It's very important that you check the values of the right-most column. If a file is marked as "create it" and you haven't changed it, or only modified it, since your last synchronization--then surely there is something wrong with your configuration. The local and the remote file systems are probably not "at the same level," as described above. Click on the cancel button and try setting up again. If you proceed with the synchronization, files will be put in the wrong location, and your website will probably become unusabale. (I know, I've done this.)</p>
-            <p>Once you've checked that the files are correctly marked as "create it," "update it," and so on--and once you've clicked the middle "Skip" checkbox for any files which should not be transfered--you're ready. Click on the blue Synchronize button, and let Aptana do its work.</p>
+            <p>It's very important that you check the values of the right-most column. If a file is marked as "create it" and you haven't changed it, or only modified it, since your last synchronization&mdash;then surely there is something wrong with your configuration. The local and the remote file systems are probably not "at the same level," as described above. Click on the cancel button and try setting up again. If you proceed with the synchronization, files will be put in the wrong location, and your website will probably become unusabale. (I know, I've done this.)</p>
+            <p>Once you've checked that the files are correctly marked as "create it," "update it," and so on&mdash;and once you've clicked the middle "Skip" checkbox for any files which should not be transfered&mdash;you're ready. Click on the blue Synchronize button, and let Aptana do its work.</p>
 
             <h3><a id="Installing">Installing Aptana</a></h3>
-			<p>You cannot use the Eclipse Marketplace to get the Aptana plug-in. You have to go to their website and jump through a few hoops But the features described above make it worth your while. Here, then, is how I managed to install it, after several fruitless attempts by other means. (Two things worth noting: (1) For some reason the download wouldn't work on the Mac version of Firefox--I had to use Safari. And (2), this is how I installed Aptana 3.6.0 onto the STS version of Eclipse in November of 2014--of course, anything could change at some point in the future.)</p>
-			<p>Go to http://www.aptana.com/products/studio3/download, or if that link is dead, search on "download Aptana studio eclipse". You're looking for a page that has the radio buttons and the download button like the image below. It's not immediately apparent, but the download page has two options--the Standalone Version (the default) or the Eclipse Plug-in Version. See the radio button the red arrow is pointing at. Make sure you select the plug-in version, then click the Download button.</p>
+			<p>You cannot use the Eclipse Marketplace to get the Aptana plug-in. You have to go to their website and jump through a few hoops But the features described above make it worth your while. Here, then, is how I managed to install it, after several fruitless attempts by other means. (Two things worth noting: (1) For some reason the download wouldn't work on the Mac version of Firefox&mdash;I had to use Safari. And (2), this is how I installed Aptana 3.6.0 onto the STS version of Eclipse in November of 2014&mdash;of course, anything could change at some point in the future.)</p>
+			<p>Go to http://www.aptana.com/products/studio3/download, or if that link is dead, search on "download Aptana studio eclipse". You're looking for a page that has the radio buttons and the download button like the image below. It's not immediately apparent, but the download page has two options&mdash;the Standalone Version (the default) or the Eclipse Plug-in Version. See the radio button the red arrow is pointing at. Make sure you select the plug-in version, then click the Download button.</p>
 
             <p class="precaption">Screenshot 10: Aptana download page</p>
             <img src="./image/aptanaFirstInstallPage.jpg" />
@@ -144,14 +144,14 @@
             
             <p>The above steps bring you to a new page. The instructions will tell you to copy a URL to your clipboard and install from Eclipse. I found the remainder of the install process pretty easy.</p>
             <p><strong>PyDev issue.</strong> If you have the PyDev plug-in for Eclipse, the installation process will remove it after notifying you that it is going to do so. The is because the latest (3.6) version of Aptana comes with its own version of PyDev. I have not (yet) played around with Aptana's version of PyDev.</p>
-            <p><strong>Java code issue.</strong> I have two projects in my Eclipse workspace--one in Java, and one in HTML. After installing the Aptana plug-in, my Java project would no longer build. The install completely wiped out the Java Build Path in the project’s Properties. I had to check the Java 7 box and reconfigure the project with all my .jar files.</p>
+            <p><strong>Java code issue.</strong> I have two projects in my Eclipse workspace&mdash;one in Java, and one in HTML. After installing the Aptana plug-in, my Java project would no longer build. The install completely wiped out the Java Build Path in the project’s Properties. I had to check the Java 7 box and reconfigure the project with all my .jar files.</p>
 
             <h3><a id="Annoyances">Aptana Annoyances</a></h3>
             <br/>
 
             <h4>Aptana's annoying apostrophe issue</h4>
 			<p>By default, Aptana auto-closes matching character pairs. What this means is that when you type the first of a "character pair" (for example, the left-hand side of a pair of parentheses or curly braces, or single- or double-quotes), it automatically types the matching right-hand side of the pair for you. Your job is simply to fill the inside of the pair with whatever you want to type; then you hit the Tab key, which brings your cursor to the outisde of the pair, and you can go on your merry way with whatever you want to type.</p>
-			<p>This can sometimes come in handy. The problem is that Aptana considers the single quote a matching pair. And the single quote is the same as an apostrophe. Which means that whenever you use an abbreviation--or the possessive "'s", you end up with an unnecessary matching apostrophe. And that is a pain to delete. The bother of deleting the unwanted apostrophe is much greater than the convenience of the matching character pair. So my vote is, remove the option. How to do that? Go to Preferences > Aptana Studio > Editors, find the "Auto-close matching character pairs" option, and uncheck that option. See the <strong>topmost</strong> red arrow in Screenshot 3.</p>
+			<p>This can sometimes come in handy. The problem is that Aptana considers the single quote a matching pair. And the single quote is the same as an apostrophe. Which means that whenever you use an abbreviation&amp;mdash;or the possessive &quot;&#x27;s&quot;, you end up with an unnecessary matching apostrophe. And that is a pain to delete. The bother of deleting the unwanted apostrophe is much greater than the convenience of the matching character pair. So my vote is, remove the option. How to do that? Go to Preferences &gt; Aptana Studio &gt; Editors, find the &quot;Auto-close matching character pairs&quot; option, and uncheck that option. See the &lt;strong&gt;topmost&lt;/strong&gt; red arrow in Screenshot 3.</p>
 
             <h4>Loss of toggle comment</h4>
             <p>The default version of Eclipse offers a very handy "Toggle Comment" command. This inserts the appropriate symbols to make the current line commented out. It works in both Java and HTML.</p>
@@ -182,6 +182,7 @@
                     <li><a href="preAndCode.html">Using  &lt;pre&gt; and &lt;code&gt; to Display Code</a></li>
                     <li><a href="htmlEntities.html">HTML Entities and Reserved Characters</a></li>
                     <li><a href="aptana.html">Useful tools in the Aptana Eclipse Plug-in</a></li>
+                </ul>
 			</div>
 		</div>
 	</div>

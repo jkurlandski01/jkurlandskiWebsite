@@ -30,7 +30,7 @@
 			<div id="logo">
 				<h1>Close to the</h1>
 				<h1>Machine</h1>
-				<p></p>
+				<br/>
 				<p>Jerry Kurlandski</p>
 			</div>
 			<div id="header-image1"> <a href="#" class="image"><img src="../../images/bookshelfPanorama.jpg" alt="" /></a> </div>
@@ -57,41 +57,26 @@ $ httrack --version
 HTTrack version 3.48-19
 </pre>
 
-            </br>
+            <br/>
         
-            <h3>Stopping HTTrack</h3>
-            <p>HTTrack is a very eager beaver. So eager, that there's no easy way to stop it. This is why I'm explaining how to stop it here, near the beginning of this article, because as you experiment with the tool you'll surely find you did something wrong and want to stop it before your hard disk fills up.</p>
-            <p>Basically you stop the tool by getting its process number and killing it at the command line. The commands given below show you how to get to your command prompt while the app is running and printing to standard out (ctrl-Z), get the process number (ps -ef | grep httrack), and, finally, kill the process (kill -9 &lt;processID&gt;).</p>
-            
-<p class="precaption">Listing 2: Stopping a Running HTTRack process</p>
-<pre class="preCodeWithCaption">
-$ ctrl-Z
-$ ps -ef | grep httrack
-  501  8722     1   0 12:20PM ttys000    0:00.68 httrack (...)
-  501  8810  7911   0 12:20PM ttys000    0:00.00 grep httrack
-$ kill -9 8722
-</pre>
-
-            <p>When you run "ps -ef | grep httrack", you'll usually get two responses. Make sure you find the proces ID that is NOT the ID of your grep. Use the correct process ID as the last parameter to your "kill -9" command.</p>
-
             <h3>A Few Simple HTTrack Comands</h3>
             <p>Here I give you a couple commands that, hopefully, will get you started as you figure out how to get the tool to satisfy your needs.</p>
 
-<p class="precaption">Listing 3: Mirror a Web Site</p>
+<p class="precaption">Listing 2: Mirror a Web Site</p>
 <pre class="preCodeWithCaption">
 $ httrack http://www.source.com -O /destination
 </pre>
 
             <p>The above command mirrors the site at "http://www.source.com", copying files to the "/destination" directory on the local machine. By "mirrors the site," I mean that it follows internal links at "http://www.source.com", as well as links at these linked-to pages, creating a mirror image at the destination directory. When completed, you will be able to navigate the copy of the website just as you do the website--that is, by clicking on links in a browser.</p>
 
-<p class="precaption">Listing 4: Mirror a Web Site Excluding Files of a Certain Type</p>
+<p class="precaption">Listing 3: Mirror a Web Site Excluding Files of a Certain Type</p>
 <pre class="preCodeWithCaption">
 $ httrack http://www.source.com -O /destination -*.jpg
 </pre>
 
             <p>Listing 4 gives you the command I end up using the most. This one mirrors the source website, but does NOT copy over any .jpg files.</p>
 
-<p class="precaption">Listing 5: Mirror a Web Site and the Web Sites It Links to on the Main Page</p>
+<p class="precaption">Listing 4: Mirror a Web Site and the Web Sites It Links to on the Main Page</p>
 <pre class="preCodeWithCaption">
 $ httrack http://www.source.com -O /destination -Y
 </pre>
@@ -101,7 +86,7 @@ $ httrack http://www.source.com -O /destination -Y
             <h3>Resuming a Halted HTTrack Operation</h3>
             <p>Take a gander at all the files HTTrack puts into your destination directory, and you'll see some that have nothing to do with your source website. In fact, HTTrack keeps tabs on what is has copied over, as well as links it has encountered but not yet copied over. The wonderful thing about this is that you can halt an HTTrack operation and then, at some point in time later, resume the operation where you left off.</p>
 
-<p class="precaption">Listing 6: Starting, Stopping, then Resuming an HTTrack Operation</p>
+<p class="precaption">Listing 5: Starting, Stopping, then Resuming an HTTrack Operation</p>
 <pre class="preCodeWithCaption">
 $ httrack http://www.source.com -O /destination -*.jpg
 $ ctrl-Z
@@ -116,7 +101,7 @@ $ cd /destination
 $ httrack -i
 </pre>
 
-            </br>
+            <br/>
         
             <h3>Exploring Other Options with the User's Guide</h3>
             <p>When I first came across the user's guide (see the link in the sidebar), I was excited. It looks so complete, and so clear, that I had the feeling everything I needed <i>was right here</i>. Alas, for whatever reason, the examples rarely work as the documentation suggests--and sometimes they don't seem to work at all.</p>
@@ -135,9 +120,8 @@ $ httrack -i
                     <li><a href="conceptNetIntro.html">Intro to ConceptNet</a></li>
                     <li><a href="conceptNetCode.html">ConceptNet Source Code</a></li>
                     <li><a href="httrack.html">HTTrack</a></li>
+                </ul>
 			</div>
-		</div>
-		<div id="sidebar">
 			<div class="internalLinkBox">
 				<div class="title">
 					<h2>External Guava Links</h2>

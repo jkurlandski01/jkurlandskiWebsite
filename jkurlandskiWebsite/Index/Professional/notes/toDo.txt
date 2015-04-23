@@ -1,18 +1,31 @@
 In progress:
-- 
+
+√ Elimintate all warnings
+
+√ Should be using <br/> instead of </br>.
+- Search and replace? Hunt through, looking for warnings?
 
 √ Proof all pages.
 
-Change copyright from 2013 to 2015 on professional pages.
+Get symbol for copyright--add to entities page.
 
-Search for JERRY comments.
+Change copyright from 2013 to 2015 on all pages.
+- Use copyright symbol, &copy;
+- Search and replace
+Copyright (c) 2013 jkurlandski.com
+&copy; 2013-2015 Jerry Kurlandski
 
-Replace "--" with &mdash;
+√ Search for JERRY comments.
 
-Should be using <br/> instead of </br>.
-- Search and replace? Hunt through, looking for warnings?
 
-Check out all warnings
+? Replace "--" with &mdash;
+-- done: CSS pages: aptana, floatingTable
+-- in progress: 
+
+commandLine.html, and others in misc
+- Want paragraph titles that are code to be monospaced
+- e.g. "perl -p -e 's/\t/\n/g' data.txt" in commandLine.html
+
 
 Standardize the "Jerry Kurlandski" on each web page.
 - See how it's rendered in Windows Explorer when you make your decision.
@@ -28,7 +41,6 @@ Do main professional index page
 Editing Tasks
 - Comment on website title "Close to the Machine."
 - Research how best to edit a website: printed copies vs. Word documents
-- Research and consider how worthwhile it would be to change the copyright date on each page
 - Check presentation on multiple Windows browsers
 - Check load-time of pages/images with wired and wireless connections
 - Verify all links, internal and external
@@ -36,7 +48,8 @@ Editing Tasks
 - Low-level editing of page layout
 - Low-level editing of figure, table and image titles
 - Low-level verification of "tab titles" for each page
-- Edit with regard to "professionalism"; ? both professional and non-professional sites
+- Edit with regard to "professionalism"; 
+	- ? both professional and non-professional sites
 - High-level edit with regard to standard Internet "practices"
 - High-level edit with regard to consistency across the website as a whole, e.g. use of capitalization in titles and subtitles
 - ? After checking with me, edit the HTML yourself
