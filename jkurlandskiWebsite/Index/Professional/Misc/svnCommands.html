@@ -99,7 +99,7 @@
                         </div>
                     </div>
                 <h4>$ svn status</h4>
-                <p>Compare local version to the base revision--that is, to the repository version that your changes have modified, which may or may not be the same as what is currently in the repository. Item status is represented by symbols appearing in the left-most column of the output--see the table at right.</p>
+                <p>Compare local version to the base revision&mdash;that is, to the repository version that your changes have modified, which may or may not be the same as what is currently in the repository. Item status is represented by symbols appearing in the left-most column of the output&mdash;see the table at right.</p>
             </div>
 
             <div class="singleSpacedDescription">
@@ -123,7 +123,7 @@
                         </div>
                     </div>
                 <h4>$ svn status -u</h4>
-                <p>Compare local version to the version of the file in the repository itself. Tells you what updates to the repository are not in the local version. In addition to the status of local changes given in the left-most column of the output, this command returns the repository status of items in the middle and right columns--see the table at right for these symbols. The command ends by displaying "Status against revision:" plus a revision number; this is the latest revision in the repository.</p>
+                <p>Compare local version to the version of the file in the repository itself. Tells you what updates to the repository are not in the local version. In addition to the status of local changes given in the left-most column of the output, this command returns the repository status of items in the middle and right columns&mdash;see the table at right for these symbols. The command ends by displaying "Status against revision:" plus a revision number; this is the latest revision in the repository.</p>
             </div>
 
             <div class="singleSpacedDescription">
@@ -204,17 +204,17 @@
 
             <div class="singleSpacedDescription">
                 <h4>$ svn rm --keep-local &lt;item&gt;</h4>
-                <p>Remove the file/directory from the repository, but not locally. This will generally be an important file or directory, e.g. .classpath. Ordinarily you will also want to <code>ignore</code> this file as well--see below.</p>
+                <p>Remove the file/directory from the repository, but not locally. This will generally be an important file or directory, e.g. .classpath. Ordinarily you will also want to <code>ignore</code> this file as well&mdash;see below.</p>
             </div>
 
             <div class="singleSpacedDescription">
                 <h4>$ for i in  $(svn status | grep \! | awk '{print $2}'); do svn delete $i; done</h4>
-                <p>Unix command to recursively delete all missing files from the repository, whether their directories are versioned or unversioned. The command works by deleting all files whose status is "!". Since, unlike <code>add</code>, there is no recursive version of <code>delete</code>, this command can sometimes be very useful--for example, if you've deleted many files in several directories via your operating system.</p>
+                <p>Unix command to recursively delete all missing files from the repository, whether their directories are versioned or unversioned. The command works by deleting all files whose status is "!". Since, unlike <code>add</code>, there is no recursive version of <code>delete</code>, this command can sometimes be very useful&mdash;for example, if you've deleted many files in several directories via your operating system.</p>
             </div>
 
 
             <h3>SVN Ignore</h3>
-            <p>Use svn's ignore property to avoid putting items into the repository. You do this, for example, with files that may differ from one machine to the next, as with .classpath settings--or with files which are produced in the compilation process, as with .class or .exe files and the directories which contain them.</p>
+            <p>Use svn's ignore property to avoid putting items into the repository. You do this, for example, with files that may differ from one machine to the next, as with .classpath settings&mdash;or with files which are produced in the compilation process, as with .class or .exe files and the directories which contain them.</p>
             
             <div class="singleSpacedDescription">
                 <h4>$ export SVN_EDITOR=vim</h4>
@@ -270,7 +270,7 @@
 	</div>
 </div>
 <div id="copyright" class="container">
-	<p>Copyright (c) 2013 jkurlandski.com. All rights reserved. | Original design by <a href="http://www.freecsstemplates.org/" rel="nofollow">FreeCSSTemplates.org</a>.</p>
+	<p>&copy; 2013-2015 Jerry Kurlandski. All rights reserved. | Original design by <a href="http://www.freecsstemplates.org/" rel="nofollow">FreeCSSTemplates.org</a>.</p>
 </div>
 </body>
 </html>

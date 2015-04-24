@@ -42,11 +42,11 @@
 			<div class="title">
 				<h2>Set Operations on Java Sets and Lists</h2>
 			</div>
-			<p>Do an Internet search on "set operations java" and at the top of the results you're sure to find at least one page telling you to use retainAll( ) and addAll( ) for intersection and union, respectively. Some online resources might note that sets and lists behave differently, but generally they don't explore how the two behave differently, or what it means to do a traditional set operation on a list. And they certainly don't warn you of the unexpected behavior you'll get if you try to perform a retainAll( ) on a list--let me tell you now that you won't get something akin to set-operation behavior.</p>
+			<p>Do an Internet search on "set operations java" and at the top of the results you're sure to find at least one page telling you to use retainAll( ) and addAll( ) for intersection and union, respectively. Some online resources might note that sets and lists behave differently, but generally they don't explore how the two behave differently, or what it means to do a traditional set operation on a list. And they certainly don't warn you of the unexpected behavior you'll get if you try to perform a retainAll( ) on a list&mdash;let me tell you now that you won't get something akin to set-operation behavior.</p>
 			<p>On this page I explore these issues in detail. But first I'll give an executive summary to serve as a quick reference, perhaps for those readers who don't have time for or interest in the nitty-gritty details.</p>
 			
             <h3><a id="Summary">Summary</a></h3>
-			<p>If you are working with true sets--in which every element is unique--it's slightly advantageous to use Guava's Sets methods.</p>
+			<p>If you are working with true sets&mdash;in which every element is unique&mdash;it's slightly advantageous to use Guava's Sets methods.</p>
 
 <p class="precaption">Listing 1: Snapshot of Guava's Sets.intersect( ) and Sets.union( )</p>
 <pre class="preCodeWithCaption">
@@ -147,7 +147,7 @@ public void testTrueSetGuavaUnion() {
             <p>If I met someone who was trying to perform set operations on lists, I would try to account for this odd behavior in one of three possible ways: (1) the person doesn't know what he or she is doing; (2) the person knows what they're doing, and they know that their lists are really sets, and they're sure that as the project develops those lists will never one day have duplicate values, which would invalidate them as sets; or (3) the person is actually, and knowingly, working with what are called <em>multisets</em>.</p>
             <p>Briefly, a multiset is a set of objects where order does not matter and it is possible to have more than one of each type of element. For example, {a, b, b, c, d} is a multiset, and it is equivalent to {a, c, d, b, b}. Note that the traditional set {a, b, c} is also a multiset, albeit one which has only one element of each type. Another name for multiset is a <em>bag</em>, as in "a bag of words model of a document."</p>
             <p>While multisets are not true sets, it nevertheless makes perfect sense to want to perform set-like operations such as intersect and union on them.</p>
-            <p>In the previous section we saw that there are two perfectly acceptable ways to perform set operations on true sets--although the Guava approach might be slightly preferable to the use of native Java Set methods. However, in this section we'll see that when it comes to multisets, there really is only one option.</p>
+            <p>In the previous section we saw that there are two perfectly acceptable ways to perform set operations on true sets&mdash;although the Guava approach might be slightly preferable to the use of native Java Set methods. However, in this section we'll see that when it comes to multisets, there really is only one option.</p>
             
             <h4>Set operations using List.retainAll( ) and List.addAll( )</h4>
             <p>This is a long section whose upshot will be: <em>Do not use retainAll( ) and addAll( ) for multisets!</em></p>
@@ -170,7 +170,7 @@ public void testListRetainAll() {
 </pre>
 
             <p>So far, so good. We see that the two lists have a single element in common, and the unit test verifies that retainAll( ) did, indeed, retain that single element "c".</p>
-            <p>However, we expect set operations to be commutative--that is, we expect A &cap; B = B &cap; A. To verify this, let's add a couple of lines to the same unit test.</p>
+            <p>However, we expect set operations to be commutative&mdash;that is, we expect A &cap; B = B &cap; A. To verify this, let's add a couple of lines to the same unit test.</p>
  
 <p class="precaption">Listing 6: Testing commutativity of retainAll( ) for a List implementation of multisets</p>
 <pre class="preCodeWithCaption">
@@ -183,7 +183,7 @@ public void testListRetainAll() {
 java.lang.AssertionError: expected:&lt;[c]&gt; but was:&lt;[c, c]&gt;
 </pre>
             <p>The first test, which passed, was performed on a list initialized with list1, and then the test called <code>retainAll(list2)</code>. The second test initialized with list2, and then called <code>retainAll(list1)</code>. And this test failed because it had one too many "c" elements, thus showing that this way of trying to implement the intersection operation is not commutative.</p>
-            <p>You might ask which is the correct intersection of the two sets--{c} or {c, c}? Here's a formal definition of the multiset intersection operation from PlanetMath.org:</p>
+            <p>You might ask which is the correct intersection of the two sets&mdash;{c} or {c, c}? Here's a formal definition of the multiset intersection operation from PlanetMath.org:</p>
             
             <p class="indentedQuote">The intersection of f and g, denoted by f &cap; g, is the multiset whose domain is A &cap; B, such that
                 (f &cap; g) (x) := min(f(x), g(x))<sup>1</sup></p> 
@@ -323,7 +323,7 @@ public void testMultisetUnion() {
 	</div>
 </div>
 <div id="copyright" class="container">
-	<p>Copyright (c) 2013 jkurlandski.com. All rights reserved. | Original design by <a href="http://www.freecsstemplates.org/" rel="nofollow">FreeCSSTemplates.org</a>.</p>
+	<p>&copy; 2013-2015 Jerry Kurlandski. All rights reserved. | Original design by <a href="http://www.freecsstemplates.org/" rel="nofollow">FreeCSSTemplates.org</a>.</p>
 </div>
 </body>
 </html>

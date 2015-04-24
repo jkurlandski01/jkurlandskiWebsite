@@ -44,7 +44,7 @@
                     <h2>Sorting Java Collections</h2>
 				</div>
 			</div>
-            <p>This page provides a How-To on sorting various Java collections--Maps, Sets and Lists.</p>
+            <p>This page provides a How-To on sorting various Java collections&mdash;Maps, Sets and Lists.</p>
 
             <h3>Summary</h3>
             <p>For those in a hurry, here's a pr&eacute;cis of what is covered in greater detail below. We start with how to use a TreeMap.</p>
@@ -86,7 +86,7 @@ Arrays.sort(array);
                 <br/>
 
 			<h3>Using TreeMap for Sorted Keys</h3>
-            <p>There are a couple of ways to sort on the keys of a map. You could: (1) use Java's TreeMap, or (2) get the key set and sort that. If your requirements are as simple as that, this page will help you out. If your requirements are more complicated--for example, if you want to be able to sort on the values as well as the keys of a map--you might want to explore Guava's Table interface and its various implementations. I have a separate Guava page that will help you get started.</p>
+            <p>There are a couple of ways to sort on the keys of a map. You could: (1) use Java's TreeMap, or (2) get the key set and sort that. If your requirements are as simple as that, this page will help you out. If your requirements are more complicated&mdash;for example, if you want to be able to sort on the values as well as the keys of a map&mdash;you might want to explore Guava's Table interface and its various implementations. I have a separate Guava page that will help you get started.</p>
 			<p>The listing below shows you how to use a TreeMap, which is a specialized Java Map that returns the keys in sorted order.</p>
 
 <p class="precaption">Listing 5: Using TreeMap to get the keys of a map in sorted order</p>
@@ -128,7 +128,7 @@ public void testSortEnum()  {
 
             <p>The asserts in the test method all pass. Can you see how the enum values are being sorted?</p>
             <p>A gold star if you noticed that the sort order is not alphabetical, but rather the order in which the enum values are declared. It seems obvious in the cold light of day, I know, but if you don't keep this little lesson in mind,  the way in which an enum is sorted may come back to bite you one day. It has me.</p>
-            <p>Finally, a caution about runtime. Don't be cavalier in your use of TreeMap. Its various operations--get, put, containsKey and remove--are O(log n), which is very good in the sorting sphere but not so good for hashmaps in general. In other words, if you don't need to sort, use the HashMap implementation, whose get and put operations are O(1).</p>
+            <p>Finally, a caution about runtime. Don't be cavalier in your use of TreeMap. Its various operations&mdash;get, put, containsKey and remove&mdash;are O(log n), which is very good in the sorting sphere but not so good for hashmaps in general. In other words, if you don't need to sort, use the HashMap implementation, whose get and put operations are O(1).</p>
             
             <h3>Using Collections.sort()</h3>
             <p>The listings below show you how to sort a Java List object with the handy Collections.sort( ) method. (Note that I'm using Guava to initialize the list. You can learn more about using this library for initialization at the following location: <a href="../Guava/guavaIntro.html">Guava Intro</a>.)</p>
@@ -161,8 +161,8 @@ Printing the sorted list.
 [8, 14, 23, 67]
 </pre>
 
-            <p>Note that Collections.sort( ) sorts the list itself--that is, the method does not return the list in sorted order, leaving the original list untouched.</p>
-            <p>If you have a set instead of a list, you first have to put your set into a List--Collections.sort( ) doesn't operate on a Set object.</p>
+            <p>Note that Collections.sort( ) sorts the list itself&mdash;that is, the method does not return the list in sorted order, leaving the original list untouched.</p>
+            <p>If you have a set instead of a list, you first have to put your set into a List&mdash;Collections.sort( ) doesn't operate on a Set object.</p>
             
 <p class="precaption">Listing 8: Using Collections.sort() on a Set</p>
 <pre class="preCodeWithCaption">
@@ -227,7 +227,7 @@ Printing the sorted array after converting it to a list.
 </pre>
 
             <p>In the listing above, we initialize our array, then call Arrays.sort(), which does the heavy lifting for us, and our unit test assertions demonstrate that the sort was correct.</p>
-            <p>For the sheer pleasure of putting array objects down, the listing goes on to show you just one reason why Java Collection objects are superior to arrays--their toString( ) method. To do this, I first print out the result of array.toString( ); then I create a List with the sorted array values, and print out the call to toString( ) on that object.</p>
+            <p>For the sheer pleasure of putting array objects down, the listing goes on to show you just one reason why Java Collection objects are superior to arrays&mdash;their toString( ) method. To do this, I first print out the result of array.toString( ); then I create a List with the sorted array values, and print out the call to toString( ) on that object.</p>
 
             <h3>When the object you are sorting on is a custom class</h3>
             <p>If the objects in your collection consist of your own class rather than Java classes like String, Double, Integer and so on, don't forget to override the necessary methods for safe sorting and the insertion of your class objects into containers. For example, maybe you have a Movie class which contains two fields, title and release date, and you want to sort Movie objects first on title, then on release date if there is a tie. There are three methods you'll need to write in the Movie class: you'll have to override the Object methods equals( ) and hashCode( ); and you'll want to declare your class as implementing Comparable and implement compareTo( ).</p>
@@ -252,7 +252,7 @@ Printing the sorted array after converting it to a list.
 	</div>
 </div>
 <div id="copyright" class="container">
-	<p>Copyright (c) 2013 jkurlandski.com. All rights reserved. | Original design by <a href="http://www.freecsstemplates.org/" rel="nofollow">FreeCSSTemplates.org</a>.</p>
+	<p>&copy; 2013-2015 Jerry Kurlandski. All rights reserved. | Original design by <a href="http://www.freecsstemplates.org/" rel="nofollow">FreeCSSTemplates.org</a>.</p>
 </div>
 </body>
 </html>

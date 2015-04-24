@@ -43,10 +43,10 @@
 				<h2>ConceptNet Source Code</h2>
 			</div>
 			<p>ConceptNet is an open-source database which is meant to represent real-world knowledge in a form that computers can understand. For more information, see the links in the sidebar.</p>
-            <p>If you're interested in incorporating ConceptNet into your own application, the code on this page will give you a good start. I don't claim it to be perfect, or even very good; I'm just hoping it gets you going. You'll find that the bulk of your code--the real "intellectual property"--will not be in these simple classes, but in the code that makes use of these classes... From this point on I assume you've already read the following: <a href="conceptNetIntro.html">Intro to ConceptNet</a>.</p>
+            <p>If you're interested in incorporating ConceptNet into your own application, the code on this page will give you a good start. I don't claim it to be perfect, or even very good; I'm just hoping it gets you going. You'll find that the bulk of your code&mdash;the real "intellectual property"&mdash;will not be in these simple classes, but in the code that makes use of these classes... From this point on I assume you've already read the following: <a href="conceptNetIntro.html">Intro to ConceptNet</a>.</p>
             
             <h4>Dataset</h4>
-            <p>We'll start with something easy--an enum which represents the dataset property of an edge.</p>
+            <p>We'll start with something easy&mdash;an enum which represents the dataset property of an edge.</p>
             
 <p class="precaption">Listing 1: The Dataset Enum</p>
 <pre class="preCodeWithCaption">
@@ -135,16 +135,16 @@ Relation rel = null;
 try {
     rel = Relation.valueOf(relationStr);
 } catch (IllegalArgumentException e) {
-    // The relation isn't in our Relation enum. No problem--we deal with this below.
+    // The relation isn't in our Relation enum. No problem&mdash;we deal with this below.
 }
 if(rel == null) {
     rel = Relation.Other;
 }
 </pre>
-            <p>Here's how the code in Listing 3 works. Suppose you've done a query and one of the edges returned has the relation "HasProperty." In this case, Relation.valueOf("HasProperty") will return the HasProperty relation, and all is well--an exception is not thrown, and rel is not null. Now suppose your query also returns an unexpected relation, and let's say this relation is "SynonymOf." In this case, the call to Relation.valueOf("SynonymOf") throws an IllegalArgumentException, which is suppressed in the catch clause. Since the rel variable hasn't been set, rel is then set to the Other relation.</p>
+            <p>Here's how the code in Listing 3 works. Suppose you've done a query and one of the edges returned has the relation "HasProperty." In this case, Relation.valueOf("HasProperty") will return the HasProperty relation, and all is well&mdash;an exception is not thrown, and rel is not null. Now suppose your query also returns an unexpected relation, and let's say this relation is "SynonymOf." In this case, the call to Relation.valueOf("SynonymOf") throws an IllegalArgumentException, which is suppressed in the catch clause. Since the rel variable hasn't been set, rel is then set to the Other relation.</p>
             
              <h4>Edge</h4>
-             <p>Now that we've defined two critical edge properties--dataset and relation--we can define the edge. Note that the list of edge properties in the snippet below is NOT complete, providing only those properties which in my own experience I have found useful.</p>
+             <p>Now that we've defined two critical edge properties&mdash;dataset and relation&mdash;we can define the edge. Note that the list of edge properties in the snippet below is NOT complete, providing only those properties which in my own experience I have found useful.</p>
             
 <p class="precaption">Listing 4: The Edge Class</p>
 <pre class="preCodeWithCaption">
@@ -192,7 +192,7 @@ public class Edge {
         try {
             rel = Relation.valueOf(relationStr);
         } catch (IllegalArgumentException e) {
-            // The relation isn&#x27;t in our Relation enum. No problem--we deal with this below.
+            // The relation isn&#x27;t in our Relation enum. No problem&mdash;we deal with this below.
         }
         if(rel == null) {
             rel = Relation.Other;
@@ -214,7 +214,7 @@ public class Edge {
     // ...
 }
 </pre>
-            <p>We create an Edge object by passing to the constructor the query which returned the edge, plus the portion of the JSON string defining the edge's properties. One by one, the constructor reads each edge property from the JSON string. The trickiest property is the first--relation. I've already explained the logic of setRelation( ) above, in the discussion related to Listing 3. The cleanRelation( ) and cleanSurfaceText methods will make sense if you look at the example of an edge in my "ConceptNet Intro" page.</p>
+            <p>We create an Edge object by passing to the constructor the query which returned the edge, plus the portion of the JSON string defining the edge's properties. One by one, the constructor reads each edge property from the JSON string. The trickiest property is the first&mdash;relation. I've already explained the logic of setRelation( ) above, in the discussion related to Listing 3. The cleanRelation( ) and cleanSurfaceText methods will make sense if you look at the example of an edge in my "ConceptNet Intro" page.</p>
             
              <h4>ConceptNetQuery</h4>
              <p>Finally we are ready to define the ConceptNetQuery object itself.</p>
@@ -319,7 +319,7 @@ public class ConceptNetQuery {
 	</div>
 </div>
 <div id="copyright" class="container">
-	<p>Copyright (c) 2013 jkurlandski.com. All rights reserved. | Original design by <a href="http://www.freecsstemplates.org/" rel="nofollow">FreeCSSTemplates.org</a>.</p>
+	<p>&copy; 2013-2015 Jerry Kurlandski. All rights reserved. | Original design by <a href="http://www.freecsstemplates.org/" rel="nofollow">FreeCSSTemplates.org</a>.</p>
 </div>
 </body>
 </html>

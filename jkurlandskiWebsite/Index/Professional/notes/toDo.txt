@@ -1,15 +1,19 @@
 In progress:
+Eliminate .DS_Store in Eclipse (i.e. ignore it)
+- Verify that it was ignored, then ignore others
+
+Get imports for the Rule version of expected exceptions for unit testing.
+
+√ Replace "--" with &mdash;
+-- done: CSS, Guava, Java, Misc, Web, index.html, professionalContact.html
 
 √ Elimintate all warnings
 
 √ Should be using <br/> instead of </br>.
-- Search and replace? Hunt through, looking for warnings?
 
 √ Proof all pages.
 
-Get symbol for copyright--add to entities page.
-
-Change copyright from 2013 to 2015 on all pages.
+√ Change copyright on all pages.
 - Use copyright symbol, &copy;
 - Search and replace
 Copyright (c) 2013 jkurlandski.com
@@ -17,14 +21,6 @@ Copyright (c) 2013 jkurlandski.com
 
 √ Search for JERRY comments.
 
-
-? Replace "--" with &mdash;
--- done: CSS pages: aptana, floatingTable
--- in progress: 
-
-commandLine.html, and others in misc
-- Want paragraph titles that are code to be monospaced
-- e.g. "perl -p -e 's/\t/\n/g' data.txt" in commandLine.html
 
 
 Standardize the "Jerry Kurlandski" on each web page.
@@ -34,11 +30,21 @@ In Windows my pages seem to be washed out.
 - Or is it just my screen? Compare to laptop screen, kids', Titia's.
 
 Figure out how to use www.closeToTheMachine.net.
+- I think I have to either:
+	- Have closeToTheMachine.net redirect to jkurlandski
+		- But then I lose the URL
+	- Have separate repositories, or repository directories, for Professional, Family, Personal
+
+? commandLine.html, and others in misc
+- Want paragraph titles that are code to be monospaced
+- e.g. "perl -p -e 's/\t/\n/g' data.txt" in commandLine.html
+
 
 Do main professional index page
 - √ Check Verity Stobbs and other links
 
 Editing Tasks
+- http://www.jkurlandski.com/svn/jkurlandski/jkurlandskiWebsite/Index/Professional/index.html
 - Comment on website title "Close to the Machine."
 - Research how best to edit a website: printed copies vs. Word documents
 - Check presentation on multiple Windows browsers
