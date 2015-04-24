@@ -72,7 +72,7 @@ public void simpleCase() {
             <p>The real pay-off when it comes to Multiset is demonstrated by the line reading <code>assertEquals(0, multiset.count(&quot;ccc&quot;));</code>. In the Map&lt;X, Integer&gt; idiom, the call "map.count("ccc")" would produce a null pointer exception, stopping your application dead in its tracks.</p>
 
             <h3><a id="Multiset">What is a multiset?</a></h3>
-            <p>Briefly, a multiset (lowercase--<em>not</em> the Guava interface Multiset) is a set of objects where order does not matter and it is possible to have more than one of each type of element. For example, {a, b, b, c, d} is a multiset, and it is equivalent to {a, c, d, b, b}. Note that the traditional set {a, b, c} is also a multiset, albeit one which has only one element of each type. Another name for multiset is a bag, as in "a bag of words model of a document."</p>
+            <p>Briefly, a multiset (lowercase&mdash;<em>not</em> the Guava interface Multiset) is a set of objects where order does not matter and it is possible to have more than one of each type of element. For example, {a, b, b, c, d} is a multiset, and it is equivalent to {a, c, d, b, b}. Note that the traditional set {a, b, c} is also a multiset, albeit one which has only one element of each type. Another name for multiset is a bag, as in "a bag of words model of a document."</p>
             <p>Guava's Multiset implementations give us not just a way to count types of objects, but they also provide additional functionality that we may want to use on multisets.</p>
             
             <h3><a id="Additional">Additional Guava Multiset functionality</a></h3>
@@ -109,7 +109,7 @@ public void additionalFunctionality() {
 }
 </pre>
 
-        <p>In Listing 2, first we initialize our multiset in the same way as in Listing 1. Then we double the number of each type of element by using the addAll( ) method--which we verify with a quick sanity check. At this point we begin verifying the non-count behavior, the first being elementSet( ), which provides a set of all the types which have been inserted into the multiset. In this case, our two types are simply the "aaa" string and the "bbb" string.</p>
+        <p>In Listing 2, first we initialize our multiset in the same way as in Listing 1. Then we double the number of each type of element by using the addAll( ) method&mdash;which we verify with a quick sanity check. At this point we begin verifying the non-count behavior, the first being elementSet( ), which provides a set of all the types which have been inserted into the multiset. In this case, our two types are simply the "aaa" string and the "bbb" string.</p>
         <p>Next we demonstrate the remove( ) methods. The first of these methods takes an object <code>type</code> and an integer <code>n</code>, and removes from the multiset <code>n</code> occurrences of the object <code>type</code>. Here we remove three "aaa" objects from the multiset, giving us a final count of a single "aaa". The second remove( ) method takes a single <code>type</code> parameter, and is equivalent to calling the first version with "1" as the second parameter. In our case, we reduce the number of "bbb" objects from two to one.</p>
         <p>Finally, our code snippet demonstrates the setCount( ) method by adding ten "ccc" objects to the multiset.</p>
         
@@ -141,7 +141,7 @@ ccc: 2
 bbb: 2
 </pre>
 
-            <p>Listing 3 is a unit test that we've hijacked so that we have a place for some println( ) statements. The first line of output comes from the <code>System.out.println(multiset)</code> call. It demonstrates the very nice override provided by Guava, which--instead of displaying every element individually--shows each type and the number of times it appears in the collection. The next three lines of output are the result of the for loop on the entrySet( ) method. Here we iterate through each entry, getting the element type (e.g. "aaa," "bbb," etc.) as well as the count of each. When simply written out, as it is here, it's not significantly different from toString( ), but the method could be useful in any number of other ways.</p>
+            <p>Listing 3 is a unit test that we've hijacked so that we have a place for some println( ) statements. The first line of output comes from the <code>System.out.println(multiset)</code> call. It demonstrates the very nice override provided by Guava, which&mdash;instead of displaying every element individually&mdash;shows each type and the number of times it appears in the collection. The next three lines of output are the result of the for loop on the entrySet( ) method. Here we iterate through each entry, getting the element type (e.g. "aaa," "bbb," etc.) as well as the count of each. When simply written out, as it is here, it's not significantly different from toString( ), but the method could be useful in any number of other ways.</p>
 
             <h3><a id="SetOperations">Set operations with Multisets</a></h3>
             <p>Because multisets are very similar to sets, it makes sense to want to perform set operations, like union and intersection, on them. For example, in my own work I've wanted to compare the "topics" of several conversations, the "topic" of each conversation being represented by a multiset of the important words in the dialog. I could say that two conversations were more similar than a third conversation if the intersection of their topic multisets had more elements than the intersection of either with the third conversation.</p>
@@ -210,7 +210,7 @@ bbb: 2
 	</div>
 </div>
 <div id="copyright" class="container">
-	<p>Copyright (c) 2013 jkurlandski.com. All rights reserved. | Original design by <a href="http://www.freecsstemplates.org/" rel="nofollow">FreeCSSTemplates.org</a>.</p>
+	<p>&copy; 2013-2015 Jerry Kurlandski. All rights reserved. | Original design by <a href="http://www.freecsstemplates.org/" rel="nofollow">FreeCSSTemplates.org</a>.</p>
 </div>
 </body>
 </html>

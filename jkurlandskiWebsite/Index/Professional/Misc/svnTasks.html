@@ -51,7 +51,7 @@
             <h4>&bull; Then commit local changes to the repository.</h4>
 
             <br/>
-            <p>First check the status to see if there are any conflicts. Conflicts are marked with a capital "C"--see below for an example.</p>
+            <p>First check the status to see if there are any conflicts. Conflicts are marked with a capital "C"&mdash;see below for an example.</p>
             
 <pre class="preCode">
 $ svn status
@@ -66,7 +66,7 @@ M                    toDo.txt
 Status against revision:     77
 </pre>
 
-            <p>Locally, toDo.txt has been modified, and svnExamples.html is new to the file system but has not been added to the repository. On the repository side, the repository is at Revision 77, but it contains two files--svnCheatSheet.html and svnNotes.html--from Revision 74 that have not been copied locally.</p>
+            <p>Locally, toDo.txt has been modified, and svnExamples.html is new to the file system but has not been added to the repository. On the repository side, the repository is at Revision 77, but it contains two files&mdash;svnCheatSheet.html and svnNotes.html&mdash;from Revision 74 that have not been copied locally.</p>
             
             <p>The status checks reveal no conflicts, meaning that you have not locally changed a file that has been changed and committed by someone else. How can you tell? The "svn status -u" uses the leftmost column to mark local changes, and the second column to mark remote changes. You see that none of the four files is marked in both columns. (See another task below for an example of exactly what a conflict looks like.)</p>
             <p>Since there are no conflicts, perform the update. Then check status again.</p>
@@ -180,6 +180,41 @@ Committed revision 104.
             
             <br/>
             <h3>Task</h3>
+            <h4>&bull; Use propedit svn:ignore to ignore a .project file</h4>
+            <p>Suppose you work in Eclipse or some other IDE that stores user-specific data in a .project file. Since the settings here are not applicable to those of other developers, you don't want this information stored in the repository.</p>
+            <p>In the steps below we first try to edit the svn:ignore properties, but find that we need to tell SVN which editor we want to use. We choose vim. Then we try to open the editor again&mdash;successfully this time.</p>
+<pre class="preCode">
+$ svn propedit svn:ignore .
+svn: E205007: None of the environment variables SVN_EDITOR, VISUAL or EDITOR are set, and no 'editor-cmd' run-time configuration option was found
+
+$ export SVN_EDITOR=vim
+
+$ svn propedit svn:ignore .
+</pre>
+
+            <p>At this point vim will open the properties file. You want to insert the following line into the editor.</p>
+<pre class="preCode">
+.project
+</pre>
+            
+            <p>In vim, you insert this line with the following key sequence:</p>
+<pre class="preCode">
+i
+.project
+&lt;esc-key&gt;
+ZZ
+</pre>
+            <p>Here's a crash course in vim. "i" allows for inserting text. Then you can type the text you want to insert. You get out of insert mode with the Escape key. Then you save and exit with "ZZ".</p>
+
+            <p>At this point you can verify that you've modified the ignore property by seeing that "." (meaning this directory) has been changed.</p>
+            
+<pre class="preCode">
+$ svn status
+ M      .
+</pre>
+            
+            <br/>
+            <h3>Task</h3>
             <h4>&bull; Use "svn update" to merge a file that has both been changed locally and been modified by another user.</h4>
 
             <br/>
@@ -193,7 +228,7 @@ M       *      140   Java/unitTesting.html
         *            Java/enum.html
 Status against revision:    144
 </pre>
-            <p>The status check returns information on three files. One file, index.html, has been changed locally--the "M" in the leftmost column tells you this. The second file, enum.html has been changed by someone else and this change has been committed to the repository--as indicated by the asterisk in the second column. And the third file, unitTesting.html has been changed locally, and had its repository version updated by some other user--the output of the status check indicates this by leaving items in both the first and the second columns.</p>
+            <p>The status check returns information on three files. One file, index.html, has been changed locally&mdash;the "M" in the leftmost column tells you this. The second file, enum.html has been changed by someone else and this change has been committed to the repository&mdash;as indicated by the asterisk in the second column. And the third file, unitTesting.html has been changed locally, and had its repository version updated by some other user&mdash;the output of the status check indicates this by leaving items in both the first and the second columns.</p>
             <p>Let's update just unitTesting.html.</p>
 
 <pre class="preCode">
@@ -227,7 +262,7 @@ $ svn status -u
 M       *      155   utils/DialogUtility.java
 </pre>
 
-            <p>Then you perform an update, and see that--<em>zut alors!</em>--SVN can't do an automatic merge. Hit "p" to postpone the merge and deal with it later.</p>
+            <p>Then you perform an update, and see that&mdash;<em>zut alors!</em>&mdash;SVN can't do an automatic merge. Hit "p" to postpone the merge and deal with it later.</p>
 
 <pre class="preCode">
 $ svn update
@@ -256,7 +291,7 @@ Summary of conflicts:
 
             <p>The final step of the scenaro has you wishing that you'd taken my advice (see above), and performed the merge manually.</p>
 
-            <p>In the listing above, note the "C," which of course stands for "confilct." SVN has left you with three new files, and a new version of DialogUtility.java. DialogUtility.java.r155 is the version of the file that you last obtained from the repository; this is the version that you did your work in. DialogUtility.java.r165 is the latest version in the repository. DialogUtility.java.mine is not "mine"--it's yours. It's the version of the file you had before you did the ill-fated update.... So if DialogUtility.java.mine has all your recent modifications to the file, then what is in DialogUtility.java?</p>
+            <p>In the listing above, note the "C," which of course stands for "confilct." SVN has left you with three new files, and a new version of DialogUtility.java. DialogUtility.java.r155 is the version of the file that you last obtained from the repository; this is the version that you did your work in. DialogUtility.java.r165 is the latest version in the repository. DialogUtility.java.mine is not "mine"&mdash;it's yours. It's the version of the file you had before you did the ill-fated update.... So if DialogUtility.java.mine has all your recent modifications to the file, then what is in DialogUtility.java?</p>
             <p>The answer is, nothing pretty. And nothing that will compile. Here's the kind of thing you'll see there.</p>
 
 <pre class="preCode">
@@ -291,7 +326,7 @@ Summary of conflicts:
 	</div>
 </div>
 <div id="copyright" class="container">
-	<p>Copyright (c) 2013 jkurlandski.com. All rights reserved. | Original design by <a href="http://www.freecsstemplates.org/" rel="nofollow">FreeCSSTemplates.org</a>.</p>
+	<p>&copy; 2013-2015 Jerry Kurlandski. All rights reserved. | Original design by <a href="http://www.freecsstemplates.org/" rel="nofollow">FreeCSSTemplates.org</a>.</p>
 </div>
 </body>
 </html>
