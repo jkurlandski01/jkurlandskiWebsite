@@ -280,6 +280,9 @@ java.lang.AssertionError: Expected exception: java.lang.IllegalArgumentException
 
 <p class="precaption">Listing 12: Specifying the exact location of the exception and its message</p>
 <pre class="preCodeWithCaption">
+// import org.junit.Rule;
+// import org.junit.rules.ExpectedException;
+
 @Rule
 public ExpectedException expectedEx = ExpectedException.none();
     

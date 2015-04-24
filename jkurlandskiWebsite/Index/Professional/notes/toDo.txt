@@ -2,7 +2,7 @@ In progress:
 Eliminate .DS_Store in Eclipse (i.e. ignore it)
 - Verify that it was ignored, then ignore others
 
-Get imports for the Rule version of expected exceptions for unit testing.
+√ Get imports for the Rule version of expected exceptions for unit testing.
 
 √ Replace "--" with &mdash;
 -- done: CSS, Guava, Java, Misc, Web, index.html, professionalContact.html
