@@ -1,6 +1,4 @@
 In progress:
-Eliminate .DS_Store in Eclipse (i.e. ignore it)
-- Verify that it was ignored, then ignore others
 
 √ Get imports for the Rule version of expected exceptions for unit testing.
 
