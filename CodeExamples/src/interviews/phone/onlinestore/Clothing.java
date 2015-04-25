@@ -1,4 +1,4 @@
-package interviews.onlinestore;
+package interviews.phone.onlinestore;
 
 public abstract class Clothing {
 	private Double price;

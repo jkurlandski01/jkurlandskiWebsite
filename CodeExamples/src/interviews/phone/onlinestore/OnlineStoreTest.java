@@ -1,4 +1,4 @@
-package interviews.onlinestore;
+package interviews.phone.onlinestore;
 
 import static org.junit.Assert.*;
 

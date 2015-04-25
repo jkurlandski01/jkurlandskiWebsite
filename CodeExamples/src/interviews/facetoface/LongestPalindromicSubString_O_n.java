@@ -1,10 +1,5 @@
 package interviews.facetoface;
 
-/**
- * Given a string containing only digits, restore it by returning all possible IP address combinations
- * A valid IP address has 4 parts separated by a period. Each part can contain 0-255. The first part can't 
- * start with 0.
- */
 // This implementation has a complexity of O(n).
 public class LongestPalindromicSubString_O_n {
 
@@ -57,7 +52,7 @@ public class LongestPalindromicSubString_O_n {
     }
 
     public static void main(String[] args) {
-        String result = new LongestPalindromicSubString_O_n().longestPalindrome("abab");
+        String result = new LongestPalindromicSubString().longestPalindrome("abab");
         //String result = new LongestPalindromicSubString().longestPalindrome("ababa aba");
         System.out.println(result);
     }

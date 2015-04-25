@@ -10,8 +10,8 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 import org.apache.commons.io.FileUtils;
-import org.junit.Rule;
 import org.junit.Test;
+import org.junit.Rule;
 import org.junit.rules.ExpectedException;
 
 public class MiscJavaTest {
