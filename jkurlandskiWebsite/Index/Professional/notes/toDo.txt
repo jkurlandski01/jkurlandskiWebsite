@@ -19,13 +19,11 @@ Copyright (c) 2013 jkurlandski.com
 
 √ Search for JERRY comments.
 
-
-
-Standardize the "Jerry Kurlandski" on each web page.
+√ Standardize the "Jerry Kurlandski" on each web page.
 - See how it's rendered in Windows Explorer when you make your decision.
 
-In Windows my pages seem to be washed out.
-- Or is it just my screen? Compare to laptop screen, kids', Titia's.
+√ In Windows my pages seem to be washed out.
+- Verified that it's just the way Parallels works with my monitor.
 
 Figure out how to use www.closeToTheMachine.net.
 - I think I have to either:
