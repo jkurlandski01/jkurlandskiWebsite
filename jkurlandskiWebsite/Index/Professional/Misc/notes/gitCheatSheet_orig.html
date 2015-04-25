@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Git</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="../../default.css" rel="stylesheet" type="text/css" media="all" />
+<link href="../../fonts.css" rel="stylesheet" type="text/css" media="all" />
+<!--[if IE 6]>
+<link href="default_ie6.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+</head>
+<body>
+<div id="wrapper">
+	<div id="header-wrapper">
+		<div id="menu" class="container">
+			<ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../Guava/index.html">Guava</a></li>
+                <li><a href="../Java/index.html">Java</a></li>
+                <li><a href="../NLP_AI/index.html">NLP / AI</a></li>
+                <li><a href="../CSS_HTML/index.html">CSS / HTML</a></li>
+                <li><a href="../Web/index.html">Web</a></li>
+                <li class="current_page_item"><a href="../Misc/index.html">Miscellaneous</a></li>
+			</ul>
+		</div>
+		<!-- end #menu -->
+		<div id="header" class="container">
+			<div id="logo">
+				<h1>Close to the</h1>
+				<h1>Machine</h1>
+				<br>
+				<p>Jerry Kurlandski</p>
+			</div>
+            <div id="header-image1"> <a href="#" class="image"><img src="../../images/bookshelfPanorama.jpg" alt="" /></a> </div>
+            <div id="header-image2"> <a href="#" class="image"><img src="../../images/bookshelfPanorama.jpg" alt="" /></a> </div>
+		</div>
+	</div>
+	<div id="page" class="container">
+		<div id="content">
+			<div class="title">
+				<h2>Git Cheat Sheet</h2>
+			</div>
+            <p>JERRY: Red bar at top needs to point to this page's subtopic</p>
+            
+             <h3>git status</h3>
+            <p>blah, blah</p>
+            
+            <div class="singleSpacedDescription">
+                <li>$ git status</li>
+                <p>Get status.</p>
+                
+                <li>$ git add</li>
+                <p>Performs several tasks, depending on the context. If a file has not been added, the command can be used to begin tracking the file. The command can also be used to stage files/directories--that is, to commit them to the local branch.</p>
+
+                <p>JERRY: I can't make the below work.</p>
+                <li>$ git diff --staged</li>
+                <p>(Same as "git diff --cached".) Shows what you've staged that will go into your next commit. This is useful because "git diff" by itself will return nothing if you've already staged all your changes--that is, it only displays changes that are still unstaged.</p>
+
+<li>$ git difftool --tool-help</li>
+<p>Shows tools on your system that are available for viewing the diffs.</p>
+
+<li>$ git commit</li>
+<p>Note that all the "git commit" commands operate only on items that have already been staged.</p>
+<li>$ git commit</li>
+<p>This command launches an editor of your choice where you can see what you're committing and insert a message to go with the commit.</p>
+<li>$ git commit -m "<your message>"</li>
+<p>Commits with your message, not opening up an editor.</p>
+
+<li>$ git commit -a -m "<your message>"</li>
+<p>The "-a" option lets you skip the staging area altogether, and commit directory to the repository. Note that it applies only to files currently being tracked--that is, if the file is new, you must first add it to begin tracking on the file; only then can you commit it to the repository with the "commit -a " option.</p>
+
+<li>$ git rm item</li>
+<p>Removes an item from git tracking, and also removes it from your file system.</p>
+
+<li>$ git rm --cached item</li>
+<p>Removes an item from git tracking, but retains it in your file system.</p>
+
+<li>$ git mv <oldItemName> <newItemName></li>
+<p>Renames an item, retaining file history. But note that git is capable of recognizing file renames performed via the operating system. In other words, use of the mv command is the same as the following three-step process.</p>
+<pre>
+mv <oldItemName> <newItemName>
+git rm <oldItemName>
+git add <newItemName>
+</pre>
+
+<h4>File-glob patterns</h4>
+<li>$ git rm log/\*.log</li>
+<p>Removes all files ending in .log from the log directory.</p>
+
+<h4>Undoing Actions</h4>
+
+<li>$ git commit -amend</li>
+<p>(Assuming you've made no changes since your last commit; e.g. you run it just after a commit.) Launches your text editor with the message of your last commit, allowing you to edit the message.</p>
+<p>(Assuming you've committed, realized you forgot to include a file, and have since added the file to staging.) Launches your text editor with the message of your last commit, allowing you to edit the message--and includes the missing file in the same commit as the previously-committed files.</p>
+
+<li>$ git reset HEAD &lt;item&gt;</li>
+<p>Removes an item added to staging--e.g. so that you can commit something else added at the same time.</p>
+
+<li>$ git checkout -- &lt;item&gt;</li>
+<p>Reverts changes to the item. Dangerous in the sense that there is no way to recover your changes to the file.</p>
+
+
+            </div>
+
+
+            <p>JERRY: Fix sidebar</p>
+		</div>
+		<div id="sidebar">
+			<div class="internalLinkBox">
+				<div class="title">
+					<h2>Intermediate CSS / HTML Links</h2>
+				</div>
+                <ul class="style2">
+                    <li><a href="commandLine.html">A Few Command Line Tricks</a></li>
+                    <li><a href="macNotes.html">Mac Notes</a></li>
+                    <li><a href="svnCommands.html">SVN Command Summary</a></li>
+                    <li><a href="svnTasks.html">SVN Tasks</a></li>
+                    <li><a href="subversion-cheat-sheet-v1.pdf">SVN Cheat Sheet by AddedBytes.com</a></li>
+                </ul>
+           </div>
+		</div>
+	</div>
+</div>
+<div id="copyright" class="container">
+	<p>Copyright (c) 2013 jkurlandski.com. All rights reserved. | Original design by <a href="http://www.freecsstemplates.org/" rel="nofollow">FreeCSSTemplates.org</a>.</p>
+</div>
+</body>
+</html>

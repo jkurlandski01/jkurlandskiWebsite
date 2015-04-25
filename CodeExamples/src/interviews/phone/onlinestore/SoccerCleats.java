@@ -1,4 +1,4 @@
-package interviews.onlinestore;
+package interviews.phone.onlinestore;
 
 public class SoccerCleats extends Clothing implements SportsGear {
 

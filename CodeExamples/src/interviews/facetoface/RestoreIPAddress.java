@@ -10,6 +10,11 @@ import org.junit.Test;
 
 import com.google.common.collect.Lists;
 
+/**
+ * Given a string containing only digits, restore it by returning all possible IP address combinations
+ * A valid IP address has 4 parts separated by a period. Each part can contain 0-255. The first part can't 
+ * start with 0.
+ */
 public class RestoreIPAddress {
 
     public static void main(String[] args) {
