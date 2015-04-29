@@ -1,4 +1,24 @@
-Kurlandski and other tables should have a caption.
+Replace "--" with &mdash;
+
+Elimintate all warnings
+- Should be using <br/> instead of </br>.
+
+Change copyright on all pages.
+- Use copyright symbol, &copy;
+- Search and replace
+Copyright (c) 2013 jkurlandski.com
+&copy; 2013-2015 Jerry Kurlandski
+
+Search for JERRY comments.
+
+Standardize the "Jerry Kurlandski" on each web page.
+
+Contact page
+- Keep at home page, probably. 
+- Remove from Geneology?
+
+
+? Kurlandski and other tables should have a caption.
 
 Dipity
 Timelines
