@@ -1,24 +1,3 @@
-Hello World is bad title for main page.
-
-Banners need to be the same for all pages.
-
-Home page internal links need to point to the correct locations
-
-New page of my reading.
-I'm tempted to say that I am what I've read, but I know that's an exageration. It just seems as though I am what I've read. Perhaps it's more accurate to say that reading has been the most interesting parts of my life; and that, perhaps, the most interesting thing about me is what I have read.
-
-Check word hampered in Tom Sawyer quote.
-- Should it be pampered?
-- unpredententedly in Amis? Unprecedented?
-- The Amis quotes should be fact-checked.
-
-Quotes and a la Page sidebars should be quick-links to contents.
-- Photographs could as well. But eventually it will be broken up into multiple pages--People, Places, etc.
-
-√ Move the quotes which aren't permanently etched in me to A la Page
-
-Put reference to, or quote from, Billionaires book review in A la Page.
-
 Replace "--" with &mdash;
 
 Elimintate all warnings
@@ -37,3 +16,25 @@ Standardize the "Jerry Kurlandski" on each web page.
 Contact page
 - Keep at home page, probably. 
 - Remove from Geneology?
+
+√ Hello World is bad title for main page.
+
+√ Banners need to be the same for all pages.
+
+Home page internal links need to point to the correct locations
+
+New page of my reading.
+I'm tempted to say that I am what I've read, but I know that's an exageration. It just seems as though I am what I've read. Perhaps it's more accurate to say that reading has been the most interesting parts of my life; and that, perhaps, the most interesting thing about me is what I have read.
+
+Check quotations.
+- √ Should the Tom Sawyer quote have pampered instead of hampered?
+- √ unpredententedly in Amis? Unprecedented?
+- The Amis quotes should be fact-checked.
+
+Quotes and a la Page sidebars should be quick-links to contents.
+- Photographs could as well. But eventually it will be broken up into multiple pages--People, Places, etc.
+
+√ Move the quotes which aren't permanently etched in me to A la Page
+
+Put reference to, or quote from, Billionaires book review in A la Page.
+
