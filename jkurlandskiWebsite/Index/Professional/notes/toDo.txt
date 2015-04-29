@@ -1,43 +1,13 @@
 In progress:
 
-√ Get imports for the Rule version of expected exceptions for unit testing.
-
-√ Replace "--" with &mdash;
--- done: CSS, Guava, Java, Misc, Web, index.html, professionalContact.html
-
-√ Elimintate all warnings
-
-√ Should be using <br/> instead of </br>.
-
-√ Proof all pages.
-
-√ Change copyright on all pages.
+Handy symbols:
+- Replace "--" with &mdash;
 - Use copyright symbol, &copy;
-- Search and replace
-Copyright (c) 2013 jkurlandski.com
-&copy; 2013-2015 Jerry Kurlandski
-
-√ Search for JERRY comments.
-
-√ Standardize the "Jerry Kurlandski" on each web page.
-- See how it's rendered in Windows Explorer when you make your decision.
-
-√ In Windows my pages seem to be washed out.
-- Verified that it's just the way Parallels works with my monitor.
-
-Figure out how to use www.closeToTheMachine.net.
-- I think I have to either:
-	- Have closeToTheMachine.net redirect to jkurlandski
-		- But then I lose the URL
-	- Have separate repositories, or repository directories, for Professional, Family, Personal
 
 ? commandLine.html, and others in misc
 - Want paragraph titles that are code to be monospaced
 - e.g. "perl -p -e 's/\t/\n/g' data.txt" in commandLine.html
 
-
-Do main professional index page
-- √ Check Verity Stobbs and other links
 
 Editing Tasks
 - http://www.jkurlandski.com/svn/jkurlandski/jkurlandskiWebsite/Index/Professional/index.html
@@ -62,75 +32,5 @@ Four unit tests fail:
 	- testListAddAllFails
 	- testListRetainAllFails
 		
-Contact page
-- Keep at home page, probably. 
-- Remove from Geneology?
-
 Call the summary sections "Quick View" or "Snapshot"?
 
-Professional pages
-* = ready
-@ - proof
-! = needs work
-? = planned or just starting or not ready
-
-* Home Page
-
-CSS_HTML
-* Main Page
-* aptana.html
-* floatingTable.html
-* htmlEntities.html
-* preAndCode.html
-
-Guava
-* Main Page
-* guavaIntro.html
-* guavaMutimap.html
-* guavaMultiset.html
-* hashBasedTable.html
-* setOperations.html
----------
-
-Java
-* Main Page
-* convertingCollections
-* enum
-* javaSort
-* unitTesting
----------
-? onePointEight
-? regex
-
-Misc
-* Main Page
-* subversion-cheat-shee-v1.pdf
-* svnCommands.html
-* svnTasks.html
-* macNotes.html
-* commandLine.html
----
-? gitCheatSheet.html
-
-
-Web
-* Main Page
-* ConceptNetIntro.html
-* conceptNetCode.html
-* Httrack
----
-? JSoup
-? Rotten Tomatoes
-
-
-No: Databases
-! mySqlCheatSheet.html
-
-
-No: NLP_AI
-! Main Page
-[ @ ConceptNetIntro.html ]
-[ @ conceptNetCode.html ]
-? sumoIntro.html
-? GATE
-? machine learning frameworks, comparison
