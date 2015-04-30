@@ -1,22 +1,24 @@
 In progress:
-Doing Home Page for genealogy
-- Fix links
-- Fix headers
 
-Home Page for top-level jkurlandski.com
-- Contact page
-- Home page internal links need to point to the correct locations
+√ Get intro from old home page--adventures--and put on Families page--new home page for Adventures
 
-Put reference to, or quote from, Billionaires book review in A la Page.
+Home page internal links need to point to the correct locations
+	- Geneaology and Personal can be relative links
+	- Professional has to be an absolute link to closetothemachine
+
+√ Give Photographs and Treasure Trove the same sidebar as A La Page
+
+√ Genealogy
+- Fix headers--they should all look like the Families, or Home page
 
 
+√ Put reference to, or quote from, Billionaires book review in A la Page.
 
 
 √ Replace "--" with &mdash;
 - In photographs
 
-Elimintate all warnings
-- Billionaires file is the only one still with warnings.
+√ Elimintate all warnings
 
 √ Change copyright on all pages.
 - Use copyright symbol, &copy;
