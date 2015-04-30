@@ -1,27 +1,36 @@
-Replace "--" with &mdash;
+In progress:
+Doing Home Page for genealogy
+- Fix links
+- Fix headers
+
+Home Page for top-level jkurlandski.com
+- Contact page
+- Home page internal links need to point to the correct locations
+
+Put reference to, or quote from, Billionaires book review in A la Page.
+
+
+
+
+√ Replace "--" with &mdash;
+- In photographs
 
 Elimintate all warnings
-- Should be using <br/> instead of </br>.
+- Billionaires file is the only one still with warnings.
 
-Change copyright on all pages.
+√ Change copyright on all pages.
 - Use copyright symbol, &copy;
 - Search and replace
-Copyright (c) 2013 jkurlandski.com
+&copy; 2013-2015 Jerry Kurlandski
 &copy; 2013-2015 Jerry Kurlandski
 
-Search for JERRY comments.
+√ Search for JERRY comments.
 
-Standardize the "Jerry Kurlandski" on each web page.
-
-Contact page
-- Keep at home page, probably. 
-- Remove from Geneology?
+√ Standardize the "Jerry Kurlandski" on each web page.
 
 √ Hello World is bad title for main page.
 
 √ Banners need to be the same for all pages.
-
-Home page internal links need to point to the correct locations
 
 New page of my reading.
 I'm tempted to say that I am what I've read, but I know that's an exageration. It just seems as though I am what I've read. Perhaps it's more accurate to say that reading has been the most interesting parts of my life; and that, perhaps, the most interesting thing about me is what I have read.
@@ -36,5 +45,6 @@ Quotes and a la Page sidebars should be quick-links to contents.
 
 √ Move the quotes which aren't permanently etched in me to A la Page
 
-Put reference to, or quote from, Billionaires book review in A la Page.
+? Remove link to dying at 75 page
 
+? Move photographs jpg's to separate image directory
