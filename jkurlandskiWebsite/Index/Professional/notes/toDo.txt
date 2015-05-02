@@ -1,5 +1,10 @@
 In progress:
 
+On every page:
+- √ Every page needs a <br/> between title and first line of text.
+
+
+
 Handy symbols:
 - Replace "--" with &mdash;
 - Use copyright symbol, &copy;

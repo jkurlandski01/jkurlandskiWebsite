@@ -44,8 +44,9 @@
 				</div>
 			</div>
 			<br/>
-			<p>The code on this page is pretty basic, but sometimes I forget exactly how to convert one type of collection to another&mdash;especially when it comes to arrays. I've written this page to serve as a quick reference&mdash;for myself or for anyone else who may find it useful.</p>
-			<p>In all of my examples, I use JUnit's assertEquals( ) to verify the functionality. Also, I'm instantiating my Set and List data structures with Guava. See my separate "Intro to Guava" page if you are unfamiliar with this library, but you could just as well use vanilla Java instantiation (as in "new HashSet&lt;String&gt;()"). The point of this page&mdash;converting from one type of collection to another&mdash;doesn't depend on how you instantiate the Java collections.</p>
+			
+			<p>On this page I cover converting from one Java collection type to another. The code here is pretty basic, but sometimes it's easy to forget exactly how to transform one type of collection into another&mdash;especially when it comes to arrays. I've written this page to serve as a quick reference.</p>
+			<p>In all of my examples, I use JUnit's assertEquals( ) to verify the that the collection was converted correctly. Also, I instantiate my Set and List data structures with Guava. See my separate "Intro to Guava" page if you are unfamiliar with this library, or simply use vanilla Java instantiation (as in "new HashSet&lt;String&gt;()") instead. The point of this page&mdash;converting from one type of collection to another&mdash;doesn't depend on how you instantiate the Java collections.</p>
 			
             <h3>Converting an array to a List</h3>
             <p>Converting an array to a Java List uses the handy Arrays.asList( ) method.</p>
@@ -60,7 +61,7 @@
                 <br/>
         
             <h3>Converting an array to a Set</h3>
-            <p>To convert an array to a Java Set, first you convert it to a List, then convert the List to a Set. In the listing below, I do the whole thing in one fell swoop.</p>
+            <p>To convert an array to a Java Set, first convert it to a List, then convert the List to a Set. In the listing below, I do the whole thing in one fell swoop.</p>
 
 <p class="precaption">Listing 2: Converting an array to a Java Set</p>
 <pre class="preCodeWithCaption">
@@ -72,7 +73,7 @@
                 <br/>
         
             <h3>Converting a Set or List to an array</h3>
-            <p>Converting a Java Set to an array has a tricky syntax that I can never remember.</p>
+            <p>Converting a Java Set to an array has a tricky syntax that I can never remember. Here's how you do it.</p>
 
 <p class="precaption">Listing 3: Converting a Java Set to an array</p>
 <pre class="preCodeWithCaption">
@@ -94,7 +95,7 @@
                 <br/>
             
             <h3>Converting a Set to a List and a List to a Set</h3>
-            <p>Converting a Java Set to a List and vice versa are so easy they're hardly worth mentioning. But I thought I might as well be complete.</p>
+            <p>Converting a Java Set to a List and vice versa are so easy they're hardly worth mentioning. But I might as well be complete.</p>
 
 <p class="precaption">Listing 5: Converting a Java Set to a List</p>
 <pre class="preCodeWithCaption">
@@ -120,7 +121,7 @@
                     <h2>Internal Java Links</h2>
 				</div>
 				<ul class="style2">
-                    <li><a href="convertingCollections.html">Converting Between Java Collections</a></li>
+                    <li><a href="convertingCollections.html">Converting Java Collections</a></li>
                     <li><a href="enum.html">Java Enums</a></li>
                     <li><a href="javaSort.html">Sorting in Java</a></li>
                      <li><a href="unitTesting.html">Unit Testing Techniques</a></li>

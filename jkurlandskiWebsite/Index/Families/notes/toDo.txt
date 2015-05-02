@@ -1,6 +1,8 @@
 Remove Homepage link from all files. It should point to the Family page.
 - Do a search and replace, I think.
 
+Every page needs a <br/> between title and first line of text.
+
 Replace "--" with &mdash;
 
 Elimintate all warnings
