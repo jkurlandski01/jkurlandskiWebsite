@@ -5,6 +5,8 @@ In progress:
 Home page internal links need to point to the correct locations
 	- Geneaology and Personal can be relative links
 	- Professional has to be an absolute link to closetothemachine
+	
+Every page needs a <br/> between title and first line of text.
 
 √ Give Photographs and Treasure Trove the same sidebar as A La Page
 
