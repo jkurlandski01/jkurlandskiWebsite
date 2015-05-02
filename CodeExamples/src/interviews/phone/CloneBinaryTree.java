@@ -2,7 +2,7 @@ package interviews.phone;
 
 /**
  * Given a binary tree, do a mirror clone.
- * You cannot change the original tree
+ * You cannot change the original tree.
  * Return is the root of the cloned tree.
  */
 
@@ -14,7 +14,7 @@ public class CloneBinaryTree {
 	    TreeNode right;
 	}
 
-	public TreeNode mirrorClone(TreeNode root)	{
+	public TreeNode cloneTree(TreeNode root)	{
 		TreeNode newRoot = cloneNodeRecursive(root);
 		//TreeNode newRoot = cloneNodeNonRecursive(root);
 		
