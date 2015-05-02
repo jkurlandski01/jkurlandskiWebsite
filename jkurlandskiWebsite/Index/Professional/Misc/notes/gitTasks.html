@@ -30,7 +30,6 @@
 			<div id="logo">
 				<h1>Close to the</h1>
 				<h1>Machine</h1>
-				<br>
 				<p>Jerry Kurlandski</p>
 			</div>
             <div id="header-image1"> <a href="#" class="image"><img src="../../images/bookshelfPanorama.jpg" alt="" /></a> </div>
@@ -49,13 +48,13 @@
             <h4>&bull; Template</h4>
             <br/>
 			
-            <p></p>
+            <p> </p>
             
 <pre class="preCode">
 
 </pre>
 			
-    		<p></p>
+    		<p> </p>
 				
             <h3>Task</h3>
             <h4>&bull; View the files being tracked by the repository</h4>
@@ -120,7 +119,7 @@ src/main/java/com/interdataworking/UntypedGateway.java
 $ touch .gitignore
 
 $ vim .gitignore
-(Edit this file so that it has two lines, with ".class" on the first and .DS_Store on the second.)
+(Edit this file so that it has two lines, with &quot;.class&quot; on the first and .DS_Store on the second.)
 
 $ cat .gitignore
 .class
@@ -129,7 +128,7 @@ $ cat .gitignore
 $ git status
 On branch master
 Changes to be committed:
-  (use "git reset HEAD <file>..." to unstage)
+  (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)
 
 	deleted:    .DS_Store
 	deleted:    src/main/java/.DS_Store
@@ -139,7 +138,7 @@ Changes to be committed:
 (...)
 
 Untracked files:
-  (use "git add <file>..." to include in what will be committed)
+  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
 
 	.gitignore
 
@@ -190,11 +189,11 @@ On branch master
 Initial commit
 
 Untracked files:
-  (use "git add <file>..." to include in what will be committed)
+  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
 
 	src/
 
-nothing added to commit but untracked files present (use "git add" to track)
+nothing added to commit but untracked files present (use &quot;git add&quot; to track)
 
 ~/workspace/SimilarityFlooding$ git add .
 
@@ -204,7 +203,7 @@ On branch master
 Initial commit
 
 Changes to be committed:
-  (use "git rm --cached <file>..." to unstage)
+  (use &quot;git rm --cached &lt;file&gt;...&quot; to unstage)
 
 	new file:   src/main/java/.DS_Store
 	new file:   src/main/java/com/.DS_Store
@@ -220,7 +219,7 @@ Changes to be committed:
 	new file:   src/main/java/org/xml/sax/helpers/ParserFactory.class
 	new file:   src/main/java/org/xml/sax/helpers/ParserFactory.java
 
-$ git commit -m "Started version control."
+$ git commit -m &quot;Started version control.&quot;
 [master (root-commit) f501fec] Started version control.
  213 files changed, 19442 insertions(+)
 
@@ -258,18 +257,18 @@ D       app-distribution/deployments//problemClassifier/model
 $ git status
 On branch graphMatching
 Changes to be committed:
-  (use "git reset HEAD <file>..." to unstage)
+  (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)
 
 	new file:   app-sru/src/test/java/net/app/sru/ParseTest.java
 
 Changes not staged for commit:
-  (use "git add <file>..." to update what will be committed)
-  (use "git checkout -- <file>..." to discard changes in working directory)
+  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
+  (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)
 
 	modified:   app-sru/src/test/java/net/app/sru/ParseTest.java
 
 Untracked files:
-  (use "git add <file>..." to include in what will be committed)
+  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
 
 	app-tools/.classpath
 </pre>
@@ -281,12 +280,12 @@ $ git add app-sru/src/test/java/net/app/sru/ParseTest.java
 
 $ git status
 Changes to be committed:
-  (use "git reset HEAD <file>..." to unstage)
+  (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)
 
 	new file:   app-sru/src/test/java/net/app/sru/ParseTest.java
 
 Untracked files:
-  (use "git add <file>..." to include in what will be committed)
+  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
 
 	app-tools/.classpath
 
@@ -305,7 +304,7 @@ $ git branch
   stanford_parser
 
 $ git branch -r
-  origin/HEAD -> origin/master
+  origin/HEAD -&gt; origin/master
   origin/testing
   origin/master
 
@@ -326,7 +325,7 @@ $ git branch
 * master
 
 $ git branch -r
-  origin/HEAD -> origin/master
+  origin/HEAD -&gt; origin/master
   origin/semantics
   origin/master
   
@@ -337,18 +336,18 @@ remote: Total 2767 (delta 1221), reused 1508 (delta 522)
 Receiving objects: 100% (2767/2767), 645.13 KiB | 0 bytes/s, done.
 Resolving deltas: 100% (1221/1221), completed with 192 local objects.
 From git.ipsoft.com:amelia
-  bd300cd..78d4dd8  master     -> origin/master
- * [new branch]      tfidf-improvements -> origin/tfidf-improvements
+  bd300cd..78d4dd8  master     -&gt; origin/master
+ * [new branch]      tfidf-improvements -&gt; origin/tfidf-improvements
 Updating bd300cd..78d4dd8
 Fast-forward
-  f122a36..1d40b90  semantics  -> origin/semantics
+  f122a36..1d40b90  semantics  -&gt; origin/semantics
 
 
 $ git branch
 * master
 
 $ git branch -r
-  origin/HEAD -> origin/master
+  origin/HEAD -&gt; origin/master
   origin/semantics
   origin/master
   origin/merge-tfidf-improvements
@@ -370,7 +369,7 @@ $ git branch -r
             
 <pre class="preCode">
 $ git branch -r
-  origin/HEAD -> origin/master
+  origin/HEAD -&gt; origin/master
   origin/testing
   origin/master
 
@@ -381,7 +380,7 @@ remote: Total 15278 (delta 6807), reused 11158 (delta 4411)
 Receiving objects: 100% (15278/15278), 339.89 MiB | 23.69 MiB/s, done.
 Resolving deltas: 100% (6807/6807), completed with 418 local objects.
 From git.repo.com:xxx
-   2a0e457..bd300cd  master     -> origin/master
+   2a0e457..bd300cd  master     -&gt; origin/master
    
 $ git diff master remotes/origin/master
 (...)
