@@ -10,10 +10,7 @@ Every page needs a <br/> between title and first line of text.
 
 Photographs pages
 - Clicking on Photographs in top bar doesn't bring you to Photographs home.
-- Also of Interest in sidebar:
-	- make consistent; 
-	- make sure that's what you want
-	- if external links, say so
+- √ Make sidebars for all these pages consistent
 
 √ Give Photographs and Treasure Trove the same sidebar as A La Page
 
