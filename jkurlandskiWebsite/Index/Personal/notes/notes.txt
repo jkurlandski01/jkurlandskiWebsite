@@ -1,5 +1,7 @@
 In progress:
 
+Update history on photographs pages should be a scrollingBox.
+
 √ Get intro from old home page--adventures--and put on Families page--new home page for Adventures
 
 Home page internal links need to point to the correct locations
