@@ -231,6 +231,27 @@ hr {
 	display: none;
 }
 
+	ul.style1
+	{
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	
+	ul.style1 li:first-child
+	{
+		border-top: 0;
+		padding-top: 0;
+	}
+
+	ul.style1 li
+	{
+		//border-top: solid 1px #E5E5E5;
+		margin-left: 0.8 em;
+		padding: 0.20em 0;
+		//padding: 0;
+}
+	
 	ul.style2
 	{
 		margin: 0;
@@ -540,6 +561,19 @@ hr {
 	#sidebar .internalLinkBox .title
 	{
 		margin-bottom: 0em;
+		text-transform: uppercase;
+	}
+	
+	#sidebar .pageContentsBox
+	{
+		margin-bottom: 3em;
+	}
+	
+	#sidebar .pageContentsBox .title
+	{
+		margin-bottom: 0em;
+		padding: 0em 0em 0em 0em;
+		//padding-bottom: 0em;
 		text-transform: uppercase;
 	}
 	

@@ -3,7 +3,7 @@ In progress:
 On every page:
 - √ Every page needs a <br/> between title and first line of text.
 
-
+Use traditional capitalization for section headings and listing titles
 
 Handy symbols:
 - Replace "--" with &mdash;
