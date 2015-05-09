@@ -65,9 +65,9 @@ public class ReplaceQuestionMark {
 		
 		if(input.charAt(idx) == '?')	{			
 			StringBuilder jSB = new StringBuilder(stringThusFar.toString() + "j");
-			depthFirstSearch(input, idx + 1, jSB, list);
+			depthFirstSearchMultipleStringBuilders(input, idx + 1, jSB, list);
 			StringBuilder kSB = new StringBuilder(stringThusFar.toString() + "k");
-			depthFirstSearch(input, idx + 1, kSB, list);
+			depthFirstSearchMultipleStringBuilders(input, idx + 1, kSB, list);
 		}
 	}
 		
