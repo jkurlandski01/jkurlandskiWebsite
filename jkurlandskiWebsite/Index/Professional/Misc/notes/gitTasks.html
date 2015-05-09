@@ -2,11 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>SVN Tasks</title>
+<title>Git Tasks</title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
-<link href="../../default.css" rel="stylesheet" type="text/css" media="all" />
-<link href="../../fonts.css" rel="stylesheet" type="text/css" media="all" />
+<link href="../../../default.css" rel="stylesheet" type="text/css" media="all" />
+<link href="../../../fonts.css" rel="stylesheet" type="text/css" media="all" />
 <!--[if IE 6]>
 <link href="default_ie6.css" rel="stylesheet" type="text/css" />
 <![endif]-->
@@ -41,8 +41,7 @@
 			<div class="title">
 				<h2>Git Tasks</h2>
 			</div>
-            <p>This page shows you how to link individual Git commands together in order to accomplish a particular <em>task</em>.</p>
-            <p>The Git command line can be a little intimidating at first, but it becomes less so when you think of the commands not in isolation but as part of a series of steps with a single aim in mind. If the individual commands are like words, then this page shows you how to string these words together to form a coherent sentence.</p>
+            <p>This page shows you how to link individual Git commands together in order to accomplish a particular task or set of tasks.</p>
 
             <h3>Task</h3>
             <h4>&bull; Template</h4>
@@ -57,12 +56,129 @@
     		<p> </p>
 				
             <h3>Task</h3>
+            <h4>&bull; </h4>
+            <br/>
+            
+            <p> </p>
+            
+<pre class="preCode">
+
+</pre>
+            
+            <p> </p>
+                
+            <h3>Task</h3>
+            <h4>&bull; Download an existing git repository so that you can begin making changes to the code.</h4>
+            <br/>
+            
+            <p>Downloading an existing git repository is called "cloning" the repository. It's called "cloning" because of the way git works--you actually keep a local copy of that repository, and commit your local changes there. (This is unlike other version control systems, which are centralized rather than distributed.)</p>
+            <p>The first step in this task is getting a URL for the existing git repository. Once you have that, you can follow the example below.</p>
+            
+<pre class="preCode">
+$ git clone https://github.com/someProject/SomeProject.git
+Cloning into 'SomeProject'...
+remote: Counting objects: 181, done.
+remote: Compressing objects: 100% (134/134), done.
+remote: Total 181 (delta 23), reused 179 (delta 21), pack-reused 0
+Receiving objects: 100% (181/181), 136.50 KiB | 0 bytes/s, done.
+Resolving deltas: 100% (23/23), done.
+Checking connectivity... done.
+
+$ cd SomeProject
+
+$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+
+nothing to commit, working directory clean
+
+</pre>
+            
+            <p>Once the clone has finished, you cd into the subdirectory for the project you just created. The "git status" command can be used to reassure yourself that all has gone well.</p>
+                
+            <h3>Task</h3>
+            <h4>&bull; Check the status of your working tree.</h4>
+            <h4>&bull; Stage a newly-updated file.</h4>
+            <br/>
+            <p>JERRY: finish this</p>
+            <p>Use "git status" to see where things stand&mdash;what you've changed, what you've staged, what's ready to be committed.</p>
+            
+<pre class="preCode">
+</pre>
+            
+            <p>.</p>
+
+<pre class="preCode">
+</pre>
+                
+            <h3>Task</h3>
+            <h4>&bull; Stage newly-added files collectively.</h4>
+            <h4>&bull; Commit these newly-added files collectively.</h4>
+            <br/>
+			
+ 		   <p>When you stage a change, you are basically saying "This change is ready to be committed." It doesn't actually do the commit, though. In this scenario, you have created two new files in the project, and you want git to start tracking them.</p>
+ 		  <p>First we do a status check.</p>
+             
+<pre class="preCode">
+$ git status
+On branch newAlgorithm
+Changes to be committed:
+  (use "git reset HEAD &lt;file&gt;...&quot; to unstage)
+
+	new file:   src/main/java/com/myPackage/CompareGraphs.java
+	new file:   src/main/java/com/myPackage/CompareGraphsTest.java
+
+Changes not staged for commit:
+  (use "git add &lt;file&gt;...&quot; to update what will be committed)
+  (use "git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)
+
+	modified:   src/main/java/com/myPackage/CompareGraphs.java
+	modified:   src/main/java/com/myPackage/CompareGraphsTest.java
+</pre>
+			
+    		<p>We could add these two new files for tracking individually. This is what you would do if you want to add only some of the files listed. But in this case we want to add all the files that the "git status" lists, so we'll do it in one step. Then we'll do another "git status" to check the result.</p>
+				
+<pre class="preCode">
+$ git add --all
+
+$ git status
+On branch newAlgorithm
+Changes to be committed:
+  (use "git reset HEAD &lt;file&gt;..." to unstage)
+
+	new file:   src/main/java/com/myPackage/CompareGraphs.java
+	new file:   src/main/java/com/myPackage/CompareGraphsTest.java
+</pre>
+			
+    		<p>Now we can commit.</p>
+				
+<pre class="preCode">
+$ git commit -m "Added new files."
+[newAlgorithm d55f997] Added new files.
+ 2 files changed, 1695 insertions(+)
+ create mode 100755 src/main/java/com/myPackage/CompareGraphs.java
+ create mode 100644 src/main/java/com/myPackage/CompareGraphsTest.java
+
+$ git status
+On branch newMatch
+nothing to commit, working directory clean
+</pre>
+
+
+<pre class="preCode">
+</pre>
+			
+    		<p> </p>
+				
+            <h3>Task</h3>
             <h4>&bull; View the files being tracked by the repository</h4>
             <h4>&bull; Stop a file from being tracked by the repository, but don't remove it from the file system</h4>
             <h4>&bull; Add the file name to the global repository ignore list</h4>
             <br/>
 			
-            <p>I work on a Mac, where each directory has a "hidden" .DS_Store file. The problem is, sometimes I end up creating a repository before I've remembered to have these files ignored. </p>
+            <p>I work on a Mac, where each directory has a "hidden" .DS_Store file. The problem is, sometimes I end up creating a repository before I've remembered to have these files ignored.</p>
+            
+            <p>First let's see which files are being tracked by git, using "git ls-files".</p>
             
 <pre class="preCode">
 $ git ls-files
@@ -76,7 +192,7 @@ src/main/java/com/interdataworking/UntypedGateway.java
 
 </pre>
 			
-    		<p>As you can see, there are three file types listed here, and it turns out I want only the .java files kept in my repository.</p>
+    		<p>As you can see, there are three file types listed here, and it turns out I want my repository to store only the .java files.</p>
 				
 <pre class="preCode">
 $ git rm --cached .DS_Store
@@ -91,7 +207,9 @@ src/main/java/com/interdataworking/UntypedGateway.java
 (...)
 </pre>
 			
-    		<p>it looks as though the command "git rm --cached" is useful only for a single file.</p>
+    		<p>The "git rm --cached" command worked, but it looks as though it is useful only for a single file.</p>
+    		<p>The next line, a mix of shell commands and git commands, will perform a "git rm" recursively, that is, on all the files whose names are .DS_Store.</p>
+    		<p>The I use the same approach to remove from the repository all files whose names end in ".class".</p>
 				
 <pre class="preCode">
 $ find . -name .DS_Store -print0 | xargs -0 git rm -f --ignore-unmatch
@@ -128,7 +246,7 @@ $ cat .gitignore
 $ git status
 On branch master
 Changes to be committed:
-  (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)
+  (use "git reset HEAD &lt;file&gt;...&quot; to unstage)
 
 	deleted:    .DS_Store
 	deleted:    src/main/java/.DS_Store
@@ -138,7 +256,7 @@ Changes to be committed:
 (...)
 
 Untracked files:
-  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
+  (use "git add &lt;file&gt;...&quot; to include in what will be committed)
 
 	.gitignore
 
@@ -146,6 +264,8 @@ Untracked files:
 			
     		<p>The status check shows that we still have to add the .gitignore file, and then commit all of our changes.</p>
 <pre class="preCode">
+$ git add .gitignore
+
 $ git commit -m "Deleting unwanted files from repo. Creating .gitignore."
 [master b2d6f98] Deleting unwanted files from repo. Creating .gitignore.
  126 files changed, 2 insertions(+)
@@ -173,7 +293,7 @@ src/main/java/com/interdataworking/UntypedGateway.java
             <h3>Task</h3>
             <h4>&bull; Create a new repository in a directory, and add to the repository all the files in this directory.</h4>
             <br/>
-			
+<p>JERRY: do this without including the unwanted .DS_Store and .class files.</p>			
             <p>Suppose there's some open source code you want to have a look at, and suppose that, while having a look at it you see some things you'd like to change. I've done that, and then I've been very annoyed with myself for having no easy way, at some later time, to see the changes I've made.</p>
             <p>The smart thing to do is to put the original version of the code into a repository. It's a simple three-step process, though I've added a few status-checks so that we can see what's happening.</p>
             
@@ -193,8 +313,7 @@ Untracked files:
 
 	src/
 
-nothing added to commit but untracked files present (use &quot;git add&quot; to track)
-
+nothing added to commit but untracked files present (use "git add"
 ~/workspace/SimilarityFlooding$ git add .
 
 ~/workspace/SimilarityFlooding$ git status
@@ -231,67 +350,6 @@ nothing to commit, working directory clean
     		<p>The three key commands are "git init", "git add .", and "git commit". Now you can make all the changes you want and not only do you have a record of each and every one, but you also have the ability to roll things back to a previous version.</p>
 				
             <h3>Task</h3>
-            <h4>&bull; Compare two branches, viewing the differences at only the directory-level.</h4>
-            <br/>
-			
-            <p>"git diff" will ordinarily show you the diffs of two branches at a fine-grained level, for example, the line-by-line differences between two files. But you can use the "--name-status" argument to see only file differences.</p>
-            
-<pre class="preCode">
-$ git branch
-* graphMatching
-  master
-~/Documents/workspace/eliza$ git diff graphMatching master --name-status
-D       app-distribution/deployments//problemClassifier/features.tsv
-D       app-distribution/deployments//problemClassifier/model
-</pre>
-			
-    		<p></p>
-				
-            <h3>Task</h3>
-            <h4>&bull; Check the status of your working tree</h4>
-            <br/>
-			
-            <p>Use "git status" to see where things stand&mdash;what you've changed, what you've staged, what's ready to be committed.</p>
-            
-<pre class="preCode">
-$ git status
-On branch graphMatching
-Changes to be committed:
-  (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)
-
-	new file:   app-sru/src/test/java/net/app/sru/ParseTest.java
-
-Changes not staged for commit:
-  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
-  (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)
-
-	modified:   app-sru/src/test/java/net/app/sru/ParseTest.java
-
-Untracked files:
-  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
-
-	app-tools/.classpath
-</pre>
-			
-    		<p>In the status described above, I have already created a new file, ParseTest.java, and added it to the repository. Then I modified the file, but did not add, or "stage", those changes. The status check also shows a .classpath file that would probably be a good candidate for ignoring, since probably I don't want it to go into the repository.</p>
-
-<pre class="preCode">
-$ git add app-sru/src/test/java/net/app/sru/ParseTest.java
-
-$ git status
-Changes to be committed:
-  (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)
-
-	new file:   app-sru/src/test/java/net/app/sru/ParseTest.java
-
-Untracked files:
-  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
-
-	app-tools/.classpath
-
-</pre>
-				
-            <h3>Task</h3>
             <h4>&bull; View local branches as well as local copies of remote branches.</h4>
 
             <br/>
@@ -309,8 +367,25 @@ $ git branch -r
   origin/master
 
 </pre>
+            
+            <p>With "git branch", the asterisk indicates the current branch.</p>
+                
+            <h3>Task</h3>
+            <h4>&bull; Compare two branches, viewing the differences at only the directory-level.</h4>
+            <br/>
 			
-    		<p>With "git branch", the asterisk indicates the current branch.</p>
+            <p>"git diff" will ordinarily show you the diffs of two branches at a fine-grained level, for example, the line-by-line differences between two files. But you can use the "--name-status" argument to see only file differences.</p>
+            
+<pre class="preCode">
+$ git branch
+* graphMatching
+  master
+~/Documents/workspace/eliza$ git diff graphMatching master --name-status
+D       app-distribution/deployments//problemClassifier/features.tsv
+D       app-distribution/deployments//problemClassifier/model
+</pre>
+			
+    		<p> </p>
 				
             <h3>Task</h3>
             <h4>&bull; Retrieve recent changes from the remote repository.</h4>
@@ -402,7 +477,7 @@ $
             <h4>&bull; Switch to the new branch.</h4>
 
             <br/>
-            <p>Use "git branch &lt;new branch name&gt;&quot; to create a new branch from the master branch. Use "git checkout &lt;new branch name&gt;" to switch to another branch.</p>
+            <p>Use "git branch &lt;new branch name&gt;" to create a new branch from the master branch. Use "git checkout &lt;new branch name&gt;" to switch to another branch.</p>
             
 <pre class="preCode">
 $ git branch
