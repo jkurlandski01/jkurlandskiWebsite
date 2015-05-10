@@ -45,7 +45,7 @@
 			</div>
             <br/>
             
-            <p>This page provides a How-To on sorting various Java collections&mdash;Maps, Sets and Lists.</p>
+            <p>This page provides a guide to sorting the objects in various Java collections&mdash;arrays, Maps, Sets and Lists.</p>
 
             <h3>Summary</h3>
             <p>For those in a hurry, here's a pr&eacute;cis of what is covered in greater detail below. We start with how to use a TreeMap.</p>
@@ -87,8 +87,8 @@ Arrays.sort(array);
                 <br/>
 
 			<h3>Using TreeMap for Sorted Keys</h3>
-            <p>There are a couple of ways to sort on the keys of a map. You could: (1) use Java's TreeMap, or (2) get the key set and sort that. If your requirements are as simple as that, this page will help you out. If your requirements are more complicated&mdash;for example, if you want to be able to sort on the values as well as the keys of a map&mdash;you might want to explore Guava's Table interface and its various implementations. I have a separate Guava page that will help you get started.</p>
-			<p>The listing below shows you how to use a TreeMap, which is a specialized Java Map that returns the keys in sorted order.</p>
+            <p>There are a couple of ways to sort on the keys of a map. You could: (1) use Java's TreeMap, or (2) get the key set and sort that. If you need to sort only the keys, this page will help you out. If your requirements are more complicated&mdash;for example, if you want to be able to sort on the values as well as the keys of a map&mdash;you might want to explore Guava's Table interface and its various implementations. I have a separate Guava page that will help you get started with this here: <a href="../Guava/hashBasedTable.html">Guava's HashBasedTable</a>.).</p>
+			<p>The listing below shows how to use a TreeMap, which is a specialized Java Map that returns the keys in sorted order.</p>
 
 <p class="precaption">Listing 5: Using TreeMap to get the keys of a map in sorted order</p>
 <pre class="preCodeWithCaption">
@@ -132,7 +132,7 @@ public void testSortEnum()  {
             <p>Finally, a caution about runtime. Don't be cavalier in your use of TreeMap. Its various operations&mdash;get, put, containsKey and remove&mdash;are O(log n), which is very good in the sorting sphere but not so good for hashmaps in general. In other words, if you don't need to sort, use the HashMap implementation, whose get and put operations are O(1).</p>
             
             <h3>Using Collections.sort()</h3>
-            <p>The listings below show you how to sort a Java List object with the handy Collections.sort( ) method. (Note that I'm using Guava to initialize the list. You can learn more about using this library for initialization at the following location: <a href="../Guava/guavaIntro.html">Guava Intro</a>.)</p>
+            <p>The listings below show you how to sort a Java List object with the handy Collections.sort( ) method. (Note that I'm using Guava to initialize the list. I've posted a little guide to using this library for initialization here: <a href="../Guava/guavaIntro.html">Guava Intro</a>.)</p>
 
 <p class="precaption">Listing 7: Using Collections.sort() on a List</p>
 <pre class="preCodeWithCaption">
@@ -197,7 +197,7 @@ Printing the sorted list.
 
             <h3>Using Arrays.sort()</h3>
             
-            <p>I find myself using the Arrays sort( ) method much less often than the Collections sort( ) method. That's because, generally, I find array objects less convenient than List and Set objects. But sometimes you're on the receiving end of a collection, and it's an array, and you need to sort it. The listing below shows you how.</p>
+            <p>I find myself using the Arrays sort( ) method much less often than the Collections sort( ) method. That's because I find array objects less convenient than List and Set objects. But sometimes you're on the receiving end of a collection, and it's an array, and you need to sort it. The listing below shows how.</p>
             
 <p class="precaption">Listing 9: Using Arrays.sort()</p>
 <pre class="preCodeWithCaption">
@@ -228,10 +228,10 @@ Printing the sorted array after converting it to a list.
 </pre>
 
             <p>In the listing above, we initialize our array, then call Arrays.sort(), which does the heavy lifting for us, and our unit test assertions demonstrate that the sort was correct.</p>
-            <p>For the sheer pleasure of putting array objects down, the listing goes on to show you just one reason why Java Collection objects are superior to arrays&mdash;their toString( ) method. To do this, I first print out the result of array.toString( ); then I create a List with the sorted array values, and print out the call to toString( ) on that object.</p>
+            <p>The listing goes on to show just one reason why Java Collection objects are superior to arrays&mdash;their toString( ) method. To do this, I first print out the result of array.toString( ); then I create a List with the sorted array values, and print out the call to toString( ) on that object.</p>
 
             <h3>When the object you are sorting on is a custom class</h3>
-            <p>If the objects in your collection consist of your own class rather than Java classes like String, Double, Integer and so on, don't forget to override the necessary methods for safe sorting and the insertion of your class objects into containers. For example, maybe you have a Movie class which contains two fields, title and release date, and you want to sort Movie objects first on title, then on release date if there is a tie. There are three methods you'll need to write in the Movie class: you'll have to override the Object methods equals( ) and hashCode( ); and you'll want to declare your class as implementing Comparable and implement compareTo( ).</p>
+            <p>If the objects in your collection consist of your own class rather than Java classes like String, Double, Integer and so on, don't forget to override the necessary methods for safe sorting and the insertion of your class objects into containers. For example, maybe you have a Movie class which contains two fields, title and release date, and you want to sort Movie objects first on title, then on release date if there is a tie. There are a couple of changes you'll need to make in the Movie class: you'll have to override the Object methods equals( ) and hashCode( ); and you'll want to declare your class as implementing Comparable and implement compareTo( ).</p>
             <p>Chances are you should consider overriding Object.toString( ) as well. That way, you'll get readable output when the method is called. (Remember how nice List.toString( )'s output was compared to Array.toString( )'s in Listing 9 above.)</p>
             <p>All of this is covered beautifully in Chapter 3 of Joshua Bloch's <em>Effective Java</em>.</p>
         </div>
@@ -244,7 +244,7 @@ Printing the sorted array after converting it to a list.
                 <ul class="style2">
                     <li><a href="convertingCollections.html">Converting Java Collections</a></li>
                     <li><a href="enum.html">Java Enums</a></li>
-                    <li><a href="javaSort.html">Sorting in Java</a></li>
+                    <li><a href="javaSort.html">Sorting Java Collections</a></li>
                      <li><a href="unitTesting.html">Unit Testing Techniques</a></li>
                </ul>
             </div>

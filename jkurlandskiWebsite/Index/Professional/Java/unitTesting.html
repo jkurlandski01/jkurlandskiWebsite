@@ -43,33 +43,30 @@
             </div>
             <br/>
             
-            <p style="line-height: 1.2; margin-right: 150px;"><b>Introduction.</b> This page is much more verbose than most pages on this website. But unit testing is something I feel passionate about and, despite all the talk about it which has long been going on in the software development community, I keep running into buggy code which has not properly been unit tested. While I'm not quite a whole-hearted advocate of <b>test-driven</b> development, I will say that in my own experience I don't see enough <b>test-certified</b> development. Hopefully this page will help others work out some of the problems they've encountered as they try to write good unit tests.</p>
+            <p style="line-height: 1.2; margin-right: 150px;">This page is more verbose than most pages on this website, perhaps because I am passionate about unit testing. Despite all the talk about it in the software development community, I keep running into buggy code which has not been properly unit tested. Hopefully this page will help you work out some of the problems you might encounter when writing good unit tests.</p>
             <p>If there's one rock on which I've learned to build my software development, it's the unit test. Or rather, it's a large collection of unit tests, covering many different parts of the application. With such a collection, you can be pretty confident when it comes to refactoring and bug fixing. And when you need to add new functionality, unit testing gives you a chance to methodically verify both normal and boundary conditions.</p>
-            <p>But every good thing comes with a price (or so they say), and when it comes to unit testing "they" are right. What I mean is that writing good unit tests is not always easy. Sometimes it's hard, and it's a skill you learn over time. Over time, I've learned a few things about unit testing. On this page I offer some of the techniques that have helped me make sure I have a nice suite of unit tests I can depend on.</p>
-            <p>Note: Sometimes below I assume you are using JUnit (specifically version 4), but every other testing framework I've come across has complimentary functions.</p>
+            <p>But every good thing comes with a price: writing good unit tests is not always easy. Sometimes it's hard, and it's a skill one learns over time. On this page I offer some of the techniques I’ve learned, techniques which have helped me make sure I have a nice suite of unit tests I can depend on</p>
+            <p>Note: Below I assume you are using JUnit (specifically version 4), but every other testing framework I've come across has complimentary functions.</p>
 
             <h3><a id="Fails">Always Make Sure Your Unit Test Fails</a></h3>
-            <p>Imagine you're testing a drug that is supposed to prevent the flu. You have (1) a sample of the drug, (2) a person who has volunteered to help you test your drug, and (3) a sample of a flu virus. You expose the person to the flu virus, you administer the drug to this same volunteer, and you see that he or she doesn't get the flu. You conclude that your drug works and you start selling the drug.</p>
-            <p>Good for you. But suppose people buying your drug get the flu? You'd have to figure out what went wrong in your testing. In this overly-simplistic scenario, one part of the process that might have gone wrong is that, perhaps, the flu virus you used for the test was dead when you exposed your volunteer to it. That's why your volunteer didn't get the flu&mdash;not because of your experimental drug.</p>
-            <p>One way to avoid this error in the future would be to expose some other even more selfless person to your flu virus, making sure this volunteer <b>does</b> get the flu. Only in this case could you conclude that your first volunteer didn't get the flu thanks to your drug.</p>
-            <p>The same with unit testing. So often, in my own work as well as in others', I've seen unit tests that don't actually test what their authors think they're testing. The application code had a bug in it, but so did the unit test which was meant to validate that code. Therefore the test always passed, failing to detect the bug.</p>
+            <p>Often I've seen unit tests that don't actually test what their authors think they're testing. The application code had a bug in it, but so did the unit test which was meant to validate that code. Therefore the test always passed, failing to detect the bug.</p>
             <p>You can avoid this trap by following the advice in this heading&mdash;always make sure your unit test fails. Only once it has failed should you modify the test, or your code, so that it passes.</p>
             <p>Just off the top of my head I can think of three easy ways to fall into this trap. I'll share those three ways with you now.</p>
-            <p>For all of these situations, let's imagine that you've written some code with a slight bug in it.</p>
+            <p>For all of these situations, let's imagine that you've written some buggy code.</p>
 <p class="precaption">Listing 1: Some bad code</p>
 <pre class="preCodeWithCaption">
-public boolean isAThing(Object thing)  {
-    if(thing instanceof Thing)  {
+public boolean isAThing(Object object)  {
+    if(object instanceof Thing)  {
         return false;
     }
     return true;
 }
 </pre>
             <p>Contrary to its name and intention, the method returns false when the input is a Thing, and true when it is not a Thing.</p>
-            <p>It's a dumb mistake, I agree, but if you think it's not one <i>you</i> would ever make, please substitute for it some other bug you've made at some point in your career. (And if you think you've never written a bug in your life, please get out of the industry now&mdash;I'm tired of having to clean up after you.)</p>
+            <p>It's a dumb mistake, I agree. But&mdash;as we all know&mdash;this kind of thing happens all the time.</p>
             
             <h4>Trap 1: Forgetting @Test</h4>
-            <p>Suppose you have a pre-existing test class. You run the unit tests and they all pass. You write the unit test below, you run the tests, they all pass, and you commit the code and head for home early after such a good day's work.</p>
+            <p>Suppose you have a pre-existing test class. You run the unit tests and they all pass. You write the unit test below, you run the tests, they all pass, and you commit the code and head home early after such a good day's work.</p>
             
 <p class="precaption">Listing 2: A test missing its @Test</p>
 <pre class="preCodeWithCaption">
@@ -79,11 +76,11 @@ public void forgotTestAnnotation()  {
     assertFalse(actual);
 }
 </pre>
-            <p>Obviously a String is not a Thing object. Why did your unit tests all pass? Because the test you've just written is not a unit test! The test wasn't even run. You forgot to put "@Test" at the start of the test method.</p>
+            <p>Obviously a String is not a Thing object. Why did your unit tests all pass? Because the test you wrote is not a unit test! The test wasn't even run. You forgot to put "@Test" at the start of the test method.</p>
             <p>However, if you'd written your assert as "assertTrue(actual)" instead of "assertFalse(actual)", and expected your new unit test to fail, you would have noticed that it did not fail and investigated. You wouldn't have been able to leave work early, but at least you would have avoided committing buggy code.</p>
 
             <h4>Trap 2: Using Java assert( ) instead of JUnit assertTrue( )</h4>
-            <p>The following unit test compiles and passes without error. In Eclipse you get the pretty green stripe that tells you to go, go, go ahead and commit that code. But you're more than likely to end up with egg on your face if you do.</p>
+            <p>The following unit test compiles and passes without error. In Eclipse you get the pretty green stripe that tells you to go ahead and commit that code. But you're more than likely to end up with egg on your face if you do.</p>
             
 <p class="precaption">Listing 2: The wrong assert( )</p>
 <pre class="preCodeWithCaption">
@@ -94,14 +91,14 @@ public void testAssertInsteadOfUnitAssert() {
     assert(actual);
 }
 </pre>
-            <p>Don't tell me this can't happen. I've seen it. In our application, months after the code was written and submitted with its "unit tests," I noticed a major difference between what the class was supposed to do and what it was actually doing. I had a quick look at all the unit tests, saw what they were trying to test, and couldn't believe that they weren't failing. Why were they passing? Answer: The asserts were failing, but our testing framework wasn't paying attention to those. Since no JUnit assertions were being thrown, the framework assumed everything was hunky-dory.</p>
+            <p>Don't tell me this can't happen. I've seen it. In one application I have worked on, months after the code was written and submitted with its (faulty) unit tests, I noticed a major difference between what a class was supposed to do and what it was actually doing. I had a quick look at all the unit tests, saw what they were trying to test, and couldn't believe that they weren't failing. Why were they passing? Answer: The asserts were failing, but our testing framework wasn't paying attention to those. Since no JUnit assertions were being thrown, the framework assumed everything was hunky-dory.</p>
 
             <h4>Trap 3: Cutting-and-Pasting from an existing test</h4>
-            <p>I won't take up your time with a detailed example of this mistake. If you're an experienced developer, you know the dangers of cut-and-paste. I myself have written many a bad unit test by copying a pre-existing unit test in the same class, giving the new test a new name, and then forgetting something important, such as changing the expected value, or forgetting to change the method actually being tested. Fortunately, I can always catch this mistake by insisting that all my tests fail first, then making the appropriate changes so that they pass.</p>
+            <p>If you're an experienced developer, you know the dangers of cut-and-paste. I myself have written many a bad unit test by copying a pre-existing unit test in the same class, giving the new test a new name, and then forgetting something important, such as changing the expected value, or forgetting to change the method actually being tested. Fortunately, I can always catch this mistake by insisting that all my tests fail first, then making the appropriate changes so they pass.</p>
             
             <h3><a id="@Before">@Before and @BeforeClass</a></h3>
             <p>The JUnit annotations @Before and @BeforeClass differ both in functionality and syntax. (Generally, what applies to @Before applies also to @After; and the same goes for @BeforeClass and @AfterClass.)</p>
-            <p><b>@BeforeClass and @AfterClass.</b> Use @BeforeClass for an "expensive" method that should be run once before all tests in the class. By "expensive" I mean costly in terms of time or memory&mdash;for instance, reading a configuration file. The @BeforeClass method is run once before every test class; if what it sets up is so expensive that the cost of even this is too high, you will have to explore setting up test suites&mdash;a set of test classes that are run in unison. Use @AfterClass to "tear down" something you've "set up" in the @BeforeClass method&mdash;but note that, in my experience, at least, very often this is not necessary.</p>
+            <p><b>@BeforeClass and @AfterClass.</b> Use @BeforeClass for an "expensive" method that should be run once before all tests in the class. By "expensive" I mean costly in terms of time or memory&mdash;for instance, reading a configuration file. The @BeforeClass method is run once before every test class; if what it sets up is so expensive that the cost of even this is too high, you will have to explore setting up test suites&mdash;a set of test classes that are run in unison. Use @AfterClass to "tear down" something you've "set up" in the @BeforeClass method&mdash;but, in my experience, this is very often not necessary</p>
 <p class="precaption">Listing 3: An example of @BeforeClass</p>
 <pre class="preCodeWithCaption">
 @BeforeClass
@@ -110,7 +107,7 @@ public static void doSomethingOnceBeforeEachTestClass()  {
 }
 </pre>
 
-            <p>Note that, as Listing 3 illustrates, @BeforeClass can be used only for <b>public static void</b> methods, which means they are called before anything in your test class is instantiated, as well as before your @Before methods are invoked. Keep this in mind when you're trying to figure out why your unit tests aren't working. I've been bitten by that bug a few times.</p>
+            <p>Note that, as Listing 3 illustrates, @BeforeClass can be used only for <b>public static void</b> methods. As you know, a <b>public static void</b> method will be called before anything in your test class is instantiated, as well as before your @Before methods are invoked. Keep this in mind when you're trying to figure out why your unit tests aren't working. I've been bitten by that bug a few times.</p>
             <p><b>@Before and @After.</b> Use @Before to set up something one time before each individual test method. Reinitializing an instance field is a good example of this.</p>    
             
 <p class="precaption">Listing 4: An example of @Before</p>
@@ -137,11 +134,11 @@ public SomeTest {
 <pre class="preCodeWithCaption">
 java.lang.Exception: Method doSomethingOnce() should be public
 </pre>
-            <p>Use @After to undo anything performed during a test. Again, I rarely find this necessary.</p>
+            <p>Use @After to undo anything performed during a test. As with the @AfterClass annotation, I rarely find @After necessary.</p>
 
             <h3><a id="StringReader">Using StringReader to Avoid Writing File Input for Testing</a></h3>
             <p>Frequently I want to verify the functionality of a method that reads a file. Often such a method takes a BufferedReader which points to the file. In these circumstances I usually have three choices: (1) create a test file and in my test method open the file with a BufferedReader, passing that object to the method I'm testing; (2) change the method to take a String object, which contains the contents of the file, and modify all callers of the method accordingly; or (3) in my unit test, insert the input to be tested into a String object, create a BufferedReader which points to this String object, and invoke the method I'm testing with that.</p>
-            <p>Now, it might be interesting to consider when each of these options is the best course of action. Yet I'm not going to do that&mdash;this page is already too wordy as it is. I'm simply going to tell you <b>how</b> to implement Option 3 if you decide that is the best option for your situation. (You'll find discussion of Option 1 in the next section below.)</p>
+            <p>I’ll leave it to you to decide which of these three options is the best course of action for your situation. I'm simply going to tell you how to implement Option 3 if you choose to do so. (You'll find discussion of Option 1 in the next section below.)</p>
             <p>To sum up, the problem is this: you have a String, and you want a BufferedReader. How do you do that? Enter StringReader.</p>
 
 <p class="precaption">Listing 6: Creating a BufferedReader from a String</p>
@@ -170,9 +167,9 @@ public class miscJavaTest {
 
             <p>The code above will find a folder (or a file) called "resources" in the project directory. The snippet <code>new File("")</code> serves as the idiom for finding the project's "present working directory." </p>
             
-            <p>The problem is that the "present working directory" may differ between IDE's&mdash;Eclipse and IntelliJ get different locations. This may not be a problem if you are working solo, or if everyone on your team is using the same IDE. But, otherwise, you'll need to find another solution.</p>
+            <p>The problem is that the "present working directory" may differ between IDE's&mdash;Eclipse and IntelliJ return different locations. This may not be a problem if you are working solo, or if everyone on your team is using the same IDE. Otherwise, you'll need to find another solution.</p>
             
-            <p>If you want your unit tests to work on different IDEs, it might occur to you to try using an environment variable. Maybe you're thinking that every developer on the team could have a $PROJECT_HOME variable, and the unit tests could get that variable via something like <code>static final String PROJECT_HOME = System.getenv("PROJECT_HOME")</code>. It sounds as though that should work, but it doesn't, really. In Eclipse, for example, you need to set that environment variable for every test configuration.</p> 
+            <p>If you want your unit tests to work on different IDEs, it might occur to you to try using an environment variable. Maybe you're thinking that every developer on the team could have a $PROJECT_HOME variable, and the unit tests could get that variable via something like <code>static final String PROJECT_HOME = System.getenv("PROJECT_HOME")</code>. It sounds as though that should work, but it doesn't. In Eclipse, for example, you need to set that environment variable for every test configuration.</p> 
             
             <p>If you don't like behavior which is dependent on the IDE, you can use getResourceAsStream( ) or getResource( ). This approach isn't perfect, but it's the best one that I've been able to find.</p>
 
@@ -240,10 +237,10 @@ java.lang.IllegalStateException: Could not find resources/input.txt in file:/(fu
     at javaTests.MiscJavaTest.testGetResourcesThrowsNPEWithUsefulOutput(MiscJavaTest.java:53)
 </pre>
 
-            <p>The only difference between this listing and the previous one occurs in the catch block. What the modified catch block is doing is something like this: "Okay, the unit test couldn't find resource X in directory path Y, so I'll print out exactly what X and Y are so that hopefully the stupid programmer can figure out how he or she messed up."</p>
+            <p>The only difference between this listing and the previous one occurs in the catch block. This modified catch block is doing something like this: "Okay, the unit test couldn't find resource X in directory path Y, so I'll print out exactly what X and Y are so that hopefully the programmer can figure out how he or she messed up."</p>
             <p>Taking a close look at the exception output in the listing above gives us a chance to briefly explain how getResource( ) works. It assumes the compilation has copied the resources folder to your "out" directory&mdash;that is, to the same location where the build puts your .class files. Then it looks for this resources folder relative to the root of this "out" directory.</p>
-            <p>Thanks to this message I was able to verify that the directory wasn't in the path given. Then I looked at the location of the resources directory in my workspace, and I saw it should actually go under the source directory, like everything else in "bin." I moved the folder and its contents there, reran the test and ...</p>
-            <p>... And the test failed again with the same message. Which brings us to the one and only downside of using getResource( )&mdash;the resource must be copied over to the build directory. Every once in a while, to get things to work correctly, you may have to rebuild the project. I did this, reran the test and ... </p>
+            <p>Thanks to this message I was able to verify that the directory wasn't in the path given. Then I looked at the location of the resources directory in my workspace, and I saw it should actually go under the source directory, like everything else copied to "bin." I moved the folder and its contents there, reran the test and ...</p>
+            <p>... the test failed again with the same message. Which brings us to the one and only downside of using getResource( )&mdash;the resource must be copied over to the build directory. Every once in a while, to get things to work correctly, you may have to rebuild the project. I did this, reran the test and ... </p>
             <img src='./image/successfulJunitTest.jpg' alt='missing' width="760" height="220"/>
             <p>Hallelujah. Time to take a break.</p>
             
@@ -275,7 +272,7 @@ public void testNull() {
 // You see this output if the correct exception is NOT thrown.
 java.lang.AssertionError: Expected exception: java.lang.IllegalArgumentException
 </pre>
-        <p>Notice that the unit test has no asserts. Indeed, given that the invocation of read( ) is expected to throw an exception, any code after that point would be redundant.</p>
+        <p>Notice that the unit test has no asserts. Given that the invocation of read( ) is expected to throw an exception, any code after that point would be redundant.</p>
         <p>This approach is clear, concise, and good enough about 90 percent of the time. It has two drawbacks, which occur: (1) when the unit test itself is much more complicated than in this example; and (2) when the method being tested might throw the same exception but with a different message.</p>
         <p>JUnit's ExpectedException class is the solution in both of these situations.</p>
 
@@ -310,7 +307,7 @@ a string containing "Parameter input is incorrect.")
      "Parameter input is null or empty."
 </pre>
         <p>In the listing above, the test method (for reasons of its own) calls read( ) three times, but only the third time is expected to throw an IllegalArgumentException. The unit test uses JUnit's ExpectedException class to verify that the right exception with the right message is thrown at the correct point in the program execution.</p>
-        <p>The fact that this latter approach allows you to specify the message is very useful if you are testing a method which takes more than one parameter, and you want to throw an IllegalArgumentException if any one of them is invalid. In this case, your exception message would be slightly different, depending on which parameter is invalid. In situations such as this, the ExpectedException approach, while more verbose and hence harder to read, really shines.</p>
+        <p>The fact that this latter approach allows you to specify the message is very useful if you are testing a method which takes more than one parameter and you want to throw an IllegalArgumentException if any one of them is invalid. In this case, your exception message would be slightly different, depending on which parameter is invalid. In situations such as this, the ExpectedException approach, while more verbose and hence harder to read, really shines.</p>
 		</div>
 		
         <div id="sidebar">
@@ -333,7 +330,7 @@ a string containing "Parameter input is incorrect.")
                 <ul class="style2">
                     <li><a href="convertingCollections.html">Converting Java Collections</a></li>
                     <li><a href="enum.html">Java Enums</a></li>
-                    <li><a href="javaSort.html">Sorting in Java</a></li>
+                    <li><a href="javaSort.html">Sorting Java Collections</a></li>
                     <li><a href="unitTesting.html">Unit Testing Techniques</a></li>
                 </ul>
             </div>
