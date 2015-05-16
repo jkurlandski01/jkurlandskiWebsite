@@ -233,7 +233,7 @@ Printing the sorted array after converting it to a list.
             <h3>When the object you are sorting on is a custom class</h3>
             <p>If the objects in your collection consist of your own class rather than Java classes like String, Double, Integer and so on, don't forget to override the necessary methods for safe sorting and the insertion of your class objects into containers. For example, maybe you have a Movie class which contains two fields, title and release date, and you want to sort Movie objects first on title, then on release date if there is a tie. There are a couple of changes you'll need to make in the Movie class: you'll have to override the Object methods equals( ) and hashCode( ); and you'll want to declare your class as implementing Comparable and implement compareTo( ).</p>
             <p>Chances are you should consider overriding Object.toString( ) as well. That way, you'll get readable output when the method is called. (Remember how nice List.toString( )'s output was compared to Array.toString( )'s in Listing 9 above.)</p>
-            <p>All of this is covered beautifully in Chapter 3 of Joshua Bloch's <em>Effective Java</em>.</p>
+            <p>All of this is covered beautifully in Chapter 3 of Joshua Bloch's <em>Effective Java</em>. See the link in the sidebar for a very good Stack Overflow page telling you how to use the Apache Commons Lang library for easy overrides of hashCode( ) and equals( ).</p>
         </div>
 		
         <div id="sidebar">
@@ -247,6 +247,14 @@ Printing the sorted array after converting it to a list.
                     <li><a href="javaSort.html">Sorting Java Collections</a></li>
                      <li><a href="unitTesting.html">Unit Testing Techniques</a></li>
                </ul>
+            </div>
+            <div class="internalLinkBox">
+                <div class="title">
+                    <h2>External Guava Links</h2>
+                </div>
+                <ul class="style2">
+                    <li><a href="http://stackoverflow.com/questions/27581/what-issues-should-be-considered-when-overriding-equals-and-hashcode-in-java">Apache's Commons tool for Overriding Methods</a></li>
+                 </ul>
             </div>
         </div>
 

@@ -97,19 +97,44 @@ nothing to commit, working directory clean
             <p>Once the clone has finished, you cd into the subdirectory for the project you just created. The "git status" command can be used to reassure yourself that all has gone well.</p>
                 
             <h3>Task</h3>
-            <h4>&bull; Check the status of your working tree.</h4>
+            <h4>&bull; Check the status of your working branch.</h4>
             <h4>&bull; Stage a newly-updated file.</h4>
             <br/>
             <p>JERRY: finish this</p>
             <p>Use "git status" to see where things stand&mdash;what you've changed, what you've staged, what's ready to be committed.</p>
             
 <pre class="preCode">
+$ git status
+On branch newMatch
+Your branch is ahead of 'origin/newMatch' by 2 commits.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   src/test/java/ipgraph/matching/MatchingTest.java
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
 </pre>
             
-            <p>.</p>
+            <p>The call to "git status" has returned a lot of information. The line "On branch newMatch" tells me which local branch I'm working with. (More on branches, below.) The next two lines tell me that I have already committed some changes to my local repository, but they have not been pushed to the repository on the network&mdash;the one I share with other developers. The lines beneath the heading "Changes not staged for commit:" are the ones I'm most interested in: this information is saying that I have made some changes which are not staged. Something is "staged" when it is ready to be committed; if I do a commit, then only those items which are staged will be committed. The last line of the output tells me what I need to do to stage these changes.</p>
 
 <pre class="preCode">
+$ git add src/test/java/ipgraph/matching/MatchingTest.java
+
+$ git status
+On branch newMatch
+Your branch is ahead of 'origin/newMatch' by 2 commits.
+  (use "git push" to publish your local commits)
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	modified:   src/test/java/ipgraph/matching/MatchingTest.java
 </pre>
+		<p>Compare this output to the output above. Now everything which has been changed is staged. The next time I commit, my changes to MatchingTest.java will be part of that commit.</p>
                 
             <h3>Task</h3>
             <h4>&bull; Stage newly-added files collectively.</h4>
@@ -169,6 +194,59 @@ nothing to commit, working directory clean
 </pre>
 			
     		<p> </p>
+				
+            <h3>Task</h3>
+            <h4>&bull; Push local commits to the shared repository.</h4>
+            <br/>
+			
+            <p>In this scenario, you've made a number of changes to your local copy of a shared repository. Now you want other developers to see your work.</p>
+            
+<pre class="preCode">
+$ git status
+On branch newAlgorithm
+Your branch is ahead of 'origin/newAlgorithm' by 3 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working directory clean
+
+$ git push
+warning: push.default is unset; its implicit value is changing in
+Git 2.0 from 'matching' to 'simple'. To squelch this message
+and maintain the current behavior after the default changes, use:
+
+  git config --global push.default matching
+
+To squelch this message and adopt the new behavior now, use:
+
+  git config --global push.default simple
+
+When push.default is set to 'matching', git will push local branches
+to the remote branches that already exist with the same name.
+
+In Git 2.0, Git will default to the more conservative 'simple'
+behavior, which only pushes the current branch to the corresponding
+remote branch that 'git pull' uses to update the current branch.
+
+See 'git help config' and search for 'push.default' for further information.
+(the 'simple' mode was introduced in Git 1.7.11. Use the similar mode
+'current' instead of 'simple' if you sometimes use older versions of Git)
+
+Counting objects: 105, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (43/43), done.
+Writing objects: 100% (61/61), 8.12 KiB | 0 bytes/s, done.
+Total 61 (delta 18), reused 0 (delta 0)
+To https://github.com/someRepo/someRepo.git
+   11a7bd9..dfc657e  newAlgorithm -> newAlgorithm
+
+$ git status
+On branch newAlgorithm
+Your branch is up-to-date with 'origin/newAlgorithm'.
+
+nothing to commit, working directory clean
+</pre>
+			
+    		<p>Our status check shows how much our local version of the repository is out-of-synch with the one shared by all developers. The call to "git push" first results in a long warning preparing us for some upcoming changes to the Git application itself&mdash;we can choose to ignore them, taking no action. Then "git push" does the job of synchronizing our local branches with the remote repository which everyone shares. Then another call to "git status" tells us everything is up-to-date.</p>
 				
             <h3>Task</h3>
             <h4>&bull; View the files being tracked by the repository</h4>
@@ -371,18 +449,45 @@ $ git branch -r
             <p>With "git branch", the asterisk indicates the current branch.</p>
                 
             <h3>Task</h3>
-            <h4>&bull; Compare two branches, viewing the differences at only the directory-level.</h4>
+            <h4>&bull; Compare two local branches, viewing the differences at only the directory-level.</h4>
             <br/>
 			
             <p>"git diff" will ordinarily show you the diffs of two branches at a fine-grained level, for example, the line-by-line differences between two files. But you can use the "--name-status" argument to see only file differences.</p>
+			<p>JERRY: get an example that also has modified files</p>
             
 <pre class="preCode">
 $ git branch
 * graphMatching
   master
-~/Documents/workspace/eliza$ git diff graphMatching master --name-status
+
+$ git diff graphMatching master --name-status
 D       app-distribution/deployments//problemClassifier/features.tsv
 D       app-distribution/deployments//problemClassifier/model
+</pre>
+			
+    		<p> </p>
+				
+            <h3>Task</h3>
+            <h4>&bull; Compare a local branch to a remote branch, viewing the differences at only the directory-level.</h4>
+            <br/>
+			
+            <p>"git diff" will ordinarily show you the diffs of two branches at a fine-grained level, for example, the line-by-line differences between two files. But you can use the "--name-status" argument to see only file differences.</p>
+			<p>JERRY: get an example that also has modified files; modify above so it doesn't repeat the preceding task</p>
+            
+<pre class="preCode">
+$ git branch
+  master
+* newMatch
+
+$ git branch -r
+  origin/HEAD -> origin/master
+  origin/master
+  origin/newMatch
+  
+$ git diff newMatch origin/newMatch --name-status
+D       src/test/java/ipgraph/matching/AmeliaEarhartTest.java
+D       src/test/resources/AmeliaEarhart.txt
+D       src/test/resources/AmeliaEarhartTest.json
 </pre>
 			
     		<p> </p>
