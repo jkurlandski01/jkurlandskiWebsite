@@ -249,6 +249,35 @@ nothing to commit, working directory clean
     		<p>Our status check shows how much our local version of the repository is out-of-synch with the one shared by all developers. The call to "git push" first results in a long warning preparing us for some upcoming changes to the Git application itself&mdash;we can choose to ignore them, taking no action. Then "git push" does the job of synchronizing our local branches with the remote repository which everyone shares. Then another call to "git status" tells us everything is up-to-date.</p>
 				
             <h3>Task</h3>
+            <h4>&bull; Push local commits to on a particular branch to the shared repository.</h4>
+            <br/>
+			
+            <p>Similar to the above scenario, but in this case we've modified and committed to a local branch, and we want only changes to that branch to be pushed.</p>
+            
+<pre class="preCode">
+$ git status
+On branch stanford_parser_rte_sf
+Your branch is ahead of 'origin/stanford_parser_rte_sf' by 3 commits.
+  (use "git push" to publish your local commits)
+  
+nothing to commit, working directory clean
+
+$ git push origin stanford_parser_rte_sf
+Counting objects: 106, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (28/28), done.
+Writing objects: 100% (49/49), 4.40 KiB | 0 bytes/s, done.
+Total 49 (delta 11), reused 0 (delta 0)
+To git@git.ipsoft.com:amelia.git
+   b5ca8ea..030afea  stanford_parser_rte_sf -> stanford_parser_rte_sf
+   
+$ git status
+On branch stanford_parser_rte_sf
+Your branch is up-to-date with 'origin/stanford_parser_rte_sf'.
+</pre>
+			
+				
+            <h3>Task</h3>
             <h4>&bull; View the files being tracked by the repository</h4>
             <h4>&bull; Stop a file from being tracked by the repository, but don't remove it from the file system</h4>
             <h4>&bull; Add the file name to the global repository ignore list</h4>
