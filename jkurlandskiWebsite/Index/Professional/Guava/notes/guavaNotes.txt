@@ -1,3 +1,23 @@
 To do:
 - Get runtime performance of sorted table: I suspect it's O(n)
 
+- Does Multimap have a builder like ImmutableMultimap? (See below.)
+	- If so, initialization is easier, and can be done outside of a method, e.g. in the field section of a class.
+
+- Immutables
+
+//    ImmutableMap<String, Set<String>> equalDeplabelMap = ImmutableMap.<String, Set<String>>builder()
+//            .put(LangLib.DEP_DEP, Sets.newHashSet(LangLib.DEP_ROOT, LangLib.DEP_XCOMP))
+//            .put(LangLib.DEP_ROOT, Sets.newHashSet(LangLib.DEP_VMOD))
+//            .put(LangLib.DEP_PREP, Sets.newHashSet(LangLib.DEP_ADVMOD))
+//            .put(LangLib.DEP_DOBJ, Sets.newHashSet(LangLib.DEP_NSUBJ))
+//            .build();
+
+    ImmutableMultimap<String, String> equalDeplabelMap = new ImmutableMultimap.Builder<String, String>()
+            .putAll(LangLib.DEP_DEP, LangLib.DEP_ROOT, LangLib.DEP_XCOMP)
+            .put(LangLib.DEP_ROOT, LangLib.DEP_VMOD)
+            .put(LangLib.DEP_PREP, LangLib.DEP_ADVMOD)
+            .put(LangLib.DEP_DOBJ, LangLib.DEP_NSUBJ)
+            .build();
+
+
