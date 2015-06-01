@@ -26,7 +26,8 @@ p {
 	line-height: 190%;
 }
 
-strong {
+strong, b {
+	font-weight: bolder;
 }
 
 a {
