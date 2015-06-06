@@ -43,46 +43,46 @@
 			</div>
             <br/>
             
-			<p>Do an Internet search on "set operations java" and at the top of the results you're sure to find at least one page telling you to use retainAll( ) and addAll( ) for intersection and union, respectively. Some online resources might note that sets and lists behave differently, but generally they don't explore how the two behave differently, or what it means to do a traditional set operation on a list. And they certainly don't warn you of the unexpected behavior you'll get if you try to perform a retainAll( ) on a list&mdash;let me tell you now that you won't get something akin to set-operation behavior.</p>
-			<p>On this page I explore these issues in detail. But first I'll give an executive summary to serve as a quick reference, perhaps for those readers who don't have time for or interest in the nitty-gritty details.</p>
+			<p>Do an Internet search on "set operations java" and at the top of the results you're sure to find at least one page telling you to use Collection retainAll( ) and addAll( ) for intersection and union, respectively. Some online resources might note that sets and lists behave differently, but generally they don't explore <em>how</em> the two behave differently, or what it means to do a traditional set operation on a list. And they certainly don't warn you of the unexpected behavior you'll get if you try to perform a retainAll( ) on a list&mdash;I'll tell you now that you won't get true set-operation behavior.</p>
+			<p>On this page I explore these issues in detail. First I give an executive summary to serve as a quick reference for those who don't have time for, or interest in, the nitty-gritty details.</p>
 			
             <h3><a id="Summary">Summary</a></h3>
 			<p>If you are working with true sets&mdash;in which every element is unique&mdash;it's slightly advantageous to use Guava's Sets methods.</p>
 
 <p class="precaption">Listing 1: Snapshot of Guava's Sets.intersect( ) and Sets.union( )</p>
 <pre class="preCodeWithCaption">
-    Set&lt;String&gt; set1 = Sets.newHashSet(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;);
-    Set&lt;String&gt; set2 = Sets.newHashSet(&quot;c&quot;, &quot;d&quot;, &quot;e&quot;);
+Set&lt;String&gt; set1 = Sets.newHashSet(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;);
+Set&lt;String&gt; set2 = Sets.newHashSet(&quot;c&quot;, &quot;d&quot;, &quot;e&quot;);
     
-    // Intersection
-    Set&lt;String&gt; setIntersection = Sets.intersection(set1, set2);
+// Intersection
+Set&lt;String&gt; setIntersection = Sets.intersection(set1, set2);
     
-    // Union
-    Set&lt;String&gt; setUnion = Sets.union(set1, set2);
+// Union
+Set&lt;String&gt; setUnion = Sets.union(set1, set2);
 </pre>
 
-            <p>If you are working with what are called multisets, or lists where each element may appear more than once, you really should use Guava's Multiset methods. Make sure you are not using an old jar file for Guava. (The version in guava-15.0.jar is sufficient.)</p>
+            <p>If you are working with what are called multisets, or lists where each element may appear more than once, you should use Guava's Multiset methods. Make sure you are not using an old jar file for Guava. (The version in guava-15.0.jar is sufficient.)</p>
 
 <p class="precaption">Listing 2: Snapshot of Guava's Multisets.intersect( ) and Multisets.union( )</p>
 <pre class="preCodeWithCaption">
-    List&lt;String&gt; list1 = Lists.newArrayList(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;c&quot;);
-    Multiset&lt;String&gt; multiset1 = HashMultiset.create(list1);
-    List&lt;String&gt; list2 = Lists.newArrayList(&quot;c&quot;, &quot;d&quot;, &quot;e&quot;);
-    Multiset&lt;String&gt; multiset2 = HashMultiset.create(list2);
+List&lt;String&gt; list1 = Lists.newArrayList(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;c&quot;);
+Multiset&lt;String&gt; multiset1 = HashMultiset.create(list1);
+List&lt;String&gt; list2 = Lists.newArrayList(&quot;c&quot;, &quot;d&quot;, &quot;e&quot;);
+Multiset&lt;String&gt; multiset2 = HashMultiset.create(list2);
     
-    // Union
-    Multiset&lt;String&gt; multisetUnion = Multisets.union(multiset1, multiset2);
+// Union
+Multiset&lt;String&gt; multisetUnion = Multisets.union(multiset1, multiset2);
 
-    // Intersection
-    Multiset&lt;String&gt; multisetIntersection = Multisets.intersection(multiset1, multiset2);
+// Intersection
+Multiset&lt;String&gt; multisetIntersection = Multisets.intersection(multiset1, multiset2);
 </pre>
             <br/>
 
 			
-            <h3><a id="Sets">Set Operations on Sets</a></h3>
+            <h3><a id="Sets">Set Operations on True Sets</a></h3>
             <p>Now we delve into the details. We start off with the easy case, doing set operations on true sets.</p>
             <h4>Set operations using Set.retainAll( ) and Set.addAll( )</h4>
-            <p>For true sets, you can use Java's Collection retainAll( ) for intersection and addAll( ) for union. The example below shows two unit tests, one verifying intersection behavior, the second verifying union.</p>
+            <p>For true sets, it is possible to use Java's Collection retainAll( ) for intersection and addAll( ) for union. The example below shows two unit tests, the first verifying intersection behavior, the second verifying union.</p>
 
 <p class="precaption">Listing 3: Using retainAll( ) and addAll( ) for set operations</p>
 <pre class="preCodeWithCaption">
@@ -112,8 +112,8 @@ public void testTrueSetAddAll() {
 }
 </pre>
 
-            <p>In both cases, first we create the two sets using Guava's Sets.newHashSet( ). If you're not familiar with this, see my separate write-up on this, on the "Intro to Guava" page, which is linked to in the Internal Links at right. After these sets are created, we instantiate what will be the intersection or union of the two sets by initializing each with all the elements of set1. (This second step isn't necessary if you don't need to keep a copy of the original set1.) Then we perform the intersection or union with the appropriate method, and finally we verify that the new set has the correct elements.</p>
-            <h4> Set operations with Guava</h4>
+            <p>In both cases, first we create the two sets using Guava's Sets.newHashSet( ). If you're not familiar with this, see "Intro to Guava" in the Internal Links at right. After these sets are created, we instantiate what will be the intersection or union of the two sets by initializing each with all the elements of set1. (This second step isn't necessary if you don't need to keep a copy of the original set1.) Then we perform the intersection or union with the appropriate method, and finally we verify that the new set has the correct elements.</p>
+            <h4> Set Operations with Guava</h4>
             <p>Guava makes set operations a little easier, and a little more intuitive, because it offers true intersect( ) and union( ) methods.</p>
 
 <p class="precaption">Listing 4: Using Guava's intersect( ) and union( ) for set operations</p>
@@ -145,13 +145,13 @@ public void testTrueSetGuavaUnion() {
             <p>Compare this to the native Java version in Listing 3. You see that we don't have to initialize the new intersection or union set with set1's values.</p>
             
             <h3><a id="Multisets">Set Operations on Lists (Multisets)</a></h3>
-            <p>If I met someone who was trying to perform set operations on lists, I would try to account for this odd behavior in one of three possible ways: (1) the person doesn't know what he or she is doing; (2) the person knows what they're doing, and they know that their lists are really sets, and they're sure that as the project develops those lists will never one day have duplicate values, which would invalidate them as sets; or (3) the person is actually, and knowingly, working with what are called <em>multisets</em>.</p>
+            <p>If I came across someone trying to perform set operations on lists, I would try to account for this odd behavior in one of three possible ways: (1) the person doesn't know what they're doing; (2) the person knows what they're doing, they know that their lists are really sets, and they're sure that as the project develops those lists will never one day have duplicate values, which would invalidate them as sets; or (3) the person is actually, and knowingly, working with what are called <em>multisets</em>.</p>
             <p>Briefly, a multiset is a set of objects where order does not matter and it is possible to have more than one of each type of element. For example, {a, b, b, c, d} is a multiset, and it is equivalent to {a, c, d, b, b}. Note that the traditional set {a, b, c} is also a multiset, albeit one which has only one element of each type. Another name for multiset is a <em>bag</em>, as in "a bag of words model of a document."</p>
             <p>While multisets are not true sets, it nevertheless makes perfect sense to want to perform set-like operations such as intersect and union on them.</p>
-            <p>In the previous section we saw that there are two perfectly acceptable ways to perform set operations on true sets&mdash;although the Guava approach might be slightly preferable to the use of native Java Set methods. However, in this section we'll see that when it comes to multisets, there really is only one option.</p>
+            <p>As we saw above, there are two perfectly acceptable ways to perform set operations on true sets&mdash;although the Guava approach is slightly preferable to the use of native Java Set methods. In this section we'll see that when it comes to multisets, there really is only one option.</p>
             
             <h4>Set operations using List.retainAll( ) and List.addAll( )</h4>
-            <p>This is a long section whose upshot will be: <em>Do not use retainAll( ) and addAll( ) for multisets!</em></p>
+            <p>This is a long subsection whose upshot will be: <em>Do not use retainAll( ) and addAll( ) for multisets!</em></p>
             <p>Let's start the ball rolling by performing an intersection on a multiset, as implemented by a List.</p>
 
 <p class="precaption">Listing 5: Using retainAll( ) for a List implementation of multisets</p>
@@ -175,23 +175,23 @@ public void testListRetainAll() {
  
 <p class="precaption">Listing 6: Testing commutativity of retainAll( ) for a List implementation of multisets</p>
 <pre class="preCodeWithCaption">
-    // Verify that the operation is commutative.
-    List&lt;String&gt; listIntersection2 = Lists.newArrayList(list2);
-    listIntersection2.retainAll(list1);
-    assertEquals(Lists.newArrayList(&quot;c&quot;), listIntersection2);
+// Verify that the operation is commutative.
+List&lt;String&gt; listIntersection2 = Lists.newArrayList(list2);
+listIntersection2.retainAll(list1);
+assertEquals(Lists.newArrayList(&quot;c&quot;), listIntersection2);
     
 // Test fails with the following output:
 java.lang.AssertionError: expected:&lt;[c]&gt; but was:&lt;[c, c]&gt;
 </pre>
             <p>The first test, which passed, was performed on a list initialized with list1, and then the test called <code>retainAll(list2)</code>. The second test initialized with list2, and then called <code>retainAll(list1)</code>. And this test failed because it had one too many "c" elements, thus showing that this way of trying to implement the intersection operation is not commutative.</p>
-            <p>You might ask which is the correct intersection of the two sets&mdash;{c} or {c, c}? Here's a formal definition of the multiset intersection operation from PlanetMath.org:</p>
+            <p>Which is the correct intersection of the two sets&mdash;{c} or {c, c}? Here's a formal definition of the multiset intersection operation from PlanetMath.org:</p>
             
             <p class="indentedQuote">The intersection of f and g, denoted by f &cap; g, is the multiset whose domain is A &cap; B, such that
                 (f &cap; g) (x) := min(f(x), g(x))<sup>1</sup></p> 
             
-            <p>The same page gives a good example of how this works on two multisets. (The Multiset page in Wikipedia offers much the same definition, but offers no good example.)</p>
+            <p>The same page gives a good example of how this works on two multisets. (The Multiset page in Wikipedia offers much the same definition, but provides no good example.)</p>
             
-            <p>So that covers intersections with retainAll( ), showing that this is NOT a good way to implement multiset intersection. Now let's deal with union and addAll( ). First we'll go back to the same source for a formal definition of what it means for the union operation to be applied to two multisets.</p>
+            <p>So that covers intersections with retainAll( ), showing that this is <em>not</em> a good way to implement multiset intersection. Now let's deal with union and addAll( ). First we'll go back to PlanetMath.org for a formal definition of what it means for the union operation to be applied to two multisets.</p>
 
             <p class="indentedQuote">The union of f and g, denoted by f &cup; g, is the multiset whose domain is A &cup; B, such that (f &cup; g) (x) := max(f(x), g(x))<sup>1</sup></p> 
  
@@ -210,10 +210,11 @@ public void testListAddAll() {
     List&lt;String&gt; listUnion = Lists.newArrayList(list1);
     listUnion.addAll(list2);
     
-    // Test the results.
+    // Sort the expected and actual lists so that they can be compared by assertEquals( ).
     List&lt;String&gt; expectedList = Lists.newArrayList(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;);
     Collections.sort(expectedList);
     Collections.sort(listUnion);
+    
     assertEquals(expectedList, listUnion);
 }
 
@@ -221,7 +222,7 @@ public void testListAddAll() {
 java.lang.AssertionError: expected:&lt;[a, b, c, c, d, e]&gt; but was:&lt;[a, b, c, c, c, d, e]&gt;
 </pre>
 
-            <p>In the listing, first we create our two multisets as lists. Then we use addAll( ) to get the "union." Then a couple steps are necessary before we can do the assertEquals( ) of the unit tests. We have to take these steps because a multiset is, by definition, unordered, whereas this particular implementation of a multiset using a List is ordered. We create our expected list, which is what the union of the two multisets <i>should</i> be. Then we sort both the expected list and the union list. Now order will no longer be the difference between the two lists, and we are testing only on their contents. And the contents are found to be incorrect.</p>
+            <p>In the listing, first we create our two multisets as lists. Then we use addAll( ) to get the "union." Then a couple steps are necessary before we can do the assertEquals( ) of the unit tests. We have to take these steps because a multiset is, by definition, unordered, whereas this particular implementation of a multiset is using a List, which is ordered. We create our expected list, which is what the union of the two multisets <i>should</i> be. Then we sort both the expected list and the union list. Now order will no longer be the difference between the two lists, and we are testing only their contents. And the contents are found to be incorrect.</p>
 
             <h4>Guava's Multisets operations for intersection and union</h4>
             <p>We've seen the problems with the Java List methods; let's see what Guava's Multisets has to offer.</p>
@@ -250,7 +251,7 @@ public void testMultisetIntersection() {
 </pre>
 
             <p>In Listing 8, first we create two multisets from exactly the same lists we've been working with in this section. Then we create the intersection of the two multisets with the intersection( ) method. Then we create the expected multiset and perform the unit test. Finally, in order to verify commutativity, we create a new intersection of the two multisets, but in reverse order. Note that in this case we get the correct multiset behavior for intersection.</p>
-            <p>The next listing below shows how to perform multiset union. (Note: You'll get a compiler error on Multisets.union( ) if you are using an older version of Guava. Make sure you are using at least the version contained in guava-15.0.jar.)</p>
+            <p>The listing below shows how to perform multiset union. (Note: You'll get a compiler error on Multisets.union( ) if you are using an older version of Guava. Make sure you are using at least the version contained in guava-15.0.jar.)</p>
 
 <p class="precaption">Listing 9: Using Multisets.union()</p>
 <pre class="preCodeWithCaption">
@@ -274,7 +275,7 @@ public void testMultisetUnion() {
 }
 </pre>
 
-        <p>This steps involved here are identical to those in the previous listing, with the exception of the call to union( ) instead of intersection( ). Recall that, in order to test the List implementation of the multiset union, we first had to sort both the union and the expected result. We don't have to do that here because the assertEquals( ) override for multisets understands that order is not relevant.</p>
+        <p>The steps involved here are identical to those in the previous listing, with the exception of the call to union( ) instead of intersection( ). Recall that, in order to test the List implementation of the multiset union, we first had to sort both the union and the expected result. We don't have to do that here because the assertEquals( ) override for multisets understands that order is not relevant.</p>
 
         <p><a href="http://planetmath.org/operationsonmultisets"><sup>1</sup>PlanetMath.org on Multisets</a></p>
 
