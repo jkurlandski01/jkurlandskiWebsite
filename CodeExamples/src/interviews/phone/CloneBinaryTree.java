@@ -1,8 +1,5 @@
 package interviews.phone;
 
-import java.util.List;
-
-import com.google.common.collect.Lists;
 
 // Some of this code has been copied to tree.TreeNode.
 
