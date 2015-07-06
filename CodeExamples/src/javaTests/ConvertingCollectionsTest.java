@@ -12,6 +12,7 @@ import org.junit.Test;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
+import com.google.common.primitives.Ints;
 
 public class ConvertingCollectionsTest {
 
@@ -48,11 +49,19 @@ public class ConvertingCollectionsTest {
 	}
 	
 	@Test
-	public void arrayToList()	{
+	public void arrayToListObject()	{
 		String[] cityArray = {"Prague", "Minsk", "Barcelona"};
 	    List<String> cityList = Arrays.asList(cityArray);
 	    
 	    assertEquals(3, cityList.size());
+	}
+	
+	@Test
+	public void arrayToListInt()	{
+		int[] intArray = {0, 1, 1};
+	    List<Integer> intList = Ints.asList(intArray);
+	    
+	    assertEquals(3, intList.size());
 	}
 	
 	@Test
