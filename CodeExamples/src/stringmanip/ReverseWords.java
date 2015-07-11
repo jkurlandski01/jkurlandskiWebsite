@@ -35,7 +35,6 @@ public class ReverseWords {
 	@Test
 	public void test2()	{
 		String[] actual = reverseWords("a");
-//		String[] expected = new String[] {"a"};
 		assertEquals(1, actual.length);
 		assertEquals("a", actual[0]);
 	}
@@ -43,7 +42,6 @@ public class ReverseWords {
 	@Test
 	public void test3()	{
 		String[] actual = reverseWords("a ab");
-//		String[] expected = new String[] {"ab", "a"};
 		assertEquals(2, actual.length);
 		assertEquals("ab", actual[0]);
 		assertEquals("a", actual[1]);
@@ -52,7 +50,6 @@ public class ReverseWords {
 	@Test
 	public void test4()	{
 		String[] actual = reverseWords("a ab abc");
-//		String[] expected = new String[] {"abc", "ab", "a"};
 		assertEquals(3, actual.length);
 		assertEquals("abc", actual[0]);
 		assertEquals("ab", actual[1]);

@@ -52,7 +52,7 @@ public class LongestPalindromicSubString_O_n {
     }
 
     public static void main(String[] args) {
-        String result = new LongestPalindromicSubString().longestPalindrome("abab");
+        String result = new LongestPalindromicSubString().longestPalindromeSlow("abab");
         //String result = new LongestPalindromicSubString().longestPalindrome("ababa aba");
         System.out.println(result);
     }

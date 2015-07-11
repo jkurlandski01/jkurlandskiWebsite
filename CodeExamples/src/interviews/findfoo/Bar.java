@@ -20,6 +20,9 @@ public class Bar {
 	* @throws IllegalStateException if there is no Bar in the list  
 	*/ 
 	public static Bar getLastBar(List<Object> stuff) throws IllegalStateException	{
+		if (stuff == null)	
+			throw new IllegalArgumentException("Argument is null");
+		
 		for (int i=stuff.size()-1; i >= 0; i--) {
 		     if (stuff.get(i) instanceof Bar) {
 		    	 return (Bar) stuff.get(i);
@@ -32,9 +35,14 @@ public class Bar {
 	* Given a list of objects, returns the nth-last object in the list that is an instance of type Bar.  
 	* @param stuff the list of objects  
 	* @return an object of type Bar  
-	* @throws IllegalStateException if there is no Bar in the list  
+	* @throws IllegalStateException if there is no nth-last Bar in the list  
 	*/ 
 	public static Bar getNthLastBar(List<Object> stuff, int n) throws IllegalStateException	{
+		if (stuff == null)	
+			throw new IllegalArgumentException("Argument is null");
+		
+		// TODO: What should we do if n is 0 or negative?
+		
 		int counter = 1;
 		
 		for (int i=stuff.size()-1; i >= 0; i--) {
@@ -48,6 +56,11 @@ public class Bar {
 		     }
 		}
 		throw new IllegalStateException();
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testGetLastBarNull()	{
+		getLastBar(null);
 	}
 	
 	@Test
