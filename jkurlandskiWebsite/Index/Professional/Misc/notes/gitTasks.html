@@ -628,6 +628,37 @@ $ git branch
 </pre>
 
             <h3>Task</h3>
+            <h4>&bull; Temporarily revert back to a previous working copy</h4>
+ 
+            <br/>
+            <p>Sometimes you want to go back to a previous version of the code. The first step is to do a "git log" to find the version you are looking for. To do this temporarily, it's best to use a new branch. Make sure you don't have any uncommitted code.</p>
+            
+<pre class="preCode">
+$ git log --since yesterday
+...
+// Pick the version you want to revert to. Suppose it's number is 1061e5b0a4cbac0fb54fb1acd9db53931ffb1c68.
+
+$  git checkout -b old_1061e 1061e5b0a4cbac0fb54fb1acd9db53931ffb1c68
+Switched to a new branch 'old_1061e'
+
+~/Documents/workspace/eliza$ git branch
+  master
+* old_1061e
+</pre>
+			
+			
+            <h3>Task</h3>
+            <h4>&bull; Permanently revert back to a previous working copy</h4>
+ 
+            <br/>
+            <p>Sometimes things are all messed up, and you want to roll all changes back to a previous version. Start by following the steps above (using "git log" to identify the version number you want). Then, instead of checking out to a new branch, use "reset". Make sure you don't have any uncommitted code.</p>
+            
+<pre class="preCode">
+$ git reset --hard 1061e5b0a4cbac0fb54fb1acd9db53931ffb1c68
+</pre>
+			
+			
+            <h3>Task</h3>
             <h4>&bull; Check the status of local branches.</h4>
             <h4>&bull; Delete those which are merged as well as not merged into the current branch.</h4>
 
