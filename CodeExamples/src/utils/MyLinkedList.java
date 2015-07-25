@@ -2,11 +2,56 @@ package utils;
 
 import java.util.NoSuchElementException;
 
-// JERRY: fix various methods
-// Then re-implement so that pop retrieves the first element--like a true stack.
+// JERRY: Need a Stack object that contains a node; other nodes can contain other nodes
+// JERRY: more efficient to have first element be the top of the stack
 public class MyLinkedList<E>	{
-	MyLinkedList<E> list;
-	E data;
+	public class Node<E>	{
+		Node<E> next;
+		E data;
+		
+		public void add(E el)	{
+//			if(data == null)	{
+//				data = el;
+//				return;
+//			}
+			
+			Node<E> currList = this;
+			while(currList.next != null)	{
+				currList = currList.next;
+			}
+			currList.data = el;
+			
+//			size++;
+		}
+		
+		/**
+		 * Return the last element, removing it from the list.
+		 * @return
+		 */
+		public E pollLast()	{
+//			if (data == null)
+//				throw new IllegalStateException();
+			
+			
+			Node<E> currList = next;
+			Node<E> prevList = this;
+			
+			while (currList.list != null)	{
+				prevList = currList;
+				currList = currList.list;
+			}
+					
+			E result = currList.data;
+			currList.data = null;
+			prevList.list = null;
+			size--;
+			return result;
+		}
+
+
+	}
+	
+	Node<E> first;
 	
 	int size = 0;
 	
@@ -15,54 +60,31 @@ public class MyLinkedList<E>	{
 	}
 	
 	public MyLinkedList (E datum)	{
-		data = datum;
+		if (first == null)	{
+			first = new Node<E>();
+		}
+		first.add(datum);
 		size++;
 	}
 	
-	public void add(E el)	{
-		if(data == null)	{
-			data = el;
-			size++;
-			return;
-		}
-		
-		MyLinkedList<E> currList = this;
-		while(currList.list != null)	{
-			currList = currList.list;
-		}
-		currList.list = new MyLinkedList<E>(el);
-		
-		size++;
+	public void add(E datum)	{
+		first.add(datum);
 	}
 	
-	/**
-	 * Return the last element, removing it from the list.
-	 * @return
-	 */
+	
+	
 	public E pollLast()	{
-		if (data == null)
+		if (first == null)	{
 			throw new IllegalStateException();
-		
-		if (this.list == null) {
-			E result = data;
-			data = null;
+		}
+		if (first.next == null)	{
+			E datum = first.data;
+			first = null;
 			size--;
-			return result;
+			return datum;
 		}
-		
-		MyLinkedList<E> currList = list;
-		MyLinkedList<E> prevList = this;
-		
-		while (currList.list != null)	{
-			prevList = currList;
-			currList = currList.list;
-		}
-				
-		E result = currList.data;
-		currList.data = null;
-		prevList.list = null;
 		size--;
-		return result;
+		return first.pollLast();
 	}
 	
 	/**
