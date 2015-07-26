@@ -40,8 +40,8 @@
 		<div id="content">
 			<div class="title">
 				<div class="noTextTransform">
-					<h2>Guava's HashBasedTable</h2>
-					<h3>In-Memory Table Structures</h3>
+					<h2>Creating an In-Memory Table:</h2>
+					<h3>Guava's HashBasedTable</h3>
 				</div>
 			</div>
             <br/>
@@ -71,8 +71,9 @@
 					</tr>
 				</table> 
 			</div>
-			<p>To make things more concrete, suppose we have an in-memory Movie table like the one at right. Let's say for the sake of argument that the title column is unique, so it can be used as an index into the entire row of values. What I often need to do in code is implement this table so that the rows returned can optionally, and efficiently, be sorted by title, director or country of origin. Right now they are not sorted at all.</p>
-            <p><b>Note:</b> This page is different from other pages on this site because it is incomplete&mdash;incomplete in the sense that the examples here aren't quite ready for prime-time. A number of issues remain unfixed, indicated by "TODO" statements. One day, soon I hope, I will resolve these issues and replace this work-in-progress with a fully-realized solution to the requirement articulated above.</p>
+			<p>To make things more concrete, suppose we have an in-memory Movie table like the one at right. Let's say for the sake of argument that the title column is unique, so it can be used as an index into the entire row of values. What I often need to do is implement this table so that the rows can optionally, and efficiently, be sorted by title, director or country of origin. Right now they are not sorted at all.</p>
+			<p>On this page I explore how we might achieve this goal of an in-memory table structure by using Guava's HashBasedTable. Althogh  the structure was not designed to solve this particular problem, it offers some basic functionality that can be leveraged for our purposes.</p>
+            <p><b>Note:</b> This page has a number of issues that are as yet unresolved. I mark these incomplete sections with "TODO" statements. One day I hope to replace this work-in-progress with a fully-realized solution.</p>
 
 			<h3>Introducing Guava's HashBasedTable</h3>
 			<p>In the Guava libraries, HashBasedTable implements the Table interface. There are other implementations worth exploring, but the HashBasedTable implementation helps satisfy the sorting requirement outlined at the top of this page, so that is what we focus on here.</p>
@@ -94,10 +95,10 @@ table.put(&quot;Seven&quot;, &quot;Country&quot;, &quot;United States&quot;);
 
 			<p>Initialization seems quite verbose: you feel as though you should be able to insert into the Table in the same way you insert into a database table&mdash;with a single SQL-like insert statement. But when you remember that we're dealing with, at bottom, a hash, it makes perfect sense. <i>TODO: Create a layer of abstraction that lets the user insert rows into the table more succinctly.</i></p>
 			<p>An attentive reader will also note that the second parameter of the put() method is dying for an enum. <i>TODO: Use an enum to define the column names.</i></p>
-			<p>Note that I wrote above that the HashBasedTable "helps" satisfy our sorting requirement. It doesn't actually give us the sorting facility. That, we have to implement ourselves. But what it does is give us a view of the table's values for any one column, while retaining a link between the values in that column and the other values in each row. What this means is that, once you have a view on a column, and once you sort on the cells in that column, you have in effect sorted all the rows.</p>
+			<p>Note that I wrote above that the HashBasedTable "helps" satisfy our sorting requirement. It doesn't actually give us the sorting facility. That, we have to implement ourselves. But what it does is give us a view of the table's values for any one column, while retaining a link between the values in that column and the other values in each row. This means that, once you have a view on a column, and once you sort on the cells in that column, you have in effect sorted all the rows.</p>
 			<p>Here is some code to illustrate what I mean.</p>
 
-<p class="precaption">Listing 2: Sorting on the director column</p>
+<p class="precaption">Listing 2: Getting the table cells which belong to the Director column</p>
 <pre class="preCodeWithCaption">
 // Iterate through all the table cells, getting only those in the Director column.
 // O(nbrRows X nbrColumns)
@@ -173,7 +174,7 @@ Output:
 </pre>
 
 			<p>So the variable rowList in Listing 5 above contains three elements, one for each movie. The first line reads: "Seven Samari; Akira Kurosawa; Japan".</p>
-			<p>And the following listing produces output which would probably be more useful to a programmer, as a List&lt;Map&lt;String, String&gt;&gt;, where the map keys are the column names (i.e., "Title", "Director", and "Country").</p>
+			<p>The following listing produces output which would probably be more useful to a programmer, as a List&lt;Map&lt;String, String&gt;&gt;, where the map keys are the column names (i.e., "Title", "Director", and "Country").</p>
 
 <p class="precaption">Listing 6: Putting the sorted data into a map</p>
 <pre class="preCodeWithCaption">
@@ -192,9 +193,13 @@ Output:
 [{Country=Japan, Title=Seven Samari, Director=Akira Kurosawa}, {Country=United States, Title=Seven, Director=Andy Sidaris}, {Country=Sweden, Title=Seventh Seal, Director=Ingmar Bergman}]
 </pre>
 
-			<p>The list produced by the snippet above contains three elements, one for each row of our table structure. The first row gives us the data on Kurosawa's "Seven Samari" in the form of a Map&lt;String, String&gt;. Each row's map contains three keys: "Title", "Director" and "Country."</p>
-			<p>This is all well and good, but it would be a pain to write specialized code every time you need a table structure that can be sorted by any column. <i>TODO: Encapsulate and abstract this behavior into a useful class.</i></p>
-			<p>Another issue has to do with the awkward fact that all of our columns contain string date. Guava's Table interface does not allow the values of different columns to be different types. <i>TODO: Verify this assertion.</i> Despite this, it is possible to represent int's, double's and so on in the table as strings, and create special sorting routines for these types. In fact, I have done this. But I'm not wholly pleased with this code, because the user has to pay attention to which column he or she wants sorted, and invoke the correct sorting routine for that column's type. A better way to deal with the problem of correctly sorting on different column types is to declare on instantiation how each column ought to be sorted&mdash;as a string or as a numeric. <i>TODO: Implement the above.</i></p>
+			<p>The list produced by the snippet above contains three elements, one for each row of our table structure. The first row gives us the data on Kurosawa's <em>Seven Samari</em> in the form of a Map&lt;String, String&gt;. Each row's map contains three keys: "Title", "Director" and "Country."</p>
+			<p>This is all well and good, but it would be a pain to write specialized code every time you need a table structure that can be sorted by any column. <i>TODO: Encapsulate and abstract this behavior into a useful interface and class.</i></p>
+			<p>Another issue has to do with the awkward fact that, with this implementation, our in-memory table can store only string data. But suppose we also wanted to store the runtime of the movie, which would be an integer. Guava's Table interface does not allow the values of different columns to be different types.</p>
+			<p>There are two ways to deal with this. The first is to represent integers, doubles and so on in the table as strings. In fact, I have done this. The second approach, which I am in the middle of implementing, is to make all the columns hold Objects rather than Strings. I'm not sure that whether one approach is better than the other.</p>
+				<p>Either way, we must create special sorting routines for those columns which should be sorted like numerics rather than strings. In my first implemtation, users have to pay attention to which column they want sorted, and invoke the correct sorting routine for that column's type. A better way to deal with the problem of correctly sorting on different column types is to let each column type "know" how it should be sorted. In the implementation I'm working on now, I do this via the Column enum. Possible values for this enum are, of course, TITLE, DIRECTOR, COUNTRY and RUNTIME, and the enum provides a sort( ) method which contains a switch statement on the enum type; the switch statement makes sure that the first three types are sorted with a string-sorting routine, while the last column is sorted with a numeric-sorting routine.</p>
+				<p>In summary, this page shows how to implement an in-memory table using Guava's HashBasedTable data structure. I am in the middle of writing my own adapter which encapsulates the data structure's implementation details. Once finished, users will be able to employ this adapter for any type of table structure. Right now the methods which it will probably provide are: insert( ), getTable( ), getFieldForKeyAndColumn( ), getRowForKey( ), getTableSortedByColumn( ), getSortedFieldsForColumn( ), deleteRowByKey( ) and deleteRowByColumnAndField( ).</p>
+				
 		</div>
 		<div id="sidebar">
 			<div class="internalLinkBox">

@@ -43,8 +43,8 @@
 			</div>
             <br/>
             
-			<p>Do an Internet search on "set operations java" and at the top of the results you're sure to find at least one page telling you to use Collection retainAll( ) and addAll( ) for intersection and union, respectively. Some online resources might note that sets and lists behave differently, but generally they don't explore <em>how</em> the two behave differently, or what it means to do a traditional set operation on a list. And they certainly don't warn you of the unexpected behavior you'll get if you try to perform a retainAll( ) on a list&mdash;I'll tell you now that you won't get true set-operation behavior.</p>
-			<p>On this page I explore these issues in detail. First I give an executive summary to serve as a quick reference for those who don't have time for, or interest in, the nitty-gritty details.</p>
+			<p>Do an Internet search on "set operations java" and at the top of the results you're sure to find at least one page telling you to use Collection retainAll( ) and addAll( ) for intersection and union, respectively. Some online sources might note that sets and lists behave differently, but generally they don't explore <em>how</em> the two behave differently, or what it means to do a traditional set operation on a list. And they certainly don't warn you of the unexpected behavior you'll get if you try to perform a retainAll( ) on a list&mdash;what you won't get is true set-operation behavior.</p>
+			<p>On this page I explore these issues in detail. First I give a brief summary to serve as a quick reference for those who don't have time for, or interest in, the nitty-gritty details.</p>
 			
             <h3><a id="Summary">Summary</a></h3>
 			<p>If you are working with true sets&mdash;in which every element is unique&mdash;it's slightly advantageous to use Guava's Sets methods.</p>
@@ -112,7 +112,7 @@ public void testTrueSetAddAll() {
 }
 </pre>
 
-            <p>In both cases, first we create the two sets using Guava's Sets.newHashSet( ). If you're not familiar with this, see "Intro to Guava" in the Internal Links at right. After these sets are created, we instantiate what will be the intersection or union of the two sets by initializing each with all the elements of set1. (This second step isn't necessary if you don't need to keep a copy of the original set1.) Then we perform the intersection or union with the appropriate method, and finally we verify that the new set has the correct elements.</p>
+            <p>In both cases, first we create the two sets using Guava's Sets.newHashSet( ). If you're not familiar with this, see "Intro to Guava" in the Internal Links at the side. After these sets are created, we instantiate what will be the intersection or union of the two sets by initializing each with all the elements of set1. (This second step isn't necessary if you don't need to keep a copy of the original set1.) Then we perform the intersection or union with the appropriate method, and finally we verify that the new set has the correct elements.</p>
             <h4> Set Operations with Guava</h4>
             <p>Guava makes set operations a little easier, and a little more intuitive, because it offers true intersect( ) and union( ) methods.</p>
 

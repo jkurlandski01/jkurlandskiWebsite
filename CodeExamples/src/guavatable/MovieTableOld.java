@@ -24,7 +24,7 @@ import java.util.Set;
 /**
  * Class stores information in a database table-like structure that allows sorting on the columns.
  */
-public class MovieTable {
+public class MovieTableOld {
     
     /**
      * TODO: There may be better ways to do this...

@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.Map;
 
 import utils.DialogUtility;
-import guavatable.MovieTable;
-import guavatable.MovieTable.Column;
+import guavatable.MovieTableOld;
+import guavatable.MovieTableOld.Column;
 
 import org.junit.Before;
 import org.junit.Ignore;
@@ -20,9 +20,9 @@ import com.google.common.collect.Maps;
 import com.google.common.util.concurrent.AtomicDouble;
 
 
-public class MovieTableTest {
+public class MovieTableOldTest {
     
-    private MovieTable movieTable = new MovieTable();
+    private MovieTableOld movieTable = new MovieTableOld();
     
     @Before public void initializeFileTable() {
         movieTable.insert("Seventh Seal", "Ingmar Bergman", "Sweden");
@@ -49,13 +49,13 @@ public class MovieTableTest {
     @Test
     public void testGetSortedTableData()    {
     	List<String> expectedList = Lists.newArrayList("Japan", "Sweden", "United States");
-        assertEquals(expectedList, movieTable.getSortedColumnData(MovieTable.Column.COUNTRY));
+        assertEquals(expectedList, movieTable.getSortedColumnData(MovieTableOld.Column.COUNTRY));
     }
 
     @Test
     public void testSortOnTitle()    {
     	List<String> expectedList = Lists.newArrayList("Seven", "Seven Samari", "Seventh Seal");
-        assertEquals(expectedList, movieTable.getSortedColumnData(MovieTable.Column.TITLE));
+        assertEquals(expectedList, movieTable.getSortedColumnData(MovieTableOld.Column.TITLE));
     }
 
     @Test

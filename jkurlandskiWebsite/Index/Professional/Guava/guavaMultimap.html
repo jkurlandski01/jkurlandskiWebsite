@@ -43,10 +43,10 @@
 			</div>
             <br/>
             
-            <p>Guava's Multimap interface and its implementations give Java developers a new tool. It replaces Map&lt;X, List&lt;Y&gt;&gt;, as well as Map&lt;X, Set&lt;Y&gt;&gt;, both of which can be a little awkward and a little verbose.</p>
+            <p>Guava's Multimap interface and its implementations give Java developers a new tool. They replace Map&lt;X, List&lt;Y&gt;&gt;, as well as Map&lt;X, Set&lt;Y&gt;&gt;, both of which can be a little awkward and verbose.</p>
             
             <h3>Multimap Summary</h3>
-            <p>For those in a hurry, here's a quick view on how to use a multimap.</p>
+            <p>For those in a hurry, here's a quick summary of how to use a Multimap.</p>
 
 <p class="precaption">Listing 1: Snapshot on how to use a Multimap</p>
 <pre class="preCodeWithCaption">
@@ -75,7 +75,7 @@ for(Entry&lt;String, String&gt; mapPair : mm.entries())  {
             <ul class="style3">
                 <li>You don't have to test whether the key exists in the map before inserting new values.</li>
                 <li>You can query on a non-existent map key without worrying about a null pointer exception.</li>
-                <li>You can iterate through all values without first obtaining the list assiciated with each key.</li>
+                <li>You can iterate through all values without first obtaining the list associated with each key.</li>
                 <li>With one method call, in O(1) time, you can get the number of all entries in the map.</li>
             </ul>
 
@@ -84,8 +84,8 @@ for(Entry&lt;String, String&gt; mapPair : mm.entries())  {
 
             <h3>Multimap Functionality</h3>
             
-            <p><b>Creating and populating.</b> For the sake of illustration, suppose we want to associate a number of simple forms of an English verb with their infinitive form. Before the Multimap, you would probably use a Map&lt;String, Set&lt;String&gt;&gt;, where the key was the infinitive form, and the set associated with each key consisted of all the various forms for that verb. </p>
-            <p>With Guava, you would use a Multimap&lt;String, String&gt; instead. The lines below show you how to create the multimap and load it with the forms for two verbs, <em>ask</em> and <em>be</em>.</p>
+            <p><b>Creating and populating.</b> For the sake of illustration, suppose we want to associate a number of simple forms of an English verb with their infinitive form. Without Multimap, you would probably use a Map&lt;String, Set&lt;String&gt;&gt;, where the key was the infinitive form, and the set associated with each key consisted of all the various forms for that verb. </p>
+            <p>With Guava, you would use a Multimap&lt;String, String&gt; instead. The lines below show how to create the multimap and load it with the forms for two verbs, <em>ask</em> and <em>be</em>.</p>
 
 <p class="precaption">Listing 2: Creating and populating a Multimap</p>
 <pre class="preCodeWithCaption">
@@ -144,7 +144,7 @@ key = be; value = was
 key = be; value = were
 </pre>
 
-        <p>The above code snippet shows that, to iterate through a multimap, you don't have to retrieve every key separately, and then iterate through all the elements of its list. The entries( ) method does this work for you.</p>
+        <p>The above code snippet shows that to iterate through a multimap, you don't have to retrieve every key separately and then iterate through all the elements of its list. The entries( ) method does this work for you.</p>
         
         <p><b>The useful toString( ) override.</b> The next listing shows the multimap's toString( ) override, which allows you to see all the keys and their values without doing any iteration yourself.</p>
 
