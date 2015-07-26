@@ -1,6 +1,6 @@
 package guavatable;
 
-import guavatable.MovieTable.Column;
+import guavatable.MovieTableOld.Column;
 
 import com.google.common.collect.Ordering;
 import com.google.common.collect.Table;

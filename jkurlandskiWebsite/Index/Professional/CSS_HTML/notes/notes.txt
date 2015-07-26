@@ -1,9 +1,3 @@
-Copy Internal Links format from 
-Java Unit Testing Techniques
-- Check out other pages
-
-
-
 Old Notes below
 
 JERRY: New page with the following. (Perhaps create screenshots.) (1) Eclipse and converting HTML for display. Commands > HTML > Entities > Convert Character / Selection to Entities. 

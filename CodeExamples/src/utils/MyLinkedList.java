@@ -144,7 +144,7 @@ public class MyLinkedList<E>	{
 		if (idx == 0)	{
 			E result = this.data;
 			size--;
-			this = this.list;
+			// JERRY: doesn't compile: this = this.list;
 			return result;
 		}
 		

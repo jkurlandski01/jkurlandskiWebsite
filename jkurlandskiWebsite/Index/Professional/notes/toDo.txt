@@ -1,4 +1,10 @@
-In progress:
+As of 7/21/2015:
+Web Page title: Set Operations on Java Sets and Lists
+Link title: Java set operations with Guava
+
+Guava Table
+- My Note could say: I'm still exploring, but eager to share what I've discovered so far.
+
 
 On every page:
 - √ Every page needs a <br/> between title and first line of text.
