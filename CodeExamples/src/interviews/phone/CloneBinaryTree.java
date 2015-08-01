@@ -18,6 +18,10 @@ public class CloneBinaryTree {
 	}
 
 	public TreeNode cloneTree(TreeNode root)	{
+		if (root == null)	{
+			throw new IllegalArgumentException("Input is null");
+		}
+		
 		TreeNode newRoot = cloneNodeRecursive(root);
 		
 		return newRoot;		
