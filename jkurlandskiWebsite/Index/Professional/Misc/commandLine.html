@@ -52,6 +52,11 @@
 			<br/>
             
             <div class="singleSpacedDescription">
+                <h4>perl -nle 'my @vals = $_ =~ / 212.* /g; print "@vals"' data.txt</h4>
+                <p>Read the file data.txt and output every string that starts with "212" preceded by a space character, ending with the first space character which follows the number. Output goes to stdout.</p>
+            </div>
+                        
+            <div class="singleSpacedDescription">
                 <h4>perl -p -e 's/\t/\n/g' data.txt</h4>
                 <p>Replace tab with newline in the file data.txt. Output goes to stdout.</p>
             </div>
