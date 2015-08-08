@@ -117,6 +117,26 @@ Dropped refs/stash@{0} (c4480e1375987e0881fe3708fdb1576ff56eefdf)
             <p>The "git stash" command has a number of options that you may find worth exploring.</p>
                 
             <h3>Task</h3>
+            <h4>&bull; View and Then Clear the Contents of Your Local Stash</h4>
+            <br/>
+			
+            <p>After you've stashed a lot of stuff, the stash can get filled with a lot of garbage, which can be annoying if you mistakenly pop something. These commands let you delete the stash after you have verified that it doesn't contain anything you need.</p>
+            
+<pre class="preCode">
+$ git stash list
+stash@{0}: WIP on merge-sae: 88dfb0b SAE: Replace non-ascii characters out of actual and expected with their ascii equivalents before performing the eval.
+stash@{1}: WIP on merge-sae: c1c59c4 New SAE eval( ) method that reduces the number of false positives (tests marked as passed but truly failed).
+stash@{2}: WIP on merge-sae: b2f2248 fix cache bug;
+
+$ git stash clear
+
+$ git stash list
+// Returns nothing.
+</pre>
+			
+    		<p> </p>
+				
+            <h3>Task</h3>
             <h4>&bull; Download an existing git repository so that you can begin making changes to the code.</h4>
             <br/>
             
