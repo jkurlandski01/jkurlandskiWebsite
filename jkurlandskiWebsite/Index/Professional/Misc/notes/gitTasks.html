@@ -56,7 +56,7 @@
     		<p> </p>
 				
             <h3>Task</h3>
-            <h4>&bull; Temporarily discard local changes</h4>
+            <h4>&bull; Use git stash to temporarily discard local changes</h4>
             <h4>&bull; Reinstate the temporarily discarded local changes</h4>
             <br/>
             
@@ -65,17 +65,14 @@
 <pre class="preCode">
 // First check status.
 $ git status
-On branch merge-sae
+On branch sae
 Your branch is up-to-date with 'origin/sae'.
 
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git checkout -- <file>..." to discard changes in working directory)
 
-	modified:   Bm25RteTest.java
-	modified:   Bm25RteTest.java
-	modified:   QAWiki.java
-	modified:   CreativeUnitTest.java
+	modified:   shortanswer/Wiki.java
 
 no changes added to commit (use "git add" and/or "git commit -a")
 
@@ -97,7 +94,6 @@ nothing to commit, working directory clean
 // Unstash your changes.
 $ git stash pop
 
-Auto-merging CreativeUnitTest.java
 On branch sae
 Your branch is up-to-date with 'origin/sae'.
 
@@ -105,12 +101,8 @@ Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git checkout -- <file>..." to discard changes in working directory)
 
-	modified:   Bm25RteTest.java
-	modified:   Bm25RteTest.java
-	modified:   QAWiki.java
-	modified:   CreativeUnitTest.java
+	modified:   shortanswer/Wiki.java
 
-no changes added to commit (use "git add" and/or "git commit -a")
 Dropped refs/stash@{0} (c4480e1375987e0881fe3708fdb1576ff56eefdf)
 </pre>
             
