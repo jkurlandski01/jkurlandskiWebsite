@@ -1,0 +1,47 @@
+
+Because they are effectively static, you can't inject a Spring bean into an enum in the ordinary way.
+
+You can, however, use the @PostConstruct annotation to do the work for you.
+
+Here we have an enum that has a dependency on a bean that provides a WordNet API. We wan't to call this API for every enum type. The way to do this is to create a static component inner class for the enum, and for this class write a @PostConstruct method that will perform the API calls after the bean has been autowired.
+
+    public enum Type {
+        ANIMAL(15388),
+        COLOR(4956594),
+        LANGUAGE(6282651);
+
+        public final int id;
+        public ImmutableSet<String> nameList;
+
+        Type(final int id) {
+            this.id = id;
+         }
+
+        @Component
+        public static class WordNetUser {
+
+            @Autowired
+            private WordNetAdapter wordnetAdapter;
+
+            @PostConstruct
+            public void postConstruct() {
+                for (Type type : EnumSet.allOf(Type.class)) {
+                    type.nameList = getSubtypesForClassId(type.id);
+                }
+            }
+
+            public ImmutableSet<String> getSubtypesForClassId(int id)     {
+                List<String> hyponyms = wordnetAdapter.getMergedHyponyms(id, POS.NOUN);
+
+                // Convert all entries to lowercase.
+                Set<String> hypsLowerCase = Sets.newHashSet();
+                hyponyms.stream().forEach(hyp -> {
+                    hypsLowerCase.add(hyp.toLowerCase());
+                });
+
+                return ImmutableSet.copyOf(hypsLowerCase);
+            }
+        }
+    }
+
+
