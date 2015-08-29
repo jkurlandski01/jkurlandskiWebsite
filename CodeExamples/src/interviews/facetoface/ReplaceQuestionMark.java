@@ -13,13 +13,25 @@ public class ReplaceQuestionMark {
     public static void main(String[] args) {
     }
     
-    @Test
-    public void test()	{
+    private void doAssert(String input, Set<String> expected)	{
     	ReplaceQuestionMark replaceQuestionMark = new ReplaceQuestionMark();
-    	Set<String> result = replaceQuestionMark.replaceQuestionMarks("jk?jjkk?");
-    	
-    	Set<String> expected = Sets.newHashSet("jkjjjkkj", "jkjjjkkk", "jkkjjkkj", "jkkjjkkk");
-    	assertEquals(expected, result);
+    	Set<String> result = replaceQuestionMark.replaceQuestionMarks(input);
+    	assertEquals(expected, result);    	
+    }
+    
+    @Test
+    public void test1()	{
+    	doAssert("jk?jjkk?", Sets.newHashSet("jkjjjkkj", "jkjjjkkk", "jkkjjkkj", "jkkjjkkk"));
+    }
+
+    @Test
+    public void test2()	{
+    	doAssert("?", Sets.newHashSet("j", "k"));
+    }
+
+    @Test
+    public void test3()	{
+    	doAssert("?j", Sets.newHashSet("jj", "kj"));
     }
 
 	private Set<String> replaceQuestionMarks(String input) {
@@ -27,20 +39,63 @@ public class ReplaceQuestionMark {
 		if(input == null || input.isEmpty())	{
 			return permutations;
 		}
-		depthFirstSearch(input, 0, new StringBuilder(), permutations);
+		
+		// Pick your implementation here.
+		depthFirstSearchWorkingOn(input, 0, new StringBuilder(), permutations);
+		//depthFirstSearch(input, 0, new StringBuilder(), permutations);
+		//depthFirstSearchMultipleStringBuilders(input, 0, new StringBuilder(), permutations);
+		
 		return permutations;
 	}
 	
-	private void depthFirstSearch(String input, int idx, StringBuilder stringThusFar, Set<String> list) {
+	// TODO: rewriting the method to see if I can make it shorter and simpler.
+	private void depthFirstSearchWorkingOn(String input, int idx, StringBuilder stringThusFar, Set<String> list) {
+		// Base case when the idx is pointing at what was a question mark and there nothing more to consume.
 		if(idx >= input.length())	{
 			list.add(stringThusFar.toString());
 			return;
 		}
 		
+		// Consume j and k's.
+//		int newIdx = idx;
+		while(idx < input.length() && (input.charAt(idx) == 'j' || input.charAt(idx) == 'k'))	{
+			stringThusFar.append(input.charAt(idx));
+			idx++;
+		}
+		
+		if(idx >= input.length())	{
+			// We've consumed the string, finding no new question marks.
+			list.add(stringThusFar.toString());
+			return;
+		}
+		
+		if(input.charAt(idx) == '?')	{			
+			depthFirstSearch(input, idx + 1, stringThusFar.append("j"), list);
+			stringThusFar.setLength(idx);
+			
+			depthFirstSearch(input, idx + 1, stringThusFar.append("k"), list);
+			stringThusFar.setLength(idx);
+		}
+	}
+		
+	private void depthFirstSearch(String input, int idx, StringBuilder stringThusFar, Set<String> list) {
+		// Base case when the idx is pointing at what was a question mark and there nothing more to consume.
+		if(idx >= input.length())	{
+			list.add(stringThusFar.toString());
+			return;
+		}
+		
+		// Consume j and k's.
 		int newIdx = idx;
 		while(newIdx < input.length() && (input.charAt(newIdx) == 'j' || input.charAt(newIdx) == 'k'))	{
 			stringThusFar.append(input.charAt(newIdx));
 			newIdx++;
+		}
+		
+		if(newIdx >= input.length())	{
+			// We've consumed the string, finding no new question marks.
+			list.add(stringThusFar.toString());
+			return;
 		}
 		
 		if(input.charAt(newIdx) == '?')	{			
@@ -61,6 +116,12 @@ public class ReplaceQuestionMark {
 		while(idx < input.length() && (input.charAt(idx) == 'j' || input.charAt(idx) == 'k'))	{
 			stringThusFar.append(input.charAt(idx));
 			idx++;
+		}
+		
+		if(idx >= input.length())	{
+			// We've consumed the string, finding no new question marks.
+			list.add(stringThusFar.toString());
+			return;
 		}
 		
 		if(input.charAt(idx) == '?')	{			

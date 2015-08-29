@@ -5,6 +5,68 @@ You can, however, use the @PostConstruct annotation to do the work for you.
 
 Here we have an enum that has a dependency on a bean that provides a WordNet API. We wan't to call this API for every enum type. The way to do this is to create a static component inner class for the enum, and for this class write a @PostConstruct method that will perform the API calls after the bean has been autowired.
 
+
+
+public enum TaxonomyType implements ITaxonomy {
+
+    ANIMAL(15388),
+    COLOR(4956594),
+    LANGUAGE(6282651);
+
+    public final int id;
+    public ImmutableSet<String> nameList;
+
+    TaxonomyType(final int id) {
+        this.id = id;
+    }
+
+    /**
+     * This is necessary since we want to use the wordnetAdapter bean inside our enum.
+     */
+    @Component
+    public static class WordNetUser {
+
+        @Autowired
+        private WordNetAdapter wordnetAdapter;
+
+        @PostConstruct
+        public void postConstruct() {
+            for (TaxonomyType type : EnumSet.allOf(TaxonomyType.class)) {
+                type.nameList = getSubtypesForClassId(type.id);
+            }
+        }
+
+        public ImmutableSet<String> getSubtypesForClassId(int id)     {
+            Set<String> hyponyms = wordnetAdapter.getMergedHyponyms(id, POS.NOUN);
+
+            // Convert all entries to lowercase.
+            Set<String> hypsLowerCase = Sets.newHashSet();
+            hyponyms.stream().forEach(hyp -> {
+                hypsLowerCase.add(hyp.toLowerCase());
+            });
+
+            return ImmutableSet.copyOf(hypsLowerCase);
+        }
+    }
+
+    public boolean isType(final String word)  {
+        return nameList.contains(word.toLowerCase());
+    }
+
+    public Set<String> getNameList()    {
+        return nameList;
+    }
+
+}
+
+
+Earlier version of the above, with the enum wrapped around an outer class.
+
+
+@Service
+public class TaxonomyType {
+
+
     public enum Type {
         ANIMAL(15388),
         COLOR(4956594),
@@ -15,8 +77,11 @@ Here we have an enum that has a dependency on a bean that provides a WordNet API
 
         Type(final int id) {
             this.id = id;
-         }
+        }
 
+        /**
+         * This is necessary since we want to use the wordnetAdapter bean inside our enum.
+         */
         @Component
         public static class WordNetUser {
 
@@ -31,7 +96,7 @@ Here we have an enum that has a dependency on a bean that provides a WordNet API
             }
 
             public ImmutableSet<String> getSubtypesForClassId(int id)     {
-                List<String> hyponyms = wordnetAdapter.getMergedHyponyms(id, POS.NOUN);
+                Set<String> hyponyms = wordnetAdapter.getMergedHyponyms(id, POS.NOUN);
 
                 // Convert all entries to lowercase.
                 Set<String> hypsLowerCase = Sets.newHashSet();
@@ -42,6 +107,55 @@ Here we have an enum that has a dependency on a bean that provides a WordNet API
                 return ImmutableSet.copyOf(hypsLowerCase);
             }
         }
+
+        public boolean isType(final String word)  {
+            return nameList.contains(word.toLowerCase());
+        }
     }
 
+    /**
+     * Identify and return any of the given type in the given list.
+     */
+    public static Set<String> findAllOfTypeInList(List<String> input, TaxonomyType.Type type)  {
+        Multiset<String> allTypes = HashMultiset.create(type.nameList);
 
+        // Perform the intersection of the two lists.
+        Multiset<String> wordsGiven = HashMultiset.create(input);
+        Multiset<String> multisetIntersection = Multisets.intersection(wordsGiven, allTypes);
+
+        return multisetIntersection.elementSet();
+    }
+
+    /**
+     * Filter out of the given map any nodes which do not refer to the given type themselves, or which are not parents
+     * of nodes which refer to the given type.
+     */
+    public static Map<DepNode,Double> filterOtherTypesForSae(final Map<DepNode, Double> input, final Type type) {
+        Map<DepNode, Double> result = Maps.newHashMap();
+
+        input.entrySet().stream().forEach(entry -> {
+            List<DepNode> nodeAndChildren = entry.getKey().getChildren();
+            nodeAndChildren.add(entry.getKey());
+            List<DepNode> nodesOfType = nodeAndChildren.stream()
+                    .filter(child -> type.isType(child.lemma())).collect(Collectors.toList());
+            if (! nodesOfType.isEmpty())    {
+                result.put(entry.getKey(), entry.getValue());
+            }
+        });
+
+        return result;
+    }
+
+    /**
+     * Find each node in the tree that is of the given type, and assign to it the given confidence score.
+     */
+    public static Map<DepNode,Double> scoreAllNodesOfType(IDepParseTree tree, Type type, double confidence) {
+        Map<DepNode,Double> result = Maps.newHashMap();
+
+        tree.getDepNodes().stream().filter(node -> type.isType(node.lemma())).forEach(node -> {
+            result.put(node, confidence);
+        });
+
+        return result;
+    }
+}

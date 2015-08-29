@@ -2,20 +2,20 @@ package utils;
 
 import java.util.NoSuchElementException;
 
-// JERRY: Need a Stack object that contains a node; other nodes can contain other nodes
 // JERRY: more efficient to have first element be the top of the stack
+
 public class MyLinkedList<E>	{
-	public class Node<E>	{
-		Node<E> next;
-		E data;
+	public class Node<F>	{
+		Node<F> next;
+		F data;
 		
-		public void add(E el)	{
+		public void add(F el)	{
 //			if(data == null)	{
 //				data = el;
 //				return;
 //			}
 			
-			Node<E> currList = this;
+			Node<F> currList = this;
 			while(currList.next != null)	{
 				currList = currList.next;
 			}
@@ -28,26 +28,76 @@ public class MyLinkedList<E>	{
 		 * Return the last element, removing it from the list.
 		 * @return
 		 */
-		public E pollLast()	{
+		public F pollLast()	{
 //			if (data == null)
 //				throw new IllegalStateException();
 			
 			
-			Node<E> currList = next;
-			Node<E> prevList = this;
+			Node<F> currList = next;
+			Node<F> prevList = this;
 			
-			while (currList.list != null)	{
+			while (currList.next != null)	{
 				prevList = currList;
-				currList = currList.list;
+				currList = currList.next;
 			}
 					
-			E result = currList.data;
+			F result = currList.data;
 			currList.data = null;
-			prevList.list = null;
-			size--;
+			prevList.next = null;
+//			size--;
 			return result;
 		}
 
+		/**
+		 * Return the last element, but do not remove it.
+		 * @return
+		 */
+		public F peekLast()	{
+//			if (next == null)	{
+//				return data;
+//			}
+			
+			Node<F> currList = this;			
+			while (currList.next != null)	{
+				currList = currList.next;
+			}
+			return currList.data;
+		}
+
+		public int indexOf(F element)	{
+			int ct = 0;
+			
+			Node<F> currList = this;
+			while (currList != null)	{
+				if (currList.data.equals(element))	{
+					return ct;
+				}
+				currList = currList.next;
+				ct++;
+			}
+			
+			return -1;
+		}
+
+		public F remove(int idx)	{
+		
+			Node<F> prevList = this;
+			Node<F> currList = this.next;
+			
+			int ct = 0;
+			while (currList != null && ct < idx)	{
+				prevList = currList;
+				currList = currList.next;
+				ct++;
+			}
+			if (ct == idx)	{
+				F result = currList.data;
+				size--;
+				prevList.next = currList.next;
+				return result;
+			}
+			throw new NoSuchElementException("Not there.");
+		}
 
 	}
 	
@@ -69,6 +119,7 @@ public class MyLinkedList<E>	{
 	
 	public void add(E datum)	{
 		first.add(datum);
+		size++;
 	}
 	
 	
@@ -92,76 +143,42 @@ public class MyLinkedList<E>	{
 	 * @return
 	 */
 	public E peekLast()	{
-		if (data == null)
+		if (first == null)
 			throw new IllegalStateException("Nothing there");
 		
-		if (this.list == null)	{
-			return data;
-		}
+		return first.peekLast();
 		
-		MyLinkedList<E> currList = this.list;
-//		MyLinkedList<E> prevList = this;
-		
-		while (currList.list != null)	{
-//			prevList = currList;
-			currList = currList.list;
-		}
-		return currList.data;
 	}
 	
 	public boolean isEmpty()	{
-		return data == null;
+		return first == null;
 	}
 	
 	public int size()	{
 		return size;
 	}
 	
-	// TODO: implement indexOf(E) and remove(int)
 	public int indexOf(E element)	{
-		if (data == null)	{
+		if (first == null)	{
 			return -1;
 		}
 		
-		int ct = 0;
-		
-		MyLinkedList<E> currList = this;
-		while (currList != null)	{
-			if (currList.data.equals(element))	{
-				return ct;
-			}
-			currList = currList.list;
-		}
-		
-		return -1;
+		return first.indexOf(element);
 	}
 	
 	public E remove(int idx)	{
-		if (data == null)	{
+		if (first == null)	{
 			throw new NoSuchElementException("Not there.");
 		}
-		
+
 		if (idx == 0)	{
-			E result = this.data;
+			E result = first.data;
 			size--;
-			// JERRY: doesn't compile: this = this.list;
+			first = null;
 			return result;
 		}
-		
-		MyLinkedList<E> prevList = this;
-		MyLinkedList<E> currList = this.list;
-		int ct = 0;
-		while (currList != null && ct < idx)	{
-			prevList = currList;
-			currList = currList.list;
-			ct++;
-		}
-		if (ct == idx)	{
-			E result = currList.data;
-			size--;
-			prevList.list = currList.list;
-			return result;
-		}
-		throw new NoSuchElementException("Not there.");
+
+		return first.remove(idx);
 	}
+		
 }
