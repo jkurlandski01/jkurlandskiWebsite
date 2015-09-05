@@ -195,7 +195,7 @@ public void testEnumSet()   {
 }
 </pre>
 
-        <p>It's true that instead of an EnumSet I could have used a plain old Java Set. But the point is that the EnumSet has been optimized to perform certain opertions very fast. For example, contains( ) for ordinary Set collections may take O(n) time; but for EnumSets they can generally be performed in O(1). Exactly how this is done, and when these optimizations are beneficial, is optional reading&mdash;but the upshot is: use EnumSet when creating subsets of an enum.</p>
+        <p>It's true that instead of an EnumSet I could have used a plain old Java Set. But the point is that the EnumSet has been optimized to perform certain opertions very fast (leveraging the fact that these sets are represented internally as bit vectors). Exactly when these optimizations are beneficial is optional reading&mdash;but the upshot is: use EnumSet when creating subsets of an enum.</p>
 
 		</div>
 
