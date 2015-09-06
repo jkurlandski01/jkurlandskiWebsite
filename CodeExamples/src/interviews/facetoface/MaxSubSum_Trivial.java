@@ -5,10 +5,10 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 /**
- * A non-working solution done in an interview.
+ * Uses a very trivial, naive solution taking O(n^2) time.
  *
  */
-public class MaxSubSum_XiangboZhao {
+public class MaxSubSum_Trivial {
 	
 	public static class Result {
 		int sum = Integer.MIN_VALUE;
@@ -48,31 +48,30 @@ public class MaxSubSum_XiangboZhao {
 	public static Result maxSubSum(int[] arr)	{
 		Result result = new Result(Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE);
 		
-		int start = 0;
-		int end = 0; //?
-		int maxSum = Integer.MIN_VALUE;
-		
 		if (arr.length == 0)	{
 			return result;
 		}
 		
-		int currSum = 0;
-		for (int i = 0; i < arr.length; i++)	{
-			currSum += arr[i];
-			if (currSum < 0)	{
-				currSum = 0;
-				start = i + 1;
+		int currSum = Integer.MIN_VALUE;
+		for (int startIdx = 0; startIdx < arr.length; startIdx++)	{
+
+			for (int endIdx = startIdx; endIdx < arr.length; endIdx++)	{
+				if (startIdx == endIdx)	{
+					currSum = arr[startIdx];
+				}
+				else	{
+					currSum = currSum += arr[endIdx];
+				}
+				
+				if (currSum > result.sum)	{
+					result.sum = currSum;
+					result.startIdx = startIdx;
+					result.endIdx = endIdx;
+				}
 			}
-			
-			if (currSum > maxSum)	{
-				maxSum = currSum;
-				end = i;
-			}
+
 		}
 		
-		result.sum = maxSum;
-		result.startIdx = start;
-		result.endIdx = end;
 		
 		return result;
 	}
@@ -114,6 +113,14 @@ public class MaxSubSum_XiangboZhao {
 		int[] input = {2, 1, -56};
 		Result actual = maxSubSum(input);
 		Result expected = new Result(0, 1, 3);
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testMixedSimple3()	{
+		int[] input = {12, -3, 36};
+		Result actual = maxSubSum(input);
+		Result expected = new Result(0, 2, 45);
 		assertEquals(expected, actual);
 	}
 }
