@@ -48,6 +48,45 @@ Set&lt;String&gt; actual = Sets.newHashSet(kifClauses);
 Set&lt;String&gt; cleanedActual = actual.stream().map(str -&gt; str.replaceAll(&quot;\\s+&quot;, &quot; &quot;)).collect(Collectors.toSet());
 </pre>
         </div>
+	</br>
+        
+            <p>Pass a method to another method as a parameter.</p>
+<pre class="preCodeWithCaption">
+	// JERRY: angle brackets need to be escaped
+// Method definition.
+    /**
+     * If input pos is a noun, return a higher score than if it isn't a noun.
+     */
+    public static final Function<PennEnPos, Double> scoreNounsHigher = (pos) -> {
+        EnumSet bestPos = EnumSet.of(PennEnPos.NN, PennEnPos.NNP, PennEnPos.NNPS, PennEnPos.NNS);
+        double score = bestPos.contains(pos) ? 0.5 : 0.25;
+        return score;
+    };
+
+
+// Method invocation.
+    /**
+     * Find each node in the tree that is of the given type, and assign to it the given confidence score.
+     */
+    public static Map<DepNode,Double> scoreAllNodesOfType(IDepParseTree tree, ITaxonomy type, Function<PennEnPos, Double> func) {
+        Map<DepNode,Double> result = Maps.newHashMap();
+
+        tree.getDepNodes().stream().filter(node -> type.isType(node.lemma())).forEach(node -> {
+            PennEnPos pos = node.pos();
+            double score = func.apply(pos);
+            result.put(node, score);
+        });
+
+        return result;
+    }
+
+// Passing the method as a parameter.
+result = Taxonomy.scoreAllNodesOfType(sentence, type, Taxonomy.scoreNounsHigher);
+
+
+
+</pre>
+        </div>
         
         <div id="sidebar">
             <div class="internalLinkBox">
