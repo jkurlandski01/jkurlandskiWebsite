@@ -1,0 +1,26 @@
+<div id="portfolio-wrapper">
+	<div id="portfolio" class="container">
+		<!-- <h1>Under the Hood</h1> -->
+				<h3>Technical Details</h3>
+		<br/>
+		<p>Like the contents, the design of this website is an ongoing process which, hopefully, will give me a chance to learn a little more about web development. Details below.</p>
+		<div id="column1">
+        <br/>
+		</div>
+		<div id="column2">
+			<div class="title">
+				<h2>Formatting</h2>
+			</div>
+			<p>The formatting of this page--indeed, this website--depends on a cascading style sheet (a .css file) which I obtained from FreeCssTemplates.org.</p>
+			<p>As per their Creative Commons License, you'll find a link to their wonderful tools below.</p>
+			<p>I'm too proud not to point out, however, that the changes I have made to the FreeCss template I borrowed have been so extensive that you may be hard put to identify it as you peruse their site.</p>
+		</div>
+		<div id="column3">
+			<div class="title">
+				<h2>Hosting</h2>
+			</div>
+			<p>My hosting site--the place where my website actually exists--is DreamHost.</p>
+			<p>For a very reasonable rate, they let me put an unlimited amount of data on their servers. They offer a lot of technology as well as extensive documentation. And more than once I've had to contact their help desk, where the service is prompt, knowledgeable, and free. </p>
+		</div>
+	</div>
+</div>
