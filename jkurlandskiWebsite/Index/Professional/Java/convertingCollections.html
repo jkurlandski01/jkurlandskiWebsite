@@ -46,7 +46,7 @@
 			<br/>
 			
 			<p>On this page I cover converting from one Java collection type to another. The code here is pretty basic, but sometimes it's easy to forget exactly how to transform one type of collection into another&mdash;especially when it comes to arrays. I've written this page to serve as a quick reference.</p>
-			<p>In all of my examples, I use JUnit's assertEquals( ) to verify the that the collection was converted correctly. Also, I instantiate my Set and List data structures with Guava. See my separate "Intro to Guava" page if you are unfamiliar with this library, or simply use vanilla Java instantiation (as in "new HashSet&lt;String&gt;()") instead. The point of this page&mdash;converting from one type of collection to another&mdash;doesn't depend on how you instantiate the Java collections.</p>
+			<p>In all of my examples, I use JUnit's assertEquals( ) to verify the that the collection was converted correctly. </p>
 			
             <h3>Converting an array to a List</h3>
             <p>Converting an array to a Java List uses the handy Arrays.asList( ) method.</p>
@@ -73,7 +73,7 @@ assertEquals(3, intList.size());
 <p class="precaption">Listing 2: Converting an array to a Java Set</p>
 <pre class="preCodeWithCaption">
 String[] cityArray = {&quot;Prague&quot;, &quot;Minsk&quot;, &quot;Budapest&quot;};
-Set&lt;String&gt; citySet = Sets.newHashSet(Arrays.asList(cityArray));
+Set&lt;String&gt; citySet = new HashSet&lt;&gt(Arrays.asList(cityArray));
     
 assertEquals(3, citySet.size());
 </pre>
@@ -84,7 +84,7 @@ assertEquals(3, citySet.size());
 
 <p class="precaption">Listing 3: Converting a Java Set to an array</p>
 <pre class="preCodeWithCaption">
-Set&lt;String&gt; set1 = Sets.newHashSet(&quot;London&quot;, &quot;Beijing&quot;, &quot;New Delhi&quot;);
+Set&lt;String&gt; set1 = new HashSet&lt;&gt(&quot;London&quot;, &quot;Beijing&quot;, &quot;New Delhi&quot;);
 String[] array1 = set1.toArray((new String[set1.size()]));
     
 assertEquals(3, array1.length);
@@ -94,7 +94,7 @@ assertEquals(3, array1.length);
             
 <p class="precaption">Listing 4: Converting a Java List to an array</p>
 <pre class="preCodeWithCaption">
-List&lt;String&gt; list1 = Lists.newArrayList(&quot;Amsterdam&quot;, &quot;Chicago&quot;, &quot;Mexico City&quot;);
+List&lt;String&gt; list1 = new ArrayList&lt;&gt(&quot;Amsterdam&quot;, &quot;Chicago&quot;, &quot;Mexico City&quot;);
 String[] array1 = list1.toArray((new String[list1.size()]));
     
 assertEquals(3, array1.length);
@@ -106,8 +106,8 @@ assertEquals(3, array1.length);
 
 <p class="precaption">Listing 5: Converting a Java Set to a List</p>
 <pre class="preCodeWithCaption">
-Set&lt;String&gt; set1 = Sets.newHashSet(&quot;London&quot;, &quot;Tokyo&quot;, &quot;Warsaw&quot;);
-List&lt;String&gt; list1 = Lists.newArrayList(set1);
+Set&lt;String&gt; set1 = new HashSet&lt;&gt(&quot;London&quot;, &quot;Tokyo&quot;, &quot;Warsaw&quot;);
+List&lt;String&gt; list1 = new ArrayList&lt;&gt(set1);
     
 assertEquals(3, list1.size());
 </pre>
@@ -115,8 +115,8 @@ assertEquals(3, list1.size());
 
 <p class="precaption">Listing 6: Converting a Java List to a Set</p>
 <pre class="preCodeWithCaption">
-List&lt;String&gt; list1 = Lists.newArrayList(&quot;London&quot;, &quot;Tokyo&quot;, &quot;Warsaw&quot;);
-Set&lt;String&gt; set1 = Sets.newHashSet(list1);
+List&lt;String&gt; list1 = new ArrayList&lt;&gt(&quot;London&quot;, &quot;Tokyo&quot;, &quot;Warsaw&quot;);
+Set&lt;String&gt; set1 = new HashSet&lt;&gt(list1);
 
 assertEquals(3, set1.size());
 </pre>
