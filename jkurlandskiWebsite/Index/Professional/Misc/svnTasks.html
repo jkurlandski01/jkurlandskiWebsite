@@ -181,6 +181,34 @@ Committed revision 104.
             
             <br/>
             <h3>Task</h3>
+            <h4>&bull; Use "svn import" to add a new directory to the remote repository</h4>
+            <p>Suppose you want to create a new directory in an existing repository, and you want a local working copy of just that directory.</p>
+			<p>The first listing below shows your current working directory, which contains the new directory you want to add. It also shows how to add the dirctory to the repository.</p>
+
+<pre class="preCode">
+$ pwd
+/home/jerry/workspace/svn
+
+$ ls 
+newDirectory
+
+$ svn import -m "Adding dir." newDirectory &lt;http location&gt;/svn/newDirectory
+</pre>
+
+			<p>Even though you've added the directory to the repository, the local directory is not yet under version control. Do the following:</p>
+<pre class="preCode">
+$ svn checkout &lt;http location&gt;/svn/newDirectory
+Checked out revision 83.
+
+$ cd newDirectory
+
+$ svn info
+(detailed output)
+</pre>
+
+      
+            <br/>
+            <h3>Task</h3>
             <h4>&bull; Use propedit svn:ignore to ignore a .project file</h4>
             <p>Suppose you work in Eclipse or some other IDE that stores user-specific data in a .project file. Since the settings here are not applicable to those of other developers, you don't want this information stored in the repository.</p>
             <p>In the steps below we first try to edit the svn:ignore properties, but find that we need to tell SVN which editor we want to use. We choose vim. Then we try to open the editor again&mdash;successfully this time.</p>
