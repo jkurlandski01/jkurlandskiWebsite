@@ -242,6 +242,40 @@ $ svn status
  M      .
 </pre>
             
+
+      
+            <br/>
+            <h3>Task</h3>
+            <h4>&bull; Create a top-level directory in the repository.</h4>
+            <p>This situation is most likely to occur when you are starting an entirely new project, one which should not be subsumed by an existing directory in the repository.</p>
+            <p>If you don't know the URL of where this new directory should sit, you can figure it out by getting the URL of some other project in the same repository. In the example below, I know I want the new ProjectB directory to be in a path parallel to that of an existing ProjectA. So I cd to the ProjectA root and do an "svn info".</p>
+<pre class="preCode">
+$ pwd
+/home/jerry/workspace/projectA
+
+$ svn info
+Path: .
+Working Copy Root Path: /home/jerry/workspace/ProjectA
+URL: https://somePath/ProjectA
+[... more output ...]
+</pre>
+			<p>From the output above, I know the URL for my new directory will be https://somePath/ProjectB. Now I use two commands&mdash;"svn import" and "svn checkout"&mdash;to create the new directory in the repository, and to link my new repository location to a working directory on my local file system. Note that these commands must be run from one directory <em>above</em> the new directory on your local file system, as the "pwd" and "ls" commands make clear.</p>
+<pre class="preCode">
+$ pwd
+/home/jerry/workspace/
+
+$ ls
+ProjectA   ProjectB
+
+$ $ svn import -m "Adding ProjectB." ProjectB https://somePath/ProjectB
+Committed revision 936923.
+
+$ svn checkout https://somePath/ProjectB
+Checked out revision 936923.
+</pre>
+			<p>Now you are ready to add new files to your new repository location.</p>
+            
+            
             <br/>
             <h3>Task</h3>
             <h4>&bull; Use "svn update" to merge a file that has both been changed locally and been modified by another user.</h4>
