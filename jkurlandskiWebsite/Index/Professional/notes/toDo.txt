@@ -1,3 +1,24 @@
+Added Dec. 17, 2015
+
+Eclipse Add-Ins page:
+- Could perhaps go in, or be referenced in, a css/html category page.
+
+Get word wrap/line wrap working in Eclipse.
+—————————————————————
+http://stackoverflow.com/questions/97663/how-can-i-get-word-wrap-to-work-in-eclipse-pdt-for-php-files
+AhtiK eclipse
+http://www.ahtik.com/eclipse-update/
+- This is already briefly mentioned on Aptana page.
+
+AnyEdit Tools
+——————
+http://blog.jooq.org/2012/04/17/must-have-eclipse-plugin-anyedit-tools/
+http://marketplace.eclipse.org/content/anyedit-tools
+- I’m mostly interested in the convert chars to html entities facility
+
+
+
+
 As of 7/21/2015:
 Web Page title: Set Operations on Java Sets and Lists
 Link title: Java set operations with Guava

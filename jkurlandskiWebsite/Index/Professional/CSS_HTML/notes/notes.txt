@@ -8,6 +8,10 @@ This taken from Aptana page because apparently it's not Aptana:
             <h4>Aptana can automatically convert angle brackets to HTML entities</h4>
             <p>Because angle brackets indicate a tag in HTML, if you want to display a bracket you have to tell the browser not to read the angle bracket as the start of a tag. You do this by replacing the characters with what are called <em>HTML entities</em>. So, to display &lt;p&gt;, you must type in this: &amp;lt;p&amp;gt;  I discuss this more thoroughly on the "Using &lt;pre&gt; and &lt;code&gt;" page in this section of the website. The point here is that Aptana offers an extremely useful tool that will do this for you. To use the tool click on the Commands menu item at top and go to HTML > Entities > Convert Character / Selection to Entities. You can also get there by right-clicking. Note that, the first time you use it, the command might take several seconds to perform the conversion.</p>
 
+Later Note:
+But apparently it is an Aptana trick.
+- Now I’ve removed Aptana and I don’t have the commands menu.
+- See http://stackoverflow.com/questions/19476632/aptana-plugin-within-eclipse-all-commands-options-greyed-out
 
 ----------
 

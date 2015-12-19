@@ -214,7 +214,7 @@
 
 
             <h3>SVN Ignore</h3>
-            <p>Use svn's ignore property to avoid putting items into the repository. You do this, for example, with files that may differ from one machine to the next, as with .classpath settings&mdash;or with files which are produced in the compilation process, as with .class or .exe files and the directories which contain them.</p>
+            <p>Use svn's ignore property to avoid putting items into the repository. You do this, for example, with files that may differ from one machine to the next, as with .classpath settings&mdash;or with files which are produced in the compilation process, as with .class or .exe files and the directories which contain them. Note that after making these changes you will need to commit&mdash;and that your first attempt to commit may return a couple of SVN errors&mdash;and that these SVN errors probably indicate you need to do an "svn update" before you can commit.</p>
             
             <div class="singleSpacedDescription">
                 <h4>$ export SVN_EDITOR=vim</h4>
