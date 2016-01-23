@@ -46,7 +46,7 @@ a img {
 	{
 		display: inline-block;
 	}
-	
+
 		.image img
 		{
 			display: block;
@@ -59,13 +59,13 @@ a img {
 		width: 100%;
 		margin: 0 0 2em 0;
 	}
-	
+
 	.image-left
 	{
 		float: left;
 		margin: 0 2em 2em 0;
 	}
-	
+
 	.image-centered
 	{
 		display: block;
@@ -129,20 +129,20 @@ th, td	{
 }
 
 
-figcaption p { 
+figcaption p {
 	line-height: 1;
 	font-size: 10pt;
 	font-family: 'FontAwesome';
 }
 
-.indentedQuote { 
+.indentedQuote {
 	font-family: "Times New Roman", Georgia, Serif;
-	margin-left: 40px; 
+	margin-left: 40px;
 	line-height: 1.3
 }
 
-.indentedCitation { 
-	margin-left: 40px; 
+.indentedCitation {
+	margin-left: 40px;
 	margin-bottom: 20px;
 	line-height: 1
 	clear: both;
@@ -165,7 +165,7 @@ figcaption p {
 	    overflow: auto;
 	    padding: 10px;
 	 }
-	
+
 	pre.preCodeWithCaption
 	{
 		margin-top: 0px;
@@ -178,13 +178,13 @@ figcaption p {
 
 	pre.prePoetry
 	{
-		font-family: 'FontAwesome';
+		font-family: "Times New Roman", Georgia, Serif;
 		font-size: 1em;
 	    #background: #E8E8E8;
 	    overflow: auto;
 	    padding: 5px;
 	 }
-	
+
 	pre.preProse
 	{
 		font-family: 'FontAwesome';
@@ -195,9 +195,9 @@ figcaption p {
 	    padding: 5px;
 	    margin-right: 140;
 	 }
-	
 
-/* Section allowing for a series of descriptions of things. Floating is allowed, but turned off between descriptions. 
+
+/* Section allowing for a series of descriptions of things. Floating is allowed, but turned off between descriptions.
 li = thing being described (for time being that is an SVN command, hence the monospace font;
 p = the description
 */
@@ -239,7 +239,7 @@ hr {
 		padding: 0;
 		list-style: none;
 	}
-	
+
 	ul.style1 li:first-child
 	{
 		border-top: 0;
@@ -253,20 +253,20 @@ hr {
 		padding: 0.20em 0;
 		//padding: 0;
 }
-	
+
 	ul.style2
 	{
 		margin: 0;
 		padding: 0;
 		list-style: none;
 	}
-	
+
 	ul.style2 li
 	{
 		border-top: solid 1px #E5E5E5;
 		padding: 0.80em 0;
 	}
-	
+
 	ul.style2 li:first-child
 	{
 		border-top: 0;
@@ -283,7 +283,7 @@ hr {
 	{
 		padding: 0.80em 0;
 	}
-	
+
 /*********************************************************************************/
 /* Social Icon Styles                                                            */
 /*********************************************************************************/
@@ -294,26 +294,26 @@ hr {
 		padding: 2em 0em 0em 0em;
 		list-style: none;
 	}
-	
+
 	ul.contact li
 	{
 		display: inline-block;
 		padding: 0em 0.30em;
 		font-size: 1em;
 	}
-	
+
 	ul.contact li span
 	{
 		display: none;
 		margin: 0;
 		padding: 0;
 	}
-	
+
 	ul.contact li a
 	{
 		color: #FFF;
 	}
-	
+
 	ul.contact li a:before
 	{
 		display: inline-block;
@@ -325,7 +325,7 @@ hr {
 		text-align: center;
 		color: #FFFFFF;
 	}
-	
+
 	ul.contact li a.icon-twitter:before { background: #2DAAE4; }
 	ul.contact li a.icon-facebook:before { background: #39599F; }
 	ul.contact li a.icon-dribbble:before { background: #C4376B;	}
@@ -342,7 +342,7 @@ hr {
 		margin-bottom: 0em;
 		# text-transform: uppercase;
 	}
-	
+
 	.title .noTextTransform
 	{
 		text-transform: capitalize;
@@ -355,7 +355,7 @@ hr {
 		font-size: 2em;
 		color: #171717;
 	}
-	
+
 	.title .byline
 	{
 		letter-spacing: 0.15em;
@@ -397,26 +397,26 @@ hr {
 		box-shadow: inset 0 -10px 10px -10px rgba(0,0,0,.1);
 }
 
-	#header 
+	#header
 	{
 		position: relative;
 		text-align: left;
-		
+
 	}
-	
-	#header-image1 
+
+	#header-image1
 	{
     	width:55%;
-		position:absolute; 
-    	TOP:15px; 
+		position:absolute;
+    	TOP:15px;
     	RIGHT:3px;
 }
 
-	#header-image2 
+	#header-image2
 	{
     	width:55%;
-		position:absolute; 
-		TOP:72px; 
+		position:absolute;
+		TOP:72px;
     	RIGHT:3px;
 }
 
@@ -424,28 +424,28 @@ hr {
 /* Logo                                                                          */
 /*********************************************************************************/
 
-	#logo 
+	#logo
 	{
 		width: 900px;
 		height: 100px;
 		margin: 0 auto auto 0;
 	}
-	
+
 	#logo h1
 	{
 		letter-spacing: 0.10em;
 		font-size: 3em;
 	}
-	
-	#logo p 
+
+	#logo p
 	{
 		letter-spacing: 0.10em;
 		color: #292A28;
 		line-height: 100%;
 		font-size: 1em;
 	}
-	
-	#logo a 
+
+	#logo a
 	{
 		text-decoration: none;
 		color: #292A28;
@@ -455,19 +455,19 @@ hr {
 /* Banner                                                                        */
 /*********************************************************************************/
 
-	#banner 
+	#banner
 	{
 		position: absolute;
 		left: 0;
 		overflow: hidden;
 		z-index: 1;
 	}
-	
+
 	#banner .image
 	{
 		border: 5px solid #FFFFFF;
 	}
-	
+
 
 /** MENU */
 
@@ -495,7 +495,7 @@ hr {
 	display: block;
 	letter-spacing: 1px;
 	line-height: 70px;
-	padding: 0 40px; 
+	padding: 0 40px;
 	text-decoration: none;
 	text-align: center;
 	text-transform: uppercase;
@@ -548,29 +548,29 @@ hr {
 		width: 345px;
 		//width: 245px;
 }
-	
+
 	#sidebar .title h2
 	{
 		font-size: 1.2em;
 		padding: 0em 0em 1em 0em;
 	}
-	
+
 	#sidebar .internalLinkBox
 	{
 		margin-bottom: 3em;
 	}
-	
+
 	#sidebar .internalLinkBox .title
 	{
 		margin-bottom: 0em;
 		text-transform: uppercase;
 	}
-	
+
 	#sidebar .pageContentsBox
 	{
 		margin-bottom: 3em;
 	}
-	
+
 	#sidebar .pageContentsBox .title
 	{
 		margin-bottom: 0em;
@@ -578,7 +578,7 @@ hr {
 		//padding-bottom: 0em;
 		text-transform: uppercase;
 	}
-	
+
 	#sidebar .scrollingbox
 	{
 		margin-bottom: 3em;
@@ -599,7 +599,7 @@ hr {
 		text-transform: uppercase;
 		color: #6F6F6F;
 	}
-	
+
 	#footer h2
 	{
 		letter-spacing: 0.20em;
@@ -607,7 +607,7 @@ hr {
 		font-size: 2.4em;
 		color: #FFF;
 	}
-	
+
 	#footer .byline
 	{
 		letter-spacing: 0.15em;
@@ -627,7 +627,7 @@ hr {
 		padding: 5em 0em;
 		text-align: center;
 	}
-	
+
 	#copyright p
 	{
 		letter-spacing: 0.20em;
@@ -636,7 +636,7 @@ hr {
 		font-size: 0.80em;
 		color: #6F6F6F;
 	}
-	
+
 	#copyright a
 	{
 		text-decoration: none;
@@ -654,14 +654,14 @@ hr {
 		border-bottom: 1px solid #E5E5E5;
 		text-align: center;
 	}
-	
+
 	#welcome h2
 	{
 		letter-spacing: 0.20em;
 		text-transform: uppercase;
 		font-size: 2.6em;
 	}
-	
+
 	#welcome p
 	{
 		font-size: 1.3em;
@@ -688,14 +688,14 @@ hr {
 		background: #E8E8E8 url(images/bg01.png) repeat;
 		padding: 2em 0em 1em 0em;
 	}
-	
+
 	#portfolio
 	{
 		overflow: hidden;
 		text-align: center;
 		color: #8E8E8E;
 	}
-	
+
 	#portfolio .title h2
 	{
 		font-size: 1.2em;
@@ -707,7 +707,7 @@ hr {
 		font-size: 1em;
 		color: #EEA7C1;
 	}
-	
+
 	#column1,
 	#column2,
 	#column3,
@@ -715,24 +715,24 @@ hr {
 	{
 		width: 282px;
 	}
-	
+
 	#column1,
 	#column2
 	{
 		float: left;
 		margin-right: 24px;
 	}
-	
+
 	#column3
 	{
 		float: left;
 	}
-	
+
 	#column4
 	{
 		float: right;
 	}
-	
+
 /*********************************************************************************/
 /* Button Style                                                                  */
 /*********************************************************************************/
@@ -748,7 +748,7 @@ hr {
 		font-size: 0.90em;
 		color: #FFF;
 	}
-	
+
 		.button:before
 		{
 			display: inline-block;
@@ -778,4 +778,3 @@ hr {
 
 
 
-	
