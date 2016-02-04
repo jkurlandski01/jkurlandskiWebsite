@@ -250,6 +250,17 @@
                 <p>Does a Unix-style diff of the file and the base revision.</p>
             </div>
 
+            <div class="singleSpacedDescription">
+                <h4>$ svn update</h4>
+                <h4>$ svn log --limit 6</h4>
+                <p>Shows a subset of the latest commits to the repository. "svn log" without the limit argument shows an unreadable amount of history. Use "svn update" before "svn log", or very likely your most recent commits won't be displayed.</p>
+            </div>
+
+            <div class="singleSpacedDescription">
+                <h4>$ svn merge -c -986 .</h4>
+                <p>If r986 is your last committed revision, undoes that commit in your local working version. Note that this local change will itself have to be committed.</p>
+            </div>
+
 		</div>
 		
 		
