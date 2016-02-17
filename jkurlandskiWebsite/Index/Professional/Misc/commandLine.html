@@ -46,7 +46,7 @@
             <p>Here's a page where I keep a couple of shell commands, for the next time I need them. The one-liners are first; the longer shell scripts after that.</p>
 			
             <h3>On the Mac</h3>          
-            <p>Every once in a while you run into a Unix command that doesn't quite work on the Mac. You'll find notes on this <a href="macNotes.html">on this page</a>.</p>
+            <p>Every once in a while you run into a Unix command that doesn't quite work on the Mac. You'll find notes on these exceptions <a href="macNotes.html">on this page</a>.</p>
 
 			<h3>One-Liners</h3>
 			<br/>
@@ -67,8 +67,29 @@
             </div>
             
             <div class="singleSpacedDescription">
+                <h4>find . -size 0 -ls 2>/dev/null</h4>
+                <h4>find . -empty -ls 2&gt;/dev/null</h4>
+                <p>Two ways to find all empty files in the current directory, recursively down the tree. The "-ls" argument lists the file properties in detail; remove it to display just the file names.</p>
+            </div>
+            
+            <div class="singleSpacedDescription">
+                <h4>find . -not -empty -ls 2>/dev/null</h4>
+                <p>Find all non-empty files in the current directory, recursively down the tree.</p>
+            </div>
+            
+            <div class="singleSpacedDescription">
+                <h4>find . -maxdepth 1 -empty -ls 2>/dev/null</h4>
+                <p>Find all empty files in the current directory, non-recursively&mdash;i.e., in the current directory only.</p>
+            </div>
+            
+             <div class="singleSpacedDescription">
+                <h4>find . -size  0 -print0 | xargs -0 rm</h4>
+                <p>Find and delete all non-empty files in the current directory, recursively down the tree.</p>
+            </div>
+            
+           <div class="singleSpacedDescription">
                 <h4>find . -name "*txt" 2&gt;/dev/null</h4>
-                <p>Find all the txt files in this directory, recursively down the tree.</p>
+                <p>Find all the txt files in the current directory, recursively down the tree.</p>
             </div>
             
             <div class="singleSpacedDescription">
