@@ -140,9 +140,61 @@ done
 </pre>
 
             <br/>
-			<h3>Performing grep on Multiple Patterns</h3>
-            
-			<p>grep is great. The very useful command follows this syntax:</p>
+			<h3>Tricks with grep</h3>
+			<p>grep is great. And powerful. Here are a few ways you can maximize its usefulness.</p>
+
+
+			<h4>Counting String Instances on a Single Line</h4>
+			<p>As everyone knows, it's very easy to use grep for counting the number of times a string appears in a file.</p>
+			<p>Suppose you have a file called test.txt which contains one sentence on each line:</p>
+<pre class="preCodeWithCaption">
+A man is a man.
+The man who would hurt a friend is a fiend.
+The lady is a tramp.
+One small step for man, one giant leap for mankind.
+</pre>
+
+			<p>Now suppose you want to find every instance of the string "man" in the file.</p>
+<pre class="preCodeWithCaption">
+$ grep man test.txt
+A man is a man.
+The man who would hurt a friend is a fiend.
+One small step for man, one giant leap for mankind.
+</pre>
+
+			<p>But suppose what you really want is to count the number of times the word "man" occurs.</p>
+<pre class="preCodeWithCaption">
+$ grep man test.txt | wc -l
+3
+</pre>
+
+			<p>The problem is obvious: "wc -l" counts the number of lines passed in by the grep, not the number of instances of the word grepped on.</p>
+
+			<p>If all you want is to count the total number of instances in the file, then use grep's "-o" option, which puts each hit on a separate line. Then you can do your line counting.</p>
+<pre class="preCodeWithCaption">
+$ grep -o man test.txt | wc -l
+5
+</pre>
+
+			<p>But what if what you really want is to know which lines contain the word "man," and how many instances of the word are on each line? Here's a series of commands that will get you just that.</p>
+<pre class="preCodeWithCaption">
+$ grep -o -n man test.txt | cut -d : -f 1 | uniq -c
+      2 1
+      1 2
+      2 4
+</pre>
+			<p>Here's how to read this output. Line 1 contains two instances of the string "man"; line 2 contains 1; and line 4 contains two more.</p>
+			<p>We can pretty-up the output a little bit with a few perl one-liners, borrowed from the top of this page.</p>
+<pre class="preCodeWithCaption">
+$ grep -o -n man test.txt | cut -d : -f 1 | uniq -c | perl -p -e 's/^      /count:/g' | perl -p -e 's/ / line: /g'
+count:2 line: 1
+count:1 line: 2
+count:2 line: 4
+</pre>
+            <br/>
+
+			<h4>Performing grep on Multiple Patterns</h4>
+   			<p>The grep command follows this syntax:</p>
 <pre class="preCodeWithCaption">
 grep [options] pattern [files]
 </pre>
