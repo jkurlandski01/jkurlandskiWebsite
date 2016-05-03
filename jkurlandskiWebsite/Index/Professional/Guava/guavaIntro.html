@@ -180,14 +180,22 @@ public void initializeLinkedList()  {
 
             <p>Unlike newArrayList( ), Lists.newLinkedList( ) does not let you pass a parameter to the constructor to initialize your list. The listing above illustrates this by adding each element to the LinkedList separately. But the constructor does let you pass in a collection, as the next listing makes clear.</p>
            
- <p class="precaption">Listing 9: Instantiating and Initializing a LinkedList with Guava, ver. 2</p>
+<p class="precaption">Listing 9: Instantiating and Initializing a LinkedList with Guava, ver. 2</p>
 <pre class="preCodeWithCaption">
 List&lt;String&gt; tempList = Lists.newArrayList(&quot;body&quot;, &quot;head&quot;, &quot;nose&quot;, &quot;nostril&quot;);
 List&lt;String&gt; partList = Lists.newLinkedList(tempList);
     
 assertEquals(4, partList.size());
 </pre>
-            <p>You could, of course, make this code even more succinct by collapsing the first two lines above into one, thus: <code>List&lt;String&gt; partList = Lists.newLinkedList(Lists.newArrayList(&quot;body&quot;, &quot;head&quot;, &quot;nose&quot;, &quot;nostril&quot;))</code></p>
+            <p>You could, of course, make this code even more succinct by collapsing the first two lines above into one, thus: </p>
+
+<p class="precaption">Listing 10: Instantiating and Initializing a LinkedList with Guava, ver. 3</p>
+<pre class="preCodeWithCaption">
+List&lt;String&gt; partList = 
+	Lists.newLinkedList(Lists.newArrayList(&quot;body&quot;, &quot;head&quot;, &quot;nose&quot;, &quot;nostril&quot;))
+    
+assertEquals(4, partList.size());
+</pre>
 
             <p><strong>Sets.</strong> Guava offers alternate Set implementations as well. For instance, Sets.newTreeSet( ) and Sets.newConcurrentHashSet( ) create a TreeSet and a ConcurrentHashSet, respectively.</p>
             <p><strong>Maps.</strong> In the same vein, Maps.newTreeMap() will create a TreeMap, rather than a HashMap, if you want an iteration through the key/value pairs to be both sorted and economical.</p>
