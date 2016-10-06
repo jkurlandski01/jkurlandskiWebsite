@@ -261,6 +261,20 @@
                 <p>If r986 is your last committed revision, undoes that commit in your local working version. Note that this local change will itself have to be committed.</p>
             </div>
 
+            <h3>SVN Troubleshooting</h3>
+            <p>Here I offer some solutions to commonly-occurring SVN problems.</p>
+            
+            <div class="singleSpacedDescription">
+                <h4><code>svn: E205000: Too many arguments to import command</code></h4>
+                <h4><code>svn: E205000: Too many arguments to commit command</code></h4>
+                <p>First, of course, verify that you do not have too many arguments for the command you're using. Once you've made sure that's not the issue, then see if your command unintentionally includes what are called "smart quotes" (high-ascii left and right single or double quotation marks). This can happen when you cut and paste the command from an editor like TextEdit on a Mac, or Word on a Windows machine.</p>
+            </div>
+
+            <div class="singleSpacedDescription">
+                <h4><code>> local unversioned, incoming add upon update</code></h4>
+                <p>If you're doing the two-step process of importing a new project into your repository, and checking out that same code into the same directory you're importing from, see "Add a new project to the repository." on my SVN Tasks page.</p>
+            </div>
+
 		</div>
 		
 		
