@@ -52,7 +52,7 @@
             <h4>&bull; Then commit local changes to the repository.</h4>
 
             <br/>
-            <p>First check the status to see if there are any conflicts. Conflicts are marked with a capital "C"&mdash;see below for an example.</p>
+            <p>First check the status to see if there are any conflicts. Conflicts are marked with a capital "C"&mdash;see <a href="#ConflictTask">this task</a> for an example.</p>
 
 <pre class="preCode">
 $ svn status
@@ -69,7 +69,7 @@ Status against revision:     77
 
             <p>Locally, toDo.txt has been modified, and svnExamples.html is new to the file system but has not been added to the repository. On the repository side, the repository is at Revision 77, but it contains two files&mdash;svnCheatSheet.html and svnNotes.html&mdash;from Revision 74 that have not been copied locally.</p>
 
-            <p>The status checks reveal no conflicts, meaning that you have not locally changed a file that has been changed and committed by someone else. How can you tell? The "svn status -u" uses the leftmost column to mark local changes, and the second column to mark remote changes. You see that none of the four files is marked in both columns. (See another task below for an example of exactly what a conflict looks like.)</p>
+            <p>The status checks reveal no conflicts, meaning that you have not locally changed a file that has been changed and committed by someone else. How can you tell? The "svn status -u" uses the leftmost column to mark local changes, and the second column to mark remote changes. You see that none of the four files is marked in both columns.</p>
             <p>Since there are no conflicts, perform the update. Then check status again.</p>
 
 <pre class="preCode">
@@ -218,20 +218,14 @@ $ svn status
 
             <br/>
             <h3>Task</h3>
-<<<<<<< .mine
             <h4>&bull; Add a new project to the repository.</h4>
 
-			<p><strong>Summary.</strong> If you google this task, chances are you'll be recommended a two-step solution: an <code>svn import</code> followed by an <code>svn checkout</code>. Do this, however, you'll probably end up with Subversion thinking that you have a conflict after you do the <code>checkout</code>. Instead, you want to do the <code>checkout</code> into an empty directory. This means changing the recommended two-step process into a five-step process: (1) rename the top-level directory which you want to import and create an empty directory of the same name in the same location on your file system; (2) do the <code>svn import</code>; now (3) do an <code>svn checkout</code> into the the empty directory; (4) copy the files you want to add to the repository from the renamed directory to the empty directory; and (5) put them into the repository with <code>svn add</code> and <code>svn commit</code>.</svn></p>
+			<p><strong>Summary.</strong> If you google this task, chances are you'll be recommended a two-step solution: an <code>svn import</code> followed by an <code>svn checkout</code>. Do this, however, you'll probably end up with Subversion thinking that you have a conflict after you do the <code>checkout</code>. Instead, you want to do the <code>checkout</code> into an empty directory. This means changing the recommended two-step process into a five-step process: (1) rename the top-level directory which you want to import and create an empty directory of the same name in the same location on your file system; (2) do the <code>svn import</code>; (3) do an <code>svn checkout</code> into the the empty directory; (4) copy the files you want to add to the repository from the renamed directory to the empty directory; and (5) put them into the repository with <code>svn add</code> and <code>svn commit</code>.</svn></p>
 			
 			<p><strong>Late-breaking news.</strong> See the most popular answer in this link&mdash;http://stackoverflow.com/questions/2152454/how-to-start-an-svn-project-from-the-command-line&mdash;for another approach which I haven't tried.</p>
 			
             <p><strong>The details.</strong> If you're like me, you generally start a new development project by writing the code, not by creating the project's location in your version control system. So, supposing that you have an existing project ProjectA, which is in the repository, and a new project ProjectB, which is not, and supposing that the two projects are at the same level in your file system, then from the command line the situation looks like this.</p>
 
-=======
-            <h4>&bull; Use "svn import" to add a top-level directory to the repository.</h4>
-            <p>This situation is most likely to occur when you are starting an entirely new project, one which should not be subsumed by an existing project in the repository.</p>
-            <p>If you don't know the URL of where this new directory should go in the repository, you can figure it out by getting the URL of some other project in the same repository. In the example below, I know I want the new ProjectB directory to be at the same level of the existing ProjectA. So I cd to the ProjectA root and do an "svn info".</p>
->>>>>>> .r301
 <pre class="preCode">
 $ pwd
 /home/jerry/workspace/ProjectA
@@ -248,7 +242,7 @@ $ svn info
 svn: E155007: '/home/jerry/workspace/ProjectB' is not a working copy
 </pre>
 
-			<p>In SVN parlance, what you want to do is import your existing code into the repository, and <em>continue using it as a working copy.</em> I emphasize the last part of that sentence because that is the tricky part. Doing a search on how to accomplish this will generally result in the two-step process of first doing an <code>svn import</code> (which puts the files into the repository) followed by an <code>svn checkout</code>  (which creates your local working copy).</p>
+			<p>In SVN parlance, what you want to do is import your existing code into the repository, and <em>continue using it as a working copy.</em> I emphasize the last part of that sentence because that is the tricky part. Doing a search on how to accomplish this will generally result in the two-step process of first doing an <code>svn import</code> (which puts the files into the repository) followed by an <code>svn checkout</code>  (which creates your local working copy, that is, it makes your local file system "aware" of any changes).</p>
 			
 			<p>Having attempted this task by that means many, many times, I can assure you that this approach will not go smoothly. What you'll generally get is a smooth import followed by a rocky checkout.</p>
 			
@@ -301,9 +295,9 @@ Summary of conflicts:
   Tree conflicts: 1
 </pre>
 
-			<p>The problem is has to do with <code>svn checkout</code> and the fact that this command expects to download files from the repository to the local file system. In other words, the local directory is supposed to be empty, and when Subversion finds that the local directory is not empty, it thinks there is a conflict.</p>
+			<p>The problem has to do with <code>svn checkout</code> and the fact that this command expects to download files from the repository to the local file system. In other words, the local directory is supposed to be empty, and when Subversion finds that the local directory is not empty, it thinks there is a conflict.</p>
 			
-			<p>Now you could google "local unversioned, incoming add upon update" and follow the advice you find, but when it comes to my code I don't like to take chances.</p>
+			<p>Now you could google "local unversioned, incoming add upon update" and follow the advice you find, but when it comes to my code I don't like to take chances. Besides, this problem shouldn't have happened in the first place.</p>
 			
 			<p>Instead, I recommend giving Subversion what it expects&mdash;to wit, a <code>checkout</code> into an empty directory. This means the five-step process outlined above, and detailed below.</p>
 			
@@ -338,7 +332,7 @@ Checked out revision 936923.
 $ svn status
 </pre>
 
-			<p>Notice that, since there are no files in the repository&mdash;only an empty top-level directory&mdash;the <code>checkout</code> lists no files. Notice also that the first <code>svn status</code> shows that we haven't done the checkout yet, whereas the second <code>svn status</code> returns nothing, since the local working copy is identical to the repository copy. That will change with the next step.</p>
+			<p>Notice that, since there are no files in the repository&mdash;only an empty top-level directory&mdash;the checkout lists no files. Notice also that the first <code>svn status</code> shows that we haven't done the checkout yet, whereas the second <code>svn status</code> returns nothing, since the local working copy is identical to the repository copy. That will change with the next step.</p>
 			
 			<p><strong>Steps 4 and 5.</strong> Copy the files in the renamed directory into your new working copy, and add them to the repository.</p>
 
@@ -347,7 +341,7 @@ $ pwd
 /home/jerry/workspace
 
 $ ls
-ProjectA  ProjectB
+ProjectA   ProjectB   ProjectB_temp
 
 $ cp ProjectB_temp/* ProjectB/
 
@@ -407,7 +401,7 @@ M              144   Java/unitTesting.html
             <p>In the scenario described at the start of this task, the next two steps are to do an "svn update" to pick up the changes to enum.html; then do a commit. Since you've already seen the examples of these above, we don't need to show you how to do them now.</p>
 
             <br/>
-            <h3>Task</h3>
+            <h3><a id="ConflictTask">Task</a></h3>
             <h4>&bull; Perform an update on a file that has been changed both locally and by someone else.</h4>
             <h4>&bull; See what happens when SVN marks the file as a conflict.</h4>
             <br/>
