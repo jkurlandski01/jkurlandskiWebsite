@@ -130,7 +130,8 @@
                 <h4>$ svn status --no-ignore</h4>
                 <p>Run the "svn status" command, but include in the output the status of ignored items.</p>
             </div>
-            
+            <br/>
+           
 
             <h3>SVN Update</h3>
             <p>Moves recent changes from the repository to your local working copy.</p>
@@ -139,7 +140,8 @@
                 <h4>$ svn update</h4>
                 <p>Updates your local working copy with the latest from the repository.</p>
             </div>
-            
+             <br/>
+           
             <h3>SVN Commit</h3>
             <p>Commits not only your modifications to the repository, but also commits the addition or removal of files to the repository. In other words, an "svn add", "svn remove" and "svn move" must all be followed by a commit.</p>
             
@@ -152,6 +154,7 @@
                 <h4>$ svn commit -m "your message"</h4>
                 <p>Recursively commit your local changes to the repository, that is, commit all changes from the current directory down into the directory tree. The message becomes part of the change history.</p>
             </div>
+            <br/>
             
             
             <h3>SVN Add</h3>
@@ -176,6 +179,7 @@
                 <h4>$ svn add * --force</h4>
                 <p>Recursively add all new items to the repository, whether their directories are versioned or unversioned. Note that this command will also add files/folders in the current directory which are in your ignore list!</p>
             </div>
+            <br/>
 
 
             <h3>SVN Move</h3>
@@ -192,6 +196,7 @@
                 <h4>$ svn move &lt;oldPath/item&gt; &lt;newPath/item&gt;</h4>
                 <p>Move a file/directory.</p>
             </div>
+            <br/>
 
 
             <h3>SVN Remove/Delete</h3>
@@ -211,6 +216,7 @@
                 <h4>$ for i in  $(svn status | grep \! | awk '{print $2}'); do svn delete $i; done</h4>
                 <p>Unix command to recursively delete all missing files from the repository, whether their directories are versioned or unversioned. The command works by deleting all files whose status is "!". Since, unlike <code>add</code>, there is no recursive version of <code>delete</code>, this command can sometimes be very useful&mdash;for example, if you've deleted many files in several directories via your operating system.</p>
             </div>
+            <br/>
 
 
             <h3>SVN Ignore</h3>
@@ -225,6 +231,26 @@
                 <h4>$ svn propedit svn:ignore .</h4>
                 <p>This will bring up your text editor so you can enter a list of files or directories to ignore. Applicable only to those files and folders in the current directory.</p>
             </div>
+            <br/>
+
+            <h3>SVN Revert</h3>
+            <p>Use svn revert to undo local changes and revert your code back to the repository's version.</p>
+            
+            <div class="singleSpacedDescription">
+                <h4>$ svn revert item</h4>
+                <p>Revert the item. Making the item a directory does <em>not</em> lead the command to recurse directories. See <code>svn revert -R</code> below.</p>
+            </div>
+
+            <div class="singleSpacedDescription">
+                <h4>$ svn revert -R .</h4>
+                <p>Recursively reverts all the modified files to their original repository versions. If a file is in an Add ("A") state, this command removes the <code>add</code>, changing the file's state to "?". No items in the "?" state will be deleted from the file system. To recursively remove these, see the next command below.</p>
+            </div>
+
+            <div class="singleSpacedDescription">
+                <h4>$ for i in $(svn status | grep \? | awk '{print $2}'); do rm $i; done</h4>
+                <p>Recursively deletes all the new but unadded files. The command first finds all items in the "?" state, then removes them.</p>
+            </div>
+            <br/>
 
 
             <h3>Less often used SVN commands</h3>
@@ -260,6 +286,7 @@
                 <h4>$ svn merge -c -986 .</h4>
                 <p>If r986 is your last committed revision, undoes that commit in your local working version. Note that this local change will itself have to be committed.</p>
             </div>
+            <br/>
 
             <h3>SVN Troubleshooting</h3>
             <p>Here I offer some solutions to commonly-occurring SVN problems.</p>
