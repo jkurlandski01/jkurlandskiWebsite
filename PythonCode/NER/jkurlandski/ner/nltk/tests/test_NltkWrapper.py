@@ -30,12 +30,17 @@ class TestNltkWrapper(unittest.TestCase):
         # Verify number of sentences.
         self.assertEqual(6, len(sentenceTree))
 
-        # Verify just the first token node.
+        # Verify the first child--a Node.
         tokenNode = sentenceTree[0]
         self.assertEqual('PERSON', tokenNode.label())
         token, pos = tokenNode[0]
         self.assertEqual('John', token)
         self.assertEqual('NNP', pos)
+
+        # Verify the third child--a Token.
+        token, pos = sentenceTree[2]
+        self.assertEqual('wrote', token)
+        self.assertEqual('VBD', pos)
 
 
 if __name__ == '__main__':
