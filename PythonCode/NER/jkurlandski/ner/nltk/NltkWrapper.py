@@ -3,13 +3,14 @@ import nltk
 class NltkWrapper(object):
     """FIXME: Provides a simple interface to the NLTK resources required for named entity extraction.
     Initializes all the necessary resources only once, no matter how many documents are processed.
-    Holds intermediate results as properties to allow separate verification."""
+    Holds intermediate results as properties to allow separate analysis/debugging."""
 
     language = 'english'
 
+    # FIXME: Are there other options? Will any produce better results?
     chunker_pickle = 'chunkers/maxent_ne_chunker/english_ace_multiclass.pickle'
 
-    def __init__(self, ):
+    def __init__(self):
         # Initialize all properties.
         self.text = None
         self.sentences = None
@@ -18,6 +19,7 @@ class NltkWrapper(object):
         self.chunkedSentences = None
 
         # Initialize all resources.
+        # FIXME: Why aren't these static? Why is the chunker_pickle static?
         self.sentTokenizer = nltk.load('tokenizers/punkt/{0}.pickle'.format(NltkWrapper.language))
         self.tagger = nltk.PerceptronTagger()
         self.chunker = nltk.data.load(NltkWrapper.chunker_pickle)
