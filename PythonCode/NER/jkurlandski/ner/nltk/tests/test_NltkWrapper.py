@@ -14,20 +14,20 @@ class TestNltkWrapper(unittest.TestCase):
         return result
 
 
-    def testBasic(self):
+    def testOneSentence(self):
         inputStr = "John Smith wrote to Mary Jones."
         wrapper = NltkWrapper()
 
         chunkedSentences = wrapper.chunkSentences(inputStr)
 
-        sentences = TestNltkWrapper.generatorToList(chunkedSentences)
+        chunkedSentenceList = TestNltkWrapper.generatorToList(chunkedSentences)
 
-        self.assertEqual(1, len(sentences))
+        self.assertEqual(1, len(chunkedSentenceList))
 
-        sentenceTree = sentences[0]
+        sentenceTree = chunkedSentenceList[0]
         self.assertEqual('S', sentenceTree.label())
 
-        # Verify number of sentences.
+        # Verify number of children.
         self.assertEqual(6, len(sentenceTree))
 
         # Verify the first child--a Node.
@@ -41,6 +41,48 @@ class TestNltkWrapper(unittest.TestCase):
         token, pos = sentenceTree[2]
         self.assertEqual('wrote', token)
         self.assertEqual('VBD', pos)
+
+
+    # Test on two sentences.
+    def testTwoSentences(self):
+        inputStr = "John Smith wrote to Mary Jones. Jim Miller wept."
+        wrapper = NltkWrapper()
+
+        chunkedSentences = wrapper.chunkSentences(inputStr)
+
+        chunkedSentenceList = TestNltkWrapper.generatorToList(chunkedSentences)
+
+        self.assertEqual(1, len(chunkedSentenceList))
+        print(str(wrapper.sentences))
+
+        sentenceTree = chunkedSentenceList[0]
+        self.assertEqual('S', sentenceTree.label())
+
+        # Verify number of children.
+        self.assertEqual(9, len(sentenceTree))
+
+        # Verify the first child--a Node.
+        tokenNode = sentenceTree[0]
+        self.assertEqual('PERSON', tokenNode.label())
+        token, pos = tokenNode[0]
+        self.assertEqual('John', token)
+        self.assertEqual('NNP', pos)
+
+        # Verify the third child--a Token.
+        token, pos = sentenceTree[2]
+        self.assertEqual('wrote', token)
+        self.assertEqual('VBD', pos)
+
+        # Verify the seventh child--a Node.
+        tokenNode = sentenceTree[6]
+        self.assertEqual('PERSON', tokenNode.label())
+        token, pos = tokenNode[0]
+        self.assertEqual('Jim', token)
+        self.assertEqual('NNP', pos)
+        token, pos = tokenNode[1]
+        self.assertEqual('Miller', token)
+        self.assertEqual('NNP', pos)
+
 
 
 if __name__ == '__main__':
