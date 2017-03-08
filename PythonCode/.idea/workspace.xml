@@ -33,17 +33,17 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="NltkWrapper.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="NltkWrapper.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/NER/jkurlandski/ner/nltk/NltkWrapper.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1213">
+            <state relative-caret-position="1348">
               <caret line="98" column="10" lean-forward="false" selection-start-line="98" selection-start-column="10" selection-end-line="98" selection-end-column="10" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NltkEntityExtractor.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="NltkEntityExtractor.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/NER/jkurlandski/ner/nltk/NltkEntityExtractor.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="160">
@@ -874,18 +874,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/NER/jkurlandski/ner/nltk/NltkWrapper.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1213">
-          <caret line="98" column="10" lean-forward="false" selection-start-line="98" selection-start-column="10" selection-end-line="98" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/NER/jkurlandski/ner/nltk/NltkEntityExtractor.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
           <caret line="26" column="10" lean-forward="false" selection-start-line="26" selection-start-column="10" selection-end-line="26" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/NER/jkurlandski/ner/nltk/NltkWrapper.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1348">
+          <caret line="98" column="10" lean-forward="false" selection-start-line="98" selection-start-column="10" selection-end-line="98" selection-end-column="10" />
           <folding />
         </state>
       </provider>
