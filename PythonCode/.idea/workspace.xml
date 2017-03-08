@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="e0be15dd-bc6b-4c4e-81ab-d49d577b0bbf" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/NER/jkurlandski/ner/nltk/NltkEntityExtractor.py" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/NER/jkurlandski/ner/nltk/tests/test_NltkEntityExtractor.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/PythonCode.iml" afterPath="$PROJECT_DIR$/.idea/PythonCode.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NER/jkurlandski/ner/nltk/NltkEntityExtractor.py" afterPath="$PROJECT_DIR$/NER/jkurlandski/ner/nltk/NltkEntityExtractor.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NER/jkurlandski/ner/nltk/NltkWrapper.py" afterPath="$PROJECT_DIR$/NER/jkurlandski/ner/nltk/NltkWrapper.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NER/jkurlandski/ner/nltk/tests/test_NltkWrapper.py" afterPath="$PROJECT_DIR$/NER/jkurlandski/ner/nltk/tests/test_NltkWrapper.py" />
     </list>
@@ -17,15 +17,15 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/PythonCode$NltkEntityExtractor.coverage" NAME="NltkEntityExtractor Coverage Results" MODIFIED="1489007188373" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/NER/jkurlandski/ner/nltk" />
-    <SUITE FILE_PATH="coverage/PythonCode$NltkWrapper.coverage" NAME="NltkWrapper Coverage Results" MODIFIED="1489007746767" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/NER/jkurlandski/ner/nltk" />
-    <SUITE FILE_PATH="coverage/PythonCode$Unittests_in_tests.coverage" NAME="Unittests in tests Coverage Results" MODIFIED="1489007780466" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/NER/jkurlandski/ner/nltk/tests" />
-    <SUITE FILE_PATH="coverage/PythonCode$Unittests_in_TestNltkWrapper.coverage" NAME="Unittests in TestNltkWrapper Coverage Results" MODIFIED="1489003119701" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/NER/jkurlandski/ner/nltk/tests" />
+    <SUITE FILE_PATH="coverage/PythonCode$NltkEntityExtractor.coverage" NAME="NltkEntityExtractor Coverage Results" MODIFIED="1489008813220" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/NER/jkurlandski/ner/nltk" />
+    <SUITE FILE_PATH="coverage/PythonCode$Unittests_in_tests.coverage" NAME="Unittests in tests Coverage Results" MODIFIED="1489008006649" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/NER/jkurlandski/ner/nltk/tests" />
+    <SUITE FILE_PATH="coverage/PythonCode$NltkWrapper.coverage" NAME="NltkWrapper Coverage Results" MODIFIED="1489008337185" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/NER/jkurlandski/ner/nltk" />
     <SUITE FILE_PATH="coverage/PythonCode$Unittests_in_tests__2_.coverage" NAME="Unittests in tests (2) Coverage Results" MODIFIED="1489006636268" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/NER/jkurlandski/ner/nltk/tests" />
+    <SUITE FILE_PATH="coverage/PythonCode$Unittests_in_TestNltkWrapper.coverage" NAME="Unittests in TestNltkWrapper Coverage Results" MODIFIED="1489008199265" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/NER/jkurlandski/ner/nltk/tests" />
     <SUITE FILE_PATH="coverage/PythonCode$Unittests_in_TestNltkEntityExtractor.coverage" NAME="Unittests in TestNltkEntityExtractor Coverage Results" MODIFIED="1489006236516" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/NER/jkurlandski/ner/nltk/tests" />
     <SUITE FILE_PATH="coverage/PythonCode$Unittests_in_tests__3_.coverage" NAME="Unittests in tests (3) Coverage Results" MODIFIED="1489006789943" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/NER/jkurlandski/ner/nltk/tests" />
     <SUITE FILE_PATH="coverage/PythonCode$Unittests_in_PythonCode.coverage" NAME="Unittests in PythonCode Coverage Results" MODIFIED="1488923278368" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/PythonCode$Unittests_in_tests__1_.coverage" NAME="Unittests in tests (1) Coverage Results" MODIFIED="1489006332366" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/NER/jkurlandski/ner/nltk/tests" />
+    <SUITE FILE_PATH="coverage/PythonCode$Unittests_in_tests__1_.coverage" NAME="Unittests in tests (1) Coverage Results" MODIFIED="1489008325633" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/NER/jkurlandski/ner/nltk/tests" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -36,8 +36,8 @@
       <file leaf-file-name="NltkWrapper.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/NER/jkurlandski/ner/nltk/NltkWrapper.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1348">
-              <caret line="98" column="10" lean-forward="false" selection-start-line="98" selection-start-column="10" selection-end-line="98" selection-end-column="10" />
+            <state relative-caret-position="150">
+              <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -47,7 +47,7 @@
         <entry file="file://$PROJECT_DIR$/NER/jkurlandski/ner/nltk/NltkEntityExtractor.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="160">
-              <caret line="26" column="10" lean-forward="false" selection-start-line="26" selection-start-column="10" selection-end-line="26" selection-end-column="10" />
+              <caret line="26" column="13" lean-forward="false" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -56,8 +56,8 @@
       <file leaf-file-name="test_NltkWrapper.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/NER/jkurlandski/ner/nltk/tests/test_NltkWrapper.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="975">
-              <caret line="83" column="0" lean-forward="true" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+            <state relative-caret-position="75">
+              <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="21" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -101,6 +101,9 @@
     <findStrings>
       <find>chunkedSentences</find>
       <find>chunkedSentenceList</find>
+      <find>sentTokenizer</find>
+      <find>tagger</find>
+      <find>chunker</find>
     </findStrings>
     <replaceStrings>
       <replace>parsedInput</replace>
@@ -113,8 +116,8 @@
         <option value="$PROJECT_DIR$/NER/jkurlandski/ner/ReadMe.txt" />
         <option value="$PROJECT_DIR$/NER/jkurlandski/ner/nltk/tests/test_NltkWrapper.py" />
         <option value="$PROJECT_DIR$/NER/jkurlandski/ner/nltk/tests/test_NltkEntityExtractor.py" />
-        <option value="$PROJECT_DIR$/NER/jkurlandski/ner/nltk/NltkEntityExtractor.py" />
         <option value="$PROJECT_DIR$/NER/jkurlandski/ner/nltk/NltkWrapper.py" />
+        <option value="$PROJECT_DIR$/NER/jkurlandski/ner/nltk/NltkEntityExtractor.py" />
       </list>
     </option>
   </component>
@@ -277,7 +280,7 @@
       </console-settings>
     </option>
   </component>
-  <component name="RunManager" selected="Python tests.Unittests in tests">
+  <component name="RunManager" selected="Python.NltkEntityExtractor">
     <configuration default="false" name="NltkWrapper" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -314,53 +317,53 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="Unittests in tests (2)" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/NER/jkurlandski/ner/nltk/tests" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="PythonCode" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="$PROJECT_DIR$/NER/jkurlandski/ner/nltk/tests" />
-      <option name="TEST_TYPE" value="TEST_FOLDER" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="PUREUNITTEST" value="true" />
-      <option name="PARAMS" value="" />
-      <option name="USE_PARAM" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Unittests in tests (3)" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/NER/jkurlandski/ner/nltk/tests" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="PythonCode" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="$PROJECT_DIR$/NER/jkurlandski/ner/nltk/tests" />
-      <option name="TEST_TYPE" value="TEST_FOLDER" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="PUREUNITTEST" value="true" />
-      <option name="PARAMS" value="" />
-      <option name="USE_PARAM" value="false" />
-      <method />
-    </configuration>
     <configuration default="false" name="Unittests in tests" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/NER/jkurlandski/ner/nltk/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="PythonCode" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="$PROJECT_DIR$/NER/jkurlandski/ner/nltk/tests" />
+      <option name="TEST_TYPE" value="TEST_FOLDER" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Unittests in TestNltkWrapper" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/NER/jkurlandski/ner/nltk/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="PythonCode" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/NER/jkurlandski/ner/nltk/tests/test_NltkWrapper.py" />
+      <option name="CLASS_NAME" value="TestNltkWrapper" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_CLASS" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Unittests in tests (1)" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs />
@@ -600,17 +603,17 @@
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.NltkWrapper" />
       <item index="1" class="java.lang.String" itemvalue="Python.NltkEntityExtractor" />
-      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests in tests (2)" />
-      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests in tests (3)" />
-      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests in tests" />
+      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests in tests" />
+      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests in TestNltkWrapper" />
+      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests in tests (1)" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in tests" />
+        <item index="0" class="java.lang.String" itemvalue="Python.NltkEntityExtractor" />
         <item index="1" class="java.lang.String" itemvalue="Python.NltkWrapper" />
-        <item index="2" class="java.lang.String" itemvalue="Python.NltkEntityExtractor" />
-        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests in tests (3)" />
-        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests in tests (2)" />
+        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests in tests (1)" />
+        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests in TestNltkWrapper" />
+        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests in tests" />
       </list>
     </recent_temporary>
   </component>
@@ -650,35 +653,35 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittests_in_TestNltkEntityExtractor - 2017.03.08 at 15h 45m 23s.xml">
-      <configuration name="Unittests in TestNltkEntityExtractor" configurationId="tests" />
+    <history-entry file="Unittests_in_TestNltkWrapper - 2017.03.08 at 16h 20m 15s.xml">
+      <configuration name="Unittests in TestNltkWrapper" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_TestNltkEntityExtractor - 2017.03.08 at 15h 47m 22s.xml">
-      <configuration name="Unittests in TestNltkEntityExtractor" configurationId="tests" />
+    <history-entry file="Unittests_in_TestNltkWrapper - 2017.03.08 at 16h 20m 41s.xml">
+      <configuration name="Unittests in TestNltkWrapper" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_TestNltkEntityExtractor - 2017.03.08 at 15h 47m 38s.xml">
-      <configuration name="Unittests in TestNltkEntityExtractor" configurationId="tests" />
+    <history-entry file="Unittests_in_TestNltkWrapper - 2017.03.08 at 16h 21m 18s.xml">
+      <configuration name="Unittests in TestNltkWrapper" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_TestNltkEntityExtractor - 2017.03.08 at 15h 50m 37s.xml">
-      <configuration name="Unittests in TestNltkEntityExtractor" configurationId="tests" />
+    <history-entry file="Unittests_in_TestNltkWrapper - 2017.03.08 at 16h 22m 40s.xml">
+      <configuration name="Unittests in TestNltkWrapper" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_tests - 2017.03.08 at 15h 50m 45s.xml">
-      <configuration name="Unittests in tests" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_tests - 2017.03.08 at 15h 51m 45s.xml">
-      <configuration name="Unittests in tests" configurationId="tests" />
+    <history-entry file="Unittests_in_TestNltkWrapper - 2017.03.08 at 16h 23m 19s.xml">
+      <configuration name="Unittests in TestNltkWrapper" configurationId="tests" />
     </history-entry>
     <history-entry file="Unittests_in_tests - 2017.03.08 at 16h 16m 21s.xml">
       <configuration name="Unittests in tests" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_tests_(1) - 2017.03.08 at 15h 52m 12s.xml">
+    <history-entry file="Unittests_in_tests - 2017.03.08 at 16h 20m 06s.xml">
+      <configuration name="Unittests in tests" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_tests_(1) - 2017.03.08 at 16h 23m 26s.xml">
       <configuration name="Unittests in tests (1)" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_tests_(2) - 2017.03.08 at 15h 57m 16s.xml">
-      <configuration name="Unittests in tests (2)" configurationId="tests" />
+    <history-entry file="Unittests_in_tests_(1) - 2017.03.08 at 16h 23m 36s.xml">
+      <configuration name="Unittests in tests (1)" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_tests_(3) - 2017.03.08 at 15h 59m 50s.xml">
-      <configuration name="Unittests in tests (3)" configurationId="tests" />
+    <history-entry file="Unittests_in_tests_(1) - 2017.03.08 at 16h 25m 26s.xml">
+      <configuration name="Unittests in tests (1)" configurationId="tests" />
     </history-entry>
   </component>
   <component name="TodoView">
@@ -854,16 +857,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/NER/jkurlandski/ner/nltk/tests/test_NltkWrapper.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="975">
-          <caret line="83" column="0" lean-forward="true" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/NER/jkurlandski/ner/nltk/tests/test_NltkEntityExtractor.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -874,18 +867,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/NER/jkurlandski/ner/nltk/tests/test_NltkWrapper.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/NER/jkurlandski/ner/nltk/NltkEntityExtractor.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
-          <caret line="26" column="10" lean-forward="false" selection-start-line="26" selection-start-column="10" selection-end-line="26" selection-end-column="10" />
+          <caret line="26" column="13" lean-forward="false" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/NER/jkurlandski/ner/nltk/NltkWrapper.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1348">
-          <caret line="98" column="10" lean-forward="false" selection-start-line="98" selection-start-column="10" selection-end-line="98" selection-end-column="10" />
+        <state relative-caret-position="150">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding />
         </state>
       </provider>

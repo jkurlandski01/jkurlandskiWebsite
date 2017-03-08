@@ -5,10 +5,13 @@ class NltkWrapper(object):
     Initializes all the necessary resources only once, no matter how many documents are processed.
     Holds intermediate results as properties to allow separate analysis/debugging."""
 
-    language = 'english'
-
     # FIXME: Are there other options? Will any produce better results?
+    # Initialize the components statically.
+    language = 'english'
     chunker_pickle = 'chunkers/maxent_ne_chunker/english_ace_multiclass.pickle'
+    sentTokenizer = nltk.load('tokenizers/punkt/{0}.pickle'.format(language))
+    # tagger = nltk.PerceptronTagger()
+    chunker = nltk.data.load(chunker_pickle)
 
     def __init__(self):
         # Initialize all properties.
@@ -18,12 +21,6 @@ class NltkWrapper(object):
         self.posTags = None
         self.parsedInput = None
 
-        # Initialize all resources.
-        # FIXME: Why aren't these static? Why is the chunker_pickle static?
-        self.sentTokenizer = nltk.load('tokenizers/punkt/{0}.pickle'.format(NltkWrapper.language))
-        self.tagger = nltk.PerceptronTagger()
-        self.chunker = nltk.data.load(NltkWrapper.chunker_pickle)
-
         pass
 
 
@@ -31,7 +28,7 @@ class NltkWrapper(object):
         """ Split the text into sentences. """
         self.text = text
 
-        self.sentences = self.sentTokenizer.tokenize(text)
+        self.sentences = NltkWrapper.sentTokenizer.tokenize(text)
         return self.sentences
 
 
@@ -63,7 +60,7 @@ class NltkWrapper(object):
         """ Parse/process each sentence. """
         self.doPosTagging(text)
 
-        self.parsedInput = self.chunker.parse_sents(self.posTags)
+        self.parsedInput = NltkWrapper.chunker.parse_sents(self.posTags)
 
         return self.parsedInput
 
@@ -105,7 +102,6 @@ if __name__ == '__main__':
     printParse("John Smith wrote to Mary Jones.")
     printParse("John Smith wrote to Mary Jones. Jim Miller wept.")
     printParse("The man who lives in the blue house dislikes the Martha Cumminham who lives in San Francisco.")
-
 
     pass
 
