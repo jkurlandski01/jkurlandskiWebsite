@@ -16,7 +16,7 @@ class NltkWrapper(object):
         self.sentences = None
         self.tokens = None
         self.posTags = None
-        self.chunkedSentences = None
+        self.parsedInput = None
 
         # Initialize all resources.
         # FIXME: Why aren't these static? Why is the chunker_pickle static?
@@ -59,13 +59,13 @@ class NltkWrapper(object):
         return self.posTags
 
 
-    def chunkSentences(self, text):
+    def parseInput(self, text):
         """ Parse/process each sentence. """
         self.doPosTagging(text)
 
-        self.chunkedSentences = self.chunker.parse_sents(self.posTags)
+        self.parsedInput = self.chunker.parse_sents(self.posTags)
 
-        return self.chunkedSentences
+        return self.parsedInput
 
 
 if __name__ == '__main__':

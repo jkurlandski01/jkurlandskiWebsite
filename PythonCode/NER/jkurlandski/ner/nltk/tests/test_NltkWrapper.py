@@ -18,13 +18,13 @@ class TestNltkWrapper(unittest.TestCase):
         inputStr = "John Smith wrote to Mary Jones."
         wrapper = NltkWrapper()
 
-        chunkedSentences = wrapper.chunkSentences(inputStr)
+        parsedInput = wrapper.parseInput(inputStr)
 
-        chunkedSentenceList = TestNltkWrapper.generatorToList(chunkedSentences)
+        parsedInputList = TestNltkWrapper.generatorToList(parsedInput)
 
-        self.assertEqual(1, len(chunkedSentenceList))
+        self.assertEqual(1, len(parsedInputList))
 
-        sentenceTree = chunkedSentenceList[0]
+        sentenceTree = parsedInputList[0]
         self.assertEqual('S', sentenceTree.label())
 
         # Verify number of children.
@@ -48,14 +48,14 @@ class TestNltkWrapper(unittest.TestCase):
         inputStr = "John Smith wrote to Mary Jones. Jim Miller wept."
         wrapper = NltkWrapper()
 
-        chunkedSentences = wrapper.chunkSentences(inputStr)
+        parsedInput = wrapper.parseInput(inputStr)
 
-        chunkedSentenceList = TestNltkWrapper.generatorToList(chunkedSentences)
+        parsedInputList = TestNltkWrapper.generatorToList(parsedInput)
 
-        self.assertEqual(1, len(chunkedSentenceList))
+        self.assertEqual(1, len(parsedInputList))
         print(str(wrapper.sentences))
 
-        sentenceTree = chunkedSentenceList[0]
+        sentenceTree = parsedInputList[0]
         self.assertEqual('S', sentenceTree.label())
 
         # Verify number of children.
