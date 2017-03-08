@@ -10,7 +10,6 @@ class TestNltkWrapper(unittest.TestCase):
         result = []
         for element in generator:
             result.append(element)
-            print(str(element))
         return result
 
 
@@ -53,7 +52,6 @@ class TestNltkWrapper(unittest.TestCase):
         parsedInputList = TestNltkWrapper.generatorToList(parsedInput)
 
         self.assertEqual(1, len(parsedInputList))
-        print(str(wrapper.sentences))
 
         sentenceTree = parsedInputList[0]
         self.assertEqual('S', sentenceTree.label())
@@ -82,7 +80,6 @@ class TestNltkWrapper(unittest.TestCase):
         token, pos = tokenNode[1]
         self.assertEqual('Miller', token)
         self.assertEqual('NNP', pos)
-
 
 
 if __name__ == '__main__':

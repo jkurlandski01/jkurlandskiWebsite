@@ -68,6 +68,44 @@ class NltkWrapper(object):
         return self.parsedInput
 
 
+    def getParse(self):
+        strResult = ''
+        treeResult = []
+        for element in self.parsedInput:
+            strResult += str(element) + '\n'
+            treeResult.append(element)
+        return strResult, treeResult
+
+
+def printParse(inputStr):
+    wrapper = NltkWrapper()
+    wrapper.parseInput(inputStr)
+    treeStr, trees = wrapper.getParse()
+
+    print('Input:')
+    print('   ' + inputStr + '\n')
+
+    print('Sentences:')
+    for sentence in wrapper.sentences:
+        print('   ' + sentence)
+    print('')
+
+    print('Parse as Tree:')
+    print(trees)
+    print()
+
+    print('Parse as string:')
+    print('   ' + treeStr)
+    print()
+
+
 if __name__ == '__main__':
+    # View the NLTK parse of various inputs.
+    printParse("Mary Jones")
+    printParse("John Smith wrote to Mary Jones.")
+    printParse("John Smith wrote to Mary Jones. Jim Miller wept.")
+    printParse("The man who lives in the blue house dislikes the Martha Cumminham who lives in San Francisco.")
+
+
     pass
 
