@@ -24,7 +24,6 @@ class NltkEntityExtractor(object):
 
         self.text = inputStr
 
-        # FIXME: move this to init
         wrapper = NltkWrapper()
         parsedInput = wrapper.parseInput(inputStr)
 
