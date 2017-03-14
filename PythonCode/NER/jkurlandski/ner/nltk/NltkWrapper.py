@@ -1,7 +1,7 @@
 import nltk
 
 class NltkWrapper(object):
-    """FIXME: Provides a simple interface to the NLTK resources required for named entity extraction.
+    """Provides a simple interface to the NLTK resources required for named entity extraction.
     Initializes all the necessary resources only once, no matter how many documents are processed.
     Holds intermediate results as properties to allow separate analysis/debugging."""
 
@@ -10,7 +10,6 @@ class NltkWrapper(object):
     language = 'english'
     chunker_pickle = 'chunkers/maxent_ne_chunker/english_ace_multiclass.pickle'
     sentTokenizer = nltk.load('tokenizers/punkt/{0}.pickle'.format(language))
-    # tagger = nltk.PerceptronTagger()
     chunker = nltk.data.load(chunker_pickle)
 
     def __init__(self):
@@ -41,12 +40,11 @@ class NltkWrapper(object):
         """ Split the text into tokens. """
         tokens = []
 
-        # self.sentenceTokenize(text)
         for sentence in self.sentences:
             sentenceTokens = nltk.tokenize._treebank_word_tokenize(sentence)
             tokens.extend(sentenceTokens)
 
-        # FIXME: This looks buggy to me.
+        # This list of a list looks buggy, but it seems to be correct.
         self.tokens = [tokens]
 
 
@@ -56,7 +54,7 @@ class NltkWrapper(object):
 
 
     def parseInput(self):
-        """ Parse each sentence. """
+        """ Perform NER. Not traditional parsing. """
         self.parsedInput = NltkWrapper.chunker.parse_sents(self.posTags)
 
 
@@ -66,13 +64,13 @@ class NltkWrapper(object):
         for element in self.parsedInput:
             strResult += str(element) + '\n'
             treeResult.append(element)
-        return strResult, treeResult
+        return treeResult, strResult
 
 
 def printParse(inputStr):
     wrapper = NltkWrapper()
     wrapper.process(inputStr)
-    treeStr, trees = wrapper.getParse()
+    trees, treeStr = wrapper.getParse()
 
     print('Input:')
     print('   ' + inputStr + '\n')
@@ -97,6 +95,7 @@ if __name__ == '__main__':
     printParse("John Smith wrote to Mary Jones.")
     printParse("John Smith wrote to Mary Jones. Jim Miller wept.")
     printParse("The man who lives in the blue house dislikes the Martha Cumminham who lives in San Francisco.")
+    printParse("I want to find a new hybrid automobile with Bluetooth.")
 
     pass
 
