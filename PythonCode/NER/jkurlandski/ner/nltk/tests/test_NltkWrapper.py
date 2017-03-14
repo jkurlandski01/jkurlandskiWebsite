@@ -7,6 +7,7 @@ class TestNltkWrapper(unittest.TestCase):
 
     @staticmethod
     def generatorToList(generator):
+        """ Let's us view the contents of the fully generated object for unit testing. """
         result = []
         for element in generator:
             result.append(element)
@@ -17,7 +18,7 @@ class TestNltkWrapper(unittest.TestCase):
         inputStr = "John Smith wrote to Mary Jones."
         wrapper = NltkWrapper()
 
-        parsedInput = wrapper.parseInput(inputStr)
+        parsedInput = wrapper.process(inputStr)
 
         parsedInputList = TestNltkWrapper.generatorToList(parsedInput)
 
@@ -47,7 +48,7 @@ class TestNltkWrapper(unittest.TestCase):
         inputStr = "John Smith wrote to Mary Jones. Jim Miller wept."
         wrapper = NltkWrapper()
 
-        parsedInput = wrapper.parseInput(inputStr)
+        parsedInput = wrapper.process(inputStr)
 
         parsedInputList = TestNltkWrapper.generatorToList(parsedInput)
 
