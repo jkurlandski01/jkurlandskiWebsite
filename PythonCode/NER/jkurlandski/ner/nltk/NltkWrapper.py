@@ -21,48 +21,43 @@ class NltkWrapper(object):
         self.posTags = None
         self.parsedInput = None
 
-        pass
+
+    def process(self, inText):
+        self.text = inText
+        self.sentenceTokenize()
+        self.wordTokenize()
+        self.doPosTagging()
+        self.parseInput()
+
+        return self.parsedInput
 
 
-    def sentenceTokenize(self, text):
+    def sentenceTokenize(self):
         """ Split the text into sentences. """
-        self.text = text
-
-        self.sentences = NltkWrapper.sentTokenizer.tokenize(text)
-        return self.sentences
+        self.sentences = NltkWrapper.sentTokenizer.tokenize(self.text)
 
 
-    def wordTokenize(self, text):
+    def wordTokenize(self):
         """ Split the text into tokens. """
         tokens = []
 
-        self.sentenceTokenize(text)
+        # self.sentenceTokenize(text)
         for sentence in self.sentences:
             sentenceTokens = nltk.tokenize._treebank_word_tokenize(sentence)
             tokens.extend(sentenceTokens)
 
-        # This looks buggy to me.
+        # FIXME: This looks buggy to me.
         self.tokens = [tokens]
 
-        return self.tokens
 
-
-    def doPosTagging(self, text):
+    def doPosTagging(self):
         """ Tag tokens for part of speech. """
-        self.wordTokenize(text)
-
         self.posTags = [nltk.pos_tag(token) for token in self.tokens]
 
-        return self.posTags
 
-
-    def parseInput(self, text):
-        """ Parse/process each sentence. """
-        self.doPosTagging(text)
-
+    def parseInput(self):
+        """ Parse each sentence. """
         self.parsedInput = NltkWrapper.chunker.parse_sents(self.posTags)
-
-        return self.parsedInput
 
 
     def getParse(self):
@@ -76,7 +71,7 @@ class NltkWrapper(object):
 
 def printParse(inputStr):
     wrapper = NltkWrapper()
-    wrapper.parseInput(inputStr)
+    wrapper.process(inputStr)
     treeStr, trees = wrapper.getParse()
 
     print('Input:')

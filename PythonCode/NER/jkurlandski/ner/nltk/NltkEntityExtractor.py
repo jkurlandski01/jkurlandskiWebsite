@@ -25,7 +25,7 @@ class NltkEntityExtractor(object):
         self.text = inputStr
 
         wrapper = NltkWrapper()
-        parsedInput = wrapper.parseInput(inputStr)
+        parsedInput = wrapper.process(inputStr)
 
         for tree in parsedInput:
             self.parseTrees.append(tree)
@@ -99,7 +99,6 @@ class NltkEntityExtractor(object):
                 result.append((key, content))
 
         return result
-
 
 
 if __name__ == '__main__':
