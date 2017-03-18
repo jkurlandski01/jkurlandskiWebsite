@@ -15,11 +15,19 @@ class NltkEntityExtractor(object):
 
     def initProperties(self):
         """ Reinitialize this object's properties for a new sentence."""
+
+        # An intermediate result.
         self.parseTrees = []
+
+        # Final output.
         self.entities = {}
 
 
     def readInput(self, inputStr):
+        """
+        Submit the input string to NLTK. Process the result into entities
+        held in self.entities.
+        """
         self.initProperties()
 
         self.text = inputStr
