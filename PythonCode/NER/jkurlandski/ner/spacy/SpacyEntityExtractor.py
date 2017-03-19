@@ -67,7 +67,7 @@ class SpacyEntityExtractor(object):
 
         return result
 
-
+    # FIXME: Shouldn't these be using the EntityType enum?
     def getPersons(self):
         return self.entities['PERSON']
 

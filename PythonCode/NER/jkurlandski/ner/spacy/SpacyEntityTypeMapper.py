@@ -1,6 +1,8 @@
 '''
 Map SpaCy entity types to the standard Person/Organization/Location types.
-Use static methods for default mapping. 
+Use static methods for default mapping. To extend with additional mappings,
+allow instantiation of an object and provide a means of creating a separate
+mapEntity() method for the object.
 '''
 from NER.jkurlandski.ner import NerUtils
 
@@ -30,6 +32,6 @@ class SpacyEntityTypeMapper(object):
         elif eType in SpacyEntityTypeMapper.allEntityTypes:
             return eType
         else:
-            raise ValueError("Input param not mappable for static type definitions. Input param: " + eType)
+            raise ValueError("Input param not mappable. Input param: " + eType)
 
         
