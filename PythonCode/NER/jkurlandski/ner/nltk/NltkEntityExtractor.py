@@ -10,10 +10,10 @@ class NltkEntityExtractor(object):
 
     def __init__(self):
         """"""
-        self.initProperties()
+        self.reinitialize()
 
 
-    def initProperties(self):
+    def reinitialize(self):
         """ Reinitialize this object's properties for a new sentence."""
 
         # An intermediate result.
@@ -28,7 +28,7 @@ class NltkEntityExtractor(object):
         Submit the input string to NLTK. Process the result into entities
         held in self.entities.
         """
-        self.initProperties()
+        self.reinitialize()
 
         self.text = inputStr
 
@@ -112,6 +112,8 @@ class NltkEntityExtractor(object):
 if __name__ == '__main__':
     extractor = NltkEntityExtractor()
     extractor.readInput("John Smith wrote to Mary Jones.")
+
+    # Print an intermediate result.
     print(extractor.parseTrees)
+
     print(str(extractor.getNerEntities()))
-    pass
