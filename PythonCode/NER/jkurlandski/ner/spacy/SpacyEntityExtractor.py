@@ -7,21 +7,23 @@ from NER.jkurlandski.ner.spacy.SpacyEntityTypeMapper import SpacyEntityTypeMappe
 class SpacyEntityExtractor(object):
     """"""
 
+    # One-time initialization of Spacy.
     nlp = English()
 
     def __init__(self):
         """"""
-        self.init()
+        self.reinitialize()
 
 
-    def init(self):
+    def reinitialize(self):
+        # Final output.
         self.entities = {}
         for entity in SpacyEntityTypeMapper.allEntityTypes:
             self.entities[entity] = []
 
 
     def readInput(self, text):
-        self.init()
+        self.reinitialize()
 
         self.text = text
 
@@ -29,17 +31,21 @@ class SpacyEntityExtractor(object):
 
         self.extractEntityNames(doc)
 
+
     def extractEntityNames(self, doc):
 
         for entity in doc.ents:
             # Append to the entity list an entity-offset pair.
             self.entities[entity.label_].append((str(entity), entity.root.idx))
 
-    '''
-     Return a dictionary of entities where the keys are the entity types.
-     If filtered is True, return only the targeted entity types.
-    '''
+
     def getEntitiesDict(self, filter=False):
+        """
+        Return a dictionary of entities where the keys are the entity types.
+
+        :param filter: if True, return only the targeted entity types
+        :return:
+        """
         if not filter:
             return self.entities
 
@@ -49,12 +55,14 @@ class SpacyEntityExtractor(object):
 
         return result
 
-    '''
-     Return a list of NerEntity objects extracted.
-     If filtered is True, return only the targeted entity types.
-    '''
-    def getNerEntities(self, filtered):
-        entityDict = self.getEntitiesDict(filtered)
+
+    def getNerEntities(self, filter=False):
+        """
+        Return a list of NerEntity objects extracted.
+        :param filter: if True, return only the targeted entity types
+        :return:
+        """
+        entityDict = self.getEntitiesDict(filter)
 
         result = []
 
@@ -67,21 +75,11 @@ class SpacyEntityExtractor(object):
 
         return result
 
-    # FIXME: Shouldn't these be using the EntityType enum?
-    def getPersons(self):
-        return self.entities['PERSON']
-
-    def getOrganizations(self):
-        return self.entities['ORG']
-
-    def getLocations(self):
-        return self.entities['LOC']
-
-    def getGPEs(self):
-        return self.entities['GPE']
-
 
 
 if __name__ == '__main__':
-    pass
+    extractor = SpacyEntityExtractor()
+    extractor.readInput("John Smith wrote to Mary Jones.")
+    print(str(extractor.getNerEntities()))
+
 

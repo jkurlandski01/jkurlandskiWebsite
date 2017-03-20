@@ -11,7 +11,7 @@ class TestSpacyEntityExtractor(unittest.TestCase):
         extractor = SpacyEntityExtractor()
         extractor.readInput(inputStr)
 
-        entities = extractor.getNerEntities(filtered=True)
+        entities = extractor.getNerEntities(filter=True)
         expected = [NerEntity(eType='Person', offset=5, content='John Smith'),
                     NerEntity(eType='Person', offset=25, content='Mary Jones')]
 
@@ -22,7 +22,7 @@ class TestSpacyEntityExtractor(unittest.TestCase):
         extractor = SpacyEntityExtractor()
         extractor.readInput(inputStr)
 
-        entities = extractor.getNerEntities(filtered=True)
+        entities = extractor.getNerEntities(filter=True)
         expected = [NerEntity(eType='Location', offset=70, content='St. Louis'),
                      NerEntity(eType='Location', offset=77, content='Missouri'),
                      NerEntity(eType='Organization', offset=111, content='the Monsanto Douglas Corporation'),
