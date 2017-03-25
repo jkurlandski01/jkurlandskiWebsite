@@ -56,7 +56,7 @@ class SpacyEntityExtractor(object):
         return result
 
 
-    def getNerEntities(self, filter=False):
+    def getNerEntities(self, filter=True):
         """
         Return a list of NerEntity objects extracted.
         :param filter: if True, return only the targeted entity types
@@ -67,8 +67,8 @@ class SpacyEntityExtractor(object):
         result = []
 
         for key in sorted(entityDict.keys()):
-            mappedKey = SpacyEntityTypeMapper.mapEntity(key)
             for (content, offset) in entityDict[key]:
+                mappedKey = SpacyEntityTypeMapper.mapEntity(key)
                 entity = NerUtils.NerEntity(mappedKey, offset, content)
                 result.append(entity)
 
@@ -80,6 +80,10 @@ class SpacyEntityExtractor(object):
 if __name__ == '__main__':
     extractor = SpacyEntityExtractor()
     extractor.readInput("John Smith wrote to Mary Jones.")
+
+    # Print an intermediate result.
+    print(str(extractor.entities))
+
     print(str(extractor.getNerEntities()))
 
 

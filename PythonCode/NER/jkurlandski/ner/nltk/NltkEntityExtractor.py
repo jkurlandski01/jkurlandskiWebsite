@@ -3,7 +3,7 @@ from NER.jkurlandski.ner.nltk.NltkWrapper import NltkWrapper
 
 class NltkEntityExtractor(object):
     """
-    Extract named entities from the output of an NltkWrapper.
+    Provides an interface for NLTKWrapper, extracting named entities from the latter's output.
     """
 
     IgnoredNodeLabels = ['S']
@@ -12,14 +12,18 @@ class NltkEntityExtractor(object):
         """"""
         self.reinitialize()
 
-
-    def reinitialize(self):
-        """ Reinitialize this object's properties for a new sentence."""
+        # Input text currently being processed.
+        self.text = ''
 
         # An intermediate result.
         self.parseTrees = []
 
         # Final output.
+        self.entities = {}
+
+    def reinitialize(self):
+        """ Reinitialize this object's properties for a new sentence."""
+        self.parseTrees = []
         self.entities = {}
 
 
@@ -85,7 +89,8 @@ class NltkEntityExtractor(object):
                     lastChild = child
 
 
-    def isSameEntityType(self, child1, child2):
+    @staticmethod
+    def isSameEntityType(child1, child2):
         result = False
 
         if hasattr(child1, 'label') and child1.label:

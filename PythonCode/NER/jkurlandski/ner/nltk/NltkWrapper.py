@@ -1,11 +1,12 @@
 import nltk
 
+
 class NltkWrapper(object):
     """Provides a simple interface to the NLTK resources required for named entity extraction.
     Initializes all the necessary resources only once, no matter how many documents are processed.
     Holds intermediate results as properties to allow separate analysis/debugging."""
 
-    # FIXME: Are there other options? Will any produce better results?
+    # TODO: Are there other options? Will any produce better results?
     # Initialize the components statically.
     language = 'english'
     chunker_pickle = 'chunkers/maxent_ne_chunker/english_ace_multiclass.pickle'
@@ -94,7 +95,7 @@ if __name__ == '__main__':
     printParse("Mary Jones")
     printParse("John Smith wrote to Mary Jones.")
     printParse("John Smith wrote to Mary Jones. Jim Miller wept.")
-    printParse("The man who lives in the blue house dislikes the Martha Cumminham who lives in San Francisco.")
+    printParse("The man who lives in the blue house dislikes the Martha Cummingham who lives in San Francisco.")
     printParse("I want to find a new hybrid automobile with Bluetooth.")
 
     pass
