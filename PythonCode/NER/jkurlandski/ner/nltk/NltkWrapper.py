@@ -76,7 +76,7 @@ def printParse(inputStr):
     print('Input:')
     print('   ' + inputStr + '\n')
 
-    print('Sentences:')
+    print('Sentence:')
     for sentence in wrapper.sentences:
         print('   ' + sentence)
     print('')
