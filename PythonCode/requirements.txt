@@ -22,7 +22,6 @@ pathlib==1.0.1
 plac==0.9.6
 preshed==0.46.4
 pyparsing==2.1.10
-pyramid==1.7.3
 rdflib==4.2.1
 repoze.lru==0.6
 requests==2.11.1
@@ -31,7 +30,6 @@ six==1.10.0
 spacy==0.101.0
 SPARQLWrapper==1.7.6
 sputnik==0.9.3
-SQLAlchemy==1.1.2
 thinc==5.0.8
 toolz==0.8.2
 tqdm==4.11.2
