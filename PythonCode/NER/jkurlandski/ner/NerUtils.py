@@ -1,12 +1,8 @@
 from collections import namedtuple
+from enum import Enum
 
 NerEntity = namedtuple("NerEntity", "eType, offset, content")
 
 # Person, Organization, Location
-class Enum(set):
-    def __getattr__(self, name):
-        if name in self:
-            return name
-        raise AttributeError("No such enum value " + name)
-EntityType = Enum(["Person", "Organization", "Location"])
+EntityType = Enum('EntityType', ['Person', 'Organization', 'Location', 'MunicipalBond'])
 
