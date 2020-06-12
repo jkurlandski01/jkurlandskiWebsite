@@ -13,7 +13,7 @@ keepalive==0.5
 MarkupSafe==0.23
 murmurhash==0.26.4
 mysql-connector==2.1.4
-nltk==3.2.1
+nltk==3.4.5
 nose==1.3.7
 numpy==1.11.2
 packaging==16.8
