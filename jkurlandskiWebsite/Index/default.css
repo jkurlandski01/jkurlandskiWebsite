@@ -540,7 +540,10 @@ hr {
 {
 	padding: 3px 0px 3px 0px;
 	clear: both;
+    padding-left: 25px;
+    text-indent: -25px;
 }
+
 
 
 
@@ -553,7 +556,7 @@ hr {
 		float: right;
 		width: 345px;
 		//width: 245px;
-}
+	}
 
 	#sidebar .title h2
 	{
