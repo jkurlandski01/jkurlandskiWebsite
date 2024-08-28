@@ -135,6 +135,12 @@ figcaption p {
 	font-family: 'FontAwesome';
 }
 
+.slightlyIndentedQuote {
+	font-family: "Times New Roman", Georgia, Serif;
+	margin-left: 20px;
+	line-height: 1.3
+}
+
 .indentedQuote {
 	font-family: "Times New Roman", Georgia, Serif;
 	margin-left: 40px;
